@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Frecuencia";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Mantenimiento
+        </div>
+        <h2 class="page-title">
+           Frecuencia
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+
+}
+
+@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Frecuencium>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("Frecuencia")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .Key("IdFrc")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.IdFrc).Caption("ID").Width(50);
+        columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.Habilitado).Width(120);
+    })
+        .ShowBorders(true)
+    .RowAlternationEnabled(false)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(50))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Pager(pager =>{
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] {50, 100, 150});
+        pager.ShowInfo(true);
+    })
+    .RemoteOperations(true)
+    .Editing(e => e.Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .AllowAdding(true)
+            .UseIcons(true)
+            .Popup(p => p
+                .Title("Frecuencia")
+                .ShowTitle(true)
+                .Width("50%")
+                .Height(200)
+            )
+            .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(2)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.Habilitado);
+                    });
+            }))
+        )
+)
+

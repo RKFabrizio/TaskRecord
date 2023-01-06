@@ -1,0 +1,60 @@
+﻿@model Usuario
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="text-center mb-4">
+          <a href="." class="navbar-brand navbar-brand-autodark"><img src="~/img/GOINTEGREAT.webp"  alt="Task Record"></a>
+        </div>
+        <div class="card card-md">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">TASK RECORD - Acceso al Sistema</h2>
+            <div class="mb-2">
+                 @using(Html.BeginForm()) {
+                    using(Html.DevExtreme().ValidationGroup()) {
+                        @Html.AntiForgeryToken()
+                        @(Html.DevExtreme().Form<TSK.Models.Usuario>()
+                            .LabelLocation(FormLabelLocation.Top)
+                            .ShowValidationSummary(true)
+                            .Items(items => {
+                                items.AddGroup()
+                                    
+                                    .Items(groupItems => {
+                                        groupItems.AddSimpleFor(m => m.UserName)
+                                            .Label(l => l.Text("USUARIO"));
+
+                                        groupItems.AddSimpleFor(m => m.Clave)
+                                            .Label(l => l.Text("CLAVE"))
+                                            .Editor(e => 
+                                                e.TextBox()
+                                                .Mode(TextBoxMode.Password)
+                                                
+                                            );
+                                    }); 
+                                items.AddButton()
+                                    .HorizontalAlignment(HorizontalAlignment.Center)
+                                    .ButtonOptions(b => b.Text("Ingresar")
+                                        .Type(ButtonType.Default)
+                                        .UseSubmitBehavior(true)
+                                );
+
+                            })
+                            .FormData(Model)
+                        )
+                    }
+                }
+            </div>
+            <div class="dx-form-validation-summary dx-validationsummary dx-widget dx-collection">
+                <div class="dx-item dx-validationsummary-item">
+                    <div class="dx-item-content dx-validationsummary-item-content">@ViewBag.msg</div>
+                 </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+

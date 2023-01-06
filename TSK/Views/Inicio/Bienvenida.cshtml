@@ -1,0 +1,59 @@
+@using TSK.Models
+
+@{
+    ViewData["Title"] = "Bienenida";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Inicio
+        </div>
+        <h2 class="page-title">
+            Bienvenido 
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+
+}
+
+
+<div class="row row-cards">
+    <div class="col-12">
+        <div class="card card-md">
+            <div class="card-stamp card-stamp-lg">
+            <div class="card-stamp-icon bg-primary">
+                <!-- Download SVG icon from -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checklist" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                   <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"></path>
+                   <path d="M14 19l2 2l4 -4"></path>
+                   <path d="M9 8h4"></path>
+                   <path d="M9 12h2"></path>
+                </svg>
+     
+            </div>
+            </div>
+            <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-10">
+                <div class="markdown">
+                   <p><strong>@User.Identity.Name,</strong> bievenido al Sistema TaskRecord</p>  
+                   <p>El TaskRecord reconoce que todo tipo de mantenimiento es v&aacute;lido y da pautas para decidir cu&aacute;l es el m&aacute;s adecuado en cada situaci&oacute;n. Al hacer esto, ayuda a asegurarse de que el tipo de mantenimiento escogido para cada equipo sea el m&aacute;s adecuado y evita los dolores de cabeza y problemas que siguen a la adopci&oacute;n de una pol&iacute;tica general de mantenimiento para toda una empresa.</p> 
+	               <p>Si TaskRecord se aplica a un sistema de mantenimiento existente, reduce la cantidad de mantenimiento rutinario que se ha hecho generalmente a un 40% a 70%. De otro lado, si RCM se aplica para desarrollar un nuevo sistema de mantenimiento, el resultado ser&aacute; que la carga de trabajo programada sea mucho menor que si el sistema se hubiera desarrollado por m&eacute;todos convencionales.</p> 
+           
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+ </div>

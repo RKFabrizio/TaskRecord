@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "ReporteSistema";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Mantenimiento
+        </div>
+        <h2 class="page-title">
+            Reporte Sistema
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+
+}
+
+@(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepSistema>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("ReporteSistema")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .Key("IdRepsis")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.IdRepsis).Caption("ID").Width(50);
+        columns.AddFor(m => m.IdRep).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("ReporteSistema").LoadAction("ReportesLookup").Key("Value"))
+            .ValueExpr("Value")
+            .DisplayExpr("Text")
+        ).Caption("Reporte");
+        columns.AddFor(m => m.NomSistema).Caption("Nombre Sistema");
+        columns.AddFor(m => m.NomSector).Caption("Nombre Sector");
+        columns.AddFor(m => m.NomDisciplina).Caption("Nombre Disciplina");
+        columns.AddFor(m => m.Habilitado);
+    })
+        .ShowBorders(true)
+    .RowAlternationEnabled(false)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(20))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .Pager(pager =>{
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] {20, 50, 100});
+        pager.ShowInfo(true);
+    })
+    .RemoteOperations(true)
+    .Editing(e => e.Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .AllowAdding(true)
+            .UseIcons(true)
+            .Popup(p => p
+                .Title("Reporte Entrega")
+                .ShowTitle(true)
+                .Width("70%")
+                .Height(400)
+            )
+            .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(2)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.IdRep);
+                        groupItems.AddSimpleFor(m => m.NomSistema);
+                        groupItems.AddSimpleFor(m => m.NomSector);
+                        groupItems.AddSimpleFor(m => m.NomDisciplina);
+                        groupItems.AddSimpleFor(m => m.Habilitado);
+                    });
+            }))
+        )
+)
+

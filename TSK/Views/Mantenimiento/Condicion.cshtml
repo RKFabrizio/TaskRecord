@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Condición";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Mantenimiento
+        </div>
+        <h2 class="page-title">
+            Condición
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+
+}
+
+@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Condicion>()
+    .ID("dgCondicion")
+    .DataSource(ds => ds.Mvc()
+        .Controller("Condicion")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .Key("IdCod")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.IdCod).Caption("ID").Width(50);
+        columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.Habilitado).Width(120);
+    })
+    .ShowBorders(true)
+    .RowAlternationEnabled(false)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(20))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .Pager(pager =>{
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] {20, 50, 100});
+        pager.ShowInfo(true);
+    })
+    .RemoteOperations(true)
+    .Editing(e => e.Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .AllowAdding(true)
+            .UseIcons(true)
+            .Popup(p => p
+                .Title("Condición")
+                .ShowTitle(true)
+                .Width("70%")
+                .Height(300)
+            )
+            .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(2)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.IdCod);
+                        groupItems.AddSimpleFor(m => m.Nombre);
+                        groupItems.AddSimpleFor(m => m.Habilitado);
+                    });
+            }))
+        )
+)

@@ -1,0 +1,241 @@
+﻿
+@{
+    ViewData["Title"] = "Registro";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Task Record
+        </div>
+        <h2 class="page-title">
+            Lista de registros
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+    <div class="col-auto ml-auto d-print-none">
+        <a href="RegistroNuevo" id="newtarea" class="btn btn-primary ml-3 d-none d-sm-inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"></path><rect x="9" y="3" width="6" height="4" rx="2"></rect><line x1="9" y1="12" x2="9.01" y2="12"></line><line x1="13" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="9.01" y2="16"></line><line x1="13" y1="16" x2="15" y2="16"></line></svg>
+            Nuevo
+        </a>
+        <a href="#" id="newtarea" class="btn btn-primary ml-3 d-sm-none btn-icon" data-toggle="modal" data-target="#modal-report">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-md" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"></path><path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2"></path><rect x="9" y="3" width="6" height="4" rx="2"></rect><line x1="9" y1="12" x2="9.01" y2="12"></line><line x1="13" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="9.01" y2="16"></line><line x1="13" y1="16" x2="15" y2="16"></line></svg>
+        </a>
+    </div>
+
+}
+
+<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+    <form class="modal-dialog modal-lg modal-dialog-centered" role="document" id="tareaForm" name="tareaForm" method="POST">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="tituloModal" class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" /><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    ab
+                </div>
+                <div class="mb-3">
+                    bc
+                </div>
+                <div class="mb-3">
+                    cc
+                </div>
+                <div class="mb-3">
+                    d
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            adf
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            adsf
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-white mr-auto" data-dismiss="modal">
+                    Cancel
+                </a>
+                
+                <button type="submit" class="btn btn-primary ml-auto" onclick="validarForm()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" /><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                    <span id="span"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<div class="row row-cards">
+    <div class="col-12">
+        <div class="card card-md">
+            <div class="card-stamp card-stamp-lg">
+            <div class="card-stamp-icon bg-primary">
+                <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checklist" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                   <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"></path>
+                   <path d="M14 19l2 2l4 -4"></path>
+                   <path d="M9 8h4"></path>
+                   <path d="M9 12h2"></path>
+                </svg>
+     
+            </div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                    <div class="markdown">
+ @if (User.IsInRole("LECTOR") )
+  {
+                              @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Reporte>()
+                            .DataSource(ds => ds.Mvc()
+                                .Controller("Reporte")
+                                .LoadAction("Get")
+                                .Key("IdRep")
+                            )
+                            .Columns(columns => {
+                                columns.AddFor(m => m.IdUni).Lookup(lookup => lookup
+                                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("UnidadsFlotaLookup").Key("Value"))
+                                    .ValueExpr("Value")
+                                    .DisplayExpr("Text")
+                                ).GroupIndex(0).Caption("Unidad");
+                                columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
+                                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup").Key("Value"))
+                                    .ValueExpr("Value")
+                                    .DisplayExpr("Text")
+                                ).Caption("PM").Width(400);
+
+                                
+                                columns.AddFor(m => m.Fecha);
+                                columns.AddFor(m => m.Comentario);
+                                columns.AddFor(m => m.Avance)
+                                    .Caption("% Avance")
+                                    .DataType(GridColumnDataType.Number)
+                                    .Alignment(HorizontalAlignment.Center)
+                                    .Format(Format.Percent)
+                                    .Width(110);
+                                columns.Add().AllowEditing(false)
+                                            .Alignment(HorizontalAlignment.Center)
+                                            .Width(100)
+                                            .CellTemplate(@<text>
+                                                            <a href="VerDetalle/<%- data.IdRep %>" title="Ver">
+                                                               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                   <circle cx="12" cy="12" r="2"></circle>
+                                                                   <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
+                                                                </svg> Ver
+                                                            </a>
+                                </text>);
+
+                            })
+                            .ShowBorders(true)
+                            .ShowColumnLines(true)
+                            .ShowRowLines(true)
+                            .Paging(paging => paging.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+                            .Pager(pager =>{
+                                pager.ShowPageSizeSelector(true);
+                                pager.AllowedPageSizes(new[] {50, 100, 150});
+                                pager.ShowInfo(true);
+                            })
+                            .RemoteOperations(true)
+                            .Grouping(grouping => grouping.AutoExpandAll(true))
+                            .GroupPanel(groupPanel => groupPanel
+                                .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
+                                .Visible(true))
+    
+                        )
+  }
+
+  @if (User.IsInRole("SUPERUSUARIO") || User.IsInRole("ADMINISTRADOR") || User.IsInRole("USUARIO"))
+  {
+
+  
+
+
+                        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Reporte>()
+                            .DataSource(ds => ds.Mvc()
+                                .Controller("Reporte")
+                                .LoadAction("Get")
+                                .Key("IdRep")
+                            )
+                            .Columns(columns => {
+                                columns.AddFor(m => m.IdUni).Lookup(lookup => lookup
+                                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("UnidadsFlotaLookup").Key("Value"))
+                                    .ValueExpr("Value")
+                                    .DisplayExpr("Text")
+                                ).GroupIndex(0).Caption("Unidad");
+                                columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
+                                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup").Key("Value"))
+                                    .ValueExpr("Value")
+                                    .DisplayExpr("Text")
+                                ).Caption("PM").Width(400);
+
+                                columns.AddFor(m => m.Fecha);
+                                columns.AddFor(m => m.Comentario);
+                                columns.AddFor(m => m.Avance)
+                                    .Caption("% Avance")
+                                    .DataType(GridColumnDataType.Number)
+                                    .Alignment(HorizontalAlignment.Center)
+                                    .Format(Format.Percent)
+                                    .Width(110);
+                                columns.Add().AllowEditing(false)
+                                            .Alignment(HorizontalAlignment.Center)
+                                            .Width(100)
+                                            .CellTemplate(@<text>
+                                                            <a href="RegistroDetalle/<%- data.IdRep %>" title="Editar">
+                                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                               <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                                               <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                                               <path d="M16 5l3 3"></path>
+                                                            </svg> Editar
+                                                            </a>
+                                </text>);
+
+                            })
+                            .ShowBorders(true)
+                            .ShowColumnLines(true)
+                            .ShowRowLines(true)
+                            .Paging(paging => paging.PageSize(20))
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+                            .Pager(pager =>{
+                                pager.ShowPageSizeSelector(true);
+                                pager.AllowedPageSizes(new[] {50, 100, 150});
+                                pager.ShowInfo(true);
+                            })
+                            .RemoteOperations(true)
+                            .Grouping(grouping => grouping.AutoExpandAll(true))
+                            .GroupPanel(groupPanel => groupPanel
+                                .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
+                                .Visible(true))
+    
+                        )
+
+}
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+

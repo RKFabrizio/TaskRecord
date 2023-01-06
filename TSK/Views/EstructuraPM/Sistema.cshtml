@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Sistema";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Mantenimiento
+        </div>
+        <h2 class="page-title">
+            Sistema
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+
+}
+
+@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Sistema>()
+    .ID("dgSistema")
+    .DataSource(ds => ds.Mvc()
+        .Controller("Sistema")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .Key("IdSis")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.IdSis).Caption("ID").Width(50);
+        columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.IdSec).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Sistema").LoadAction("SectorsLookup").Key("Value"))
+            .ValueExpr("Value")
+            .DisplayExpr("Text")).Caption("Sector");
+        columns.AddFor(m => m.IdCod).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Sistema").LoadAction("CondicionsLookup").Key("Value"))
+            .ValueExpr("Value")
+            .DisplayExpr("Text")).Caption("Condición").GroupIndex(0);
+        columns.AddFor(m => m.Habilitado).Width(120);
+    })
+    .ShowBorders(true)
+    .RowAlternationEnabled(false)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(50))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .Pager(pager =>{
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] {50, 100, 200});
+        pager.ShowInfo(true);
+    })
+    .AllowColumnReordering(true)
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
+    .GroupPanel(groupPanel => groupPanel
+        .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
+        .Visible(true))
+    .RemoteOperations(true)
+    .Editing(e => e.Mode(GridEditMode.Popup)
+            .AllowUpdating(true)
+            .AllowAdding(true)
+            .UseIcons(true)
+            .Popup(p => p
+                .Title("Sistema")
+                .ShowTitle(true)
+                .Width("50%")
+                .Height(400)
+            )
+            
+            .Form(f => f.Items(items => {
+                items.AddGroup()
+                    .ColCount(2)
+                    .ColSpan(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.IdSec).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.IdCod).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        
+                    });
+            }))
+            
+        )
+)
+

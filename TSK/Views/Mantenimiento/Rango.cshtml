@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Rango";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Mantenimiento
+        </div>
+        <h2 class="page-title">
+           Rango
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+
+}
+
+@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Rango>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("Rango")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .Key("IdRan")
+    )
+    .ShowBorders(true)
+    .RowAlternationEnabled(false)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(20))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .Pager(pager =>{
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] {20, 50, 100});
+        pager.ShowInfo(true);
+    })
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.IdRan).AllowEditing(false).Caption("ID").Width("100");
+        columns.AddFor(m => m.Nombre);
+        columns.AddFor(m => m.Habilitado).Width("120");
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+    )
+)

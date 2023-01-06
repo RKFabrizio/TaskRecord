@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Registro";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@section PagePreTitle{
+
+    <div class="col">
+        <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Task Record
+        </div>
+        <h2 class="page-title">
+            Nuevo registro
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+
+        <a href="/TaskRecord/Registro" class="btn btn-white d-none d-sm-inline-block">
+        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1"></path>
+        </svg>
+        Regresar
+        </a>
+        <a href="/TaskRecord/Registro" class="btn btn-white d-sm-none btn-icon">
+        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1"></path>
+        </svg>
+        </a>
+}
+
+<div class="row row-cards">
+    <div class="col-12">
+        <div class="card card-md">
+            <div class="card-stamp card-stamp-lg">
+                <div class="card-stamp-icon bg-primary">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checklist" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"></path>
+                        <path d="M14 19l2 2l4 -4"></path>
+                        <path d="M9 8h4"></path>
+                        <path d="M9 12h2"></path>
+                    </svg>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        Seleccionar el PM:
+                        <div class="markdown">
+                            @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Pm>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("Pm")
+        .LoadAction("Get")
+        .Key("IdPm")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.IdPm);
+
+        columns.AddFor(m => m.Descripcion);
+
+        columns.Add().AllowEditing(false)
+                    .Alignment(HorizontalAlignment.Center)
+                        .Width(100)
+                    .CellTemplate(@<text>
+                        <a href="VerDetalle/<%- data.IdPm %>" title="Ver">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
+                            </svg> Ver
+                        </a>
+                    </text>);
+})
+)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
