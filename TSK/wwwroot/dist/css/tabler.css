@@ -8,128 +8,129 @@
 */
 @charset "UTF-8";
 :root {
-  --tblr-blue: #206bc4;
-  --tblr-indigo: #4263eb;
-  --tblr-purple: #ae3ec9;
-  --tblr-pink: #d6336c;
-  --tblr-red: #d63939;
-  --tblr-orange: #f76707;
-  --tblr-yellow: #f59f00;
-  --tblr-green: #2fb344;
-  --tblr-teal: #0ca678;
-  --tblr-cyan: #17a2b8;
-  --tblr-black: #000000;
-  --tblr-white: #ffffff;
-  --tblr-gray: #475569;
-  --tblr-gray-dark: #1e293b;
-  --tblr-gray-100: #f1f5f9;
-  --tblr-gray-200: #e2e8f0;
-  --tblr-gray-300: #cbd5e1;
-  --tblr-gray-400: #94a3b8;
-  --tblr-gray-500: #64748b;
-  --tblr-gray-600: #475569;
-  --tblr-gray-700: #334155;
-  --tblr-gray-800: #1e293b;
-  --tblr-gray-900: #0f172a;
-  --tblr-primary: #206bc4;
-  --tblr-secondary: #626976;
-  --tblr-success: #2fb344;
-  --tblr-info: #4299e1;
-  --tblr-warning: #f76707;
-  --tblr-danger: #d63939;
-  --tblr-light: #fafbfc;
-  --tblr-dark: #1e293b;
-  --tblr-muted: #626976;
-  --tblr-blue: #206bc4;
-  --tblr-azure: #4299e1;
-  --tblr-indigo: #4263eb;
-  --tblr-purple: #ae3ec9;
-  --tblr-pink: #d6336c;
-  --tblr-red: #d63939;
-  --tblr-orange: #f76707;
-  --tblr-yellow: #f59f00;
-  --tblr-lime: #74b816;
-  --tblr-green: #2fb344;
-  --tblr-teal: #0ca678;
-  --tblr-cyan: #17a2b8;
-  --tblr-facebook: #3b5998;
-  --tblr-twitter: #1da1f2;
-  --tblr-linkedin: #0a66c2;
-  --tblr-google: #dc4e41;
-  --tblr-youtube: #ff0000;
-  --tblr-vimeo: #1ab7ea;
-  --tblr-dribbble: #ea4c89;
-  --tblr-github: #181717;
-  --tblr-instagram: #e4405f;
-  --tblr-pinterest: #bd081c;
-  --tblr-vk: #6383a8;
-  --tblr-rss: #ffa500;
-  --tblr-flickr: #0063dc;
-  --tblr-bitbucket: #0052cc;
-  --tblr-tabler: #206bc4;
-  --tblr-primary-rgb: 32, 107, 196;
-  --tblr-secondary-rgb: 98, 105, 118;
-  --tblr-success-rgb: 47, 179, 68;
-  --tblr-info-rgb: 66, 153, 225;
-  --tblr-warning-rgb: 247, 103, 7;
-  --tblr-danger-rgb: 214, 57, 57;
-  --tblr-light-rgb: 250, 251, 252;
-  --tblr-dark-rgb: 30, 41, 59;
-  --tblr-muted-rgb: 98, 105, 118;
-  --tblr-blue-rgb: 32, 107, 196;
-  --tblr-azure-rgb: 66, 153, 225;
-  --tblr-indigo-rgb: 66, 99, 235;
-  --tblr-purple-rgb: 174, 62, 201;
-  --tblr-pink-rgb: 214, 51, 108;
-  --tblr-red-rgb: 214, 57, 57;
-  --tblr-orange-rgb: 247, 103, 7;
-  --tblr-yellow-rgb: 245, 159, 0;
-  --tblr-lime-rgb: 116, 184, 22;
-  --tblr-green-rgb: 47, 179, 68;
-  --tblr-teal-rgb: 12, 166, 120;
-  --tblr-cyan-rgb: 23, 162, 184;
-  --tblr-facebook-rgb: 59, 89, 152;
-  --tblr-twitter-rgb: 29, 161, 242;
-  --tblr-linkedin-rgb: 10, 102, 194;
-  --tblr-google-rgb: 220, 78, 65;
-  --tblr-youtube-rgb: 255, 0, 0;
-  --tblr-vimeo-rgb: 26, 183, 234;
-  --tblr-dribbble-rgb: 234, 76, 137;
-  --tblr-github-rgb: 24, 23, 23;
-  --tblr-instagram-rgb: 228, 64, 95;
-  --tblr-pinterest-rgb: 189, 8, 28;
-  --tblr-vk-rgb: 99, 131, 168;
-  --tblr-rss-rgb: 255, 165, 0;
-  --tblr-flickr-rgb: 0, 99, 220;
-  --tblr-bitbucket-rgb: 0, 82, 204;
-  --tblr-tabler-rgb: 32, 107, 196;
-  --tblr-white-rgb: 255, 255, 255;
-  --tblr-black-rgb: 0, 0, 0;
-  --tblr-body-color-rgb: 30, 41, 59;
-  --tblr-body-bg-rgb: 245, 247, 251;
-  --tblr-font-sans-serif:    -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --tblr-font-monospace:  Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --tblr-body-font-family: var(--tblr-font-sans-serif);
-  --tblr-body-font-size: 0.875rem;
-  --tblr-body-font-weight: 400;
-  --tblr-body-line-height: 1.4285714286;
-  --tblr-body-color: #1e293b;
-  --tblr-body-bg: #f5f7fb;
-  --tblr-border-width: 1px;
-  --tblr-border-style: solid;
-  --tblr-border-color: #e6e7e9;
-  --tblr-border-color-translucent: rgba(0, 0, 0, 0.175);
-  --tblr-border-radius: 4px;
-  --tblr-border-radius-sm: 2px;
-  --tblr-border-radius-lg: 8px;
-  --tblr-border-radius-xl: 1rem;
-  --tblr-border-radius-2xl: 2rem;
-  --tblr-border-radius-pill: 100rem;
-  --tblr-link-color: #206bc4;
-  --tblr-link-hover-color: #1a569d;
-  --tblr-code-color: #4b5462;
-  --tblr-highlight-bg: #fdeccc;
+    --tblr-blue: #206bc4;
+    --tblr-indigo: #4263eb;
+    --tblr-purple: #ae3ec9;
+    --tblr-pink: #d6336c;
+    --tblr-red: #d63939;
+    --tblr-orange: #f76707;
+    --tblr-yellow: #f59f00;
+    --tblr-green: #2fb344;
+    --tblr-teal: #0ca678;
+    --tblr-cyan: #17a2b8;
+    --tblr-black: #000000;
+    --tblr-white: #ffffff;
+    --tblr-gray: #475569;
+    --tblr-gray-dark: #1e293b;
+    --tblr-gray-100: #f1f5f9;
+    --tblr-gray-200: #e2e8f0;
+    --tblr-gray-300: #cbd5e1;
+    --tblr-gray-400: #94a3b8;
+    --tblr-gray-500: #64748b;
+    --tblr-gray-600: #475569;
+    --tblr-gray-700: #334155;
+    --tblr-gray-800: #1e293b;
+    --tblr-gray-900: #0f172a;
+    --tblr-primary: #206bc4;
+    --tblr-secondary: #626976;
+    --tblr-success: #2fb344;
+    --tblr-info: #4299e1;
+    --tblr-warning: #f76707;
+    --tblr-danger: #d63939;
+    --tblr-light: #fafbfc;
+    --tblr-dark: #1e293b;
+    --tblr-muted: #626976;
+    --tblr-blue: #206bc4;
+    --tblr-azure: #4299e1;
+    --tblr-indigo: #4263eb;
+    --tblr-purple: #ae3ec9;
+    --tblr-pink: #d6336c;
+    --tblr-red: #d63939;
+    --tblr-orange: #f76707;
+    --tblr-yellow: #f59f00;
+    --tblr-lime: #74b816;
+    --tblr-green: #2fb344;
+    --tblr-teal: #0ca678;
+    --tblr-cyan: #17a2b8;
+    --tblr-facebook: #3b5998;
+    --tblr-twitter: #1da1f2;
+    --tblr-linkedin: #0a66c2;
+    --tblr-google: #dc4e41;
+    --tblr-youtube: #ff0000;
+    --tblr-vimeo: #1ab7ea;
+    --tblr-dribbble: #ea4c89;
+    --tblr-github: #181717;
+    --tblr-instagram: #e4405f;
+    --tblr-pinterest: #bd081c;
+    --tblr-vk: #6383a8;
+    --tblr-rss: #ffa500;
+    --tblr-flickr: #0063dc;
+    --tblr-bitbucket: #0052cc;
+    --tblr-tabler: #206bc4;
+    --tblr-primary-rgb: 32, 107, 196;
+    --tblr-secondary-rgb: 98, 105, 118;
+    --tblr-success-rgb: 47, 179, 68;
+    --tblr-info-rgb: 66, 153, 225;
+    --tblr-warning-rgb: 247, 103, 7;
+    --tblr-danger-rgb: 214, 57, 57;
+    --tblr-light-rgb: 250, 251, 252;
+    --tblr-dark-rgb: 30, 41, 59;
+    --tblr-muted-rgb: 98, 105, 118;
+    --tblr-blue-rgb: 32, 107, 196;
+    --tblr-azure-rgb: 66, 153, 225;
+    --tblr-indigo-rgb: 66, 99, 235;
+    --tblr-purple-rgb: 174, 62, 201;
+    --tblr-pink-rgb: 214, 51, 108;
+    --tblr-red-rgb: 214, 57, 57;
+    --tblr-orange-rgb: 247, 103, 7;
+    --tblr-yellow-rgb: 245, 159, 0;
+    --tblr-lime-rgb: 116, 184, 22;
+    --tblr-green-rgb: 47, 179, 68;
+    --tblr-teal-rgb: 12, 166, 120;
+    --tblr-cyan-rgb: 23, 162, 184;
+    --tblr-facebook-rgb: 59, 89, 152;
+    --tblr-twitter-rgb: 29, 161, 242;
+    --tblr-linkedin-rgb: 10, 102, 194;
+    --tblr-google-rgb: 220, 78, 65;
+    --tblr-youtube-rgb: 255, 0, 0;
+    --tblr-vimeo-rgb: 26, 183, 234;
+    --tblr-dribbble-rgb: 234, 76, 137;
+    --tblr-github-rgb: 24, 23, 23;
+    --tblr-instagram-rgb: 228, 64, 95;
+    --tblr-pinterest-rgb: 189, 8, 28;
+    --tblr-vk-rgb: 99, 131, 168;
+    --tblr-rss-rgb: 255, 165, 0;
+    --tblr-flickr-rgb: 0, 99, 220;
+    --tblr-bitbucket-rgb: 0, 82, 204;
+    --tblr-tabler-rgb: 32, 107, 196;
+    --tblr-white-rgb: 255, 255, 255;
+    --tblr-black-rgb: 0, 0, 0;
+    --tblr-body-color-rgb: 30, 41, 59;
+    --tblr-body-bg-rgb: 239, 239, 254;
+    --tblr-font-sans-serif: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    --tblr-font-monospace: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
+    --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --tblr-body-font-family: var(--tblr-font-sans-serif);
+    --tblr-body-font-size: 0.875rem;
+    --tblr-body-font-weight: 400;
+    --tblr-body-line-height: 1.4285714286;
+    --tblr-body-color: #1e293b;
+    --tblr-body-bg: #efeffe;
+    --tblr-border-width: 1px;
+    --tblr-border-style: solid;
+    --tblr-border-color: #e6e7e9;
+    --tblr-border-color-translucent: rgba(0, 0, 0, 0.175);
+    --tblr-border-radius: 4px;
+    --tblr-border-radius-sm: 2px;
+    --tblr-border-radius-lg: 8px;
+    --tblr-border-radius-xl: 1rem;
+    --tblr-border-radius-2xl: 2rem;
+    --tblr-border-radius-pill: 100rem;
+    --tblr-link-color: #206bc4;
+    --tblr-link-hover-color: #1a569d;
+    --tblr-code-color: #4b5462;
+    --tblr-highlight-bg: #fdeccc;
 }
 
 *,
@@ -145,16 +146,16 @@
 }
 
 body {
-  margin: 0;
-  font-family: var(--tblr-body-font-family);
-  font-size: var(--tblr-body-font-size);
-  font-weight: var(--tblr-body-font-weight);
-  line-height: var(--tblr-body-line-height);
-  color: var(--tblr-body-color);
-  text-align: var(--tblr-body-text-align);
-  background-color: var(--tblr-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 0;
+    font-family: var(--tblr-body-font-family);
+    font-size: var(--tblr-body-font-size);
+    font-weight: var(--tblr-body-font-weight);
+    line-height: var(--tblr-body-line-height);
+    color: var(--tblr-body-color);
+    text-align: var(--tblr-body-text-align);
+    background-color: var(--tblr-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 hr, .hr {
@@ -602,7 +603,7 @@ progress {
 }
 
 .img-fluid {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
 }
 
@@ -5155,33 +5156,33 @@ textarea.form-control-lg {
 }
 
 .card {
-  --tblr-card-spacer-y: 1rem;
-  --tblr-card-spacer-x: 1.25rem;
-  --tblr-card-title-spacer-y: 1.25rem;
-  --tblr-card-border-width: 1px;
-  --tblr-card-border-color: rgba(98, 105, 118, 0.16);
-  --tblr-card-border-radius: 4px;
-  --tblr-card-box-shadow: ;
-  --tblr-card-inner-border-radius: 3px;
-  --tblr-card-cap-padding-y: 1rem;
-  --tblr-card-cap-padding-x: 1.25rem;
-  --tblr-card-cap-bg: #fafbfc;
-  --tblr-card-cap-color: #626976;
-  --tblr-card-height: ;
-  --tblr-card-color: ;
-  --tblr-card-bg: #ffffff;
-  --tblr-card-img-overlay-padding: 1rem;
-  --tblr-card-group-margin: 1.5rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  height: var(--tblr-card-height);
-  word-wrap: break-word;
-  background-color: var(--tblr-card-bg);
-  background-clip: border-box;
-  border: var(--tblr-card-border-width) solid var(--tblr-card-border-color);
-  border-radius: var(--tblr-card-border-radius);
+    --tblr-card-spacer-y: 1rem;
+    --tblr-card-spacer-x: 1.25rem;
+    --tblr-card-title-spacer-y: 1.25rem;
+    --tblr-card-border-width: 1px;
+    --tblr-card-border-color: rgba(98, 105, 118, 0.16);
+    h2.page: 50px;
+    --tblr-card-box-shadow:;
+    --tblr-card-inner-border-radius: 3px;
+    --tblr-card-cap-padding-y: 1rem;
+    --tblr-card-cap-padding-x: 1.25rem;
+    --tblr-card-cap-bg: #fafbfc;
+    --tblr-card-cap-color: #626976;
+    --tblr-card-height:;
+    --tblr-card-color:;
+    --tblr-card-bg: #F6F6FF;
+    --tblr-card-img-overlay-padding: 1rem;
+    --tblr-card-group-margin: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--tblr-card-height);
+    word-wrap: break-word;
+    background-color: var(--tblr-card-bg);
+    background-clip: border-box;
+    border: var(--tblr-card-border-width) solid var(--tblr-card-border-color);
+    border-radius: var(h2.page);
 }
 .card > hr, .card > .hr {
   margin-right: 0;
@@ -13246,86 +13247,86 @@ textarea.form-control-lg {
   }
 }
 :root {
-  font-size: 16px;
-  height: 100%;
-  --tblr-primary: #206bc4;
-  --tblr-secondary: #626976;
-  --tblr-success: #2fb344;
-  --tblr-info: #4299e1;
-  --tblr-warning: #f76707;
-  --tblr-danger: #d63939;
-  --tblr-light: #fafbfc;
-  --tblr-dark: #1e293b;
-  --tblr-muted: #626976;
-  --tblr-blue: #206bc4;
-  --tblr-azure: #4299e1;
-  --tblr-indigo: #4263eb;
-  --tblr-purple: #ae3ec9;
-  --tblr-pink: #d6336c;
-  --tblr-red: #d63939;
-  --tblr-orange: #f76707;
-  --tblr-yellow: #f59f00;
-  --tblr-lime: #74b816;
-  --tblr-green: #2fb344;
-  --tblr-teal: #0ca678;
-  --tblr-cyan: #17a2b8;
-  --tblr-facebook: #3b5998;
-  --tblr-twitter: #1da1f2;
-  --tblr-linkedin: #0a66c2;
-  --tblr-google: #dc4e41;
-  --tblr-youtube: #ff0000;
-  --tblr-vimeo: #1ab7ea;
-  --tblr-dribbble: #ea4c89;
-  --tblr-github: #181717;
-  --tblr-instagram: #e4405f;
-  --tblr-pinterest: #bd081c;
-  --tblr-vk: #6383a8;
-  --tblr-rss: #ffa500;
-  --tblr-flickr: #0063dc;
-  --tblr-bitbucket: #0052cc;
-  --tblr-tabler: #206bc4;
-  --tblr-primary-rgb: 32, 107, 196;
-  --tblr-secondary-rgb: 98, 105, 118;
-  --tblr-success-rgb: 47, 179, 68;
-  --tblr-info-rgb: 66, 153, 225;
-  --tblr-warning-rgb: 247, 103, 7;
-  --tblr-danger-rgb: 214, 57, 57;
-  --tblr-light-rgb: 250, 251, 252;
-  --tblr-dark-rgb: 30, 41, 59;
-  --tblr-muted-rgb: 98, 105, 118;
-  --tblr-blue-rgb: 32, 107, 196;
-  --tblr-azure-rgb: 66, 153, 225;
-  --tblr-indigo-rgb: 66, 99, 235;
-  --tblr-purple-rgb: 174, 62, 201;
-  --tblr-pink-rgb: 214, 51, 108;
-  --tblr-red-rgb: 214, 57, 57;
-  --tblr-orange-rgb: 247, 103, 7;
-  --tblr-yellow-rgb: 245, 159, 0;
-  --tblr-lime-rgb: 116, 184, 22;
-  --tblr-green-rgb: 47, 179, 68;
-  --tblr-teal-rgb: 12, 166, 120;
-  --tblr-cyan-rgb: 23, 162, 184;
-  --tblr-facebook-rgb: 59, 89, 152;
-  --tblr-twitter-rgb: 29, 161, 242;
-  --tblr-linkedin-rgb: 10, 102, 194;
-  --tblr-google-rgb: 220, 78, 65;
-  --tblr-youtube-rgb: 255, 0, 0;
-  --tblr-vimeo-rgb: 26, 183, 234;
-  --tblr-dribbble-rgb: 234, 76, 137;
-  --tblr-github-rgb: 24, 23, 23;
-  --tblr-instagram-rgb: 228, 64, 95;
-  --tblr-pinterest-rgb: 189, 8, 28;
-  --tblr-vk-rgb: 99, 131, 168;
-  --tblr-rss-rgb: 255, 165, 0;
-  --tblr-flickr-rgb: 0, 99, 220;
-  --tblr-bitbucket-rgb: 0, 82, 204;
-  --tblr-tabler-rgb: 32, 107, 196;
-  --tblr-card-bg: #ffffff;
-  --tblr-card-bg-rgb: 255, 255, 255;
-  --tblr-border-color: #e6e7e9;
-  --tblr-border-color-rgb: 230, 231, 233;
-  --tblr-border-color-light: #f2f3f4;
-  --tblr-border-color-light-rgb: 242, 243, 244;
+    font-size: 16px;
+    height: 100%;
+    --tblr-primary: #206bc4;
+    --tblr-secondary: #626976;
+    --tblr-success: #2fb344;
+    --tblr-info: #4299e1;
+    --tblr-warning: #f76707;
+    --tblr-danger: #d63939;
+    --tblr-light: #fafbfc;
+    --tblr-dark: #1e293b;
+    --tblr-muted: #626976;
+    --tblr-blue: #206bc4;
+    --tblr-azure: #4299e1;
+    --tblr-indigo: #4263eb;
+    --tblr-purple: #ae3ec9;
+    --tblr-pink: #d6336c;
+    --tblr-red: #d63939;
+    --tblr-orange: #f76707;
+    --tblr-yellow: #f59f00;
+    --tblr-lime: #74b816;
+    --tblr-green: #2fb344;
+    --tblr-teal: #0ca678;
+    --tblr-cyan: #17a2b8;
+    --tblr-facebook: #3b5998;
+    --tblr-twitter: #1da1f2;
+    --tblr-linkedin: #0a66c2;
+    --tblr-google: #dc4e41;
+    --tblr-youtube: #ff0000;
+    --tblr-vimeo: #1ab7ea;
+    --tblr-dribbble: #ea4c89;
+    --tblr-github: #181717;
+    --tblr-instagram: #e4405f;
+    --tblr-pinterest: #bd081c;
+    --tblr-vk: #6383a8;
+    --tblr-rss: #ffa500;
+    --tblr-flickr: #0063dc;
+    --tblr-bitbucket: #0052cc;
+    --tblr-tabler: #206bc4;
+    --tblr-primary-rgb: 32, 107, 196;
+    --tblr-secondary-rgb: 98, 105, 118;
+    --tblr-success-rgb: 47, 179, 68;
+    --tblr-info-rgb: 66, 153, 225;
+    --tblr-warning-rgb: 247, 103, 7;
+    --tblr-danger-rgb: 214, 57, 57;
+    --tblr-light-rgb: 250, 251, 252;
+    --tblr-dark-rgb: 30, 41, 59;
+    --tblr-muted-rgb: 98, 105, 118;
+    --tblr-blue-rgb: 32, 107, 196;
+    --tblr-azure-rgb: 66, 153, 225;
+    --tblr-indigo-rgb: 66, 99, 235;
+    --tblr-purple-rgb: 174, 62, 201;
+    --tblr-pink-rgb: 214, 51, 108;
+    --tblr-red-rgb: 214, 57, 57;
+    --tblr-orange-rgb: 247, 103, 7;
+    --tblr-yellow-rgb: 245, 159, 0;
+    --tblr-lime-rgb: 116, 184, 22;
+    --tblr-green-rgb: 47, 179, 68;
+    --tblr-teal-rgb: 12, 166, 120;
+    --tblr-cyan-rgb: 23, 162, 184;
+    --tblr-facebook-rgb: 59, 89, 152;
+    --tblr-twitter-rgb: 29, 161, 242;
+    --tblr-linkedin-rgb: 10, 102, 194;
+    --tblr-google-rgb: 220, 78, 65;
+    --tblr-youtube-rgb: 255, 0, 0;
+    --tblr-vimeo-rgb: 26, 183, 234;
+    --tblr-dribbble-rgb: 234, 76, 137;
+    --tblr-github-rgb: 24, 23, 23;
+    --tblr-instagram-rgb: 228, 64, 95;
+    --tblr-pinterest-rgb: 189, 8, 28;
+    --tblr-vk-rgb: 99, 131, 168;
+    --tblr-rss-rgb: 255, 165, 0;
+    --tblr-flickr-rgb: 0, 99, 220;
+    --tblr-bitbucket-rgb: 0, 82, 204;
+    --tblr-tabler-rgb: 32, 107, 196;
+    --tblr-card-bg: #F6F6FF;
+    --tblr-card-bg-rgb: 246, 246, 255;
+    --tblr-border-color: #e6e7e9;
+    --tblr-border-color-rgb: 230, 231, 233;
+    --tblr-border-color-light: #f2f3f4;
+    --tblr-border-color-light-rgb: 242, 243, 244;
 }
 
 body {
@@ -14313,8 +14314,8 @@ Navbar brand
 }
 
 .navbar-brand-image {
-  height: 2rem;
-  width: auto;
+    height: 3rem;
+    width: auto;
 }
 
 /**
@@ -15433,19 +15434,19 @@ body:not(.theme-dark) .hide-theme-light {
 }
 
 @media not print {
-  .theme-dark {
-    --tblr-body-color: #fafbfc;
-    --tblr-body-color-rgb: 250, 251, 252;
-    --tblr-body-bg: #1b2434;
-    --tblr-body-bg-rgb: 27, 36, 52;
-    --tblr-card-bg: #1e293b;
-    --tblr-card-bg-rgb: 30, 41, 59;
-    --tblr-border-color: #2c3c56;
-    --tblr-border-color-light: #253249;
-    --tblr-btn-color: #1e293b;
-    color: #fafbfc;
-    background-color: #1b2434;
-  }
+    .theme-dark {
+        --tblr-body-color: #fafbfc;
+        --tblr-body-color-rgb: 250, 251, 252;
+        --tblr-body-bg: #1b2434;
+        --tblr-body-bg-rgb: 27, 36, 52;
+        --tblr-card-bg: #1e293b;
+        --tblr-card-bg-rgb: 30, 41, 59;
+        --tblr-border-color: #2c3c56;
+        --tblr-border-color-light: #253249;
+        --tblr-btn-color: #1e293b;
+        color: #fafbfc;
+        background-color: #1b2434;
+    }
   .theme-dark .page {
     color: #fafbfc;
   }
@@ -17277,7 +17278,7 @@ a.badge {
 }
 
 .card {
-  --tblr-card-border-radius: 4px;
+  --tblr-card-border-radius: 50px;
   box-shadow: rgba(30, 41, 59, 0.04) 0 2px 4px 0;
   border: 1px solid rgba(98, 105, 118, 0.16);
   background: var(--tblr-card-bg, #ffffff);
@@ -21320,8 +21321,25 @@ pre code {
   border-radius: 0;
 }
 
-img {
-  max-width: 100%;
+.navbar-brand-image {
+    margin-left: 30%;
+    max-width: 200px;
+    margin-bottom: 5%;
+    margin-top: 10px;
+}
+
+.logo {
+    margin-left: 40%;
+    max-width: 200px;
+    margin-bottom: 15%;
+    margin-top: 10px;
+}
+
+.logo_veladero {
+    margin-left: 40%;
+    max-width: 200px;
+    margin-bottom: 15%;
+    margin-top: 10px;
 }
 
 .list-unstyled {
