@@ -7,11 +7,15 @@
     <div class="page page-center">
       <div class="container-tight py-4">
         <div class="text-center mb-4">
-          <a href="." class="navbar-brand navbar-brand-autodark"><img src="~/img/GOINTEGREAT.webp"  alt="Task Record"></a>
+            <a href="." class="navbar-brand navbar-brand-autodark">
+            </a>
         </div>
         <div class="card card-md">
           <div class="card-body">
-            <h2 class="card-title text-center mb-4">TASK RECORD - Acceso al Sistema</h2>
+                <a href="." class="navbar-brand navbar-brand-autodark">
+                    <img class="logo_veladero" src="~/img/Logo Veladero.png" alt="Veladero">
+                </a>
+            
             <div class="mb-2">
                  @using(Html.BeginForm()) {
                     using(Html.DevExtreme().ValidationGroup()) {
@@ -24,10 +28,10 @@
                                     
                                     .Items(groupItems => {
                                         groupItems.AddSimpleFor(m => m.UserName)
-                                            .Label(l => l.Text("USUARIO"));
+                                            .Label(l => l.Text("Usuario"));
 
                                         groupItems.AddSimpleFor(m => m.Clave)
-                                            .Label(l => l.Text("CLAVE"))
+                                            .Label(l => l.Text("Clave"))
                                             .Editor(e => 
                                                 e.TextBox()
                                                 .Mode(TextBoxMode.Password)
@@ -36,7 +40,7 @@
                                     }); 
                                 items.AddButton()
                                     .HorizontalAlignment(HorizontalAlignment.Center)
-                                    .ButtonOptions(b => b.Text("Ingresar")
+                                    .ButtonOptions(b => b.Text("Acceder")
                                         .Type(ButtonType.Default)
                                         .UseSubmitBehavior(true)
                                 );
@@ -52,7 +56,7 @@
                     <div class="dx-item-content dx-validationsummary-item-content">@ViewBag.msg</div>
                  </div>
             </div>
-            
+             <img class="logo" src="~/img/GOINTEGREAT_V1.png" alt="Task Record">
           </div>
         </div>
       </div>
