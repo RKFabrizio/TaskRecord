@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y68wex2tVCTBNUWeCAyPruPooz2Nv9JGOFlGYlPmQU8=",
+  "Hash": "dgCFNgwUPYo2O+9o+8JRLfAWDZqJeSs2+1F5XAPOVi8=",
   "Source": "TSK",
   "BasePath": "_content/TSK",
   "Mode": "Default",
@@ -13923,6 +13923,23 @@
       "OriginalItemSpec": "wwwroot\\img\\016m.jpg"
     },
     {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\acceso.png",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/acceso.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\acceso.png"
+    },
+    {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\admin.svg",
       "SourceId": "TSK",
       "SourceType": "Discovered",
@@ -14023,6 +14040,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Logo Veladero.png"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\PautasLogo.png",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/PautasLogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\PautasLogo.png"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\reader.svg",

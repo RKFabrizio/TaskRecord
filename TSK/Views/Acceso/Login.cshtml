@@ -11,41 +11,43 @@
         </div>
         <div class="card card-md">
             <a href="." class="navbar-brand navbar-brand-autodark">
-                <img class="logo" src="~/img/GOINTEGREAT_V1.png" alt="Gointegreat">
+                <img class="logo" src="~/img/PautasLogo.png" alt="Pautas">
             </a>
           <div class="card-body">
-                <h1 class="title">
-                    Iniciar Sesion
-                </h1>
+                <a href="." class="navbar-brand navbar-brand-autodark">
+                    <img class="acceso" src="~/img/acceso.png" alt="Acceso al sistema">
+                </a>
             <div class="mb-2">
                  @using(Html.BeginForm()) {
                     using(Html.DevExtreme().ValidationGroup()) {
                         @Html.AntiForgeryToken()
-                        @(Html.DevExtreme().Form<TSK.Models.Usuario>()
-                            .LabelLocation(FormLabelLocation.Top)
-                            .ShowValidationSummary(true)
-                            .Items(items => {
-                                items.AddGroup()
-                                    
-                                    .Items(groupItems => {
-                                        groupItems.AddSimpleFor(m => m.UserName)
-                                            .Label(l => l.Text("Usuario"))
-                                            
-                                            ;
-                                            
-                                        groupItems.AddSimpleFor(m => m.Clave)
-                                            .Label(l => l.Text("Clave"))
-                                            .Editor(e => 
-                                                e.TextBox()
-                                                .Mode(TextBoxMode.Password)
-                                                
+                            @(
+                            Html.DevExtreme().Form<TSK.Models.Usuario>()
+                                     .LabelLocation(FormLabelLocation.Top)
+                                    .ShowValidationSummary(true)
+                                        .Items(items =>
+                                        {
+                                            items.AddGroup()
+
+                                            .Items(groupItems =>
+                                            {
+                                                groupItems.AddSimpleFor(m => m.UserName)
+                                            .Label(l => l.Visible(false))
+                                            .Editor(e => e.TextBox()
+                                            .Placeholder("Usuario")
                                             );
-                                    }); 
-                                items.AddButton()
-                                    .HorizontalAlignment(HorizontalAlignment.Center)
-                                    .CssClass("button_login")
-                                    .ButtonOptions(b => b.Text("Acceder")
-                                        
+
+                                                groupItems.AddSimpleFor(m => m.Clave)
+                                            .Label(l => l.Visible(false))
+                                            .Editor(e => e.TextBox()
+                                            .Placeholder("Contraseña")
+                                            .Mode(TextBoxMode.Password)
+                                            );
+                                            });
+                                            items.AddButton()
+                                             .HorizontalAlignment(HorizontalAlignment.Center)
+                                             
+                                            .ButtonOptions(b => b.Text("Acceder")  
                                         .Type(ButtonType.Default)
                                         .UseSubmitBehavior(true)
                                         
@@ -63,7 +65,7 @@
                  </div>
             </div>
                 <a href="." class="navbar-brand navbar-brand-autodark">
-                    <img class="logo_veladero" src="~/img/Logo Veladero.png" alt="Veladero">
+                    <img class="logo_gointegreat" src="~/img/GOINTEGREAT_V1.png" alt="Gointegreat">
                 </a>
           </div>
         </div>
