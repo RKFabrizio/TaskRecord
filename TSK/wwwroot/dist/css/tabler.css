@@ -128,7 +128,7 @@
     --tblr-border-radius-2xl: 2rem;
     --tblr-border-radius-pill: 100rem;
     --tblr-link-color: #206bc4;
-    --tblr-link-hover-color: #1a569d;
+    --tblr-link-hover-color: #349d1a;
     --tblr-code-color: #4b5462;
     --tblr-highlight-bg: #fdeccc;
 }
@@ -21329,17 +21329,16 @@ pre code {
 }
 
 .logo {
-    margin-left: 40%;
-    max-width: 200px;
-    margin-bottom: 15%;
-    margin-top: 10px;
+    max-width: 130px;
+    margin-top: -60px;
+    margin-left:35%;
 }
 
 .logo_veladero {
-    margin-left: 40%;
-    max-width: 200px;
+    max-width: 130px;
     margin-bottom: 15%;
     margin-top: 10px;
+    margin-left: 100%;
 }
 
 .list-unstyled {
@@ -21980,6 +21979,10 @@ Chart sparkline
   color: var(--tblr-tabler) !important;
 }
 
+.text-blue {
+    color: #f7ff01;
+}
+
 /*
 Scrollable
 */
@@ -22204,3 +22207,9 @@ Antialiasing
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
 }
+
+.title {
+    margin-left: 30%;
+    margin-bottom:5%;
+}
+
