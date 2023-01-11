@@ -3285,6 +3285,14 @@
       "PackagePath": "staticwebassets\\img\\Logo Veladero.png"
     },
     {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\PautasLogo.png",
+      "PackagePath": "staticwebassets\\img\\PautasLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\acceso.png",
+      "PackagePath": "staticwebassets\\img\\acceso.png"
+    },
+    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\GitHub\\TSK\\wwwroot\\img\\admin.svg",
       "PackagePath": "staticwebassets\\img\\admin.svg"
     },

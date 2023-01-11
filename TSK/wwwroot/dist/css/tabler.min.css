@@ -23311,17 +23311,22 @@ pre {
 }
 
 .logo {
-    max-width: 130px;
-    margin-top: -60px;
-    margin-left: 35%;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 30%;
 }
 
-.logo_veladero {
- 
-    max-width: 130px;
+.logo_gointegreat {
+    max-width: 50px;
     margin-bottom: 15%;
-    margin-top: 10px;
-    margin-left:95%;
+    margin-top: 20px;
+    margin-left: 324%;
+}
+
+.acceso {
+    max-width: 60%;
+    margin-left: 22%;
+    margin-bottom: 30px;
 }
 
 .list-unstyled {
@@ -24180,7 +24185,7 @@ pre {
 }
 
 .title {
-    margin-left: 30%;
-    margin-bottom: 5%;
+    margin-left: 27%;
+    margin-bottom: 10%;
 }
 
