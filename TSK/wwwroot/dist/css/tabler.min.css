@@ -17118,13 +17118,13 @@ body:not(.theme-dark) .hide-theme-light {
         --tblr-body-color-rgb: 250,251,252;
         --tblr-body-bg: #1b2434;
         --tblr-body-bg-rgb: 27,36,52;
-        --tblr-card-bg: #1e293b;
+        --tblr-card-bg: #1b2631;
         --tblr-card-bg-rgb: 30,41,59;
         --tblr-border-color: #2c3c56;
         --tblr-border-color-light: #253249;
         --tblr-btn-color: #1e293b;
-        color: #fafbfc;
-        background-color: #1b2434
+        color: white;
+        background-color: #283747;
     }
 
         .theme-dark .page {
@@ -23311,17 +23311,17 @@ pre {
 }
 
 .logo {
-    margin-left: 40%;
-    max-width: 60px;
-    margin-bottom: 15%;
-    margin-top: 30px;
+    max-width: 130px;
+    margin-top: -60px;
+    margin-left: 35%;
 }
 
 .logo_veladero {
-    margin-left: 40%;
-    max-width: 200px;
+ 
+    max-width: 130px;
     margin-bottom: 15%;
     margin-top: 10px;
+    margin-left:95%;
 }
 
 .list-unstyled {
@@ -23953,6 +23953,10 @@ pre {
     color: var(--tblr-tabler) !important
 }
 
+.text-blue {
+    color: #f7ff01;
+}
+
 .scrollable {
     overflow-x: hidden;
     overflow-y: auto;
@@ -24174,3 +24178,9 @@ pre {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto
 }
+
+.title {
+    margin-left: 30%;
+    margin-bottom: 5%;
+}
+
