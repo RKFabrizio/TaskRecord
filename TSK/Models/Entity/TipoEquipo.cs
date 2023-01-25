@@ -14,7 +14,7 @@ namespace TSK.Models.Entity
         public int IdTeq { get; set; }
 
         [Required(ErrorMessage = "La Empresa es obligatoria")]
-        public int IdEmp { get; set; }
+        public int IdArea { get; set; }
 
         [Required(ErrorMessage = "El Tipo de Equipo es obligatorio")]
         public string TEquipo { get; set; }
@@ -23,7 +23,7 @@ namespace TSK.Models.Entity
         public string Extracolumn2 { get; set; }
         public string Extracolumn3 { get; set; }
 
-        public virtual Empresa IdEmpNavigation { get; set; }
+        public virtual Area IdAreaNavigation { get; set; }
         public virtual ICollection<Flotum> Flota { get; set; }
     }
 }

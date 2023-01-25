@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Reporte";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
 }
@@ -97,7 +96,7 @@
                         groupItems.AddSimpleFor(m => m.Fecha);
                         groupItems.AddSimpleFor(m => m.Horometro);
                         groupItems.AddSimpleFor(m => m.Comentario).ColSpan(2)
-                            .Editor(editor => editor.TextArea().Height(100));
+                        .Editor(editor => editor.TextArea().Height(100));
                         groupItems.AddSimpleFor(m => m.Habilitado);
                     });
             }))

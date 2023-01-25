@@ -1,0 +1,24 @@
+﻿@model Query
+@using DevExtreme.AspNet.Mvc;
+
+@(Html.DevExtreme().Popup()
+    .ID("popup")
+    .Title("Popup title")
+    .Content(@<text>
+        <div>
+            <p>Popup content</p>
+            @Html.DevExtreme().Button()
+            .ID("popupButton")
+            .Text("OK")
+            .OnClick("popupButtonClicked")
+        </div>
+    </text>)
+    .Visible(false)
+    .Shading(true)
+)
+
+<script>
+    function popupButtonClicked() {
+        // lógica para manejar el evento click del botón del "Popup"
+    }
+</script>

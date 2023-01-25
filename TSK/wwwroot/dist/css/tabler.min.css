@@ -268,20 +268,16 @@ sup {
     top: -.5em
 }
 
+
 a {
-    color: var(--tblr-link-color);
-    text-decoration: none
+    color: #20c2ee;
+    text-decoration: none;
 }
 
-    a:hover {
-        color: var(--tblr-link-hover-color);
-        text-decoration: underline
-    }
-
-    a:not([href]):not([class]), a:not([href]):not([class]):hover {
-        color: inherit;
-        text-decoration: none
-    }
+a:hover {
+        color: #1a77ca;
+        text-decoration: underline;
+}
 
 code, kbd, pre, samp {
     font-family: var(--tblr-font-monospace);
@@ -23305,7 +23301,8 @@ pre {
 
 .navbar-brand-image {
     margin-left: 30%;
-    max-width: 200px;
+    width: 230px;
+    height:70px;
     margin-bottom: 5%;
     margin-top: 10px;
 }

@@ -20,14 +20,11 @@ namespace TSK.Models.Entity
         [Required(ErrorMessage = "El PM es obligatoria")]
         public int IdPm { get; set; }
 
-        [Required(ErrorMessage = "La Disciplina es obligatoria")]
-        public int IdDis { get; set; }
         public bool? Habilitado { get; set; }
         public string Extracolumn1 { get; set; }
         public string Extracolumn2 { get; set; }
         public string Extracolumn3 { get; set; }
 
-        public virtual Disciplina IdDisNavigation { get; set; }
         public virtual Pm IdPmNavigation { get; set; }
         public virtual Sistema IdSisNavigation { get; set; }
         public virtual ICollection<Complemento> Complementos { get; set; }

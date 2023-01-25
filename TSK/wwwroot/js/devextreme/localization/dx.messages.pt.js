@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.messages.pt.js)
-* Version: 22.1.4
-* Build date: Fri Jul 22 2022
+* Version: 22.1.7
+* Build date: Thu Dec 08 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -24,6 +24,7 @@
             Yes: "Sim",
             No: "N\xe3o",
             Cancel: "Cancelar",
+            Close: "Fechar",
             Clear: "Limpar",
             Done: "Conclu\xeddo",
             Loading: "Carregando ...",

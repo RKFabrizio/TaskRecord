@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace TSK.Models.Entity
 {
     public partial class RepDetalle

@@ -1,11 +1,13 @@
 @using Microsoft.AspNetCore.Identity;
+@using DevExtreme.AspNet.Mvc.Builders;
+
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,7 +17,7 @@
     @* Uncomment to use the HtmlEditor control *@
     @* <script src="https://unpkg.com/devextreme-quill@21_2/dist/dx-quill.min.js"></script> *@
     <link rel="stylesheet" href="~/css/vendor.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Site.css" asp-append-version="true"  />
     <script src="~/js/vendor.js" asp-append-version="true"></script>
     <link rel="stylesheet" href="~/dist/css/tabler.min.css" />
     <link rel="stylesheet" href="~/dist/css/tabler-flags.min.css" />
@@ -34,7 +36,7 @@
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
 
                     <a asp-controller="Inicio" asp-action="Bienvenida" class="dropdown-item">
-                        <img src="~/img/GOINTEGREAT.png" alt="Tabler" class="navbar-brand-image">
+                        <img src="~/img/GOPAUTAS.png" alt="Tabler" class="navbar-brand-image">
                     </a>
                 </h1>
                 <div class="navbar-nav flex-row order-md-last">
@@ -64,29 +66,22 @@
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0 text-info text-gradient" data-bs-toggle="dropdown" aria-label="Open user menu">
-                            @if (User.IsInRole("SUPERUSUARIO"))
-                            {
-                                <span class="avatar text-info">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                                </span>
 
-                            }
-                            @if (User.IsInRole("ADMINISTRADOR"))
+                            @if (User.IsInRole("Lider"))
                             {
                                 <span class="avatar text-info">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
                                 </span>
                             }
-                            @if (User.IsInRole("USUARIO"))
+                            @if (User.IsInRole("Tecnico"))
                             {
                                 <span class="avatar text-info">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
                                 </span>
                             }
-                            @if (User.IsInRole("LECTOR"))
+                            @if (User.IsInRole("Auditor"))
                             {
 
 
@@ -97,7 +92,7 @@
                             }
                             <div class="d-none d-xl-block ps-2">
                                 <div>@User.Identity.Name</div>
-                                <div class="mt-1 small text-muted">@User.FindFirst("NombreRol").Value</div>
+                                <div class="mt-1 small text-muted">@User.FindFirst("NOMBRE_POS").Value</div>
                             </div>
                         </a>
 
@@ -145,7 +140,7 @@
                                 </a>
                             </li>
 
-                            @if (User.IsInRole("SUPERUSUARIO") || User.IsInRole("ADMINISTRADOR"))
+                            @if (User.IsInRole("Lider"))
                             {
                                 <li class="nav-item dropdown @ViewBag.epm">
                                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -209,7 +204,7 @@
                                     <div class="dropdown-menu">
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
-                                                <a asp-controller="Mantenimiento" asp-action="Empresa" class="dropdown-item @ViewBag.empresa">
+                                                <a asp-controller="Mantenimiento" asp-action="Area" class="dropdown-item @ViewBag.area">
                                                     Areas
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="ClaseMantencion" class="dropdown-item @ViewBag.clasemantencion">
@@ -247,7 +242,7 @@
                                                     Herramientas
                                                 </a>
                                             </div>
-                                            @if (User.IsInRole("SUPERUSUARIO"))
+                                            @if (User.IsInRole("Lider"))
                                             {
                                                 <div class="dropdown-menu-column">
 
@@ -260,8 +255,8 @@
                                                     <a asp-controller="Mantenimiento" asp-action="Repuesto" class="dropdown-item @ViewBag.repuesto">
                                                         Repuestos
                                                     </a>
-                                                    <a asp-controller="Mantenimiento" asp-action="Rol" class="dropdown-item @ViewBag.rol">
-                                                        Roles
+                                                    <a asp-controller="Mantenimiento" asp-action="Posicion" class="dropdown-item @ViewBag.posicion">
+                                                        Posiciones
                                                     </a>
                                                     <a asp-controller="Mantenimiento" asp-action="Sector" class="dropdown-item @ViewBag.sector">
                                                         Sector
@@ -332,16 +327,8 @@
                                     <path d="M12 14v.01"></path>
                                     <path d="M15 14v.01"></path>
                                 </svg>
-                                <li class="list-inline-item"><a href="#" class="text-info text-gradient">Documentaci&oacute;n</a></li>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-id text-info" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <rect x="3" y="4" width="18" height="16" rx="3"></rect>
-                                    <circle cx="9" cy="10" r="2"></circle>
-                                    <line x1="15" y1="8" x2="17" y2="8"></line>
-                                    <line x1="15" y1="12" x2="17" y2="12"></line>
-                                    <line x1="7" y1="16" x2="17" y2="16"></line>
-                                </svg>
-                                <li class="list-inline-item"><a href="#" class="text-info text-gradient">Licencia</a></li>
+                                <li class="list-inline-item"><a href="~/pdf/Manual TaskRecords.pdf" class="text-info text-gradient">Ayuda</a></li>
+
                                 <li class="list-inline-item">
                                     <a asp-controller="Acceso" asp-action="Logout">
                                         <!-- Download SVG icon from -->
@@ -363,7 +350,7 @@
                             <ul class="list-inline list-inline-dots mb-0">
                                 <li class="list-inline-item">
                                     Copyright &copy; 2022
-                                    <a href="https://gointegreat.com" class="link-secondary">Gointegreat</a>.
+                                    <a href="https://gointegreat.com" class="link-secondary text-info">Gointegreat</a>.
                                     Todos los derechos reservados.
                                 </li>
 
@@ -382,6 +369,7 @@
     <!-- Tabler Core -->
     <script src="~/dist/js/tabler.min.js" defer></script>
     <script src="~/dist/js/demo.min.js" defer></script>
+    <script src="~/js/GrupoLider.js" defer></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)
