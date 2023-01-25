@@ -25,60 +25,67 @@
 
 @(Html.DevExtreme().DataGrid<TSK.Models.Entity.TipoEquipo>()
     .DataSource(ds => ds.Mvc()
-        .Controller("TipoEquipo")
+        .Controller("TipoEquipos")
         .LoadAction("Get")
         .InsertAction("Post")
         .UpdateAction("Put")
         .Key("IdTeq")
     )
+    .RemoteOperations(true)
     .Columns(columns => {
+
         columns.AddFor(m => m.IdTeq).Caption("ID").Width(50);
-        columns.AddFor(m => m.IdEmp).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("TipoEquipo").LoadAction("EmpresasLookup").Key("Value"))
+
+        columns.AddFor(m => m.IdArea).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("TipoEquipos").LoadAction("AreasLookup").Key("Value"))
             .ValueExpr("Value")
             .DisplayExpr("Text")
-        ).GroupIndex(0).Caption("Empresa");
-        columns.AddFor(m => m.TEquipo).Caption("Tipo Equipo");
-        columns.AddFor(m => m.Habilitado).Width(120);
+        );
+
+        columns.AddFor(m => m.TEquipo).Caption("Tipo de Equipo").Width(100);
+
+        columns.AddFor(m => m.Habilitado).Width(100);
+
     })
     .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
+    .RowAlternationEnabled(true)
     .ShowRowLines(true)
     .Paging(paging => paging.PageSize(20))
     .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .Pager(pager =>{
+    .Pager(pager =>
+    {
         pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] {20, 50, 100});
+        pager.AllowedPageSizes(new[] { 20, 50, 100 });
         pager.ShowInfo(true);
     })
-    .RemoteOperations(true)
+    .AllowColumnReordering(true)
     .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SearchPanel(searchPanel => searchPanel.Visible(true))
     .GroupPanel(groupPanel => groupPanel
-        .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
+        .EmptyPanelText("")
         .Visible(true))
+    .RemoteOperations(true)
     .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("Tipo Equipo")
-                .ShowTitle(true)
-                .Width("50%")
-                .Height(300)
-            )
-            .Form(f => f.Items(items => {
+        .AllowUpdating(true)
+        .AllowAdding(true)
+        .UseIcons(true)
+        .Popup(p => p
+        .Title("Tipo de Equipo")
+        .ShowTitle(true)
+        .Width("70%")
+        .Height(300)
+        )
+        .Form(f => f.Items(items =>
+            {
                 items.AddGroup()
                     .ColCount(2)
                     .ColSpan(2)
-                    .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.TEquipo).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.IdEmp).ColSpan(2);
+                    .Items(groupItems =>
+                    {
+                        groupItems.AddSimpleFor(m => m.IdArea);
+                        groupItems.AddSimpleFor(m => m.TEquipo);
                         groupItems.AddSimpleFor(m => m.Habilitado);
                     });
             }))
-        )
+       )
 )
-

@@ -1,4 +1,5 @@
 ﻿@model Query
+
 @{
     ViewData["Title"] = "ReporteDetail";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
@@ -13,7 +14,7 @@
             Mantenimiento
         </div>
         <h2 class="page-title">
-            Reporte
+            Gestion de Pautas
         </h2>
     </div>
 
@@ -108,6 +109,9 @@
                                             
                                 .Items(items => {
                                     items.Add()
+                                        .Title("EQUIPO HUMANO")
+                                        .Template(new TemplateName("TAB0"));
+                                    items.Add()
                                         .Title("EQUIPO EN MARCHA")
                                         .Template(new TemplateName("TAB1"));
                                     items.Add()
@@ -176,83 +180,117 @@
     </div>
 </div>
 
+@using (Html.DevExtreme().NamedTemplate("TAB0"))
+{
+    @Html.DevExtreme().Button().ID("openPopupButton1").Text("Grupo 1").OnClick("openForm")
+    @Html.DevExtreme().Button().ID("openPopupButton2").Text("Grupo 2").OnClick("openForm")
+    @Html.DevExtreme().Button().ID("openPopupButton3").Text("Grupo 3").OnClick("openForm")
+    @Html.DevExtreme().Button().ID("openPopupButton4").Text("Grupo 4").OnClick("openForm")
+    @Html.DevExtreme().Popup().ID("myPopup").Title("Grupo Humano "+ Model.id).Content(@<text>
+        
+        @(Html.DevExtreme().Form<TSK.Models.Entity.GrupoUsuario>()
+    .Items(items => {
+
+        items.AddSimpleFor(m => m.IdUsr)
+            .Editor(e => e
+                .Lookup()
+                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuarioLookup").LoadParams(new {idPos = 1}).Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            );
+        items.AddSimpleFor(m => m.IdUsr)
+            .Editor(e => e
+                .Lookup()
+                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuarioLookup").LoadParams(new {idPos = 2}).Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+          );
+    })
+)
+        
+        </text>).Visible(false)
+
+
+}
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
 {
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepSistema>()
-    .ID("gridContainer1")
-    .DataSource(ds => ds.Mvc()
-        .Controller("ReporteSistema")
-        .LoadAction("GetCondicion")
-        .LoadParams(new { idRep = new JS(@Model.id.ToString()), idCod = "PC" })
-        .Key("IdRepsis")
-    )
-    .ShowBorders(true)
-    .RemoteOperations(true)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .AllowColumnResizing(true)
-    .Selection(s => s.Mode(SelectionMode.Single))
-            .Export(e => e.Enabled(true)
-                .Formats(new[] { "pdf" })
+        .ID("gridContainer1")
+        .DataSource(ds => ds.Mvc()
+            .Controller("ReporteSistema")
+            .LoadAction("GetCondicion")
+            .LoadParams(new { idRep = new JS(@Model.id.ToString()), idCod = "PC" })
+            .Key("IdRepsis")
+        )
+        .ShowBorders(true)
+        .RemoteOperations(true)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .AllowColumnResizing(true)
+        .Selection(s => s.Mode(SelectionMode.Single))
+                .Export(e => e.Enabled(true)
+                    .Formats(new[] { "pdf" })
+                )
+        .OnExporting("exportHeadToPDF")
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.NomSistema).Caption("Sistema");
+            columns.AddFor(m => m.Avance)
+                .Caption("% Avance")
+                .DataType(GridColumnDataType.Number)
+                .Alignment(HorizontalAlignment.Left)
+                .Format(Format.Percent)
+                .AllowGrouping(false)
+                .CssClass("bullet")
+                .CellTemplate(@<text>
+                    @(Html.DevExtreme().Bullet()
+            .Value(new JS("value * 100"))
+            .Size(s => s
+            .Height(18)
+            .Width(100)
             )
-    .OnExporting("exportHeadToPDF")
-    .Columns(columns => {
-        columns.AddFor(m => m.NomSistema).Caption("Sistema");
-        columns.AddFor(m => m.Avance)
-            .Caption("% Avance")
-            .DataType(GridColumnDataType.Number)
-            .Alignment(HorizontalAlignment.Left)
-            .Format(Format.Percent)
-            .AllowGrouping(false)
-            .CssClass("bullet")
-            .CellTemplate(@<text>
-                            @(Html.DevExtreme().Bullet()
-                    .Value(new JS("value * 100"))
-                    .Size(s => s
-                        .Height(18)
-                        .Width(100)
-                    )
-                    .Color("green")
-                    .Margin(m => m
-                        .Top(5)
-                        .Bottom(0)
-                        .Left(5)
-                    )
-                    .ShowTarget(false)
-                    .ShowZeroLevel(true)
-                    .StartScaleValue(0)
-                    .EndScaleValue(100)
-                    .Tooltip(t => t
-                        .Enabled(true)
-                        .Font(f => f.Size(15))
-                        .PaddingTopBottom(2)
-                        .CustomizeTooltip("customizeTooltip")
-                    )
-                            )
-    </text>).Width(110);
+            .Color("green")
+            .Margin(m => m
+            .Top(5)
+            .Bottom(0)
+            .Left(5)
+            )
+            .ShowTarget(false)
+            .ShowZeroLevel(true)
+            .StartScaleValue(0)
+            .EndScaleValue(100)
+            .Tooltip(t => t
+            .Enabled(true)
+            .Font(f => f.Size(15))
+            .PaddingTopBottom(2)
+            .CustomizeTooltip("customizeTooltip")
+            )
+            )
+                    </text>).Width(110);
 
 
 
 
-    })
-    .MasterDetail(m => m
-        .Enabled(true)
-        .Template(new TemplateName("gridContainer-details1"))
+        })
+        .MasterDetail(m => m
+            .Enabled(true)
+            .Template(new TemplateName("gridContainer-details1"))
+            )
+        .Summary(s => s.TotalItems(items =>
+        {
+            items.AddFor(m => m.NomDisciplina)
+               .DisplayFormat("Porcentaje Total de Avance:")
+               .Alignment(HorizontalAlignment.Right)
+               .ValueFormat(Format.Percent);
+            items.AddFor(m => m.Avance)
+               .SummaryType(SummaryType.Avg)
+               .DisplayFormat("{0}")
+               .Alignment(HorizontalAlignment.Center)
+               .ValueFormat(Format.Percent);
+        })
+            )
         )
-    .Summary(s => s.TotalItems(items => {
-         items.AddFor(m => m.NomDisciplina)
-            .DisplayFormat("Porcentaje Total de Avance:")
-            .Alignment(HorizontalAlignment.Right)
-            .ValueFormat(Format.Percent);
-         items.AddFor(m => m.Avance)
-            .SummaryType(SummaryType.Avg)
-            .DisplayFormat("{0}")
-            .Alignment(HorizontalAlignment.Center)
-            .ValueFormat(Format.Percent);
-            })
-        )
-    )
 }
 
 @using (Html.DevExtreme().NamedTemplate("TAB2"))
@@ -469,6 +507,11 @@
 
 <script>
     window.jsPDF = window.jspdf.jsPDF;
+
+    //Funcion de Popup Grupo Humano
+    function openForm() {
+    $("#myPopup").dxPopup("show");
+     }
 
     function customizeTooltip(pointsInfo) {
         return { text: parseInt(pointsInfo.originalValue) + "%" };

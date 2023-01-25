@@ -8,8 +8,7 @@ namespace TSK.Models.Entity
     {
         public Disciplina()
         {
-            PmSistemas = new HashSet<PmSistema>();
-            Usuarios = new HashSet<Usuario>();
+            Actividads = new HashSet<Actividad>();
         }
 
         public int IdDis { get; set; }
@@ -25,7 +24,6 @@ namespace TSK.Models.Entity
         public string Extracolumn3 { get; set; }
 
         public virtual Nivel IdNivNavigation { get; set; }
-        public virtual ICollection<PmSistema> PmSistemas { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Actividad> Actividads { get; set; }
     }
 }

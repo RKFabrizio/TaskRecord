@@ -139,33 +139,33 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> UsuariosLiderLookup(DataSourceLoadOptions loadOptions)
-        {
-            var lookup = from i in _context.Usuarios
-                         orderby i.Nombre
-                         where i.Lider == true && i.IdRol == 3
-                         select new
-                         {
-                             Value = i.IdUsr,
-                             Text = i.Nombre
-                         };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> UsuariosLiderLookup(DataSourceLoadOptions loadOptions)
+        //{
+        //    var lookup = from i in _context.Usuarios
+        //                 orderby i.Nombre
+        //                 where i.Lider == true && i.IdRol == 3
+        //                 select new
+        //                 {
+        //                     Value = i.IdUsr,
+        //                     Text = i.Nombre
+        //                 };
+        //    return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        //}
 
-        [HttpGet]
-        public async Task<IActionResult> UsuariosTecnicoLookup(DataSourceLoadOptions loadOptions)
-        {
-            var lookup = from i in _context.Usuarios
-                         orderby i.Nombre
-                         where i.Lider == false && i.IdRol == 3
-                         select new
-                         {
-                             Value = i.IdUsr,
-                             Text = i.Nombre
-                         };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> UsuariosTecnicoLookup(DataSourceLoadOptions loadOptions)
+        //{
+        //    var lookup = from i in _context.Usuarios
+        //                 orderby i.Nombre
+        //                 where i.Lider == false && i.IdRol == 3
+        //                 select new
+        //                 {
+        //                     Value = i.IdUsr,
+        //                     Text = i.Nombre
+        //                 };
+        //    return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        //}
         private void PopulateModel(Reporte model, IDictionary values) {
             string ID_REP = nameof(Reporte.IdRep);
             string ID_PM = nameof(Reporte.IdPm);

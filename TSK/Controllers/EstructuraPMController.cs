@@ -67,6 +67,8 @@ namespace TSK.Controllers
 
         }
 
+
+
         public Query ReporteData(int id)
         {
             try

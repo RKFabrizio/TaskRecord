@@ -1,4 +1,6 @@
 @using Microsoft.AspNetCore.Identity;
+@using DevExtreme.AspNet.Mvc.Builders;
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,307 +25,353 @@
     <link rel="stylesheet" href="~/dist/css/tabler-vendors.min.css" />
     <link rel="stylesheet" href="~/dist/css/demo.min.css" rel="stylesheet" />
 
-  </head>
-  <body >
+</head>
+<body>
     <div class="page">
-      <header class="navbar navbar-expand-md navbar-light d-print-none">
-        <div class="container-xl">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-            
-            <a asp-controller="Inicio" asp-action="Bienvenida" class="dropdown-item">
-                 <img src="~/img/GOINTEGREAT.webp" alt="Tabler" class="navbar-brand-image">
-            </a>
-          </h1>
-          <div class="navbar-nav flex-row order-md-last">
-            <div class="d-none d-md-flex">
-              <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                <!-- Download SVG icon from -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
-              </a>
-              <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
-                <!-- Download SVG icon from -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="4" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
-              </a>
-
-            </div>
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                 @if (User.IsInRole("SUPERUSUARIO"))
-                    {
-                        <span class="avatar avatar-sm" style="background-image: url(/img/superadmin.svg)"></span>
-                    }
-                   @if (User.IsInRole("ADMINISTRADOR"))
-                    {
-                      <span class="avatar avatar-sm" style="background-image: url(/img/admin.svg)"></span>   
-                    }
-                   @if (User.IsInRole("USUARIO"))
-                    {
-                      <span class="avatar avatar-sm" style="background-image: url(/img/user.svg)"></span>   
-                    }
-                    @if (User.IsInRole("LECTOR"))
-                    {
-                      <span class="avatar avatar-sm" style="background-image: url(/img/reader.svg)"></span>   
-                    }                 
-                <div class="d-none d-xl-block ps-2">
-                  <div>@User.Identity.Name</div>
-                  <div class="mt-1 small text-muted">@User.FindFirst("NombreRol").Value</div> 
-                </div>
-              </a>
-              
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <!--
-                              <a href="#" class="dropdown-item">Perfil</a> -->
-                
-                <a asp-controller="Acceso" asp-action="Logout" class="dropdown-item">Logout</a>
-                <div class="dropdown-divider"></div>
-              </div>
-                       
-                    </div>
-          </div>
-        </div>
-      </header>
-      <div class="navbar-expand-md">
-        <div class="collapse navbar-collapse" id="navbar-menu">
-          <div class="navbar navbar-light">
+        <header class="navbar navbar-expand-md navbar-light d-print-none">
             <div class="container-xl">
-              <ul class="navbar-nav">
-                <li class="nav-item @ViewBag.bienvenida">
-                  <a asp-controller="Inicio" asp-action="Bienvenida"  class="nav-link">
-                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                    </span>
-                    <span class="nav-link-title">
-                      Inicio
-                    </span>
-                  </a>
-                </li>
-                <li class="nav-item @ViewBag.taskrecord">
-                  <a asp-controller="TaskRecord" asp-action="Registro"  class="nav-link">
-                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from -->
-                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 11 12 14 20 6" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                    </span>
-                    <span class="nav-link-title">
-                      Registro Tareas
-                    </span>
-                  </a>
-                </li>
-                
-                 @if (User.IsInRole("SUPERUSUARIO") || User.IsInRole("ADMINISTRADOR"))
-                {
-                     <li class="nav-item dropdown @ViewBag.epm">
-                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                               <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
-                               <rect x="9" y="3" width="6" height="4" rx="2"></rect>
-                               <path d="M9 14l2 2l4 -4"></path>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+
+                    <a asp-controller="Inicio" asp-action="Bienvenida" class="dropdown-item">
+                        <img src="~/img/GOPAUTAS.png" alt="Tabler" class="navbar-brand-image">
+                    </a>
+                </h1>
+                <div class="navbar-nav flex-row order-md-last">
+                    <div class="d-none d-md-flex">
+                        <a href="?theme=dark" class="nav-link px-0 hide-theme-dark text-info" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                            <!-- Download SVG icon from -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                        </a>
+                        <a href="?theme=light" class="nav-link px-0 hide-theme-light text-info" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                            <!-- Download SVG icon from -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-high" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z"></path>
+                                <path d="M6.343 17.657l-1.414 1.414"></path>
+                                <path d="M6.343 6.343l-1.414 -1.414"></path>
+                                <path d="M17.657 6.343l1.414 -1.414"></path>
+                                <path d="M17.657 17.657l1.414 1.414"></path>
+                                <path d="M4 12h-2"></path>
+                                <path d="M12 4v-2"></path>
+                                <path d="M12 20v2"></path>
                             </svg>
-                            <span class="nav-link-title">
-                                Estructura de la PM
-                            </span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-menu-columns">
-                                <div class="dropdown-menu-column">
-                                    <a asp-controller="EstructuraPM" asp-action="Actividad" class="dropdown-item @ViewBag.actividad">
-                                        Actividad
-                                    </a>
-                                    <a asp-controller="EstructuraPM" asp-action="Sistema" class="dropdown-item @ViewBag.sistema">
-                                        Sistema
-                                    </a>
-                                     <a asp-controller="EstructuraPM" asp-action="PM" class="dropdown-item @ViewBag.pm">
-                                        PM
-                                    </a>
-                                    <a asp-controller="EstructuraPM" asp-action="PMSistema" class="dropdown-item @ViewBag.pmsistema">
-                                        PM Sistema
-                                    </a>
-                                    <a asp-controller="EstructuraPM" asp-action="PMSistemaActividad" class="dropdown-item @ViewBag.pmsistemaactividad">
-                                        PM Sistema Actividad
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                     <a asp-controller="EstructuraPM" asp-action="Reporte" class="dropdown-item @ViewBag.reporte">
-                                        Reporte
-                                    </a>
-                                </div>
+
+                    </div>
+
+
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0 text-info text-gradient" data-bs-toggle="dropdown" aria-label="Open user menu">
+
+                            @if (User.IsInRole("Lider"))
+                            {
+                                <span class="avatar text-info">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                                </span>
+                            }
+                            @if (User.IsInRole("Tecnico"))
+                            {
+                                <span class="avatar text-info">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                                </span>
+                            }
+                            @if (User.IsInRole("Auditor"))
+                            {
+
+
+                                <span class="avatar text-info">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+                                </span>
+                            }
+                            <div class="d-none d-xl-block ps-2">
+                                <div>@User.Identity.Name</div>
+                                <div class="mt-1 small text-muted">@User.FindFirst("NOMBRE_POS").Value</div>
                             </div>
-                        </div>
-                    </li>
-
-
-                    <li class="nav-item dropdown @ViewBag.mantenimiento">
-                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
-                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
-                            </span>
-                            <span class="nav-link-title">
-                                Tablas de Mantenimiento
-                            </span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-menu-columns">
-                                <div class="dropdown-menu-column">
-                                    <a asp-controller="Mantenimiento" asp-action="ClaseMantencion" class="dropdown-item @ViewBag.clasemantencion">
-                                        Clase mantenci&oacute;n
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Complemento" class="dropdown-item @ViewBag.complemento">
-                                        Complemento
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Componente" class="dropdown-item @ViewBag.componente">
-                                        Componente
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Condicion" class="dropdown-item @ViewBag.condicion">
-                                        Condici&oacute;n
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Consecuencia" class="dropdown-item @ViewBag.consecuencia">
-                                        Consecuencia
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Disciplina" class="dropdown-item @ViewBag.disciplina">
-                                        Disciplinas
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Equipo" class="dropdown-item @ViewBag.equipo">
-                                        Equipos
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Empresa" class="dropdown-item @ViewBag.empresa">
-                                        Empresas
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Entrega" class="dropdown-item @ViewBag.entrega">
-                                        Entregas
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Flota" class="dropdown-item @ViewBag.flota">
-                                        Flotas
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Frecuencia" class="dropdown-item @ViewBag.frecuencia">
-                                        Frecuencia
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Herramienta" class="dropdown-item @ViewBag.herramienta">
-                                        Herramientas
-                                    </a>
-                                </div>
-                                @if (User.IsInRole("SUPERUSUARIO"))
-                                {
-                                    <div class="dropdown-menu-column">
-                                    
-                                    <a asp-controller="Mantenimiento" asp-action="Nivel" class="dropdown-item @ViewBag.nivel">
-                                        Niveles
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Rango" class="dropdown-item @ViewBag.rango">
-                                        Rango
-                                    </a> 
-                                    <a asp-controller="Mantenimiento" asp-action="Repuesto" class="dropdown-item @ViewBag.repuesto">
-                                        Repuestos
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Rol" class="dropdown-item @ViewBag.rol">
-                                        Roles
-                                    </a> 
-                                    <a asp-controller="Mantenimiento" asp-action="Sector" class="dropdown-item @ViewBag.sector">
-                                        Sector
-                                    </a>
-                                    
-                                    <a asp-controller="Mantenimiento" asp-action="TipoEquipo" class="dropdown-item @ViewBag.tipoeequipo">
-                                        Tipo Equipos
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Unidad" class="dropdown-item @ViewBag.unidad">
-                                        Unidad
-                                    </a>
-                                     <a asp-controller="Mantenimiento" asp-action="Tarea" class="dropdown-item @ViewBag.tarea">
-                                        Tarea
-                                    </a>                                    
-                                    <a asp-controller="Mantenimiento" asp-action="UnidadMedida" class="dropdown-item @ViewBag.unidadmedida">
-                                        Unidad de Medida
-                                    </a>
-                                    <a asp-controller="Mantenimiento" asp-action="Usuario" class="dropdown-item @ViewBag.usuario">
-                                        Usuarios
-                                    </a>
-                                </div>
-                                }
-                            </div>
-                        </div>
-                    </li>
-                }
 
-              </ul>
-              <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-               
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="page-wrapper">
-         <div class="container-xl">
-          <div class="page-header d-print-none">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                @RenderSection("PagePreTitle",false)
-              </div>
-              <div class="col-12 col-md-auto ms-auto d-print-none">
-                <div class="btn-list">
-                  @RenderSection("PageActions",false)
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+
+                            <a asp-controller="Acceso" asp-action="Logout" class="dropdown-item">
+                                <span class="nav-link-title text-info text-gradient">
+                                    Logout
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </header>
+        <div class="navbar-expand-md">
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <div class="navbar navbar-light">
+                    <div class="container-xl">
+                        <ul class="navbar-nav">
+                            <li class="nav-item @ViewBag.bienvenida">
+                                <a asp-controller="Inicio" asp-action="Bienvenida" class="nav-link">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <!-- Download SVG icon from -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-pulse text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Inicio
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item @ViewBag.taskrecord">
+                                <a asp-controller="TaskRecord" asp-action="Registro" class="nav-link">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <!-- Download SVG icon from -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-pulse text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><polyline points="9 11 12 14 20 6" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Registro de Pautas
+                                    </span>
+                                </a>
+                            </li>
+
+                            @if (User.IsInRole("Lider"))
+                            {
+                                <li class="nav-item dropdown @ViewBag.epm">
+                                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard-check text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+                                                <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                                                <path d="M9 14l2 2l4 -4"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="nav-link-title">
+                                            Administraci&oacute;n de Pautas
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu-columns">
+                                            <div class="dropdown-menu-column">
+
+                                                <a asp-controller="EstructuraPM" asp-action="PM" class="dropdown-item @ViewBag.pm">
+                                                    Pauta de Mantenimiento (PM)
+                                                </a>
+                                                <a asp-controller="EstructuraPM" asp-action="Sistema" class="dropdown-item @ViewBag.sistema">
+                                                    Sistema
+                                                </a>
+                                                <a asp-controller="EstructuraPM" asp-action="Actividad" class="dropdown-item @ViewBag.actividad">
+                                                    Actividad
+                                                </a>
+                                                <a asp-controller="EstructuraPM" asp-action="PMSistema" class="dropdown-item @ViewBag.pmsistema">
+                                                    Sistema >> Pauta
+                                                </a>
+                                                <a asp-controller="EstructuraPM" asp-action="PMSistemaActividad" class="dropdown-item @ViewBag.pmsistemaactividad">
+                                                    Actividad >> Sistema >> Pauta
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a asp-controller="EstructuraPM" asp-action="Reporte" class="dropdown-item @ViewBag.reporte">
+                                                    Gestion de Pautas
+                                                </a>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                                <li class="nav-item dropdown @ViewBag.mantenimiento">
+                                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                            <!-- Download SVG icon from -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings icon-pulse text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                        </span>
+                                        <span class="nav-link-title">
+                                            Configuraci&oacute;n
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu-columns">
+                                            <div class="dropdown-menu-column">
+                                                <a asp-controller="Mantenimiento" asp-action="Area" class="dropdown-item @ViewBag.area">
+                                                    Areas
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="ClaseMantencion" class="dropdown-item @ViewBag.clasemantencion">
+                                                    Clase mantenci&oacute;n
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Complemento" class="dropdown-item @ViewBag.complemento">
+                                                    Complemento
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Componente" class="dropdown-item @ViewBag.componente">
+                                                    Componente
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Condicion" class="dropdown-item @ViewBag.condicion">
+                                                    Condici&oacute;n
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Consecuencia" class="dropdown-item @ViewBag.consecuencia">
+                                                    Consecuencia
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Disciplina" class="dropdown-item @ViewBag.disciplina">
+                                                    Disciplinas
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Equipo" class="dropdown-item @ViewBag.equipo">
+                                                    Equipos
+                                                </a>
+
+                                                <a asp-controller="Mantenimiento" asp-action="Entrega" class="dropdown-item @ViewBag.entrega">
+                                                    Entregas
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Flota" class="dropdown-item @ViewBag.flota">
+                                                    Flotas
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Frecuencia" class="dropdown-item @ViewBag.frecuencia">
+                                                    Frecuencia
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="Herramienta" class="dropdown-item @ViewBag.herramienta">
+                                                    Herramientas
+                                                </a>
+                                            </div>
+                                            @if (User.IsInRole("Lider"))
+                                            {
+                                                <div class="dropdown-menu-column">
+
+                                                    <a asp-controller="Mantenimiento" asp-action="Nivel" class="dropdown-item @ViewBag.nivel">
+                                                        Niveles
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Rango" class="dropdown-item @ViewBag.rango">
+                                                        Rango
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Repuesto" class="dropdown-item @ViewBag.repuesto">
+                                                        Repuestos
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Posicion" class="dropdown-item @ViewBag.posicion">
+                                                        Posiciones
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Sector" class="dropdown-item @ViewBag.sector">
+                                                        Sector
+                                                    </a>
+
+                                                    <a asp-controller="Mantenimiento" asp-action="TipoEquipo" class="dropdown-item @ViewBag.tipoeequipo">
+                                                        Tipo Equipos
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Unidad" class="dropdown-item @ViewBag.unidad">
+                                                        Unidad
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Tarea" class="dropdown-item @ViewBag.tarea">
+                                                        Tarea
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="UnidadMedida" class="dropdown-item @ViewBag.unidadmedida">
+                                                        Unidad de Medida
+                                                    </a>
+                                                    <a asp-controller="Mantenimiento" asp-action="Usuario" class="dropdown-item @ViewBag.usuario">
+                                                        Usuarios
+                                                    </a>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                        <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-          <div class="page-body">
-              <div class="container-xl">
-                   <main role="main" class="container">
-                       
+        <div class="page-wrapper">
+            <div class="container-xl">
+                <div class="page-header d-print-none">
+                    <div class="row g-2 align-items-center">
+                        <div class="col">
+                            @RenderSection("PagePreTitle",false)
+                        </div>
+                        <div class="col-12 col-md-auto ms-auto d-print-none">
+                            <div class="btn-list">
+                                @RenderSection("PageActions",false)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="container-xl">
+                    <main role="main" class="container">
+
                         @RenderBody()
                     </main>
-              </div>
-          </div>
-          <footer class="footer footer-transparent d-print-none">
-              <div class="container-xl">
-                <div class="row text-center align-items-center flex-row-reverse">
-                  <div class="col-lg-auto ms-lg-auto">
-                    <ul class="list-inline list-inline-dots mb-0">
-                      <li class="list-inline-item"><a href="#" class="link-secondary">Documentaci&oacute;n</a></li>
-                      <li class="list-inline-item"><a href="#" class="link-secondary">Licencia</a></li>
-                      <li class="list-inline-item">
-                        <a asp-controller="Acceso" asp-action="Logout">
-                          <!-- Download SVG icon from -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                               <path d="M5 12h-2l4.497 -4.497m1.999 -1.999l2.504 -2.504l9 9h-2"></path>
-                               <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2m0 -4v-3"></path>
-                               <path d="M9 21v-6a2 2 0 0 1 2 -2h2m2 2v6"></path>
-                               <path d="M3 3l18 18"></path>
-                            </svg>
-
-                        Logout
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                    <ul class="list-inline list-inline-dots mb-0">
-                      <li class="list-inline-item">
-                        Copyright &copy; 2022
-                        <a href="https://gointegreat.com" class="link-secondary">Gointegreat</a>.
-                        Todos los derechos reservados.
-                      </li>
-                  
-                    </ul>
-                  </div>
                 </div>
-              </div>
-          </footer>
-       </div> 
-     </div>
+            </div>
+            <footer class="footer footer-transparent d-print-none">
+                <div class="container-xl">
+                    <div class="row text-center align-items-center flex-row-reverse">
+                        <div class="col-lg-auto ms-lg-auto">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-dots text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    <path d="M9 14v.01"></path>
+                                    <path d="M12 14v.01"></path>
+                                    <path d="M15 14v.01"></path>
+                                </svg>
+                                <li class="list-inline-item"><a href="~/pdf/Manual TaskRecords.pdf" class="text-info text-gradient">Ayuda</a></li>
 
-     @RenderSection("PageModals",false)
+                                <li class="list-inline-item">
+                                    <a asp-controller="Acceso" asp-action="Logout">
+                                        <!-- Download SVG icon from -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M4 19v2h16v-14l-8 -4l-8 4v2"></path>
+                                            <path d="M4 19v2h16v-14l-8 -4l-8 4v2"></path>
+                                            <path d="M13 14h-9"></path>
+                                            <path d="M7 11l-3 3l3 3"></path>
+                                        </svg>
+                                        <span class="text-info">
+                                            Logout
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item">
+                                    Copyright &copy; 2022
+                                    <a href="https://gointegreat.com" class="link-secondary text-info">Gointegreat</a>.
+                                    Todos los derechos reservados.
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    @RenderSection("PageModals",false)
 
 
     <!-- Libs JS -->
-
     <!-- Tabler Core -->
     <script src="~/dist/js/tabler.min.js" defer></script>
     <script src="~/dist/js/demo.min.js" defer></script>
+    <script src="~/js/GrupoLider.js" defer></script>
 
-    
+
     @await RenderSectionAsync("Scripts", required: false)
-  </body>
+</body>
 </html>
