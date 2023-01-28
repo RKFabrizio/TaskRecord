@@ -13,10 +13,10 @@
 
         //"wwwroot/css/devextreme/bootstrap.css",
 
-        "wwwroot/css/devextreme/dx.light.compact.css",
+        "wwwroot/css/devextreme/dx.material.blue.dark.compact.css",
 
         // Predefined themes: https://js.devexpress.com/DevExtreme/Guide/Themes_and_Styles/Predefined_Themes/
-        "wwwroot/css/devextreme/dx.light.compact.css"
+        "wwwroot/css/devextreme/dx.material.blue.light.compact.css"
       ],
         "minify": {
             "enabled": false
