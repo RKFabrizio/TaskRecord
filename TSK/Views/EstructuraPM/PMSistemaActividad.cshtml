@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
 }
 
+@using DevExtreme.AspNet.Mvc.Builders;
+
 @section PagePreTitle{
 
     <div class="col">
@@ -24,6 +26,7 @@
 }
 
 @(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmsisActividad>()
+
     .DataSource(ds => ds.Mvc()
         .Controller("PmsisActividad")
         .LoadAction("Get")
@@ -39,6 +42,7 @@
             .ValueExpr("Value")
             .DisplayExpr("Text")
         ).GroupIndex(0).Caption("PM - Sistema");
+
         columns.AddFor(m => m.Orden).Width(100);
         columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("ActividadsLookup").Key("Value"))
@@ -71,6 +75,7 @@
             .AllowDeleting(true)
             .AllowAdding(true)
             .UseIcons(true)
+
             .Popup(p => p
                 .Title("PM-Sistema-Actividad")
                 .ShowTitle(true)

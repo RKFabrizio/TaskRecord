@@ -57,7 +57,7 @@
     })
     .AllowColumnReordering(true)
     .Grouping(grouping => grouping.AutoExpandAll(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
+
     .GroupPanel(groupPanel => groupPanel
         .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
         .Visible(true))
@@ -80,13 +80,13 @@
                     .ColSpan(2)
                     .Items(groupItems =>
                     {
-                        groupItems.AddSimpleFor(m => m.Nombre);
-                        groupItems.AddSimpleFor(m => m.IdPos);
-                        groupItems.AddSimpleFor(m => m.Usuario1);
+                        groupItems.AddSimpleFor(m => m.Nombre).CssClass("myFormMargin");
+                        groupItems.AddSimpleFor(m => m.IdPos).CssClass("myFormMargin");
+                        groupItems.AddSimpleFor(m => m.Usuario1).CssClass("myFormMargin");
                         groupItems.AddSimpleFor(m => m.Contrasena)
-                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password));
+                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password)).CssClass("myFormMargin");
 
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).CssClass("myFormMargin");
                     });
             }))
 

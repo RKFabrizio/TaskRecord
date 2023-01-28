@@ -1,5 +1,6 @@
 ﻿@model Query
 
+
 @{
     ViewData["Title"] = "ReporteDetail";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
@@ -65,15 +66,7 @@
                 <div class="form-group mb-1">
                     <div class="row">
                         
-                        <div class="col-lg-4">
-                            <label class="form-label">Lider</label>
-                            <label class="form-control" style="background-color: ghostwhite;">@Model.texto3</label>
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="form-label">Técnico</label>
-                            <label class="form-control"style="background-color: ghostwhite;">@Model.texto4</label>
-                        </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-10">
                             <label class="form-label">Fecha</label>
                             <label class="form-control" style="background-color: ghostwhite;">@Model.fecha1.Value.ToString("dd-MM-yyyy")</label>
                         </div>
@@ -157,9 +150,11 @@
                                                     }); 
                                                 items.AddButton()
                                                     .HorizontalAlignment(HorizontalAlignment.Center)
-                                                    .ButtonOptions(b => b.Text("Actualiza")
+                                                    .ButtonOptions(b => b.Text("Actualizar")
                                                         .Type(ButtonType.Default)
                                                         .UseSubmitBehavior(true)
+                                                        .Width(100)
+                                                .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white;" })
                                                 );
 
                                             })
@@ -182,11 +177,27 @@
 
 @using (Html.DevExtreme().NamedTemplate("TAB0"))
 {
-    @Html.DevExtreme().Button().ID("openPopupButton1").Text("Grupo 1").OnClick("openForm")
-    @Html.DevExtreme().Button().ID("openPopupButton2").Text("Grupo 2").OnClick("openForm")
-    @Html.DevExtreme().Button().ID("openPopupButton3").Text("Grupo 3").OnClick("openForm")
-    @Html.DevExtreme().Button().ID("openPopupButton4").Text("Grupo 4").OnClick("openForm")
-    @Html.DevExtreme().Popup().ID("myPopup").Title("Grupo Humano "+ Model.id).Content(@<text>
+
+
+    <div class="row">
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton1").Text("Grupo 1").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px; margin-left: 22%; margin-top: 15px; background: #454545; border-radius: 5px; color:white;" })
+        </div>
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton2").Text("Grupo 2").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px;  background: #454545; border-radius: 5px;color:white;" })
+        </div>
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton3").Text("Grupo 3").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px;  background: #454545; border-radius: 5px;color:white;" })
+        </div>
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton4").Text("Grupo 4").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px; background: #454545; border-radius: 5px;color:white;" })
+        </div>
+        <br />
+    </div>
+    <br />
+
+    
+    @Html.DevExtreme().Popup().ID("myPopup").Title("Grupo Humano").Width("40%").Height("30%").Content(@<text>
         
         @(Html.DevExtreme().Form<TSK.Models.Entity.GrupoUsuario>()
     .Items(items => {
@@ -194,23 +205,71 @@
         items.AddSimpleFor(m => m.IdUsr)
             .Editor(e => e
                 .Lookup()
-                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuarioLookup").LoadParams(new {idPos = 1}).Key("Value"))
+                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosPosLookup").LoadParams(new {idPos = 1}).Key("Value"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-            );
-        items.AddSimpleFor(m => m.IdUsr)
+            ).Label(label => label.Text("Lider"));
+         items.AddSimpleFor(m => m.IdUsr)
             .Editor(e => e
-                .Lookup()
-                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuarioLookup").LoadParams(new {idPos = 2}).Key("Value"))
+                .TagBox()
+                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosPosLookup").LoadParams(new {idPos = 2}).Key("Value"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-          );
+                .SearchEnabled(true)
+                .SearchExpr("Text")
+            ).Label(label => label.Text("Tecnicos"));
+
+        items.AddButton()
+            .HorizontalAlignment(HorizontalAlignment.Center)
+            .ButtonOptions(b => b.Text("Guardar")
+            .Type(ButtonType.Default)
+            .UseSubmitBehavior(true)
+            .Width(100)
+            .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white; margin-top:90px;" })
+    );
     })
 )
-        
         </text>).Visible(false)
 
 
+
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+       .DataSource(ds => ds.Mvc()
+       .Controller("GrupoUsuarios")
+       .LoadAction("Get")
+       .Key("IdGrus")
+   )
+   .Selection(s => s.Mode(SelectionMode.Single))
+   .Columns(columns =>
+   {
+
+       columns.AddFor(m => m.IdUsr).Lookup(lookup => lookup
+           .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosLookup").Key("Value"))
+           .ValueExpr("Value")
+           .DisplayExpr("Text")
+       ).Caption("Trabajador");
+
+           columns.AddFor(m => m.Grupo).GroupIndex(0).Caption("Grupo"); ;
+
+       columns.AddFor(m => m.Lider);
+   })
+    .ShowBorders(true)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(20))
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .GroupPanel(groupPanel => groupPanel
+    .Visible(true))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 20, 50, 100 });
+        pager.ShowInfo(true);
+    })
+)
+
+
+    
 }
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
@@ -510,7 +569,41 @@
 
     //Funcion de Popup Grupo Humano
     function openForm() {
-    $("#myPopup").dxPopup("show");
+    $("#myPopup").dxPopup("show")
+
+    // Obtener los valores del botón seleccionado, control de selección simple, idUsr seleccionado y Model.Id
+    let selectedButtonValue = document.getElementById("openPopupButton1").value;
+    let leaderValue = $("#leaderSelectionControl").dxTagBox("instance").option("value");
+    let selectedIdUsr = $("#idUsrSelectionControl").dxLookup("instance").option("value");
+    let modelId = document.getElementById("modelId").value;
+
+    // Crear el objeto con los datos a enviar al controlador
+    let data = {
+    "selectedButtonValue": selectedButtonValue,
+    "leaderValue": leaderValue,
+    "selectedIdUsr": selectedIdUsr,
+    "modelId": modelId
+};
+
+    // Enviar la solicitud POST al controlador
+    $.ajax({
+    type: "POST",
+    url: "api/GrupoUsuarios/Post",
+    data: JSON.stringify(data),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(response) {
+        if (response.status === "success") {
+            DevExpress.ui.notify("Los datos se han guardado correctamente", "success", 2000);
+        } else {
+            DevExpress.ui.notify("Error al guardar los datos: " + response.message, "error", 2000);
+        }
+    },
+    failure: function(response) {
+        DevExpress.ui.notify("Error al guardar los datos: " + response.message, "error", 2000);
+    }
+});
+
      }
 
     function customizeTooltip(pointsInfo) {

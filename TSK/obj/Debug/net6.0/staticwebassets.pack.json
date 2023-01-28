@@ -3437,6 +3437,10 @@
       "PackagePath": "staticwebassets\\img\\016m.jpg"
     },
     {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Actividad.svg",
+      "PackagePath": "staticwebassets\\img\\Actividad.svg"
+    },
+    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\GOINTEGREAT.png",
       "PackagePath": "staticwebassets\\img\\GOINTEGREAT.png"
     },
@@ -3453,12 +3457,28 @@
       "PackagePath": "staticwebassets\\img\\GOPAUTAS2.png"
     },
     {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\GOPAUTASv3.png",
+      "PackagePath": "staticwebassets\\img\\GOPAUTASv3.png"
+    },
+    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Logo Veladero.png",
       "PackagePath": "staticwebassets\\img\\Logo Veladero.png"
     },
     {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Logo.png",
+      "PackagePath": "staticwebassets\\img\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Pauta.svg",
+      "PackagePath": "staticwebassets\\img\\Pauta.svg"
+    },
+    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\PautasLogo.png",
       "PackagePath": "staticwebassets\\img\\PautasLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Sistema.svg",
+      "PackagePath": "staticwebassets\\img\\Sistema.svg"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\acceso.png",

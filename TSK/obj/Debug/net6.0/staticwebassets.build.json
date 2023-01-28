@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ypztHiPR4jRh2CVhdgZSDGXc/mXSaB3ls6/D3ERskG0=",
+  "Hash": "XicGmLTPM/GbO+7ruNdc+9YmzfbMkb0WNiAb3h9Bwcg=",
   "Source": "TSK",
   "BasePath": "_content/TSK",
   "Mode": "Default",
@@ -14654,6 +14654,23 @@
       "OriginalItemSpec": "wwwroot\\img\\acceso.png"
     },
     {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Actividad.svg",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/Actividad.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Actividad.svg"
+    },
+    {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\admin.svg",
       "SourceId": "TSK",
       "SourceType": "Discovered",
@@ -14756,6 +14773,23 @@
       "OriginalItemSpec": "wwwroot\\img\\GOPAUTAS2.png"
     },
     {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\GOPAUTASv3.png",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/GOPAUTASv3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\GOPAUTASv3.png"
+    },
+    {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Logo Veladero.png",
       "SourceId": "TSK",
       "SourceType": "Discovered",
@@ -14771,6 +14805,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Logo Veladero.png"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Logo.png",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Pauta.svg",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/Pauta.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Pauta.svg"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\PautasLogo.png",
@@ -14805,6 +14873,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\reader.svg"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\Sistema.svg",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/Sistema.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Sistema.svg"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\img\\superadmin.svg",
