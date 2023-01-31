@@ -72,11 +72,11 @@ namespace TSK.Controllers
             @ViewBag.disciplina = "active";
             return View();
         }
-        public IActionResult Rol()
+        public IActionResult Posicion()
         {
             @ViewBag.mantenimiento = "active";
             @ViewBag.autenticacion = "active";
-            @ViewBag.rol = "active";
+            @ViewBag.posicion = "active";
             return View();
         }
 
@@ -134,10 +134,10 @@ namespace TSK.Controllers
             return View();
         }
 
-        public IActionResult Empresa()
+        public IActionResult Area()
         {
             @ViewBag.mantenimiento = "active";
-            @ViewBag.empresa = "active";
+            @ViewBag.area = "active";
             return View();
         }
         public IActionResult TipoEquipo()

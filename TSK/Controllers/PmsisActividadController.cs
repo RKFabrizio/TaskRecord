@@ -44,20 +44,53 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(pmsisactividads, loadOptions));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(string values) {
-            var model = new PmsisActividad();
-            var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
-            PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
-                return BadRequest(GetFullErrorMessage(ModelState));
+        [HttpGet]
+        public async Task<IActionResult> PmsisActividadesLookup(int idPms, DataSourceLoadOptions loadOptions)
+        {
+            //var acts = _context.PmsisActividads.Select(i => new
+            //{
+            //    i.IdPms,
+            //    i.IdAct,
+            //    i.Orden
 
-            var result = _context.PmsisActividads.Add(model);
-            await _context.SaveChangesAsync();
+            //}).Where(e => e.IdPms == idPms);
 
-            return Json(new { result.Entity.IdAct, result.Entity.IdPms });
+            var joinResult = _context.PmsisActividads.Join(_context.Actividads,
+                pmsisAct => pmsisAct.IdAct,
+                act => act.IdAct,
+                (pmsisAct, act) => new { PmsisAct = pmsisAct, Actividad = act });
+
+            var result = joinResult.Select(jr => new
+            {
+                jr.PmsisAct.IdPms,
+                jr.PmsisAct.IdAct,
+                jr.Actividad.Titulo,
+                jr.PmsisAct.Orden,
+
+            });
+
+
+
+            return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
         }
+
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Post(string values) {
+        //    var model = new PmsisActividad();
+        //    var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
+        //    PopulateModel(model, valuesDict);
+
+        //    if(!TryValidateModel(model))
+        //        return BadRequest(GetFullErrorMessage(ModelState));
+
+        //    var result = _context.PmsisActividads.Add(model);
+        //    await _context.SaveChangesAsync();
+
+        //    return Json(new { result.Entity.IdAct, result.Entity.IdPms });
+        //}
 
         [HttpPut]
         public async Task<IActionResult> Put(string key, string values) {
@@ -171,5 +204,50 @@ namespace TSK.Controllers
 
             return String.Join(" ", messages);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddMultipleActivities(int idPms, List<PmsisActividad> activities)
+        {
+            // Validar que el idPms exista en la base de datos
+            var pms = await _context.PmsisActividads.FindAsync(idPms);
+            if (pms == null)
+                return BadRequest("El IdPms especificado no existe en la base de datos.");
+
+            // Asignar el idPms a cada actividad antes de agregarlas a la base de datos
+            foreach (var act in activities)
+                act.IdPms = idPms;
+
+            // Agregar las actividades a la base de datos
+            await _context.PmsisActividads.AddRangeAsync(activities);
+            await _context.SaveChangesAsync();
+
+            try
+            {
+                foreach (var activity in activities)
+                {
+                    activity.IdPms = idPms;
+                    _context.PmsisActividads.Add(activity);
+                }
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+        [HttpPut]
+        public IActionResult EditActivity(PmsisActividad activity)
+        {
+            _context.PmsisActividads.Update(activity);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

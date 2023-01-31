@@ -22,19 +22,21 @@ namespace TSK.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario _usuario)
         {
+
             var usuario = _UsuarioDatos.ValidarUsuario(_usuario.UserName, ConvertirSha256(_usuario.Clave));
+            
 
             if (usuario != null)
             {
                 var claims = new List<Claim>
                 {   new Claim(ClaimTypes.Name, usuario.Nombre),
                     new Claim("Usuario", usuario.UserName),
-                    new Claim("NombreRol", usuario.Roles[0])
+                    new Claim("NOMBRE_POS", usuario.Posiciones[0])
                 };
 
-                foreach (string rol in usuario.Roles)
+                foreach (string pos in usuario.Posiciones)
                 {
-                    claims.Add(new Claim(ClaimTypes.Role, rol));
+                    claims.Add(new Claim(ClaimTypes.Role, pos));
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

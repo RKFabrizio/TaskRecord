@@ -5,14 +5,17 @@
 }
 
 @section PagePreTitle{
-
+    <a href="." class="navbar-brand navbar-brand-autodark">
+        <img class="logoPauta" src="~/img/Pauta.svg" alt="Pautas">
+    </a>
     <div class="col">
      <!-- Page pre-title -->
         <div class="page-pretitle">
             Mantenimiento
         </div>
         <h2 class="page-title">
-            PM
+ 
+            Pauta de Mantenimiento (PM)
         </h2>
     </div>
 
@@ -31,7 +34,8 @@
         .UpdateAction("Put")
         .Key("IdPm")
     )
-    .Columns(columns => {
+    .Columns(columns =>
+    {
         columns.AddFor(m => m.IdPm).Width(50).Caption("ID");
         columns.AddFor(m => m.Nombre).Caption("Nombre");
         columns.AddFor(m => m.Descripcion).Caption("Descripción");
@@ -82,21 +86,22 @@
                         groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
-                        
+
+
                         groupItems.AddSimpleFor(m => m.Habilitado);
 
                     });
-                    items.AddGroup()
-                    .Caption("Crear el PM con la estructura de:")
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems =>
-                    {
-                        groupItems.AddSimpleFor(m => m.IdPmCopy).ColSpan(2);
+                items.AddGroup()
+                .Caption("Crear el PM con la estructura de:")
+                .ColCount(2)
+                .ColSpan(2)
+                .Items(groupItems =>
+                {
+                    groupItems.AddSimpleFor(m => m.IdPmCopy).ColSpan(2);
 
-                    });
+                });
 
             }))
-       
+
     )
 )

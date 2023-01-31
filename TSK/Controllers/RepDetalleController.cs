@@ -23,6 +23,33 @@ namespace TSK.Controllers
             _context = context;
         }
 
+        public ActionResult openPopup()
+        {
+            ViewData["popupVisible"] = true;
+            return View();
+        }
+
+        public ActionResult openPopup2()
+        {
+            ViewData["popupVisible"] = true;
+            return View();
+        }
+
+        public ActionResult openPopup3()
+        {
+            ViewData["popupVisible"] = true;
+            return View();
+        }
+
+        public ActionResult openPopup4()
+        {
+            ViewData["popupVisible"] = true;
+            return View();
+        }
+
+   
+
+
         [HttpGet]
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions) {
             var repdetalles = _context.RepDetalles.Select(i => new {

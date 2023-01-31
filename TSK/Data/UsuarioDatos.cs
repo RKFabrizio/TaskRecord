@@ -22,13 +22,12 @@ namespace TSK.Data
                 {   while (dr.Read())
                     {   _usuario.Add(new Usuario()
                         {
-                            idRol = Convert.ToInt32(dr["ID_ROL"]),
                             idUsuario = Convert.ToInt32(dr["ID_USR"]),
+                            idPos = Convert.ToInt32(dr["ID_POS"]),
                             Nombre = dr["NOMBRE"].ToString(),
-                            idDisciplina = Convert.ToInt32(dr["ID_DIS"]),
                             UserName = dr["USUARIO"].ToString(),
                             Clave = dr["CONTRASENA"].ToString(),
-                            Roles = new string[] { dr["NOMBRE_ROL"].ToString() }
+                            Posiciones = new string[] { dr["NOMBRE_POS"].ToString() }
                         });
                     }
                 }

@@ -1,4 +1,6 @@
 ﻿@model Query
+
+
 @{
     ViewData["Title"] = "ReporteDetail";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
@@ -13,7 +15,7 @@
             Mantenimiento
         </div>
         <h2 class="page-title">
-            Reporte
+            Gestion de Pautas
         </h2>
     </div>
 
@@ -64,15 +66,7 @@
                 <div class="form-group mb-1">
                     <div class="row">
                         
-                        <div class="col-lg-4">
-                            <label class="form-label">Lider</label>
-                            <label class="form-control" style="background-color: ghostwhite;">@Model.texto3</label>
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="form-label">Técnico</label>
-                            <label class="form-control"style="background-color: ghostwhite;">@Model.texto4</label>
-                        </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-10">
                             <label class="form-label">Fecha</label>
                             <label class="form-control" style="background-color: ghostwhite;">@Model.fecha1.Value.ToString("dd-MM-yyyy")</label>
                         </div>
@@ -107,6 +101,9 @@
                             @(Html.DevExtreme().TabPanel()
                                             
                                 .Items(items => {
+                                    items.Add()
+                                        .Title("EQUIPO HUMANO")
+                                        .Template(new TemplateName("TAB0"));
                                     items.Add()
                                         .Title("EQUIPO EN MARCHA")
                                         .Template(new TemplateName("TAB1"));
@@ -153,9 +150,11 @@
                                                     }); 
                                                 items.AddButton()
                                                     .HorizontalAlignment(HorizontalAlignment.Center)
-                                                    .ButtonOptions(b => b.Text("Actualiza")
+                                                    .ButtonOptions(b => b.Text("Actualizar")
                                                         .Type(ButtonType.Default)
                                                         .UseSubmitBehavior(true)
+                                                        .Width(100)
+                                                .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white;" })
                                                 );
 
                                             })
@@ -176,83 +175,181 @@
     </div>
 </div>
 
+@using (Html.DevExtreme().NamedTemplate("TAB0"))
+{
+
+
+    <div class="row">
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton1").Text("Grupo 1").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px; margin-left: 22%; margin-top: 15px; background: #454545; border-radius: 5px; color:white;" })
+        </div>
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton2").Text("Grupo 2").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px;  background: #454545; border-radius: 5px;color:white;" })
+        </div>
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton3").Text("Grupo 3").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px;  background: #454545; border-radius: 5px;color:white;" })
+        </div>
+        <div class="col-sm-3">
+            @Html.DevExtreme().Button().ID("openPopupButton4").Text("Grupo 4").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px; background: #454545; border-radius: 5px;color:white;" })
+        </div>
+        <br />
+    </div>
+    <br />
+
+    
+    @Html.DevExtreme().Popup().ID("myPopup").Title("Grupo Humano").Width("40%").Height("30%").Content(@<text>
+        
+        @(Html.DevExtreme().Form<TSK.Models.Entity.GrupoUsuario>()
+    .Items(items => {
+
+        items.AddSimpleFor(m => m.IdUsr)
+            .Editor(e => e
+                .Lookup()
+                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosPosLookup").LoadParams(new {idPos = 1}).Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).Label(label => label.Text("Lider"));
+         items.AddSimpleFor(m => m.IdUsr)
+            .Editor(e => e
+                .TagBox()
+                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosPosLookup").LoadParams(new {idPos = 2}).Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+                .SearchEnabled(true)
+                .SearchExpr("Text")
+            ).Label(label => label.Text("Tecnicos"));
+
+        items.AddButton()
+            .HorizontalAlignment(HorizontalAlignment.Center)
+            .ButtonOptions(b => b.Text("Guardar")
+            .Type(ButtonType.Default)
+            .UseSubmitBehavior(true)
+            .Width(100)
+            .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white; margin-top:90px;" })
+    );
+    })
+)
+        </text>).Visible(false)
+
+
+
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+       .DataSource(ds => ds.Mvc()
+       .Controller("GrupoUsuarios")
+       .LoadAction("Get")
+       .Key("IdGrus")
+   )
+   .Selection(s => s.Mode(SelectionMode.Single))
+   .Columns(columns =>
+   {
+
+       columns.AddFor(m => m.IdUsr).Lookup(lookup => lookup
+           .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosLookup").Key("Value"))
+           .ValueExpr("Value")
+           .DisplayExpr("Text")
+       ).Caption("Trabajador");
+
+           columns.AddFor(m => m.Grupo).GroupIndex(0).Caption("Grupo"); ;
+
+       columns.AddFor(m => m.Lider);
+   })
+    .ShowBorders(true)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .Paging(paging => paging.PageSize(20))
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .GroupPanel(groupPanel => groupPanel
+    .Visible(true))
+    .Pager(pager =>
+    {
+        pager.ShowPageSizeSelector(true);
+        pager.AllowedPageSizes(new[] { 20, 50, 100 });
+        pager.ShowInfo(true);
+    })
+)
+
+
+    
+}
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
 {
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepSistema>()
-    .ID("gridContainer1")
-    .DataSource(ds => ds.Mvc()
-        .Controller("ReporteSistema")
-        .LoadAction("GetCondicion")
-        .LoadParams(new { idRep = new JS(@Model.id.ToString()), idCod = "PC" })
-        .Key("IdRepsis")
-    )
-    .ShowBorders(true)
-    .RemoteOperations(true)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .AllowColumnResizing(true)
-    .Selection(s => s.Mode(SelectionMode.Single))
-            .Export(e => e.Enabled(true)
-                .Formats(new[] { "pdf" })
+        .ID("gridContainer1")
+        .DataSource(ds => ds.Mvc()
+            .Controller("ReporteSistema")
+            .LoadAction("GetCondicion")
+            .LoadParams(new { idRep = new JS(@Model.id.ToString()), idCod = "PC" })
+            .Key("IdRepsis")
+        )
+        .ShowBorders(true)
+        .RemoteOperations(true)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .AllowColumnResizing(true)
+        .Selection(s => s.Mode(SelectionMode.Single))
+                .Export(e => e.Enabled(true)
+                    .Formats(new[] { "pdf" })
+                )
+        .OnExporting("exportHeadToPDF")
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.NomSistema).Caption("Sistema");
+            columns.AddFor(m => m.Avance)
+                .Caption("% Avance")
+                .DataType(GridColumnDataType.Number)
+                .Alignment(HorizontalAlignment.Left)
+                .Format(Format.Percent)
+                .AllowGrouping(false)
+                .CssClass("bullet")
+                .CellTemplate(@<text>
+                    @(Html.DevExtreme().Bullet()
+            .Value(new JS("value * 100"))
+            .Size(s => s
+            .Height(18)
+            .Width(100)
             )
-    .OnExporting("exportHeadToPDF")
-    .Columns(columns => {
-        columns.AddFor(m => m.NomSistema).Caption("Sistema");
-        columns.AddFor(m => m.Avance)
-            .Caption("% Avance")
-            .DataType(GridColumnDataType.Number)
-            .Alignment(HorizontalAlignment.Left)
-            .Format(Format.Percent)
-            .AllowGrouping(false)
-            .CssClass("bullet")
-            .CellTemplate(@<text>
-                            @(Html.DevExtreme().Bullet()
-                    .Value(new JS("value * 100"))
-                    .Size(s => s
-                        .Height(18)
-                        .Width(100)
-                    )
-                    .Color("green")
-                    .Margin(m => m
-                        .Top(5)
-                        .Bottom(0)
-                        .Left(5)
-                    )
-                    .ShowTarget(false)
-                    .ShowZeroLevel(true)
-                    .StartScaleValue(0)
-                    .EndScaleValue(100)
-                    .Tooltip(t => t
-                        .Enabled(true)
-                        .Font(f => f.Size(15))
-                        .PaddingTopBottom(2)
-                        .CustomizeTooltip("customizeTooltip")
-                    )
-                            )
-    </text>).Width(110);
+            .Color("green")
+            .Margin(m => m
+            .Top(5)
+            .Bottom(0)
+            .Left(5)
+            )
+            .ShowTarget(false)
+            .ShowZeroLevel(true)
+            .StartScaleValue(0)
+            .EndScaleValue(100)
+            .Tooltip(t => t
+            .Enabled(true)
+            .Font(f => f.Size(15))
+            .PaddingTopBottom(2)
+            .CustomizeTooltip("customizeTooltip")
+            )
+            )
+                    </text>).Width(110);
 
 
 
 
-    })
-    .MasterDetail(m => m
-        .Enabled(true)
-        .Template(new TemplateName("gridContainer-details1"))
+        })
+        .MasterDetail(m => m
+            .Enabled(true)
+            .Template(new TemplateName("gridContainer-details1"))
+            )
+        .Summary(s => s.TotalItems(items =>
+        {
+            items.AddFor(m => m.NomDisciplina)
+               .DisplayFormat("Porcentaje Total de Avance:")
+               .Alignment(HorizontalAlignment.Right)
+               .ValueFormat(Format.Percent);
+            items.AddFor(m => m.Avance)
+               .SummaryType(SummaryType.Avg)
+               .DisplayFormat("{0}")
+               .Alignment(HorizontalAlignment.Center)
+               .ValueFormat(Format.Percent);
+        })
+            )
         )
-    .Summary(s => s.TotalItems(items => {
-         items.AddFor(m => m.NomDisciplina)
-            .DisplayFormat("Porcentaje Total de Avance:")
-            .Alignment(HorizontalAlignment.Right)
-            .ValueFormat(Format.Percent);
-         items.AddFor(m => m.Avance)
-            .SummaryType(SummaryType.Avg)
-            .DisplayFormat("{0}")
-            .Alignment(HorizontalAlignment.Center)
-            .ValueFormat(Format.Percent);
-            })
-        )
-    )
 }
 
 @using (Html.DevExtreme().NamedTemplate("TAB2"))
@@ -469,6 +566,45 @@
 
 <script>
     window.jsPDF = window.jspdf.jsPDF;
+
+    //Funcion de Popup Grupo Humano
+    function openForm() {
+    $("#myPopup").dxPopup("show")
+
+    // Obtener los valores del botón seleccionado, control de selección simple, idUsr seleccionado y Model.Id
+    let selectedButtonValue = document.getElementById("openPopupButton1").value;
+    let leaderValue = $("#leaderSelectionControl").dxTagBox("instance").option("value");
+    let selectedIdUsr = $("#idUsrSelectionControl").dxLookup("instance").option("value");
+    let modelId = document.getElementById("modelId").value;
+
+    // Crear el objeto con los datos a enviar al controlador
+    let data = {
+    "selectedButtonValue": selectedButtonValue,
+    "leaderValue": leaderValue,
+    "selectedIdUsr": selectedIdUsr,
+    "modelId": modelId
+};
+
+    // Enviar la solicitud POST al controlador
+    $.ajax({
+    type: "POST",
+    url: "api/GrupoUsuarios/Post",
+    data: JSON.stringify(data),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(response) {
+        if (response.status === "success") {
+            DevExpress.ui.notify("Los datos se han guardado correctamente", "success", 2000);
+        } else {
+            DevExpress.ui.notify("Error al guardar los datos: " + response.message, "error", 2000);
+        }
+    },
+    failure: function(response) {
+        DevExpress.ui.notify("Error al guardar los datos: " + response.message, "error", 2000);
+    }
+});
+
+     }
 
     function customizeTooltip(pointsInfo) {
         return { text: parseInt(pointsInfo.originalValue) + "%" };
