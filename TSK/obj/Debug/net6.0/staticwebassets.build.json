@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b2egfENTYbNAVXgF/3ZMACpeizXbHd7F5RmJsb9mJDM=",
+  "Hash": "WATDBvwtzbCtti1+K79bdDEGKIGu2FlOnd+FQgJicRI=",
   "Source": "TSK",
   "BasePath": "_content/TSK",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TSK.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\dark.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "css/dark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\dark.css"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\bootstrap.css",
@@ -763,6 +780,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.material.custom-scheme.css"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-dark.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "css/devextreme/dx.material.gointegreat-dark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.material.gointegreat-dark.css"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-light.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "css/devextreme/dx.material.gointegreat-light.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.material.gointegreat-light.css"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.lime.dark.compact.css",
@@ -2140,6 +2191,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\devextreme_bck.zip"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\light.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "css/light.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\light.css"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\Site.css",

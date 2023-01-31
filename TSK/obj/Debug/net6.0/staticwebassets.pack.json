@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Site.css"
     },
     {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\dark.css",
+      "PackagePath": "staticwebassets\\css\\dark.css"
+    },
+    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\Charset.css",
       "PackagePath": "staticwebassets\\css\\devextreme\\Charset.css"
     },
@@ -207,6 +211,14 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.custom-scheme.css",
       "PackagePath": "staticwebassets\\css\\devextreme\\dx.material.custom-scheme.css"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-dark.css",
+      "PackagePath": "staticwebassets\\css\\devextreme\\dx.material.gointegreat-dark.css"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-light.css",
+      "PackagePath": "staticwebassets\\css\\devextreme\\dx.material.gointegreat-light.css"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme\\dx.material.lime.dark.compact.css",
@@ -499,6 +511,10 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\devextreme_bck.zip",
       "PackagePath": "staticwebassets\\css\\devextreme_bck.zip"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\light.css",
+      "PackagePath": "staticwebassets\\css\\light.css"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\wwwroot\\css\\vendor.css",
