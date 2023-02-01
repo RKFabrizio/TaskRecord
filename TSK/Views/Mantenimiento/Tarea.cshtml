@@ -1,8 +1,12 @@
-﻿
+﻿@using TSK.Models;
+
 @{
     ViewData["Title"] = "Tarea";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
 }
+
+@using DevExtreme.AspNet.Mvc.Builders;
+
 @section PagePreTitle{
 
     <div class="col">
@@ -11,7 +15,7 @@
             Mantenimiento
         </div>
         <h2 class="page-title">
-            Tareas
+            SubActividades
         </h2>
     </div>
 
@@ -22,61 +26,166 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Tarea>()
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="form-group mb-3">
+                <div class='form-control'>
+                    <div class="col-md-12">
+
+                        @(Html.DevExtreme().TabPanel()
+
+                            .Items(items =>
+                            {
+
+                                items.Add()
+                                .Title("LISTA DE SUBACTIVIDADES - ACTIVIDADES")
+                                .Template(new TemplateName("TAB1"));
+                                items.Add()
+                                .Title("AÑADIR SUBACTIVIDADES - ACTIVIDADES")
+                                .Template(new TemplateName("TAB2"));
+
+                            })
+                            .SelectedIndex(0)
+                            .Loop(false)
+                            .AnimationEnabled(true)
+                            .SwipeEnabled(true)
+                            )
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+@(Html.DevExtreme().DataGrid<TSK.Models.Entity.ActSub>()
     .DataSource(ds => ds.Mvc()
-        .Controller("Tarea")
+        .Controller("ActSubs")
         .LoadAction("Get")
         .InsertAction("Post")
         .UpdateAction("Put")
-        .Key("IdTar")
+        .Key("IdAct", "IdSubAct")
     )
-    .Columns(columns => {
-        columns.AddFor(m => m.IdTar).Caption("ID").Width(50);
-        columns.AddFor(m => m.Nombre);
+    .RemoteOperations(true)
+    .Columns(columns =>
+    {
+
         columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Tarea").LoadAction("ActividadsLookup").Key("Value"))
+            .DataSource(ds => ds.WebApi().Controller("ActSubs").LoadAction("ActividadsLookup").Key("Value"))
             .ValueExpr("Value")
             .DisplayExpr("Text")
-        ).GroupIndex(0).Caption("Actividad");
-        columns.AddFor(m => m.Habilitado).Width(120);
+        ).GroupIndex(0).Caption("Actividades");
+
+        columns.AddFor(m => m.IdSubAct).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("ActSubs").LoadAction("SubActividadsLookup").Key("Value"))
+            .ValueExpr("Value")
+            .DisplayExpr("Text")
+        ).Caption("SubActividades");
+
+        columns.AddFor(m => m.Habilitado);
     })
+    .AllowColumnReordering(true)
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .GroupPanel(groupPanel => groupPanel
+        .EmptyPanelText("")
+        .Visible(true))
     .ShowBorders(true)
     .RowAlternationEnabled(false)
     .ShowColumnLines(true)
     .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(20))
+    .Paging(paging => paging.PageSize(50))
     .FilterRow(f => f.Visible(true))
     .HeaderFilter(f => f.Visible(true))
     .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .Pager(pager =>{
+    .Pager(pager =>
+    {
         pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] {20, 50, 100});
+        pager.AllowedPageSizes(new[] { 50, 100, 200 });
         pager.ShowInfo(true);
     })
     .RemoteOperations(true)
-    .Grouping(grouping => grouping.AutoExpandAll(true))
-    .GroupPanel(groupPanel => groupPanel
-        .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
-        .Visible(true))
-    .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+         .UseIcons(true)
             .Popup(p => p
-                .Title("Tarea")
+                .Title("SubActividades")
                 .ShowTitle(true)
-                .Width("50%")
-                .Height(300)
+                .Width("70%")
+                .Height(400)
             )
-            .Form(f => f.Items(items => {
+            .Form(f => f.Items(items =>
+            {
                 items.AddGroup()
                     .ColCount(2)
                     .ColSpan(2)
-                    .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                    .Items(groupItems =>
+                    {
                         groupItems.AddSimpleFor(m => m.IdAct).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.IdSubAct).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.Habilitado);
                     });
             }))
-        )
+
+
+    )
 )
+}
+
+@using (Html.DevExtreme().NamedTemplate("TAB2")){
+
+    @(Html.DevExtreme().Form<TSK.Models.Entity.ActSub>()
+            .ID("form")
+            .Items(items => {
+
+        items.AddSimpleFor(m => m.IdAct)
+            .Editor(e => e
+                .Lookup()
+                .DataSource(ds => ds.WebApi().Controller("ActSubs").LoadAction("ActividadsLookup").Key("IdAct"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+                    .OnValueChanged("lookupValueChanged")
+                ).Label(label => label.Text("Actividad"));
+
+            })
+    )
+
+    @(Html.DevExtreme().DataGrid<TSK.Models.Query3>()
+    .ID("grid")
+    .DataSource(ds => ds.Mvc()
+        .Controller("ActSubs")
+        .LoadAction("SubActividadesLookup")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+            columns.AddFor(m => m.NombreSubActividad).Caption("Nombre");
+
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+    )
+)
+
+
+
+}
+
+<script>
+
+    function lookupValueChanged() {
+        var form = $("#form").dxForm("instance");
+        var grid = $("#grid").dxDataGrid("instance");
+        var IdAct = form.getEditor("IdAct").option("value"); 
+        grid.filter([
+            ["IdAct", "=", IdAct]
+        ]);
+        grid.refresh();
+    }
+</script>

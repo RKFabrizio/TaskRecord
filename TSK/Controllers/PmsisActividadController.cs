@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using TSK.Models;
 using TSK.Models.Entity;
+using System.Diagnostics;
 
 namespace TSK.Controllers
 {
@@ -46,31 +48,19 @@ namespace TSK.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> PmsisActividadesLookup(int idPms, DataSourceLoadOptions loadOptions)
+        public async Task<IActionResult> PmsisActividadesLookup(DataSourceLoadOptions loadOptions) // nos vota 0 como id
         {
-            //var acts = _context.PmsisActividads.Select(i => new
-            //{
-            //    i.IdPms,
-            //    i.IdAct,
-            //    i.Orden
 
-            //}).Where(e => e.IdPms == idPms);
-
-            var joinResult = _context.PmsisActividads.Join(_context.Actividads,
-                pmsisAct => pmsisAct.IdAct,
-                act => act.IdAct,
-                (pmsisAct, act) => new { PmsisAct = pmsisAct, Actividad = act });
-
-            var result = joinResult.Select(jr => new
-            {
-                jr.PmsisAct.IdPms,
-                jr.PmsisAct.IdAct,
-                jr.Actividad.Titulo,
-                jr.PmsisAct.Orden,
-
-            });
-
-
+            var result = from pmsisActividad in _context.PmsisActividads
+                         from actividad in _context.Actividads
+                         where pmsisActividad.IdAct == actividad.IdAct
+                         select new
+                         {
+                             IdPms = pmsisActividad.IdPms,
+                             IdAct = pmsisActividad.IdAct,
+                             NombreActividad = actividad.Titulo,
+                             Orden = pmsisActividad.Orden,
+                         };
 
             return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
         }
@@ -129,6 +119,8 @@ namespace TSK.Controllers
 
         [HttpGet]
         public async Task<IActionResult> ActividadsLookup(DataSourceLoadOptions loadOptions) {
+            
+
             var lookup = from i in _context.Actividads
                          orderby i.IdCon
                          select new {
