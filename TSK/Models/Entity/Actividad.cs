@@ -9,7 +9,7 @@ namespace TSK.Models.Entity
         public Actividad()
         {
             PmsisActividads = new HashSet<PmsisActividad>();
-            Tareas = new HashSet<Tarea>();
+            ActSubs = new HashSet<ActSub>();
         }
 
         public int IdAct { get; set; }
@@ -41,6 +41,6 @@ namespace TSK.Models.Entity
         public virtual Rango IdRanNavigation { get; set; }
         public virtual UnidadMedidum IdUmNavigation { get; set; }
         public virtual ICollection<PmsisActividad> PmsisActividads { get; set; }
-        public virtual ICollection<Tarea> Tareas { get; set; }
+        public virtual ICollection<ActSub> ActSubs { get; set; }
     }
 }
