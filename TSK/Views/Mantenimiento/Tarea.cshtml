@@ -149,7 +149,8 @@
                 .DataSource(ds => ds.WebApi().Controller("ActSubs").LoadAction("ActividadsLookup").Key("IdAct"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-                    .OnValueChanged("lookupValueChanged")
+                .OnValueChanged("lookupValueChanged")
+                .SearchEnabled(true)
                 ).Label(label => label.Text("Actividad"));
 
             })

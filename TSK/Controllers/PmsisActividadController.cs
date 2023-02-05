@@ -48,12 +48,12 @@ namespace TSK.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> PmsisActividadesLookup(DataSourceLoadOptions loadOptions) // nos vota 0 como id
+        public async Task<IActionResult> PmsisActividadesLookup(int IdPms, DataSourceLoadOptions loadOptions) // nos vota 0 como id
         {
 
             var result = from pmsisActividad in _context.PmsisActividads
                          from actividad in _context.Actividads
-                         where pmsisActividad.IdAct == actividad.IdAct
+                         where pmsisActividad.IdAct == actividad.IdAct && pmsisActividad.IdPms == IdPms
                          select new
                          {
                              IdPms = pmsisActividad.IdPms,
@@ -66,21 +66,29 @@ namespace TSK.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> PmsisActividadesPost(PmsisActividad pmsisActividad)
+        {
+            _context.Add(pmsisActividad);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Post(string values) {
-        //    var model = new PmsisActividad();
-        //    var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
-        //    PopulateModel(model, valuesDict);
+        [HttpPost]
+        public async Task<IActionResult> Post(string values)
+        {
+            var model = new PmsisActividad();
+            var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
+            PopulateModel(model, valuesDict);
 
-        //    if(!TryValidateModel(model))
-        //        return BadRequest(GetFullErrorMessage(ModelState));
+            if (!TryValidateModel(model))
+                return BadRequest(GetFullErrorMessage(ModelState));
 
-        //    var result = _context.PmsisActividads.Add(model);
-        //    await _context.SaveChangesAsync();
+            var result = _context.PmsisActividads.Add(model);
+            await _context.SaveChangesAsync();
 
-        //    return Json(new { result.Entity.IdAct, result.Entity.IdPms });
-        //}
+            return Json(new { result.Entity.IdAct, result.Entity.IdPms });
+        }
 
         [HttpPut]
         public async Task<IActionResult> Put(string key, string values) {
@@ -197,38 +205,7 @@ namespace TSK.Controllers
             return String.Join(" ", messages);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddMultipleActivities(int idPms, List<PmsisActividad> activities)
-        {
-            // Validar que el idPms exista en la base de datos
-            var pms = await _context.PmsisActividads.FindAsync(idPms);
-            if (pms == null)
-                return BadRequest("El IdPms especificado no existe en la base de datos.");
-
-            // Asignar el idPms a cada actividad antes de agregarlas a la base de datos
-            foreach (var act in activities)
-                act.IdPms = idPms;
-
-            // Agregar las actividades a la base de datos
-            await _context.PmsisActividads.AddRangeAsync(activities);
-            await _context.SaveChangesAsync();
-
-            try
-            {
-                foreach (var activity in activities)
-                {
-                    activity.IdPms = idPms;
-                    _context.PmsisActividads.Add(activity);
-                }
-                await _context.SaveChangesAsync();
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-        }
+    
 
 
         [HttpPut]

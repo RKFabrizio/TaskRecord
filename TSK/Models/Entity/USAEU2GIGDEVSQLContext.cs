@@ -486,8 +486,7 @@ namespace TSK.Models.Entity
 
             modelBuilder.Entity<Area>(entity =>
             {
-                entity.HasKey(e => e.IdArea)
-                    .HasName("XPKAREA");
+                entity.HasKey(e => e.IdArea);
 
                 entity.ToTable("AREA");
 

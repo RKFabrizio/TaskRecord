@@ -45,7 +45,7 @@ namespace TSK.Controllers
 
         public async Task<IActionResult> SubActividadesLookup(DataSourceLoadOptions loadOptions) 
         {
-
+            
             var result = from actSubsA in _context.ActSubs
                          from subActividad in _context.SubActividads
                          where actSubsA.IdSubAct == subActividad.IdSubAct

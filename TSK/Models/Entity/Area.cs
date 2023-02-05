@@ -11,6 +11,7 @@ namespace TSK.Models.Entity
             TipoEquipos = new HashSet<TipoEquipo>();
         }
 
+        [Required(ErrorMessage = "La ID es obligatoria")]
         public int IdArea { get; set; }
 
         [Required(ErrorMessage = "El Nombre es obligatorio")]
@@ -18,7 +19,7 @@ namespace TSK.Models.Entity
         public bool? Habilitado { get; set; }
         public string Extracolumn1 { get; set; }
         public string Extracolumn2 { get; set; }
-        public string Extracolumn3 { get; set; }
+        public string Extracolumn3{ get; set; }
 
         public virtual ICollection<TipoEquipo> TipoEquipos { get; set; }
     }

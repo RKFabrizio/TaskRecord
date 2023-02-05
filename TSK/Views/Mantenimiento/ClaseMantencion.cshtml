@@ -32,7 +32,7 @@
         .Key("IdClm")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdClm).Caption("ID").Width(70);
+        columns.AddFor(m => m.IdClm).Caption("ID LETRADA").Width(70);
         columns.AddFor(m => m.Nombre);
         columns.AddFor(m => m.Habilitado).Width(120);
     })
@@ -70,5 +70,7 @@
                     });
             }))
         )
+
 )
+
 
