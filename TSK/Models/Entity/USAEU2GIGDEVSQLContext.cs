@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TSK.Models.Entity;
 
 namespace TSK.Models.Entity
 {
@@ -24,16 +25,18 @@ namespace TSK.Models.Entity
         public virtual DbSet<Condicion> Condicions { get; set; }
         public virtual DbSet<Consecuencium> Consecuencia { get; set; }
         public virtual DbSet<Disciplina> Disciplinas { get; set; }
-        public virtual DbSet<Empresa> Empresas { get; set; }
+        public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Entrega> Entregas { get; set; }
         public virtual DbSet<Equipo> Equipos { get; set; }
         public virtual DbSet<Flotum> Flota { get; set; }
         public virtual DbSet<Frecuencium> Frecuencia { get; set; }
+        public virtual DbSet<GrupoUsuario> GrupoUsuarios { get; set; }
         public virtual DbSet<Herramientum> Herramienta { get; set; }
         public virtual DbSet<Nivel> Nivels { get; set; }
         public virtual DbSet<Operacion> Operacions { get; set; }
         public virtual DbSet<Pm> Pms { get; set; }
         public virtual DbSet<PmSistema> PmSistemas { get; set; }
+        public virtual DbSet<ActSub> ActSubs { get; set; }
         public virtual DbSet<PmsisActividad> PmsisActividads { get; set; }
         public virtual DbSet<Rango> Rangos { get; set; }
         public virtual DbSet<RepDetalle> RepDetalles { get; set; }
@@ -43,21 +46,16 @@ namespace TSK.Models.Entity
         public virtual DbSet<Tabs> Tabs { get; set; }
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<Repuesto> Repuestos { get; set; }
-        public virtual DbSet<Rol> Rols { get; set; }
+        public virtual DbSet<Posicion> Posicions { get; set; }
         public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<Sistema> Sistemas { get; set; }
         public virtual DbSet<Tabla> Tablas { get; set; }
-        public virtual DbSet<Tarea> Tareas { get; set; }
+        public virtual DbSet<SubActividad> SubActividads { get; set; }
         public virtual DbSet<TipoEquipo> TipoEquipos { get; set; }
         public virtual DbSet<Unidad> Unidads { get; set; }
         public virtual DbSet<UnidadMedidum> UnidadMedida { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
 
-        public virtual DbSet<Turno> Turnos { get; set; }
-
-        public virtual DbSet<RepLider> RepLiders { get; set; }
-
-        public virtual DbSet<RepTecnico> RepTecnicos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -70,13 +68,13 @@ namespace TSK.Models.Entity
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Actividad>(entity =>
+            modelBuilder.Entity<SubActividad>(entity =>
             {
-                entity.HasKey(e => e.IdAct);
+                entity.HasKey(e => e.IdSubAct);
 
-                entity.ToTable("ACTIVIDAD");
+                entity.ToTable("SUBACTIVIDAD");
 
-                entity.Property(e => e.IdAct).HasColumnName("ID_ACT");
+                entity.Property(e => e.IdSubAct).HasColumnName("ID_SUBACT");
 
                 entity.Property(e => e.Extracolumn1)
                     .IsUnicode(false)
@@ -94,6 +92,28 @@ namespace TSK.Models.Entity
                     .HasColumnName("HABILITADO")
                     .HasDefaultValueSql("((1))");
 
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(800)
+                    .IsUnicode(false)
+                    .HasColumnName("NOMBRE");
+
+            });
+
+            modelBuilder.Entity<Actividad>(entity =>
+            {
+                entity.HasKey(e => e.IdAct);
+
+                entity.ToTable("ACTIVIDAD");
+
+                entity.Property(e => e.IdAct).HasColumnName("ID_ACT");
+
+                entity.Property(e => e.IdDis)
+                .HasColumnName("ID_DIS");
+
+                entity.Property(e => e.Habilitado)
+                    .HasColumnName("HABILITADO")
+                    .HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.IdClm)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -106,9 +126,11 @@ namespace TSK.Models.Entity
                     .HasColumnName("ID_CON")
                     .IsFixedLength();
 
-                entity.Property(e => e.IdFrc).HasColumnName("ID_FRC");
+                entity.Property(e => e.IdFrc)
+                    .HasColumnName("ID_FRC");
 
-                entity.Property(e => e.IdRan).HasColumnName("ID_RAN");
+                entity.Property(e => e.IdRan)
+                    .HasColumnName("ID_RAN");
 
                 entity.Property(e => e.IdUm)
                     .HasMaxLength(50)
@@ -121,6 +143,11 @@ namespace TSK.Models.Entity
                     .IsUnicode(false)
                     .HasColumnName("ESPECIFICACION");
 
+                entity.Property(e => e.Descripcion)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("DESCRIPCION");
+
                 entity.Property(e => e.Referencia)
                     .HasMaxLength(250)
                     .IsUnicode(false)
@@ -130,9 +157,14 @@ namespace TSK.Models.Entity
                     .IsUnicode(false)
                     .HasColumnName("REFERENCIA_URL");
 
-                entity.Property(e => e.Inicio).HasColumnName("INICIO");
+                entity.Property(e => e.Inicio)
+                    .HasColumnName("INICIO");
 
-                entity.Property(e => e.Fin).HasColumnName("FIN");
+                entity.Property(e => e.Fin)
+                    .HasColumnName("FIN");
+
+                entity.Property(e => e.Duracion)
+                    .HasColumnName("DURACION");
 
                 entity.Property(e => e.Titulo)
                     .HasMaxLength(800)
@@ -143,6 +175,11 @@ namespace TSK.Models.Entity
                     .WithMany(p => p.Actividads)
                     .HasForeignKey(d => d.IdClm)
                     .HasConstraintName("FK_ACTIVIDAD_CLASE_MANTENCION");
+
+                entity.HasOne(d => d.IdDisNavigation)
+                    .WithMany(p => p.Actividads)
+                    .HasForeignKey(d => d.IdDis)
+                    .HasConstraintName("FK_ACTIVIDAD_DISCIPLINA");
 
                 entity.HasOne(d => d.IdConNavigation)
                     .WithMany(p => p.Actividads)
@@ -447,14 +484,13 @@ namespace TSK.Models.Entity
                     .HasConstraintName("FK_DISCIPLINA_NIVEL");
             });
 
-            modelBuilder.Entity<Empresa>(entity =>
+            modelBuilder.Entity<Area>(entity =>
             {
-                entity.HasKey(e => e.IdEmp)
-                    .HasName("XPKEMPRESA");
+                entity.HasKey(e => e.IdArea);
 
-                entity.ToTable("EMPRESA");
+                entity.ToTable("AREA");
 
-                entity.Property(e => e.IdEmp).HasColumnName("ID_EMP");
+                entity.Property(e => e.IdArea).HasColumnName("ID_AREA");
 
                 entity.Property(e => e.Extracolumn1)
                     .IsUnicode(false)
@@ -769,6 +805,14 @@ namespace TSK.Models.Entity
 
                 entity.Property(e => e.IdPms).HasColumnName("ID_PMS");
 
+                entity.Property(e => e.IdSis).HasColumnName("ID_SIS");
+
+                entity.Property(e => e.IdPm).HasColumnName("ID_PM");
+
+                entity.Property(e => e.Habilitado)
+                .HasColumnName("HABILITADO")
+                .HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.Extracolumn1).HasColumnName("EXTRACOLUMN1");
 
                 entity.Property(e => e.Extracolumn2)
@@ -779,21 +823,7 @@ namespace TSK.Models.Entity
                     .IsUnicode(false)
                     .HasColumnName("EXTRACOLUMN3");
 
-                entity.Property(e => e.Habilitado)
-                    .HasColumnName("HABILITADO")
-                    .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.IdDis).HasColumnName("ID_DIS");
-
-                entity.Property(e => e.IdPm).HasColumnName("ID_PM");
-
-                entity.Property(e => e.IdSis).HasColumnName("ID_SIS");
-
-                entity.HasOne(d => d.IdDisNavigation)
-                    .WithMany(p => p.PmSistemas)
-                    .HasForeignKey(d => d.IdDis)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PM_SISTEMA_DISCIPLINA");
 
                 entity.HasOne(d => d.IdPmNavigation)
                     .WithMany(p => p.PmSistemas)
@@ -806,6 +836,46 @@ namespace TSK.Models.Entity
                     .HasForeignKey(d => d.IdSis)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PM_SISTEMA_SISTEMA");
+            });
+
+            modelBuilder.Entity<ActSub>(entity =>
+            {
+                entity.HasKey(e => new { e.IdAct, e.IdSubAct })
+                    .HasName("XPKACTSUB");
+
+                entity.ToTable("ACTSUB");
+
+                entity.Property(e => e.IdAct).HasColumnName("ID_ACT");
+
+                entity.Property(e => e.IdSubAct).HasColumnName("ID_SUBACT");
+
+                entity.Property(e => e.Habilitado)
+                .HasColumnName("HABILITADO")
+                .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.Extracolumn1).HasColumnName("EXTRACOLUMN1");
+
+                entity.Property(e => e.Extracolumn2)
+                    .IsUnicode(false)
+                    .HasColumnName("EXTRACOLUMN2");
+
+                entity.Property(e => e.Extracolumn3)
+                    .IsUnicode(false)
+                    .HasColumnName("EXTRACOLUMN3");
+
+
+
+                entity.HasOne(d => d.IdActNavigation)
+                    .WithMany(p => p.ActSubs)
+                    .HasForeignKey(d => d.IdAct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ACTSUB_ACTIVIDAD");
+
+                entity.HasOne(d => d.IdSubActNavigation)
+                    .WithMany(p => p.ActSubs)
+                    .HasForeignKey(d => d.IdSubAct)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ACTSUB_SUBACTIVIDAD");
             });
 
             modelBuilder.Entity<PmsisActividad>(entity =>
@@ -1189,16 +1259,23 @@ namespace TSK.Models.Entity
                     .HasColumnName("NROPARTE");
             });
 
-            modelBuilder.Entity<Rol>(entity =>
+
+            modelBuilder.Entity<Posicion>(entity =>
             {
-                entity.HasKey(e => e.IdRol)
-                    .HasName("XPKROL");
+                entity.HasKey(e => e.IdPos);
 
-                entity.ToTable("ROL");
+                entity.ToTable("POSICION");
 
-                entity.Property(e => e.IdRol).HasColumnName("ID_ROL");
+                entity.Property(e => e.IdPos).HasColumnName("ID_POS");
 
-                entity.Property(e => e.Administrador).HasColumnName("ADMINISTRADOR");
+                entity.Property(e => e.Habilitado)
+                    .HasColumnName("HABILITADO")
+                    .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.Cargo)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("CARGO");
 
                 entity.Property(e => e.Extracolumn1)
                     .IsUnicode(false)
@@ -1211,15 +1288,6 @@ namespace TSK.Models.Entity
                 entity.Property(e => e.Extracolumn3)
                     .IsUnicode(false)
                     .HasColumnName("EXTRACOLUMN3");
-
-                entity.Property(e => e.Habilitado)
-                    .HasColumnName("HABILITADO")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("NOMBRE");
             });
 
             modelBuilder.Entity<Sector>(entity =>
@@ -1341,14 +1409,14 @@ namespace TSK.Models.Entity
                     .HasConstraintName("FK_TABLA_AUDITORIA");
             });
 
-            modelBuilder.Entity<Tarea>(entity =>
+            modelBuilder.Entity<SubActividad>(entity =>
             {
-                entity.HasKey(e => e.IdTar)
-                    .HasName("XPKTAREA");
+                entity.HasKey(e => e.IdSubAct)
+                    .HasName("XPKSUBACT");
 
-                entity.ToTable("TAREA");
+                entity.ToTable("SUBACTIVIDAD");
 
-                entity.Property(e => e.IdTar).HasColumnName("ID_TAR");
+                entity.Property(e => e.IdSubAct).HasColumnName("ID_SUBACT");
 
                 entity.Property(e => e.Extracolumn1)
                     .IsUnicode(false)
@@ -1366,18 +1434,11 @@ namespace TSK.Models.Entity
                     .HasColumnName("HABILITADO")
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.IdAct).HasColumnName("ID_ACT");
-
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(800)
                     .IsUnicode(false)
                     .HasColumnName("NOMBRE");
 
-                entity.HasOne(d => d.IdActNavigation)
-                    .WithMany(p => p.Tareas)
-                    .HasForeignKey(d => d.IdAct)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TAREA_ACTIVIDAD");
             });
 
             modelBuilder.Entity<TipoEquipo>(entity =>
@@ -1405,18 +1466,18 @@ namespace TSK.Models.Entity
                     .HasColumnName("HABILITADO")
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.IdEmp).HasColumnName("ID_EMP");
+                entity.Property(e => e.IdArea).HasColumnName("ID_AREA");
 
                 entity.Property(e => e.TEquipo)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("T_EQUIPO");
 
-                entity.HasOne(d => d.IdEmpNavigation)
+                entity.HasOne(d => d.IdAreaNavigation)
                     .WithMany(p => p.TipoEquipos)
-                    .HasForeignKey(d => d.IdEmp)
+                    .HasForeignKey(d => d.IdArea)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TIPO_EQUIPO_EMPRESA");
+                    .HasConstraintName("FK_TIPO_EQUIPO_AREA");
             });
 
             modelBuilder.Entity<Unidad>(entity =>
@@ -1523,13 +1584,7 @@ namespace TSK.Models.Entity
                     .HasColumnName("HABILITADO")
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.Lider)
-                    .HasColumnName("LIDER")
-                    .HasDefaultValueSql("((0))");
-
-                entity.Property(e => e.IdDis).HasColumnName("ID_DIS");
-
-                entity.Property(e => e.IdRol).HasColumnName("ID_ROL");
+                entity.Property(e => e.IdPos).HasColumnName("ID_POS");
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(250)
@@ -1542,91 +1597,56 @@ namespace TSK.Models.Entity
                     .IsUnicode(false)
                     .HasColumnName("USUARIO");
 
-                entity.HasOne(d => d.IdDisNavigation)
+                entity.HasOne(d => d.IdPosNavigation)
                     .WithMany(p => p.Usuarios)
-                    .HasForeignKey(d => d.IdDis)
-                    .HasConstraintName("FK_USUARIO_DISCIPLINA");
-
-                entity.HasOne(d => d.IdRolNavigation)
-                    .WithMany(p => p.Usuarios)
-                    .HasForeignKey(d => d.IdRol)
+                    .HasForeignKey(d => d.IdPos)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_USUARIO_ROL");
+                    .HasConstraintName("FK_USUARIO_POSICION");
+
             });
 
-            modelBuilder.Entity<Turno>(entity =>
+
+            modelBuilder.Entity<GrupoUsuario>(entity =>
             {
-                entity.HasKey(e => e.IdTur);
+                entity.HasKey(e => e.IdGrus);
 
-                entity.ToTable("TURNO");
+                entity.Property(e => e.IdGrus)
+                    .HasColumnName("ID_GRUS");
 
-                entity.Property(e => e.IdTur).HasColumnName("ID_TUR");
+                entity.ToTable("GRUPOUSUARIO");
 
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("NOMBRE");
-            });
+                entity.Property(e => e.IdRep)
+                    .HasColumnName("ID_REP");
 
-            modelBuilder.Entity<RepLider>(entity =>
-            {
-                entity.HasNoKey();
+                entity.Property(e => e.IdUsr)
+                    .HasColumnName("ID_USR");
 
-                entity.ToTable("REP_LIDER");
+                entity.Property(e => e.Grupo)
+                    .HasColumnName("GRUPO");
 
-                entity.Property(e => e.IdRep).HasColumnName("ID_REP");
-
-                entity.Property(e => e.IdTur).HasColumnName("ID_TUR");
-
-                entity.Property(e => e.IdUser).HasColumnName("ID_USER");
+                entity.Property(e => e.Lider)
+                   .HasColumnName("LIDER")
+                   .HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.IdRepNavigation)
-                    .WithMany()
+                    .WithMany(p => p.GrupoUsuarios)
                     .HasForeignKey(d => d.IdRep)
-                    .HasConstraintName("FK_REP_LIDER_REPORTE");
-
-                entity.HasOne(d => d.IdTurNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdTur)
-                    .HasConstraintName("FK_REP_LIDER_TURNO");
-
-                entity.HasOne(d => d.IdUserNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdUser)
-                    .HasConstraintName("FK_REP_LIDER_USUARIO");
-            });
-
-            modelBuilder.Entity<RepTecnico>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToTable("REP_TECNICO");
-
-                entity.Property(e => e.IdRep).HasColumnName("ID_REP");
-
-                entity.Property(e => e.IdTur).HasColumnName("ID_TUR");
-
-                entity.Property(e => e.IdUsr).HasColumnName("ID_USR");
-
-                entity.HasOne(d => d.IdRepNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdRep)
-                    .HasConstraintName("FK_REP_TECNICO_REPORTE");
-
-                entity.HasOne(d => d.IdTurNavigation)
-                    .WithMany()
-                    .HasForeignKey(d => d.IdTur)
-                    .HasConstraintName("FK_REP_TECNICO_TURNO");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GRUPOUSUARIO_REPORTE");
 
                 entity.HasOne(d => d.IdUsrNavigation)
-                    .WithMany()
+                    .WithMany(p => p.GrupoUsuarios)
                     .HasForeignKey(d => d.IdUsr)
-                    .HasConstraintName("FK_REP_TECNICO_USUARIO");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GRUPOUSUARIO_USUARIO");
+
             });
+
 
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
     }
 }

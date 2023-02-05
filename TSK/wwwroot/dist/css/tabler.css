@@ -109,7 +109,6 @@
     --tblr-body-bg-rgb: 239, 239, 254;
     --tblr-font-sans-serif: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
     --tblr-font-monospace: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-
     --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     --tblr-body-font-family: var(--tblr-font-sans-serif);
     --tblr-body-font-size: 0.875rem;
@@ -127,7 +126,7 @@
     --tblr-border-radius-xl: 1rem;
     --tblr-border-radius-2xl: 2rem;
     --tblr-border-radius-pill: 100rem;
-    --tblr-link-color: #206bc4;
+    --tblr-link-color: #207eee;
     --tblr-link-hover-color: #349d1a;
     --tblr-code-color: #4b5462;
     --tblr-highlight-bg: #fdeccc;
@@ -279,12 +278,13 @@ sup {
 }
 
 a {
-  color: var(--tblr-link-color);
-  text-decoration: none;
+    color: #20c2ee;
+    text-decoration: none;
 }
+
 a:hover {
-  color: var(--tblr-link-hover-color);
-  text-decoration: underline;
+        color: #1a77ca;
+        text-decoration: underline;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -21323,7 +21323,8 @@ pre code {
 
 .navbar-brand-image {
     margin-left: 30%;
-    max-width: 200px;
+    width: 230px;
+    height: 70px;
     margin-bottom: 5%;
     margin-top: 10px;
 }

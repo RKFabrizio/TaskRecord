@@ -7,50 +7,45 @@
     <div class="page page-center">
       <div class="container-tight py-4">
         <div class="text-center mb-4">
-           
+            <a href="." class="navbar-brand navbar-brand-autodark">
+            </a>
         </div>
         <div class="card card-md">
             <a href="." class="navbar-brand navbar-brand-autodark">
-                <img class="logo" src="~/img/PautasLogo.png" alt="Pautas">
+                <img class="logo" src="~/img/Logo.png" alt="Pautas">
             </a>
           <div class="card-body">
-                <a href="." class="navbar-brand navbar-brand-autodark">
-                    <img class="acceso" src="~/img/acceso.png" alt="Acceso al sistema">
-                </a>
             <div class="mb-2">
                  @using(Html.BeginForm()) {
                     using(Html.DevExtreme().ValidationGroup()) {
                         @Html.AntiForgeryToken()
-                            @(
-                            Html.DevExtreme().Form<TSK.Models.Usuario>()
-                                     .LabelLocation(FormLabelLocation.Top)
-                                    .ShowValidationSummary(true)
-                                        .Items(items =>
-                                        {
-                                            items.AddGroup()
-
-                                            .Items(groupItems =>
-                                            {
-                                                groupItems.AddSimpleFor(m => m.UserName)
+                        @(Html.DevExtreme().Form<TSK.Models.Usuario>()
+                            .LabelLocation(FormLabelLocation.Top)
+                            .ShowValidationSummary(true)
+                            .Items(items => {
+                                items.AddGroup()
+                                    
+                                    .Items(groupItems => {
+                                        groupItems.AddSimpleFor(m => m.UserName)
                                             .Label(l => l.Visible(false))
                                             .Editor(e => e.TextBox()
                                             .Placeholder("Usuario")
-                                            );
+                                    );
 
-                                                groupItems.AddSimpleFor(m => m.Clave)
+                                        groupItems.AddSimpleFor(m => m.Clave)
                                             .Label(l => l.Visible(false))
                                             .Editor(e => e.TextBox()
                                             .Placeholder("Contraseña")
                                             .Mode(TextBoxMode.Password)
+                                                
                                             );
-                                            });
-                                            items.AddButton()
-                                             .HorizontalAlignment(HorizontalAlignment.Center)
-                                             
-                                            .ButtonOptions(b => b.Text("Acceder")  
+                                    }); 
+                                items.AddButton()
+                                    .HorizontalAlignment(HorizontalAlignment.Center)
+                                    .ButtonOptions(b => b.Text("Acceder")
                                         .Type(ButtonType.Default)
                                         .UseSubmitBehavior(true)
-                                        
+                                    .ElementAttr(new { style = "background-color:#337199; color: white;" })
                                 );
 
                             })
@@ -64,11 +59,10 @@
                     <div class="dx-item-content dx-validationsummary-item-content">@ViewBag.msg</div>
                  </div>
             </div>
-                <a href="." class="navbar-brand navbar-brand-autodark">
-                    <img class="logo_gointegreat" src="~/img/GOINTEGREAT_V1.png" alt="Gointegreat">
-                </a>
+   
           </div>
         </div>
       </div>
     </div>
+
 

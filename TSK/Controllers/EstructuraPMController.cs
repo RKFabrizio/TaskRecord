@@ -67,6 +67,14 @@ namespace TSK.Controllers
 
         }
 
+        //public IActionResult ActividadesAdd(int id)
+        //{
+        //    var data = ActividadesAdd(id);
+            
+        //}
+
+
+
         public Query ReporteData(int id)
         {
             try

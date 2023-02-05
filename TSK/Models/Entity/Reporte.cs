@@ -10,6 +10,7 @@ namespace TSK.Models.Entity
         {
             RepEntregas = new HashSet<RepEntrega>();
             RepSistemas = new HashSet<RepSistema>();
+            GrupoUsuarios = new HashSet<GrupoUsuario>();
         }
 
         public int IdRep { get; set; }
@@ -37,6 +38,7 @@ namespace TSK.Models.Entity
         public virtual Unidad IdUniNavigation { get; set; }
         public virtual ICollection<RepEntrega> RepEntregas { get; set; }
         public virtual ICollection<RepSistema> RepSistemas { get; set; }
+        public virtual ICollection<GrupoUsuario> GrupoUsuarios { get; set; }
 
     }
 }

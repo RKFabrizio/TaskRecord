@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using TSK.Models;
 using TSK.Models.Entity;
+using System.Diagnostics;
 
 namespace TSK.Controllers
 {
@@ -44,13 +46,42 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(pmsisactividads, loadOptions));
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> PmsisActividadesLookup(int IdPms, DataSourceLoadOptions loadOptions) // nos vota 0 como id
+        {
+
+            var result = from pmsisActividad in _context.PmsisActividads
+                         from actividad in _context.Actividads
+                         where pmsisActividad.IdAct == actividad.IdAct && pmsisActividad.IdPms == IdPms
+                         select new
+                         {
+                             IdPms = pmsisActividad.IdPms,
+                             IdAct = pmsisActividad.IdAct,
+                             NombreActividad = actividad.Titulo,
+                             Orden = pmsisActividad.Orden,
+                         };
+
+            return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
+        }
+
+
         [HttpPost]
-        public async Task<IActionResult> Post(string values) {
+        public async Task<IActionResult> PmsisActividadesPost(PmsisActividad pmsisActividad)
+        {
+            _context.Add(pmsisActividad);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(string values)
+        {
             var model = new PmsisActividad();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
             var result = _context.PmsisActividads.Add(model);
@@ -96,6 +127,8 @@ namespace TSK.Controllers
 
         [HttpGet]
         public async Task<IActionResult> ActividadsLookup(DataSourceLoadOptions loadOptions) {
+            
+
             var lookup = from i in _context.Actividads
                          orderby i.IdCon
                          select new {
@@ -171,5 +204,19 @@ namespace TSK.Controllers
 
             return String.Join(" ", messages);
         }
+
+    
+
+
+        [HttpPut]
+        public IActionResult EditActivity(PmsisActividad activity)
+        {
+            _context.PmsisActividads.Update(activity);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

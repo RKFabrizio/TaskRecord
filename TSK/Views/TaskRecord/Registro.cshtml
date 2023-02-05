@@ -164,73 +164,76 @@
                         )
   }
 
-  @if (User.IsInRole("SUPERUSUARIO") || User.IsInRole("ADMINISTRADOR") || User.IsInRole("USUARIO"))
-  {
+                        
 
   
+        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Reporte>()
+            .DataSource(ds => ds.Mvc()
+            .Controller("Reporte")
+            .LoadAction("Get")
+            .Key("IdRep")
+        )
+            .Columns(columns => {
+
+                columns.AddFor(m => m.IdUni).Lookup(lookup => lookup
+                   .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("UnidadsLookup").Key("Value"))
+                   .ValueExpr("Value")
+                   .DisplayExpr("Text")).GroupIndex(0).Caption("Unidad");
 
 
-                        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Reporte>()
-                            .DataSource(ds => ds.Mvc()
-                                .Controller("Reporte")
-                                .LoadAction("Get")
-                                .Key("IdRep")
-                            )
-                            .Columns(columns => {
-                                columns.AddFor(m => m.IdUni).Lookup(lookup => lookup
-                                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("UnidadsFlotaLookup").Key("Value"))
-                                    .ValueExpr("Value")
-                                    .DisplayExpr("Text")
-                                ).GroupIndex(0).Caption("Unidad");
-                                columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
-                                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup").Key("Value"))
-                                    .ValueExpr("Value")
-                                    .DisplayExpr("Text")
-                                ).Caption("PM").Width(400);
+                columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text")).Caption("PM").Width(400);
 
-                                columns.AddFor(m => m.Fecha);
-                                columns.AddFor(m => m.Comentario);
-                                columns.AddFor(m => m.Avance)
-                                    .Caption("% Avance")
-                                    .DataType(GridColumnDataType.Number)
+
+                columns.AddFor(m => m.Fecha);
+                columns.AddFor(m => m.Comentario);
+                columns.AddFor(m => m.Avance)
+                .Caption("% Avance")
+                .DataType(GridColumnDataType.Number)
+                .Alignment(HorizontalAlignment.Center)
+                .Format(Format.Percent)
+                .Width(110);
+                 columns.Add().AllowEditing(false)
                                     .Alignment(HorizontalAlignment.Center)
-                                    .Format(Format.Percent)
-                                    .Width(110);
-                                columns.Add().AllowEditing(false)
-                                            .Alignment(HorizontalAlignment.Center)
-                                            .Width(100)
-                                            .CellTemplate(@<text>
-                                                            <a href="RegistroDetalle/<%- data.IdRep %>" title="Editar">
-                                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                               <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                               <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                               <path d="M16 5l3 3"></path>
-                                                            </svg> Editar
-                                                            </a>
-                                </text>);
+                                    .Width(100)
+                                    .CellTemplate(@<text>
+                                        <a href="RegistroDetalle/<%- data.IdRep %>" title="Editar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                                <path d="M16 5l3 3"></path>
+                                            </svg> Editar
+                                        </a>
+                                    </text>);
 
-                            })
-                            .ShowBorders(true)
-                            .ShowColumnLines(true)
-                            .ShowRowLines(true)
-                            .Paging(paging => paging.PageSize(20))
-                            .FilterRow(f => f.Visible(true))
-                            .HeaderFilter(f => f.Visible(true))
-                            .Pager(pager =>{
-                                pager.ShowPageSizeSelector(true);
-                                pager.AllowedPageSizes(new[] {50, 100, 150});
-                                pager.ShowInfo(true);
-                            })
-                            .RemoteOperations(true)
-                            .Grouping(grouping => grouping.AutoExpandAll(true))
-                            .GroupPanel(groupPanel => groupPanel
+
+    })
+                                .ShowBorders(true)
+                                .ShowColumnLines(true)
+                                .ShowRowLines(true)
+                                .Paging(paging => paging.PageSize(20))
+                                .FilterRow(f => f.Visible(true))
+                                .HeaderFilter(f => f.Visible(true))
+                                .Pager(pager =>
+                                {
+                                    pager.ShowPageSizeSelector(true);
+                                    pager.AllowedPageSizes(new[] { 50, 100, 150 });
+                                    pager.ShowInfo(true);
+                                })
+                                .RemoteOperations(true)
+                                .Grouping(grouping => grouping.AutoExpandAll(true))
+                                .GroupPanel(groupPanel => groupPanel
                                 .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
                                 .Visible(true))
-    
-                        )
 
-}
+                                )
+
+                      
+
+
                     </div>
                     </div>
                 </div>

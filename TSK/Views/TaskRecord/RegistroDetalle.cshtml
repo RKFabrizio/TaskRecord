@@ -205,7 +205,8 @@
                 .Format(Format.Percent)
                 .AllowGrouping(false)
                 .CssClass("bullet")
-                .CellTemplate(@<text>
+                .CellTemplate(
+                    @<text>
                                 @(Html.DevExtreme().Bullet()
                         .Value(new JS("value * 100"))
                         .Size(s => s
