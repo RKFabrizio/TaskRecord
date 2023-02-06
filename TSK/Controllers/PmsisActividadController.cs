@@ -13,6 +13,15 @@ using System.Threading.Tasks;
 using TSK.Models;
 using TSK.Models.Entity;
 using System.Diagnostics;
+using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Mvc;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+
 
 namespace TSK.Controllers
 {
@@ -66,12 +75,23 @@ namespace TSK.Controllers
         }
 
 
+
         [HttpPost]
-        public async Task<IActionResult> PmsisActividadesPost(PmsisActividad pmsisActividad)
+       
+        public async Task<IActionResult> PmsisActividadesBatchPost(int idPms, string values)
         {
-            _context.Add(pmsisActividad);
+     
+            var model = new PmsisActividad { IdPms = idPms };
+            var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
+            PopulateModel(model, valuesDict);
+
+            if (!TryValidateModel(model))
+                return BadRequest(GetFullErrorMessage(ModelState));
+
+            var result = _context.PmsisActividads.Add(model);
             await _context.SaveChangesAsync();
-            return Ok();
+
+            return Json(new { result.Entity.IdAct, result.Entity.IdPms });
         }
 
         [HttpPost]

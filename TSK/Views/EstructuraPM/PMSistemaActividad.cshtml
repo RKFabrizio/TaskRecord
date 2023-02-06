@@ -136,30 +136,40 @@
                     ).Label(label => label.Text("Pauta de Mantenimiento - Sistema"));
             })
         )
-
+ 
 
     @(
     Html.DevExtreme().DataGrid<TSK.Models.Entity.PmsisActividad>()
-                            .ID("grid")
-                            .DataSource(ds => ds.Mvc().Controller("PmsisActividad").LoadAction("PmsisActividadesLookup")
-                            .LoadParams(new { IdPms = new JS("getIdPms") }))
-                            .RemoteOperations(true)
-                            .Columns(columns =>
-                            {
-                                columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
-                                .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("ActividadsLookup").Key("Value"))
-                                .ValueExpr("Value")
-                                .DisplayExpr("Text")
-                                ).Caption("Actividad");
-                                columns.AddFor(m => m.Orden).Caption("Orden");
-                        })
-                         .OnRowInserting("onRowInserting")
-                        .Editing(editing =>
-                        {
-                            editing.AllowAdding(true);
-                            editing.AllowUpdating(true);
-                            editing.AllowDeleting(true);
-                        })
+    .ID("grid")
+    .ShowBorders(true)
+    .DataSource(ds => ds.Mvc().Controller("PmsisActividad").LoadAction("PmsisActividadesLookup").InsertAction("Post").UpdateAction("Put").DeleteAction("Delete").Key("IdPms", "IdAct")
+    .LoadParams(new { IdPms = new JS("getIdPms") }))
+    .RemoteOperations(true)
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.IdPms).Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("PmSistemasLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text")
+                ).Caption("PM - Sistema");
+        columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
+        .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("ActividadsLookup").Key("Value"))
+        .ValueExpr("Value")
+        .DisplayExpr("Text")
+        ).Caption("Actividad");
+        columns.AddFor(m => m.Orden).Caption("Orden");
+    })
+    .Editing(editing =>
+    {
+        editing.Mode(GridEditMode.Batch);
+        editing.AllowAdding(true);
+        editing.AllowUpdating(true);
+        editing.AllowDeleting(true);
+        editing.SelectTextOnEditStart(true);
+        editing.StartEditAction(GridStartEditAction.Click);
+    })
+
+  
                             
         )
 
@@ -167,21 +177,6 @@
 }
 
 <script>
-    function onRowInserting(e) {
-        var newData = e.data;
-        var IdPms = getIdPms();
-        newData.IdPms = IdPms;
-
-        $.ajax({
-            url: '/PmsisActividad/Post',
-            method: 'POST',
-            data: JSON.stringify({ values: newData }),
-            contentType: "application/json; charset=utf-8",
-            success: function (result) {
-                refreshData();
-            }
-        });
-    }
 
     function refreshData() {
         var grid = $("#grid").dxDataGrid("instance");
@@ -193,6 +188,16 @@
         var IdPms = form.getEditor("IdPms").option("value");
         return IdPms;
     }
+       function onOptionsValueChanged(data) {
+        let dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("editing.selectTextOnEditStart", data.value);
+    }
+
+    function onStartEditActionValueChanged(data) {
+        let dataGrid = $("#gridContainer").dxDataGrid("instance");
+        dataGrid.option("editing.startEditAction", data.value);
+    }
+
 </script>
 
 
