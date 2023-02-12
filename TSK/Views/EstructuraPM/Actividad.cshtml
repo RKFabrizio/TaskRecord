@@ -1,4 +1,6 @@
-﻿
+﻿@using TSK.Models;
+@using System.Linq;
+
 @{
     ViewData["Title"] = "Actividad";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
@@ -12,12 +14,12 @@
     </a>
 
     <div class="col">
-     <!-- Page pre-title -->
+        <!-- Page pre-title -->
         <div class="page-pretitle">
             Mantenimiento
         </div>
         <h2 class="page-title">
-           Actividad
+            Actividad
         </h2>
     </div>
 
@@ -27,149 +29,172 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Actividad>()
 
-    .DataSource(ds => ds.Mvc()
-        .Controller("ActividadNew")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .Key("IdAct")
-    )
-    .RemoteOperations(true)
-    .Columns(columns => {
-
-        columns.AddFor(m => m.IdAct).Caption("ID").Width(50);
-
-        columns.AddFor(m => m.Titulo).Caption("Título").Width("80%");
-
-        columns.AddFor(m => m.IdRan).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("ActividadNew").LoadAction("RangosLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Usar Rangos").HidingPriority(11);
-
-        columns.AddFor(m => m.IdCon).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("ActividadNew").LoadAction("ConsecuenciaLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Consecuencia").HidingPriority(10);
-
-        columns.AddFor(m => m.IdClm).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("ActividadNew").LoadAction("ClaseMantencionsLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Clase Mantencion").HidingPriority(9);
-
-        columns.AddFor(m => m.IdDis).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("ActividadNew").LoadAction("DisciplinasLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Disciplina").HidingPriority(8);
-
-        
-
-        columns.AddFor(m => m.IdUm).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("ActividadNew").LoadAction("UnidadMedidaLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Unidad Medida").HidingPriority(7);
-
-        columns.AddFor(m => m.IdFrc).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("ActividadNew").LoadAction("FrecuenciaLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Frecuencia").HidingPriority(6);
-
-        columns.AddFor(m => m.Especificacion).HidingPriority(5);
-
-        columns.AddFor(m => m.Descripcion).HidingPriority(4);
-
-        columns.AddFor(m => m.Duracion).HidingPriority(3);
-
-        columns.AddFor(m => m.Inicio).HidingPriority(2);
-
-        columns.AddFor(m => m.Fin).HidingPriority(1);
-
-        columns.AddFor(m => m.Referencia).Caption("Nombre de Referencia").HidingPriority(0);
-
-        columns.AddFor(m => m.Habilitado);
-
-    })
-    .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(50))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f=>f.Visible(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 20, 50, 100 });
-        pager.ShowInfo(true);
-    })
-    .RemoteOperations(true)
-      .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("Actividad")
-                .ShowTitle(true)
-                .Width("70%")
-                .Height(600)
-            )
-             .Form(f => f.Items(items =>
-            {
-                items.AddGroup()
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems =>
-                    {
-                        groupItems.AddSimpleFor(m => m.Titulo).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.IdDis);
-                        groupItems.AddSimpleFor(m => m.IdCon);
-                        groupItems.AddSimpleFor(m => m.IdClm);
-                        groupItems.AddSimpleFor(m => m.Duracion);
-                        groupItems.AddSimpleFor(m => m.IdUm);
-                        groupItems.AddSimpleFor(m => m.IdFrc);
-                        groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2).Editor(e => e
-                        .TextArea().Height(100));
-                        groupItems.AddSimpleFor(m => m.Habilitado);
-
-                    });
-                items.AddGroup()
-                   .Caption("Referencias")
-                   .ColCount(2)
-                   .ColSpan(2)
-                   .Items(groupItems =>
-                   {
-                       groupItems.AddSimpleFor(m => m.Referencia);
-                       groupItems.AddSimpleFor(m => m.ReferenciaUrl);
-
-                   });
-
-                items.AddGroup()
-                .Caption("Especificaciones")
-                .ColCount(2)
-                .ColSpan(2)
-                .Items(groupItems =>
+    
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Actividad>()
+                .ID("formview")
+                .DataSource(ds => ds.Mvc()
+                    .Controller("Actividads")
+                    .LoadAction("Get")
+                    .InsertAction("Post")
+                    .UpdateAction("Put")
+                    .Key("IdAct")
+                )
+                .RemoteOperations(true)
+                .Columns(columns =>
                 {
-                    groupItems.AddSimpleFor(m => m.Especificacion).ColSpan(2).Editor(e => e
-                        .TextArea()
-                        .Height(140)
-                    );
-                });
 
-              
-                
-            }))
+                    columns.AddFor(m => m.IdAct).Caption("ID").Width(100);
+
+                    columns.AddFor(m => m.Titulo).Caption("Título").Width("80%");
+
+                    columns.AddFor(m => m.IdRan).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("Actividads").LoadAction("RangosLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    ).Caption("Usar Rangos").HidingPriority(12);
+
+                    columns.AddFor(m => m.IdCon).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("Actividads").LoadAction("ConsecuenciaLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    ).Caption("Consecuencia").HidingPriority(11);
+
+                    columns.AddFor(m => m.IdClm).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("Actividads").LoadAction("ClaseMantencionsLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    ).Caption("Clase Mantencion").HidingPriority(10);
+
+                    columns.AddFor(m => m.IdDis).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("Actividads").LoadAction("DisciplinasLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    ).Caption("Disciplina").HidingPriority(9);
 
 
-            
+
+                    columns.AddFor(m => m.IdUm).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("Actividads").LoadAction("UnidadMedidaLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    ).Caption("Unidad Medida").HidingPriority(8);
+
+                    columns.AddFor(m => m.IdFrc).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("Actividads").LoadAction("FrecuenciaLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    ).Caption("Frecuencia").HidingPriority(7);
+
+                    columns.AddFor(m => m.SubActividad).HidingPriority(6);
+
+                    columns.AddFor(m => m.Especificacion).HidingPriority(5);
+
+                    columns.AddFor(m => m.Descripcion).HidingPriority(4);
+
+                    columns.AddFor(m => m.Duracion).HidingPriority(3);
+
+                    columns.AddFor(m => m.Inicio).HidingPriority(2);
+
+                    columns.AddFor(m => m.Fin).HidingPriority(1);
+
+                    columns.AddFor(m => m.Referencia).Caption("Nombre de Referencia").HidingPriority(0);
+
+                    columns.AddFor(m => m.Habilitado);
+
+                })
+                .ShowBorders(true)
+                .RowAlternationEnabled(false)
+                .ShowColumnLines(true)
+                .ShowRowLines(true)
+                .Paging(paging => paging.PageSize(50))
+                .FilterRow(f => f.Visible(true))
+                .HeaderFilter(f => f.Visible(true))
+                .SearchPanel(searchPanel => searchPanel.Visible(true))
+                .Pager(pager =>
+                {
+                    pager.ShowPageSizeSelector(true);
+                    pager.AllowedPageSizes(new[] { 20, 50, 100 });
+                    pager.ShowInfo(true);
+                })
+                .RemoteOperations(true)
+                  .Editing(e => e.Mode(GridEditMode.Popup)
+                        .AllowUpdating(true)
+                        .AllowAdding(true)
+                        .AllowDeleting(true)
+                        .UseIcons(true)
+                        .Popup(p => p
+                            .Title("Actividad")
+                            .ShowTitle(true)
+                            .Width("70%")
+                            .Height(600)
+                        )
+                         .Form(f => f.Items(items =>
+                        {
+                            items.AddGroup()
+                                .ColCount(2)
+                                .ColSpan(2)
+                                .Items(groupItems =>
+                                {
+                                    groupItems.AddSimpleFor(m => m.Titulo).ColSpan(2);
+                                    groupItems.AddSimpleFor(m => m.IdDis);
+                                    groupItems.AddSimpleFor(m => m.IdCon);
+                                    groupItems.AddSimpleFor(m => m.IdClm);
+                                    groupItems.AddSimpleFor(m => m.Duracion);
+                                    groupItems.AddSimpleFor(m => m.IdUm);
+                                    groupItems.AddSimpleFor(m => m.IdFrc);
+                                    groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2).Editor(e => e
+                                    .TextArea().Height(100));
+                                    groupItems.AddSimpleFor(m => m.Habilitado);
+
+                                });
+                            items.AddGroup()
+                               .Caption("Referencias")
+                               .ColCount(2)
+                               .ColSpan(2)
+                               .Items(groupItems =>
+                               {
+                                   groupItems.AddSimpleFor(m => m.Referencia);
+                                   groupItems.AddSimpleFor(m => m.ReferenciaUrl);
+
+                               });
+
+                            items.AddGroup()
+                            .Caption("Especificaciones")
+                            .ColCount(2)
+                            .ColSpan(2)
+
+                            .Items(groupItems =>
+                            {
+                                groupItems.AddSimpleFor(m => m.Especificacion).ColSpan(2).Editor(e => e
+                                    .TextArea()
+                                    .Height(140)
+                                );
+                            });
+
+                            items.AddGroup()
+                           .Caption("Actividades Extras")
+                           .ColCount(2)
+                           .ColSpan(2)
+                           .Items(groupItems =>
+                           {
+                               groupItems.AddSimpleFor(m => m.SubActividad).ColSpan(2).Editor(e => e
+                                   .TextArea()
+                                   .Height(140)
+                               );
+                           });
+
+
+
+
+                        }))
+
+
+
+                        )
+
             )
 
-)
+
+
 

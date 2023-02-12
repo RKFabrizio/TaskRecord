@@ -13,15 +13,13 @@ using System.Threading.Tasks;
 using TSK.Models;
 using TSK.Models.Entity;
 using System.Diagnostics;
-using DevExtreme.AspNet.Data;
-using DevExtreme.AspNet.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-
+using System.Data.SqlClient;
+using DevExpress.PivotGrid.OLAP;
 
 namespace TSK.Controllers
 {
@@ -71,6 +69,7 @@ namespace TSK.Controllers
                              Orden = pmsisActividad.Orden,
                          };
 
+
             return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
         }
 
@@ -105,10 +104,21 @@ namespace TSK.Controllers
                 return BadRequest(GetFullErrorMessage(ModelState));
 
             var result = _context.PmsisActividads.Add(model);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException is SqlException sqlException && sqlException.Number == 2627)
+                {
+                    return BadRequest("Ya existe una actividad con el mismo IdAct e IdPms. Por favor, proporcione valores únicos para estos campos.");
+                }
+            }
 
             return Json(new { result.Entity.IdAct, result.Entity.IdPms });
         }
+
 
         [HttpPut]
         public async Task<IActionResult> Put(string key, string values) {

@@ -728,6 +728,8 @@ progress {
   width: 16.6666666667%;
 }
 
+
+
 .col-auto {
   flex: 0 0 auto;
   width: auto;
@@ -15393,6 +15395,16 @@ Navbar vertical
   line-height: 1.3333333333;
 }
 
+.page-title-p {
+    margin: 3;
+    font-size: 0.80rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+}
+
 .page-subtitle {
   margin-top: 0.25rem;
   color: #626976;
@@ -22220,3 +22232,15 @@ Antialiasing
     margin-bottom:10%;
 }
 
+.pauta {
+    margin-left: 5px;
+    margin-top: 3px;
+    float: left;
+    width:4px;
+}
+
+.pauta-title {
+    margin-left: 5px;
+    margin-top: 3px;
+    width: 10px;
+}

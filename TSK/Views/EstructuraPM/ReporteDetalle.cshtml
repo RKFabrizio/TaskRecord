@@ -175,101 +175,45 @@
     </div>
 </div>
 
+
+
 @using (Html.DevExtreme().NamedTemplate("TAB0"))
 {
 
-
-    <div class="row">
-        <div class="col-sm-3">
-            @Html.DevExtreme().Button().ID("openPopupButton1").Text("Grupo 1").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px; margin-left: 22%; margin-top: 15px; background: #454545; border-radius: 5px; color:white;" })
-        </div>
-        <div class="col-sm-3">
-            @Html.DevExtreme().Button().ID("openPopupButton2").Text("Grupo 2").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px;  background: #454545; border-radius: 5px;color:white;" })
-        </div>
-        <div class="col-sm-3">
-            @Html.DevExtreme().Button().ID("openPopupButton3").Text("Grupo 3").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px;  background: #454545; border-radius: 5px;color:white;" })
-        </div>
-        <div class="col-sm-3">
-            @Html.DevExtreme().Button().ID("openPopupButton4").Text("Grupo 4").OnClick("openForm").Width(100).ElementAttr(new { style = "width: 100px;margin-left: 70px; margin-top: 15px; background: #454545; border-radius: 5px;color:white;" })
-        </div>
-        <br />
-    </div>
-    <br />
-
-    
-    @Html.DevExtreme().Popup().ID("myPopup").Title("Grupo Humano").Width("40%").Height("30%").Content(@<text>
-        
-        @(Html.DevExtreme().Form<TSK.Models.Entity.GrupoUsuario>()
-    .Items(items => {
-
-        items.AddSimpleFor(m => m.IdUsr)
-            .Editor(e => e
-                .Lookup()
-                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosPosLookup").LoadParams(new {idPos = 1}).Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")
-            ).Label(label => label.Text("Lider"));
-         items.AddSimpleFor(m => m.IdUsr)
-            .Editor(e => e
-                .TagBox()
-                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosPosLookup").LoadParams(new {idPos = 2}).Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")
-                .SearchEnabled(true)
-                .SearchExpr("Text")
-            ).Label(label => label.Text("Tecnicos"));
-
-        items.AddButton()
-            .HorizontalAlignment(HorizontalAlignment.Center)
-            .ButtonOptions(b => b.Text("Guardar")
-            .Type(ButtonType.Default)
-            .UseSubmitBehavior(true)
-            .Width(100)
-            .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white; margin-top:90px;" })
-    );
-    })
-)
-        </text>).Visible(false)
-
-
-
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
-       .DataSource(ds => ds.Mvc()
-       .Controller("GrupoUsuarios")
-       .LoadAction("Get")
-       .Key("IdGrus")
-   )
-   .Selection(s => s.Mode(SelectionMode.Single))
-   .Columns(columns =>
-   {
-
-       columns.AddFor(m => m.IdUsr).Lookup(lookup => lookup
-           .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuariosLookup").Key("Value"))
-           .ValueExpr("Value")
-           .DisplayExpr("Text")
-       ).Caption("Trabajador");
-
-           columns.AddFor(m => m.Grupo).GroupIndex(0).Caption("Grupo"); ;
-
-       columns.AddFor(m => m.Lider);
-   })
-    .ShowBorders(true)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(20))
-    .Grouping(grouping => grouping.AutoExpandAll(true))
-    .GroupPanel(groupPanel => groupPanel
-    .Visible(true))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 20, 50, 100 });
-        pager.ShowInfo(true);
-    })
-)
-
-
-    
+    <!-- Data de cada grupo Lider-Tecnico -->
+    @(
+        Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+               .DataSource(ds => ds.Mvc()
+                                   .Controller("GrupoUsuarios")
+                                   .LoadAction("Get")
+                                   .InsertAction("Post").OnInserting("Change")
+                                   .UpdateAction("Put")
+                                   .DeleteAction("Delete")
+                                   .Key("IdGrus"))
+               .Columns(columns =>
+               {
+                   columns.AddFor(m => m.IdUsr)
+                              .Lookup(lookup => lookup
+                              .DataSource(ds => ds
+                                                  .WebApi().Controller("GrupoUsuarios")
+                                                  .LoadAction("UsuariosLookup").Key("Value"))
+                                                  .ValueExpr("Value")
+                                                  .DisplayExpr("Text")).Caption("Trabajador");
+                   columns.AddFor(m => m.Grupo).Caption("Grupo");
+                   columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(true);
+               })
+               .FilterRow(f => f.Visible(true))
+               .HeaderFilter(f => f.Visible(true))
+               .ShowBorders(true)
+               .ShowColumnLines(true)
+               .ShowRowLines(true)
+               .Editing(editing =>
+               {
+                   editing.AllowAdding(true);
+                   editing.AllowDeleting(true);
+                   editing.AllowUpdating(true);
+               })
+            )
 }
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
@@ -565,53 +509,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
+
+    function Change(e) {
+        e["IdRep"] = @Model.id;
+        // Dependiendo si el usuario su Rol sera 1 o 2
+        console.log(e);
+    }
+
     window.jsPDF = window.jspdf.jsPDF;
 
-    //Funcion de Popup Grupo Humano
-    function openForm() {
-    $("#myPopup").dxPopup("show")
-
-    // Obtener los valores del botón seleccionado, control de selección simple, idUsr seleccionado y Model.Id
-    let selectedButtonValue = document.getElementById("openPopupButton1").value;
-    let leaderValue = $("#leaderSelectionControl").dxTagBox("instance").option("value");
-    let selectedIdUsr = $("#idUsrSelectionControl").dxLookup("instance").option("value");
-    let modelId = document.getElementById("modelId").value;
-
-    // Crear el objeto con los datos a enviar al controlador
-    let data = {
-    "selectedButtonValue": selectedButtonValue,
-    "leaderValue": leaderValue,
-    "selectedIdUsr": selectedIdUsr,
-    "modelId": modelId
-};
-
-    // Enviar la solicitud POST al controlador
-    $.ajax({
-    type: "POST",
-    url: "api/GrupoUsuarios/Post",
-    data: JSON.stringify(data),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function(response) {
-        if (response.status === "success") {
-            DevExpress.ui.notify("Los datos se han guardado correctamente", "success", 2000);
-        } else {
-            DevExpress.ui.notify("Error al guardar los datos: " + response.message, "error", 2000);
-        }
-    },
-    failure: function(response) {
-        DevExpress.ui.notify("Error al guardar los datos: " + response.message, "error", 2000);
-    }
-});
-
-     }
 
     function customizeTooltip(pointsInfo) {
         return { text: parseInt(pointsInfo.originalValue) + "%" };
     }
+
+    // Crear Pdf
     function exportHeadToPDF(e) {
         var doc = new jsPDF();
-        
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
@@ -623,7 +538,7 @@
 
     function exportDetailToPDF(e) {
         var doc = new jsPDF();
-        
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
@@ -635,7 +550,7 @@
 
     function exportEntregaToPDF(e) {
         var doc = new jsPDF();
-        
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
@@ -645,17 +560,17 @@
         });
     }
 
-    function gridChild_OnRowUpdated1(e){  
-        setTimeout(function() {
+    function gridChild_OnRowUpdated1(e) {
+        setTimeout(function () {
             var dataGrid = $('#gridContainer1').dxDataGrid('instance');
             dataGrid.refresh();
         });
-    } 
+    }
 
-    function gridChild_OnRowUpdated2(e){  
-        setTimeout(function() {
+    function gridChild_OnRowUpdated2(e) {
+        setTimeout(function () {
             var dataGrid = $('#gridContainer2').dxDataGrid('instance');
             dataGrid.refresh();
         });
-    } 
+    }
 </script>

@@ -52,12 +52,15 @@ namespace TSK.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string values) {
+        public async Task<IActionResult> Post(string values)
+        {
             var model = new GrupoUsuario();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
+            //   valuesDict["IdRep"] = 2015;
+
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
             var result = _context.GrupoUsuarios.Add(model);

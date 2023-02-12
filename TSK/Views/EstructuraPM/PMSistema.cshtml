@@ -23,76 +23,206 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmSistema>()
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="form-group mb-3">
+                <div class='form-control'>
+                    <div class="col-md-12">
+
+                        @(Html.DevExtreme().TabPanel()
+
+                            .Items(items =>
+                            {
+
+                                items.Add()
+                                .Title("LISTA DE PAUTA - SISTEMA")
+                                .Template(new TemplateName("TAB1"));
+                                items.Add()
+                                .Title("AÑADIR SISTEMAS")
+                                .Template(new TemplateName("TAB2"));
+
+                            })
+                            .SelectedIndex(0)
+                            .Loop(false)
+                            .AnimationEnabled(true)
+                            .SwipeEnabled(true)
+                            )
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmSistema>()
+        .DataSource(ds => ds.Mvc()
+            .Controller("PmSistemas")
+            .LoadAction("Get")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .Key("IdPms")
+        )
+        .RemoteOperations(true)
+        .Columns(columns =>
+        {
+
+            columns.AddFor(m => m.IdPms).Caption("ID").Width(50);
+
+            columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemasLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).GroupIndex(0).Caption("Sistema");
+
+            columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("PmsLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).Caption("PM");
+
+            columns.AddFor(m => m.Habilitado);
+        })
+       .AllowColumnReordering(true)
+        .Grouping(grouping => grouping.AutoExpandAll(true))
+        .GroupPanel(groupPanel => groupPanel
+            .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
+            .Visible(true))
+        .ShowBorders(true)
+        .RowAlternationEnabled(false)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .Paging(paging => paging.PageSize(50))
+        .FilterRow(f => f.Visible(true))
+        .HeaderFilter(f => f.Visible(true))
+        .SearchPanel(searchPanel => searchPanel.Visible(true))
+        .Pager(pager =>
+        {
+            pager.ShowPageSizeSelector(true);
+            pager.AllowedPageSizes(new[] { 50, 100, 200 });
+            pager.ShowInfo(true);
+        })
+        .RemoteOperations(true)
+        .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowUpdating(true)
+                .AllowAdding(true)
+                .UseIcons(true)
+                .Popup(p => p
+                    .Title("PM Sistema")
+                    .ShowTitle(true)
+                    .Width("70%")
+                    .Height(400)
+                )
+                .Form(f => f.Items(items =>
+                {
+                    items.AddGroup()
+                        .ColCount(2)
+                        .ColSpan(2)
+                        .Items(groupItems =>
+                        {
+                            groupItems.AddSimpleFor(m => m.IdPm).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.IdSis).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.Habilitado);
+                        });
+                }))
+
+        )
+    )
+}
+
+@using (Html.DevExtreme().NamedTemplate("TAB2"))
+{
+    <br />
+    <div>
+        <h4>
+            Selecciona tu pauta de mantenimiento:
+        </h4>
+    </div>
+
+    @(Html.DevExtreme().Form<TSK.Models.Entity.PmSistema>()
+                .ID("form")
+                .Items(items =>
+                {
+                    items.AddSimpleFor(m => m.IdPms)
+                    .Editor(e => e
+                        .Lookup()
+                            .DataSource(ds => ds.Mvc().Controller("PmSistemas").LoadAction("PmsLookup").Key("idPms"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                        .OnValueChanged("refreshData")
+                        .SearchEnabled(true)
+
+                            ).Label(label => label
+                        .Text("Pauta de Mantenimiento - Sistema")
+                        .Visible(false)
+                    );
+                })
+            )
+
+   
+            @(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmSistema>()
     .DataSource(ds => ds.Mvc()
         .Controller("PmSistemas")
         .LoadAction("Get")
         .InsertAction("Post")
         .UpdateAction("Put")
+        .DeleteAction("Delete")
         .Key("IdPms")
     )
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.IdPms).Caption("ID").Width(50);
+        columns.AddFor(m => m.IdPms);
 
         columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemasLookup").Key("Value"))
             .ValueExpr("Value")
             .DisplayExpr("Text")
-        ).GroupIndex(0).Caption("Sistema");
+        );
 
         columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("PmsLookup").Key("Value"))
             .ValueExpr("Value")
             .DisplayExpr("Text")
-        ).Caption("PM");
-
-        columns.AddFor(m => m.Habilitado);
+        );
     })
-   .AllowColumnReordering(true)
-    .Grouping(grouping => grouping.AutoExpandAll(true))
-    .GroupPanel(groupPanel => groupPanel
-        .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
-        .Visible(true))
-    .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(50))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 50, 100, 200 });
-        pager.ShowInfo(true);
-    })
-    .RemoteOperations(true)
-    .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowDeleting(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("PM Sistema")
-                .ShowTitle(true)
-                .Width("70%")
-                .Height(400)
-            )
-            .Form(f => f.Items(items =>
-            {
-                items.AddGroup()
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems =>
-                    {
-                        groupItems.AddSimpleFor(m => m.IdPm).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.IdSis).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
-                    });
-            }))
-
-    )
+    
+.Editing(editing =>
+{
+    editing.Mode(GridEditMode.Batch);
+    editing.AllowAdding(true);
+    editing.AllowUpdating(true);
+    editing.AllowDeleting(true);
+    editing.SelectTextOnEditStart(true);
+    editing.StartEditAction(GridStartEditAction.Click);
+})
 )
+
+}
+
+
+
+<script>
+    function refreshData() {
+    var grid = $("#grid").dxDataGrid("instance");
+    grid.refresh();
+    }
+
+    function getFormInstance() {
+    return $("#form").dxForm("instance");
+    }
+
+    function getIdPm() {
+        var form = $("#form").dxForm("instance");
+        var IdPms = form.getEditor("IdPm").option("value");
+        return IdPm;
+
+    }
+
+
+</script>
