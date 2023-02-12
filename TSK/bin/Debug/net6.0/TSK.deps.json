@@ -43,6 +43,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.11",
           "System.Data.SqlClient": "4.8.3",
+          "bootstrap": "5.3.0-alpha1",
           "DevExpress.Web.ASPxHtmlEditor.v22.1": "22.1.7.0",
           "DevExpress.Web.Bootstrap.v22.1": "22.1.7.0",
           "DevExpress.Web.Mvc.v22.1": "22.1.7.0",
@@ -343,6 +344,7 @@
           "TSK.dll": {}
         }
       },
+      "bootstrap/5.3.0-alpha1": {},
       "BuildBundlerMinifier/2.9.406": {},
       "DevExpress.Charts/22.1.7": {
         "dependencies": {
@@ -5555,6 +5557,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "bootstrap/5.3.0-alpha1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TSX+o7P7IqJiiqllLYt6BuOp3E6aRulpLHRci7/KIPyfXjcnulSh8NVgdbFzM/bNldrZ/Wuzsg0eX7I4WM9pqw==",
+      "path": "bootstrap/5.3.0-alpha1",
+      "hashPath": "bootstrap.5.3.0-alpha1.nupkg.sha512"
     },
     "BuildBundlerMinifier/2.9.406": {
       "type": "package",

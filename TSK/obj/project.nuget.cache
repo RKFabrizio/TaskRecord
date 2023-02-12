@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LxyDrdydD+vrDPN0TJAqDkVGH7tTI3vf2gD9l7PUpGhB9eUvPAY6vf1bQALEDyvXvCjpUVIt75ABSQCQMDmqdw==",
+  "dgSpecHash": "KsBrHVIM4J781QaMoYiL3GhSSiibG1GjvINyK+gyv6oEAnBIvybbsUBdHX2p8t4+nrMmZR7P5ZhcF04Gm+sQhg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODING\\TSK\\TSK.csproj",
+  "projectFilePath": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\TSK.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\fabri\\.nuget\\packages\\bootstrap\\5.3.0-alpha1\\bootstrap.5.3.0-alpha1.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\buildbundlerminifier\\2.9.406\\buildbundlerminifier.2.9.406.nupkg.sha512",
     "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages\\devexpress.charts\\22.1.7\\devexpress.charts.22.1.7.nupkg.sha512",
     "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages\\devexpress.charts.core\\22.1.7\\devexpress.charts.core.22.1.7.nupkg.sha512",

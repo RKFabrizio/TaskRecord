@@ -10,7 +10,16 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using TSK.Models;
 using TSK.Models.Entity;
+using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Data.SqlClient;
+using DevExpress.PivotGrid.OLAP;
 
 namespace TSK.Controllers
 {
@@ -44,13 +53,38 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(pmsisactividads, loadOptions));
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> PmsisActividadesLookup(int IdPms, DataSourceLoadOptions loadOptions) // nos vota 0 como id
+        {
+
+            var result = from pmsisActividad in _context.PmsisActividads
+                         from actividad in _context.Actividads
+                         where pmsisActividad.IdAct == actividad.IdAct && pmsisActividad.IdPms == IdPms
+                         select new
+                         {
+                             IdPms = pmsisActividad.IdPms,
+                             IdAct = pmsisActividad.IdAct,
+                             NombreActividad = actividad.Titulo,
+                             Orden = pmsisActividad.Orden,
+                         };
+
+
+            return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
+        }
+
+
+
         [HttpPost]
-        public async Task<IActionResult> Post(string values) {
-            var model = new PmsisActividad();
+       
+        public async Task<IActionResult> PmsisActividadesBatchPost(int idPms, string values)
+        {
+     
+            var model = new PmsisActividad { IdPms = idPms };
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
             var result = _context.PmsisActividads.Add(model);
@@ -58,6 +92,33 @@ namespace TSK.Controllers
 
             return Json(new { result.Entity.IdAct, result.Entity.IdPms });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(string values)
+        {
+            var model = new PmsisActividad();
+            var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
+            PopulateModel(model, valuesDict);
+
+            if (!TryValidateModel(model))
+                return BadRequest(GetFullErrorMessage(ModelState));
+
+            var result = _context.PmsisActividads.Add(model);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException is SqlException sqlException && sqlException.Number == 2627)
+                {
+                    return BadRequest("Ya existe una actividad con el mismo IdAct e IdPms. Por favor, proporcione valores únicos para estos campos.");
+                }
+            }
+
+            return Json(new { result.Entity.IdAct, result.Entity.IdPms });
+        }
+
 
         [HttpPut]
         public async Task<IActionResult> Put(string key, string values) {
@@ -96,6 +157,8 @@ namespace TSK.Controllers
 
         [HttpGet]
         public async Task<IActionResult> ActividadsLookup(DataSourceLoadOptions loadOptions) {
+            
+
             var lookup = from i in _context.Actividads
                          orderby i.IdCon
                          select new {
@@ -171,5 +234,19 @@ namespace TSK.Controllers
 
             return String.Join(" ", messages);
         }
+
+    
+
+
+        [HttpPut]
+        public IActionResult EditActivity(PmsisActividad activity)
+        {
+            _context.PmsisActividads.Update(activity);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

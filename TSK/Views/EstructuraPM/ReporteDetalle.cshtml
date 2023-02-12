@@ -1,5 +1,6 @@
 ﻿@model Query
 
+
 @{
     ViewData["Title"] = "ReporteDetail";
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
@@ -65,15 +66,7 @@
                 <div class="form-group mb-1">
                     <div class="row">
                         
-                        <div class="col-lg-4">
-                            <label class="form-label">Lider</label>
-                            <label class="form-control" style="background-color: ghostwhite;">@Model.texto3</label>
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="form-label">Técnico</label>
-                            <label class="form-control"style="background-color: ghostwhite;">@Model.texto4</label>
-                        </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-10">
                             <label class="form-label">Fecha</label>
                             <label class="form-control" style="background-color: ghostwhite;">@Model.fecha1.Value.ToString("dd-MM-yyyy")</label>
                         </div>
@@ -157,9 +150,11 @@
                                                     }); 
                                                 items.AddButton()
                                                     .HorizontalAlignment(HorizontalAlignment.Center)
-                                                    .ButtonOptions(b => b.Text("Actualiza")
+                                                    .ButtonOptions(b => b.Text("Actualizar")
                                                         .Type(ButtonType.Default)
                                                         .UseSubmitBehavior(true)
+                                                        .Width(100)
+                                                .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white;" })
                                                 );
 
                                             })
@@ -180,37 +175,45 @@
     </div>
 </div>
 
+
+
 @using (Html.DevExtreme().NamedTemplate("TAB0"))
 {
-    @Html.DevExtreme().Button().ID("openPopupButton1").Text("Grupo 1").OnClick("openForm")
-    @Html.DevExtreme().Button().ID("openPopupButton2").Text("Grupo 2").OnClick("openForm")
-    @Html.DevExtreme().Button().ID("openPopupButton3").Text("Grupo 3").OnClick("openForm")
-    @Html.DevExtreme().Button().ID("openPopupButton4").Text("Grupo 4").OnClick("openForm")
-    @Html.DevExtreme().Popup().ID("myPopup").Title("Grupo Humano "+ Model.id).Content(@<text>
-        
-        @(Html.DevExtreme().Form<TSK.Models.Entity.GrupoUsuario>()
-    .Items(items => {
 
-        items.AddSimpleFor(m => m.IdUsr)
-            .Editor(e => e
-                .Lookup()
-                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuarioLookup").LoadParams(new {idPos = 1}).Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")
-            );
-        items.AddSimpleFor(m => m.IdUsr)
-            .Editor(e => e
-                .Lookup()
-                .DataSource(ds => ds.WebApi().Controller("GrupoUsuarios").LoadAction("UsuarioLookup").LoadParams(new {idPos = 2}).Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")
-          );
-    })
-)
-        
-        </text>).Visible(false)
-
-
+    <!-- Data de cada grupo Lider-Tecnico -->
+    @(
+        Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+               .DataSource(ds => ds.Mvc()
+                                   .Controller("GrupoUsuarios")
+                                   .LoadAction("Get")
+                                   .InsertAction("Post").OnInserting("Change")
+                                   .UpdateAction("Put")
+                                   .DeleteAction("Delete")
+                                   .Key("IdGrus"))
+               .Columns(columns =>
+               {
+                   columns.AddFor(m => m.IdUsr)
+                              .Lookup(lookup => lookup
+                              .DataSource(ds => ds
+                                                  .WebApi().Controller("GrupoUsuarios")
+                                                  .LoadAction("UsuariosLookup").Key("Value"))
+                                                  .ValueExpr("Value")
+                                                  .DisplayExpr("Text")).Caption("Trabajador");
+                   columns.AddFor(m => m.Grupo).Caption("Grupo");
+                   columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(true);
+               })
+               .FilterRow(f => f.Visible(true))
+               .HeaderFilter(f => f.Visible(true))
+               .ShowBorders(true)
+               .ShowColumnLines(true)
+               .ShowRowLines(true)
+               .Editing(editing =>
+               {
+                   editing.AllowAdding(true);
+                   editing.AllowDeleting(true);
+                   editing.AllowUpdating(true);
+               })
+            )
 }
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
@@ -506,19 +509,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
+
+    function Change(e) {
+        e["IdRep"] = @Model.id;
+        // Dependiendo si el usuario su Rol sera 1 o 2
+        console.log(e);
+    }
+
     window.jsPDF = window.jspdf.jsPDF;
 
-    //Funcion de Popup Grupo Humano
-    function openForm() {
-    $("#myPopup").dxPopup("show");
-     }
 
     function customizeTooltip(pointsInfo) {
         return { text: parseInt(pointsInfo.originalValue) + "%" };
     }
+
+    // Crear Pdf
     function exportHeadToPDF(e) {
         var doc = new jsPDF();
-        
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
@@ -530,7 +538,7 @@
 
     function exportDetailToPDF(e) {
         var doc = new jsPDF();
-        
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
@@ -542,7 +550,7 @@
 
     function exportEntregaToPDF(e) {
         var doc = new jsPDF();
-        
+
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
@@ -552,17 +560,17 @@
         });
     }
 
-    function gridChild_OnRowUpdated1(e){  
-        setTimeout(function() {
+    function gridChild_OnRowUpdated1(e) {
+        setTimeout(function () {
             var dataGrid = $('#gridContainer1').dxDataGrid('instance');
             dataGrid.refresh();
         });
-    } 
+    }
 
-    function gridChild_OnRowUpdated2(e){  
-        setTimeout(function() {
+    function gridChild_OnRowUpdated2(e) {
+        setTimeout(function () {
             var dataGrid = $('#gridContainer2').dxDataGrid('instance');
             dataGrid.refresh();
         });
-    } 
+    }
 </script>

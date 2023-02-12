@@ -44,6 +44,25 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(pmsistemas, loadOptions));
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> PmSistemasLookup(int IdPm, DataSourceLoadOptions loadOptions) // nos vota 0 como id
+        {
+
+            var result = from pmsistemas in _context.PmSistemas
+                         from sistema in _context.Sistemas
+                         where pmsistemas.IdSis == sistema.IdSis && pmsistemas.IdPm == IdPm
+                         select new
+                         {
+                             IdPms = pmsistemas.IdPms,
+                             IdPm = pmsistemas.IdPm,
+                             IdSis = pmsistemas.IdSis
+                         };
+
+
+            return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(string values) {
             var model = new PmSistema();
@@ -87,10 +106,11 @@ namespace TSK.Controllers
         [HttpGet]
         public async Task<IActionResult> PmsLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Pms
+                         join flo in _context.Flota on i.IdFlt equals flo.IdFlt
                          orderby i.Nombre
                          select new {
                              Value = i.IdPm,
-                             Text = i.Nombre
+                             Text = i.Descripcion + " " + i.IdPm + " - " + flo.Flota + " - " + i.Nombre
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }

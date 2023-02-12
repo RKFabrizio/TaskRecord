@@ -49,7 +49,6 @@ namespace TSK.Models.Entity
         public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<Sistema> Sistemas { get; set; }
         public virtual DbSet<Tabla> Tablas { get; set; }
-        public virtual DbSet<Tarea> Tareas { get; set; }
         public virtual DbSet<TipoEquipo> TipoEquipos { get; set; }
         public virtual DbSet<Unidad> Unidads { get; set; }
         public virtual DbSet<UnidadMedidum> UnidadMedida { get; set; }
@@ -67,6 +66,8 @@ namespace TSK.Models.Entity
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
+
             modelBuilder.Entity<Actividad>(entity =>
             {
                 entity.HasKey(e => e.IdAct);
@@ -115,6 +116,11 @@ namespace TSK.Models.Entity
                     .HasMaxLength(500)
                     .IsUnicode(false)
                     .HasColumnName("DESCRIPCION");
+
+                entity.Property(e => e.SubActividad)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("SUBACTIVIDAD");
 
                 entity.Property(e => e.Referencia)
                     .HasMaxLength(250)
@@ -454,8 +460,7 @@ namespace TSK.Models.Entity
 
             modelBuilder.Entity<Area>(entity =>
             {
-                entity.HasKey(e => e.IdArea)
-                    .HasName("XPKAREA");
+                entity.HasKey(e => e.IdArea);
 
                 entity.ToTable("AREA");
 
@@ -1336,45 +1341,6 @@ namespace TSK.Models.Entity
                     .HasForeignKey(d => d.IdTab)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_TABLA_AUDITORIA");
-            });
-
-            modelBuilder.Entity<Tarea>(entity =>
-            {
-                entity.HasKey(e => e.IdTar)
-                    .HasName("XPKTAREA");
-
-                entity.ToTable("TAREA");
-
-                entity.Property(e => e.IdTar).HasColumnName("ID_TAR");
-
-                entity.Property(e => e.Extracolumn1)
-                    .IsUnicode(false)
-                    .HasColumnName("EXTRACOLUMN1");
-
-                entity.Property(e => e.Extracolumn2)
-                    .IsUnicode(false)
-                    .HasColumnName("EXTRACOLUMN2");
-
-                entity.Property(e => e.Extracolumn3)
-                    .IsUnicode(false)
-                    .HasColumnName("EXTRACOLUMN3");
-
-                entity.Property(e => e.Habilitado)
-                    .HasColumnName("HABILITADO")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.IdAct).HasColumnName("ID_ACT");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(800)
-                    .IsUnicode(false)
-                    .HasColumnName("NOMBRE");
-
-                entity.HasOne(d => d.IdActNavigation)
-                    .WithMany(p => p.Tareas)
-                    .HasForeignKey(d => d.IdAct)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TAREA_ACTIVIDAD");
             });
 
             modelBuilder.Entity<TipoEquipo>(entity =>

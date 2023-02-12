@@ -41,7 +41,8 @@ namespace TSK.Controllers
                 i.ReferenciaUrl,
                 i.Habilitado,
                 i.Descripcion,
-                i.Duracion
+                i.Duracion,
+                i.SubActividad
             });
 
             // If underlying data is a large SQL table, specify PrimaryKey and PaginateViaPrimaryKey.
@@ -92,14 +93,41 @@ namespace TSK.Controllers
             await _context.SaveChangesAsync();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ActividadNombre(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from i in _context.Actividads
+                         orderby i.Titulo
+                         select new
+                         {
+                             Value = i.IdAct,
+                             Text = i.Titulo
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
 
         [HttpGet]
         public async Task<IActionResult> DisciplinasLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Disciplinas
-                         orderby i.IdNiv
+                         orderby i.Nombre
                          select new {
                              Value = i.IdDis,
-                             Text = i.IdNiv
+                             Text = i.Nombre
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DisciplinasFilterLookup(int IdAct, DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from i in _context.Actividads
+                         from d in _context.Disciplinas
+                         where i.IdDis == d.IdDis && i.IdAct == IdAct
+                         
+                         select new
+                         {
+                             IdDis = d.IdDis,
+                             Nombre = d.Nombre
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
@@ -129,12 +157,12 @@ namespace TSK.Controllers
         [HttpGet]
         public async Task<IActionResult> FrecuenciaLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Frecuencia
-                         orderby i.Nombre
+                         orderby i.IdFrc 
                          select new {
                              Value = i.IdFrc,
                              Text = i.Nombre
                          };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+            return Json(await DataSourceLoader.LoadAsync(lookup.OrderBy(x => x.Value), loadOptions));
         }
 
         [HttpGet]
@@ -176,6 +204,7 @@ namespace TSK.Controllers
             string HABILITADO = nameof(Actividad.Habilitado);
             string DESCRIPCION = nameof(Actividad.Descripcion);
             string DURACION = nameof(Actividad.Duracion);
+            string SUBACTIVIDAD = nameof(Actividad.SubActividad);
 
             if(values.Contains(ID_ACT)) {
                 model.IdAct = Convert.ToInt32(values[ID_ACT]);
@@ -190,7 +219,7 @@ namespace TSK.Controllers
             }
 
             if(values.Contains(ID_DIS)) {
-                model.IdDis = Convert.ToInt32(values[ID_DIS]);
+                model.IdDis = values[ID_DIS] != null ? Convert.ToInt32(values[ID_DIS]) : (int?)null;
             }
 
             if(values.Contains(TITULO)) {
@@ -237,8 +266,14 @@ namespace TSK.Controllers
                 model.Descripcion = Convert.ToString(values[DESCRIPCION]);
             }
 
-            if(values.Contains(DURACION)) {
-                model.Duracion = Convert.ToSingle(values[DURACION], CultureInfo.InvariantCulture);
+            if (values.Contains(DURACION))
+            {
+                model.Duracion = values[DURACION] != null ? Convert.ToDecimal(values[DURACION], CultureInfo.InvariantCulture) : (decimal?)null;
+            }
+
+
+            if (values.Contains(SUBACTIVIDAD)) {
+                model.SubActividad = Convert.ToString(values[SUBACTIVIDAD]);
             }
         }
 

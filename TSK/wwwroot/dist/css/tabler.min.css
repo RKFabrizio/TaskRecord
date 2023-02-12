@@ -24186,3 +24186,12 @@ pre {
     margin-bottom: 10%;
 }
 
+.page-title-p {
+    margin: 3;
+    font-size: 0.80rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+}
