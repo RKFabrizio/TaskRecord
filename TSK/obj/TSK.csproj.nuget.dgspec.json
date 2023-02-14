@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[22.1.3, )"
             },
+            "DevExpress.XtraReports.RazorDefinitions": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
             "DevExtreme.AspNet.Core": {
               "target": "Package",
               "version": "[22.1.7, )"
@@ -87,6 +91,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
+            },
+            "XtraReportsControls": {
+              "target": "Package",
+              "version": "[17.2.5, )"
             },
             "bootstrap": {
               "target": "Package",

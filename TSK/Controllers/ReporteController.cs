@@ -50,12 +50,13 @@ namespace TSK.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string values) {
+        public async Task<IActionResult> Post(string values)
+        {
             var model = new Reporte();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
             var result = _context.Reportes.Add(model);
@@ -64,16 +65,18 @@ namespace TSK.Controllers
             return Json(new { result.Entity.IdRep });
         }
 
+
         [HttpPut]
-        public async Task<IActionResult> Put(int key, string values) {
+        public async Task<IActionResult> Put(int key, string values)
+        {
             var model = await _context.Reportes.FirstOrDefaultAsync(item => item.IdRep == key);
-            if(model == null)
+            if (model == null)
                 return StatusCode(409, "Object not found");
 
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
             await _context.SaveChangesAsync();
@@ -81,7 +84,8 @@ namespace TSK.Controllers
         }
 
         [HttpDelete]
-        public async Task Delete(int key) {
+        public async Task Delete(int key)
+        {
             var model = await _context.Reportes.FirstOrDefaultAsync(item => item.IdRep == key);
 
             _context.Reportes.Remove(model);
@@ -89,18 +93,21 @@ namespace TSK.Controllers
         }
 
 
+
         [HttpGet]
-        public async Task<IActionResult> PmsLookup(DataSourceLoadOptions loadOptions) {
+        public async Task<IActionResult> PmsLookup(DataSourceLoadOptions loadOptions)
+        {
             var lookup = from pm in _context.Pms
-                    join flo in _context.Flota on pm.IdFlt equals flo.IdFlt
-                    orderby pm.IdPm
-                    select new
-                    {
-                        Value = pm.IdPm,
-                        Text = pm.Nombre + " - " + flo.Flota + " - " + pm.Descripcion
-                    };
+                         join flo in _context.Flota on pm.IdFlt equals flo.IdFlt
+                         orderby pm.IdPm
+                         select new
+                         {
+                             Value = pm.IdPm,
+                             Text = pm.Nombre + " - " + flo.Flota + " - " + pm.Descripcion
+                         };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> UnidadsLookup(DataSourceLoadOptions loadOptions)
@@ -115,13 +122,14 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
 
-
         [HttpGet]
-        public async Task<IActionResult> UnidadsFlotaLookup(DataSourceLoadOptions loadOptions) {
+        public async Task<IActionResult> UnidadsFlotaLookup(DataSourceLoadOptions loadOptions)
+        {
             var lookup = from uni in _context.Unidads
                          join flo in _context.Flota on uni.IdFlt equals flo.IdFlt
                          orderby flo.Flota + " - " + uni.Unidad1
-                         select new {
+                         select new
+                         {
                              Value = uni.IdUni,
                              Text = flo.Flota + " - " + uni.Unidad1
                          };
@@ -129,43 +137,20 @@ namespace TSK.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UsuariosLookup(DataSourceLoadOptions loadOptions) {
+        public async Task<IActionResult> UsuariosLookup(DataSourceLoadOptions loadOptions)
+        {
             var lookup = from i in _context.Usuarios
                          orderby i.Nombre
-                         select new {
+                         select new
+                         {
                              Value = i.IdUsr,
                              Text = i.Nombre
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> UsuariosLiderLookup(DataSourceLoadOptions loadOptions)
-        //{
-        //    var lookup = from i in _context.Usuarios
-        //                 orderby i.Nombre
-        //                 where i.Lider == true && i.IdRol == 3
-        //                 select new
-        //                 {
-        //                     Value = i.IdUsr,
-        //                     Text = i.Nombre
-        //                 };
-        //    return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        //}
+    
 
-        //[HttpGet]
-        //public async Task<IActionResult> UsuariosTecnicoLookup(DataSourceLoadOptions loadOptions)
-        //{
-        //    var lookup = from i in _context.Usuarios
-        //                 orderby i.Nombre
-        //                 where i.Lider == false && i.IdRol == 3
-        //                 select new
-        //                 {
-        //                     Value = i.IdUsr,
-        //                     Text = i.Nombre
-        //                 };
-        //    return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        //}
         private void PopulateModel(Reporte model, IDictionary values) {
             string ID_REP = nameof(Reporte.IdRep);
             string ID_PM = nameof(Reporte.IdPm);
@@ -201,20 +186,18 @@ namespace TSK.Controllers
             }
 
             if(values.Contains(COMENTARIO)) {
-                model.Comentario = Convert.ToString(values[COMENTARIO]).ToUpper();
+                model.Comentario = Convert.ToString(values[COMENTARIO]);
             }
 
-            if (values.Contains(CREADO))
-            {
+            if(values.Contains(CREADO)) {
                 model.Creado = values[CREADO] != null ? Convert.ToBoolean(values[CREADO]) : (bool?)null;
             }
 
-            if (values.Contains(AVANCE))
-            {
-                model.Avance = Convert.ToSingle(values[AVANCE], CultureInfo.InvariantCulture);
+            if(values.Contains(AVANCE)) {
+                model.Avance = Convert.ToDouble(values[AVANCE], CultureInfo.InvariantCulture);
             }
 
-            if (values.Contains(HABILITADO)) {
+            if(values.Contains(HABILITADO)) {
                 model.Habilitado = values[HABILITADO] != null ? Convert.ToBoolean(values[HABILITADO]) : (bool?)null;
             }
 

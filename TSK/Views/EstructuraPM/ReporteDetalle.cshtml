@@ -153,8 +153,8 @@
                                                     .ButtonOptions(b => b.Text("Actualizar")
                                                         .Type(ButtonType.Default)
                                                         .UseSubmitBehavior(true)
-                                                        .Width(100)
-                                                .ElementAttr(new { style = "width: 100px; background-color:#454545; color: white;" })
+                                                        .Width(150)
+                                                .ElementAttr(new { style = "width: 150px; background-color:#454545; color: white;" })
                                                 );
 
                                             })
@@ -177,10 +177,48 @@
 
 
 
-@using (Html.DevExtreme().NamedTemplate("TAB0"))
-{
-
+    @using (Html.DevExtreme().NamedTemplate("TAB0"))
+    {
     <!-- Data de cada grupo Lider-Tecnico -->
+    @(
+    Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+                       .DataSource(ds => ds.Mvc()
+                                           .Controller("GrupoUsuarios")
+                                               .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
+                                           .InsertAction("Post").OnInserting("Change")
+                                       .UpdateAction("Put")
+                                       .DeleteAction("Delete")
+                                       .Key("IdGrus"))
+                   .Columns(columns =>
+                   {
+                       columns.AddFor(m => m.IdUsr)
+                                  .Lookup(lookup => lookup
+                                  .DataSource(ds => ds
+                                                      .WebApi().Controller("GrupoUsuarios")
+                                                      .LoadAction("UsuariosLookup").Key("Value"))
+                                                      .ValueExpr("Value")
+                                                      .DisplayExpr("Text")).Caption("Trabajador");
+                       columns.AddFor(m => m.Grupo).Caption("Grupo");
+                       columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(true);
+                   })
+                   .FilterRow(f => f.Visible(true))
+                   .HeaderFilter(f => f.Visible(true))
+                   .ShowBorders(true)
+                   .ShowColumnLines(true)
+                   .ShowRowLines(true)
+                   .Editing(editing =>
+                   {
+                       editing.AllowAdding(true);
+                       editing.AllowDeleting(true);
+                       editing.AllowUpdating(true);
+                   })
+                )
+        }
+    
+
+    @using (Html.DevExtreme().NamedTemplate("TABO"))
+    {
+           <!-- Data de cada grupo Lider-Tecnico -->
     @(
         Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
                .DataSource(ds => ds.Mvc()
@@ -214,6 +252,8 @@
                    editing.AllowUpdating(true);
                })
             )
+
+    
 }
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))

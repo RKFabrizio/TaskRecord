@@ -12,7 +12,7 @@
             Mantenimiento
         </div>
         <h2 class="page-title">
-            Tipo Equipos
+            Tipos de Equipo
         </h2>
     </div>
 
@@ -34,37 +34,32 @@
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.IdTeq).Caption("ID").Width(50);
-
         columns.AddFor(m => m.IdArea).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("TipoEquipos").LoadAction("AreasLookup").Key("Value"))
             .ValueExpr("Value")
             .DisplayExpr("Text")
-        );
+        ).Caption("Tipo de Area").Width(150).GroupIndex(0);
 
-        columns.AddFor(m => m.TEquipo).Caption("Tipo de Equipo").Width(100);
+        columns.AddFor(m => m.TEquipo).Caption("Tipo de Equipo");
 
         columns.AddFor(m => m.Habilitado).Width(100);
 
     })
-    .ShowBorders(true)
-    .RowAlternationEnabled(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(20))
-    .FilterRow(f => f.Visible(true))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 20, 50, 100 });
-        pager.ShowInfo(true);
-    })
+   .RemoteOperations(false)
     .AllowColumnReordering(true)
-    .Grouping(grouping => grouping.AutoExpandAll(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .GroupPanel(groupPanel => groupPanel
-        .EmptyPanelText("")
-        .Visible(true))
-    .RemoteOperations(true)
+    .ShowBorders(true)
+    .OnContentReady("contentReady")
+    .Paging(p => p.PageSize(10))
+    .Pager(p => p
+        .ShowPageSizeSelector(true)
+        .AllowedPageSizes(new[] {10, 25, 50, 100})
+    )
+    .SearchPanel(s => s
+        .Visible(true)
+        .HighlightCaseSensitive(true)
+    )
+    .GroupPanel(g => g.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
     .Editing(e => e.Mode(GridEditMode.Popup)
         .AllowUpdating(true)
         .AllowAdding(true)
@@ -73,7 +68,7 @@
         .Title("Tipo de Equipo")
         .ShowTitle(true)
         .Width("70%")
-        .Height(300)
+        .Height(230)
         )
         .Form(f => f.Items(items =>
             {
@@ -84,8 +79,18 @@
                     {
                         groupItems.AddSimpleFor(m => m.IdArea);
                         groupItems.AddSimpleFor(m => m.TEquipo);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
        )
 )
+
+<script>
+     var collapsed = false;
+    function contentReady(e) {
+        if(!collapsed) {
+            collapsed = true;
+            e.component.expandRow(["EnviroCare"]);
+        }
+    }
+</script>

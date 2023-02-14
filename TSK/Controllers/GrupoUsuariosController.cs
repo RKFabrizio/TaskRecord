@@ -33,20 +33,15 @@ namespace TSK.Controllers
 
         }
         [HttpGet]
-        public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions) {
-            var grupousuarios = _context.GrupoUsuarios.Select(i => new {
+        public async Task<IActionResult> Get(int idRep, DataSourceLoadOptions loadOptions)
+        {
+            var grupousuarios = _context.GrupoUsuarios.Where(x => x.IdRep == idRep).Select(i => new {
                 i.IdGrus,
                 i.IdRep,
                 i.IdUsr,
                 i.Grupo,
                 i.Lider
             });
-
-            // If underlying data is a large SQL table, specify PrimaryKey and PaginateViaPrimaryKey.
-            // This can make SQL execution plans more efficient.
-            // For more detailed information, please refer to this discussion: https://github.com/DevExpress/DevExtreme.AspNet.Data/issues/336.
-            // loadOptions.PrimaryKey = new[] { "IdGrus" };
-            // loadOptions.PaginateViaPrimaryKey = true;
 
             return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
         }

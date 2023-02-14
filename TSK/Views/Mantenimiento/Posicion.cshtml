@@ -47,8 +47,6 @@
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.IdPos).Caption("ID").Width(50);
-
         columns.AddFor(m => m.Cargo);
 
         columns.AddFor(m => m.Habilitado);
@@ -61,7 +59,7 @@
                 .Title("Posicion")
                 .ShowTitle(true)
                 .Width("70%")
-                .Height(300)
+                .Height(230)
             )
             .Form(f => f.Items(items =>
             {
@@ -72,7 +70,7 @@
            {
                groupItems.AddSimpleFor(m => m.IdPos);
                groupItems.AddSimpleFor(m => m.Cargo);
-               groupItems.AddSimpleFor(m => m.Habilitado);
+               groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
            });
         }))
     )

@@ -33,13 +33,12 @@
         .Key("IdEqu")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdEqu).Caption("ID").Width(50);
         columns.AddFor(m => m.Extracolumn1).Caption("Código").Width(100);
         columns.AddFor(m => m.Nombre);
         columns.AddFor(m => m.Habilitado).Width(120);
     })
     .ShowBorders(true)
-    .RowAlternationEnabled(false)
+    .RowAlternationEnabled(true)
     .ShowColumnLines(true)
     .ShowRowLines(true)
     .Paging(paging => paging.PageSize(20))
@@ -60,7 +59,7 @@
                 .Title("Equipo")
                 .ShowTitle(true)
                 .Width("70%")
-                .Height(300)
+                .Height(230)
             )
             .Form(f => f.Items(items => {
                 items.AddGroup()
@@ -69,7 +68,7 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Nombre);
                         groupItems.AddSimpleFor(m => m.Extracolumn1);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )

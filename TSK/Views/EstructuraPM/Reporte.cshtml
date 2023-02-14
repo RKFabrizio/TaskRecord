@@ -33,7 +33,7 @@
     )
     .Selection(s => s.Mode(SelectionMode.Single))
     .Columns(columns => {
-        columns.AddFor(m => m.IdRep).Caption("ID").Width(50);
+        columns.AddFor(m => m.IdRep).Caption("ID").Width(70);
         columns.AddFor(m => m.IdPm).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup").Key("Value"))
             .ValueExpr("Value")
@@ -52,7 +52,7 @@
             .DataType(GridColumnDataType.Number)
             .Alignment(HorizontalAlignment.Center)
             .Format(Format.Percent)
-            .Width(110);
+            .Width(130);
         columns.AddFor(m => m.Habilitado);
     })
     .ShowBorders(true)
@@ -90,11 +90,18 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.IdPm).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdUni).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Fecha);
+                        groupItems.AddSimpleFor(m => m.Fecha)
+                        .Editor(e => e
+                        .DateBox()
+                        .Value(new JS("null"))
+                        .Width("100%")
+                        )
+                        ;
+
                         groupItems.AddSimpleFor(m => m.Horometro);
                         groupItems.AddSimpleFor(m => m.Comentario).ColSpan(2)
                         .Editor(editor => editor.TextArea().Height(100));
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )
@@ -109,3 +116,4 @@
         }
     }
 </script>
+

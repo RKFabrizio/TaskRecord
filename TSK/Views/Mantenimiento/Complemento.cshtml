@@ -30,7 +30,6 @@
         .Key("IdCom")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdCom).Caption("ID").Width(50);
         columns.AddFor(m => m.IdRep).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Complemento").LoadAction("RepuestosLookup").Key("Value"))
             .ValueExpr("Value")
@@ -75,7 +74,7 @@
                 .Title("Complemento")
                 .ShowTitle(true)
                 .Width("70%")
-                .Height(300)
+                .Height(330)
             )
             .Form(f => f.Items(items => {
                 items.AddGroup()
@@ -86,7 +85,7 @@
                         groupItems.AddSimpleFor(m => m.IdRep);
                         groupItems.AddSimpleFor(m => m.IdHerr);
                         groupItems.AddSimpleFor(m => m.IdEqu);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )
