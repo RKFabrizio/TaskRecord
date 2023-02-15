@@ -58,6 +58,11 @@ namespace TSK.Controllers
             if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
 
+            if (model.Grupo < 1 || model.Grupo > 4)
+            {
+                return BadRequest("El valor de Grupo debe estar entre 1 y 4.");
+            }
+
             var result = _context.GrupoUsuarios.Add(model);
             await _context.SaveChangesAsync();
 

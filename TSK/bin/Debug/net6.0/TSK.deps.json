@@ -35,6 +35,7 @@
       "TSK/1.0.0": {
         "dependencies": {
           "BuildBundlerMinifier": "2.9.406",
+          "DevExpress.AspNetCore.Reporting": "22.1.7",
           "DevExpress.Reporting.Core": "22.1.7",
           "DevExpress.XtraReports.RazorDefinitions": "1.0.1",
           "DevExtreme.AspNet.Core": "22.1.7",
@@ -44,7 +45,6 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.11",
           "System.Data.SqlClient": "4.8.3",
-          "XtraReportsControls": "17.2.5",
           "bootstrap": "5.3.0-alpha1",
           "DevExpress.Web.ASPxHtmlEditor.v22.1": "22.1.7.0",
           "DevExpress.Web.Bootstrap.v22.1": "22.1.7.0",
@@ -140,7 +140,7 @@
           "Microsoft.Extensions.Configuration.EnvironmentVariables.Reference": "6.0.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions.Reference": "6.0.0.0",
           "Microsoft.Extensions.Configuration.Ini": "6.0.0.0",
-          "Microsoft.Extensions.Configuration.Json": "6.0.0.0",
+          "Microsoft.Extensions.Configuration.Json.Reference": "6.0.0.0",
           "Microsoft.Extensions.Configuration.KeyPerFile": "6.0.0.0",
           "Microsoft.Extensions.Configuration.UserSecrets": "6.0.0.0",
           "Microsoft.Extensions.Configuration.Xml": "6.0.0.0",
@@ -348,6 +348,98 @@
       },
       "bootstrap/5.3.0-alpha1": {},
       "BuildBundlerMinifier/2.9.406": {},
+      "DevExpress.AspNetCore.Common/22.1.7": {
+        "dependencies": {
+          "DevExpress.AspNetCore.Core": "22.1.7",
+          "DevExpress.Data": "22.1.7",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Common.v22.1.dll": {
+            "assemblyVersion": "22.1.7.0",
+            "fileVersion": "22.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Common.v22.1.dll": {}
+        }
+      },
+      "DevExpress.AspNetCore.Core/22.1.7": {
+        "dependencies": {
+          "DevExpress.Data": "22.1.7",
+          "DevExpress.Drawing": "22.1.7",
+          "DevExpress.Office.Core": "22.1.7",
+          "DevExpress.Printing.Core": "22.1.7",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0",
+          "Microsoft.Extensions.Caching.Abstractions": "6.0.0",
+          "NETStandard.Library": "2.0.3",
+          "System.Drawing.Common": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Core.v22.1.dll": {
+            "assemblyVersion": "22.1.7.0",
+            "fileVersion": "22.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Core.v22.1.dll": {}
+        }
+      },
+      "DevExpress.AspNetCore.Reporting/22.1.7": {
+        "dependencies": {
+          "DevExpress.AspNetCore.Common": "22.1.7",
+          "DevExpress.AspNetCore.Core": "22.1.7",
+          "DevExpress.AspNetCore.Resources": "22.1.7",
+          "DevExpress.Data": "22.1.7",
+          "DevExpress.DataAccess": "22.1.7",
+          "DevExpress.Printing.Core": "22.1.7",
+          "DevExpress.Reporting.Core": "22.1.7",
+          "DevExpress.Web.Reporting.Common": "22.1.7",
+          "Microsoft.AspNetCore.DataProtection.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0",
+          "Microsoft.Extensions.Configuration": "2.2.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "2.2.0",
+          "Microsoft.Extensions.Configuration.Json": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection": "6.0.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "NETStandard.Library": "2.0.3",
+          "System.CodeDom": "5.0.0",
+          "System.Diagnostics.PerformanceCounter": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Reporting.v22.1.dll": {
+            "assemblyVersion": "22.1.7.0",
+            "fileVersion": "22.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Reporting.v22.1.dll": {}
+        }
+      },
+      "DevExpress.AspNetCore.Resources/22.1.7": {
+        "dependencies": {
+          "DevExpress.AspNetCore.Core": "22.1.7",
+          "DevExpress.Data": "22.1.7",
+          "Microsoft.AspNetCore.Mvc": "2.0.0",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Resources.v22.1.dll": {
+            "assemblyVersion": "22.1.7.0",
+            "fileVersion": "22.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Resources.v22.1.dll": {}
+        }
+      },
       "DevExpress.Blazor/22.1.7": {
         "dependencies": {
           "DevExpress.Blazor.Themes": "22.1.7",
@@ -729,6 +821,33 @@
         },
         "compile": {
           "lib/netstandard2.0/DevExpress.Sparkline.v22.1.Core.dll": {}
+        }
+      },
+      "DevExpress.Web.Reporting.Common/22.1.7": {
+        "dependencies": {
+          "DevExpress.Charts": "22.1.7",
+          "DevExpress.Charts.Core": "22.1.7",
+          "DevExpress.Data": "22.1.7",
+          "DevExpress.DataAccess": "22.1.7",
+          "DevExpress.Drawing": "22.1.7",
+          "DevExpress.Gauges.Core": "22.1.7",
+          "DevExpress.PivotGrid.Core": "22.1.7",
+          "DevExpress.Printing.Core": "22.1.7",
+          "DevExpress.Reporting.Core": "22.1.7",
+          "DevExpress.Sparkline.Core": "22.1.7",
+          "NETStandard.Library": "2.0.3",
+          "System.CodeDom": "5.0.0",
+          "System.Drawing.Common": "6.0.0",
+          "System.Threading.AccessControl": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.XtraReports.v22.1.Web.dll": {
+            "assemblyVersion": "22.1.7.0",
+            "fileVersion": "22.1.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.XtraReports.v22.1.Web.dll": {}
         }
       },
       "DevExpress.Xpo/22.1.7": {
@@ -2190,6 +2309,13 @@
           "Microsoft.Extensions.FileProviders.Physical": "2.2.0"
         }
       },
+      "Microsoft.Extensions.Configuration.Json/2.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "2.2.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "2.2.0",
+          "Newtonsoft.Json": "13.0.1"
+        }
+      },
       "Microsoft.Extensions.DependencyInjection/6.0.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
@@ -2385,7 +2511,7 @@
           "ref/net6.0/Microsoft.NET.StringTools.dll": {}
         }
       },
-      "Microsoft.NETCore.Platforms/1.1.1": {},
+      "Microsoft.NETCore.Platforms/2.0.0": {},
       "Microsoft.NETCore.Targets/1.1.3": {},
       "Microsoft.VisualStudio.Debugger.Contracts/17.2.0": {
         "dependencies": {
@@ -2570,7 +2696,7 @@
       },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1"
+          "Microsoft.NETCore.Platforms": "2.0.0"
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -2732,7 +2858,7 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
@@ -2745,7 +2871,7 @@
       },
       "runtime.native.System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
@@ -2817,7 +2943,7 @@
       },
       "System.Collections/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
@@ -3012,7 +3138,7 @@
       },
       "System.Diagnostics.Debug/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
@@ -3022,16 +3148,41 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
+      "System.Diagnostics.PerformanceCounter/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "Microsoft.Win32.Registry": "4.7.0",
+          "System.Configuration.ConfigurationManager": "6.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Diagnostics.PerformanceCounter.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Diagnostics.PerformanceCounter.dll": {}
+        }
+      },
       "System.Diagnostics.Tools/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
@@ -3067,14 +3218,14 @@
       "System.Formats.Asn1/5.0.0": {},
       "System.Globalization/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Globalization.Calendars/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Globalization": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -3097,7 +3248,7 @@
       },
       "System.IO/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0",
@@ -3106,7 +3257,7 @@
       },
       "System.IO.FileSystem/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.IO": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
@@ -3179,7 +3330,7 @@
       },
       "System.Private.Uri/4.3.2": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
@@ -3196,7 +3347,7 @@
       },
       "System.Reflection/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.IO": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -3215,7 +3366,7 @@
       "System.Reflection.Emit.Lightweight/4.6.0": {},
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0"
@@ -3243,7 +3394,7 @@
       },
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
@@ -3256,7 +3407,7 @@
       },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Globalization": "4.3.0",
           "System.Reflection": "4.3.0",
@@ -3265,7 +3416,7 @@
       },
       "System.Runtime/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
@@ -3291,21 +3442,21 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Runtime.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.Handles/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Reflection": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -3331,7 +3482,7 @@
       "System.Security.AccessControl/6.0.0": {},
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -3354,7 +3505,7 @@
       },
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
@@ -3371,7 +3522,7 @@
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
@@ -3443,7 +3594,7 @@
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -3558,7 +3709,7 @@
       },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
@@ -3585,9 +3736,32 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "System.Threading.AccessControl/4.4.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.AccessControl.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Threading.AccessControl.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Threading.AccessControl.dll": {}
+        }
+      },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.1",
+          "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Runtime": "4.3.0"
         }
@@ -3614,130 +3788,6 @@
         },
         "compile": {
           "lib/net6.0/System.Windows.Extensions.dll": {}
-        }
-      },
-      "XtraReportsControls/17.2.5": {
-        "runtime": {
-          "lib/net45/DevExpress.Charts.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.CodeParser.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Data.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.DataAccess.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Images.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Office.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Pdf.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.PivotGrid.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Printing.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.RichEdit.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.RichEdit.v17.2.Export.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Sparkline.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.Xpo.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.XtraCharts.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.XtraGauges.v17.2.Core.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          },
-          "lib/net45/DevExpress.XtraReports.v17.2.dll": {
-            "assemblyVersion": "17.2.5.0",
-            "fileVersion": "17.2.5.0"
-          }
-        },
-        "resources": {
-          "lib/net45/es/DevExpress.Data.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.DataAccess.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Office.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Pdf.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.PivotGrid.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Printing.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.RichEdit.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Sparkline.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Xpo.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.XtraCharts.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.XtraGauges.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.XtraReports.v17.2.resources.dll": {
-            "locale": "es"
-          }
-        },
-        "compile": {
-          "lib/net45/DevExpress.Charts.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.CodeParser.v17.2.dll": {},
-          "lib/net45/DevExpress.Data.v17.2.dll": {},
-          "lib/net45/DevExpress.DataAccess.v17.2.dll": {},
-          "lib/net45/DevExpress.Images.v17.2.dll": {},
-          "lib/net45/DevExpress.Office.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.Pdf.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.PivotGrid.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.Printing.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.RichEdit.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.RichEdit.v17.2.Export.dll": {},
-          "lib/net45/DevExpress.Sparkline.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.Xpo.v17.2.dll": {},
-          "lib/net45/DevExpress.XtraCharts.v17.2.dll": {},
-          "lib/net45/DevExpress.XtraGauges.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.XtraReports.v17.2.dll": {}
         }
       },
       "DevExpress.Web.ASPxHtmlEditor.v22.1/22.1.7.0": {
@@ -4025,25 +4075,6 @@
           "DevExpress.Web.ASPxPivotGrid.v22.1.dll": {
             "assemblyVersion": "22.1.7.0",
             "fileVersion": "22.1.7.0"
-          }
-        }
-      },
-      "DevExpress.XtraReports.v22.1.Web/22.1.7.0": {
-        "runtime": {
-          "DevExpress.XtraReports.v22.1.Web.dll": {
-            "assemblyVersion": "22.1.7.0",
-            "fileVersion": "22.1.7.0"
-          }
-        },
-        "resources": {
-          "de/DevExpress.XtraReports.v22.1.Web.resources.dll": {
-            "locale": "de"
-          },
-          "es/DevExpress.XtraReports.v22.1.Web.resources.dll": {
-            "locale": "es"
-          },
-          "ja/DevExpress.XtraReports.v22.1.Web.resources.dll": {
-            "locale": "ja"
           }
         }
       },
@@ -4627,7 +4658,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Configuration.Json/6.0.0.0": {
+      "Microsoft.Extensions.Configuration.Json.Reference/6.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Configuration.Json.dll": {}
         },
@@ -5837,6 +5868,34 @@
       "path": "buildbundlerminifier/2.9.406",
       "hashPath": "buildbundlerminifier.2.9.406.nupkg.sha512"
     },
+    "DevExpress.AspNetCore.Common/22.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nZJC8CsDn9yqXi04kM44YI6ONMEFEvqJw2kHiLIievsQ1LtVAX5ximYafGl0GTKFKIBc2O7rP35Raq1KTbHa6w==",
+      "path": "devexpress.aspnetcore.common/22.1.7",
+      "hashPath": "devexpress.aspnetcore.common.22.1.7.nupkg.sha512"
+    },
+    "DevExpress.AspNetCore.Core/22.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZhStYI2cNJEMnSzw7rGoRP1RCmGq3aYTA3+2KMNlEwDa6CWbQcChFyku0XZmS0bv1cBlAMPbQ/2u7wqDH/JI2Q==",
+      "path": "devexpress.aspnetcore.core/22.1.7",
+      "hashPath": "devexpress.aspnetcore.core.22.1.7.nupkg.sha512"
+    },
+    "DevExpress.AspNetCore.Reporting/22.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iprElz/Euz5Yq186WUmLyG1YJeEow00VZuCzLwNV2zUU3nshYoI5kCgJ6Rd92tgDe89oXrTLAwfkW/brXpOqfg==",
+      "path": "devexpress.aspnetcore.reporting/22.1.7",
+      "hashPath": "devexpress.aspnetcore.reporting.22.1.7.nupkg.sha512"
+    },
+    "DevExpress.AspNetCore.Resources/22.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xP/b3+87qfTM2178W0pfddzHHcFYibaNgzP74shJ0BPI5saGFOSIh4UpFigcqadyjpxavxSvg6zG/0t3+GA5iw==",
+      "path": "devexpress.aspnetcore.resources/22.1.7",
+      "hashPath": "devexpress.aspnetcore.resources.22.1.7.nupkg.sha512"
+    },
     "DevExpress.Blazor/22.1.7": {
       "type": "package",
       "serviceable": true,
@@ -5976,6 +6035,13 @@
       "sha512": "sha512-w2Yw+F/WMngDQv7gR3DXhIilQepDv+OxSf6QK34Gwj5AwWdZTfwM86OkuiutEFDZkEVxrnjbY62i26wzOnnD1w==",
       "path": "devexpress.sparkline.core/22.1.7",
       "hashPath": "devexpress.sparkline.core.22.1.7.nupkg.sha512"
+    },
+    "DevExpress.Web.Reporting.Common/22.1.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2zioQFIpLvJ7kF39t2sTnt6njGpzPXvvvAJ4LRtMP2O0PdxblhlEB8tXNvAlE0gs0asiAXGSJ2ycSYk5w2i9tw==",
+      "path": "devexpress.web.reporting.common/22.1.7",
+      "hashPath": "devexpress.web.reporting.common.22.1.7.nupkg.sha512"
     },
     "DevExpress.Xpo/22.1.7": {
       "type": "package",
@@ -6607,6 +6673,13 @@
       "path": "microsoft.extensions.configuration.fileextensions/2.2.0",
       "hashPath": "microsoft.extensions.configuration.fileextensions.2.2.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Configuration.Json/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-thPz4SckRGNqeLbdvJ619YxRFSkWuL1K5QqTMb3TVdEwjQj4O39yfUtjtI/XlWJiY7JKK4MUKAiQZVYc8ohKKg==",
+      "path": "microsoft.extensions.configuration.json/2.0.0",
+      "hashPath": "microsoft.extensions.configuration.json.2.0.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.DependencyInjection/6.0.1": {
       "type": "package",
       "serviceable": true,
@@ -6782,12 +6855,12 @@
       "path": "microsoft.net.stringtools/17.3.2",
       "hashPath": "microsoft.net.stringtools.17.3.2.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/1.1.1": {
+    "Microsoft.NETCore.Platforms/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TMBuzAHpTenGbGgk0SMTwyEkyijY/Eae4ZGsFNYJvAr/LDn1ku3Etp3FPxChmDp5HHF3kzJuoaa08N0xjqAJfQ==",
-      "path": "microsoft.netcore.platforms/1.1.1",
-      "hashPath": "microsoft.netcore.platforms.1.1.1.nupkg.sha512"
+      "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+      "path": "microsoft.netcore.platforms/2.0.0",
+      "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Targets/1.1.3": {
       "type": "package",
@@ -7194,6 +7267,13 @@
       "sha512": "sha512-frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
       "path": "system.diagnostics.diagnosticsource/6.0.0",
       "hashPath": "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512"
+    },
+    "System.Diagnostics.PerformanceCounter/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JUO5/moXgchWZBMBElgmPebZPKCgwW8kY3dFwVJavaNR2ftcc/YjXXGjOaCjly2KBXT7Ld5l/GTkMVzNv41yZA==",
+      "path": "system.diagnostics.performancecounter/4.5.0",
+      "hashPath": "system.diagnostics.performancecounter.4.5.0.nupkg.sha512"
     },
     "System.Diagnostics.Tools/4.3.0": {
       "type": "package",
@@ -7615,6 +7695,13 @@
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
     },
+    "System.Threading.AccessControl/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CbywegComLpet8Q/Cfre7qmu5NybfN8d6iyTuZRC/xqOILs1Jz2ao8erOyC1XjuIG/TDQEZATwkD0/4DWeikGw==",
+      "path": "system.threading.accesscontrol/4.4.0",
+      "hashPath": "system.threading.accesscontrol.4.4.0.nupkg.sha512"
+    },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -7642,13 +7729,6 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
-    },
-    "XtraReportsControls/17.2.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zIh9K31AAvkxtx8BS3/FCq/Pccw6t8TprjKSFXfo5H3KThiYXlRZJsn5q/ge4p+WOHhiaeA2vLrPyHiy9SICEQ==",
-      "path": "xtrareportscontrols/17.2.5",
-      "hashPath": "xtrareportscontrols.17.2.5.nupkg.sha512"
     },
     "DevExpress.Web.ASPxHtmlEditor.v22.1/22.1.7.0": {
       "type": "reference",
@@ -7736,11 +7816,6 @@
       "sha512": ""
     },
     "DevExpress.Web.ASPxPivotGrid.v22.1/22.1.7.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DevExpress.XtraReports.v22.1.Web/22.1.7.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -8220,7 +8295,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Configuration.Json/6.0.0.0": {
+    "Microsoft.Extensions.Configuration.Json.Reference/6.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

@@ -233,6 +233,102 @@
           "build/BuildBundlerMinifier.targets": {}
         }
       },
+      "DevExpress.AspNetCore.Common/22.1.7": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.AspNetCore.Core": "[22.1.7]",
+          "DevExpress.Data": "[22.1.7]",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0",
+          "NETStandard.Library": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Common.v22.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Common.v22.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.AspNetCore.Core/22.1.7": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[22.1.7]",
+          "DevExpress.Drawing": "[22.1.7]",
+          "DevExpress.Office.Core": "[22.1.7]",
+          "DevExpress.Printing.Core": "[22.1.7]",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0",
+          "Microsoft.Extensions.Caching.Abstractions": "2.0.0",
+          "NETStandard.Library": "2.0.3",
+          "System.Drawing.Common": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Core.v22.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Core.v22.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.AspNetCore.Reporting/22.1.7": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.AspNetCore.Common": "[22.1.7]",
+          "DevExpress.AspNetCore.Core": "[22.1.7]",
+          "DevExpress.AspNetCore.Resources": "[22.1.7]",
+          "DevExpress.Data": "[22.1.7]",
+          "DevExpress.DataAccess": "[22.1.7]",
+          "DevExpress.Printing.Core": "[22.1.7]",
+          "DevExpress.Reporting.Core": "[22.1.7]",
+          "DevExpress.Web.Reporting.Common": "[22.1.7]",
+          "Microsoft.AspNetCore.DataProtection.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Html.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.0.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "2.0.0",
+          "Microsoft.Extensions.Configuration.Json": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection": "2.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Logging": "2.0.0",
+          "NETStandard.Library": "2.0.3",
+          "System.CodeDom": "4.4.0",
+          "System.Diagnostics.PerformanceCounter": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Reporting.v22.1.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Reporting.v22.1.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.AspNetCore.Resources/22.1.7": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.AspNetCore.Core": "[22.1.7]",
+          "DevExpress.Data": "[22.1.7]",
+          "Microsoft.AspNetCore.Mvc": "2.0.0",
+          "NETStandard.Library": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Resources.v22.1.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.AspNetCore.Resources.v22.1.dll": {}
+        }
+      },
       "DevExpress.Blazor/22.1.7": {
         "type": "package",
         "dependencies": {
@@ -661,6 +757,35 @@
         },
         "runtime": {
           "lib/netstandard2.0/DevExpress.Sparkline.v22.1.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DevExpress.Web.Reporting.Common/22.1.7": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Charts": "[22.1.7]",
+          "DevExpress.Charts.Core": "[22.1.7]",
+          "DevExpress.Data": "[22.1.7]",
+          "DevExpress.DataAccess": "[22.1.7]",
+          "DevExpress.Drawing": "[22.1.7]",
+          "DevExpress.Gauges.Core": "[22.1.7]",
+          "DevExpress.PivotGrid.Core": "[22.1.7]",
+          "DevExpress.Printing.Core": "[22.1.7]",
+          "DevExpress.Reporting.Core": "[22.1.7]",
+          "DevExpress.Sparkline.Core": "[22.1.7]",
+          "NETStandard.Library": "2.0.3",
+          "System.CodeDom": "4.4.0",
+          "System.Drawing.Common": "4.5.0",
+          "System.Threading.AccessControl": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/DevExpress.XtraReports.v22.1.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/DevExpress.XtraReports.v22.1.Web.dll": {
             "related": ".xml"
           }
         }
@@ -2744,6 +2869,24 @@
           }
         }
       },
+      "Microsoft.Extensions.Configuration.Json/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "2.0.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "2.0.0",
+          "Newtonsoft.Json": "10.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyInjection/6.0.1": {
         "type": "package",
         "dependencies": {
@@ -2946,6 +3089,7 @@
           }
         },
         "build": {
+          "build/Microsoft.Extensions.Logging.Abstractions.targets": {},
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
@@ -3157,7 +3301,7 @@
           }
         }
       },
-      "Microsoft.NETCore.Platforms/1.1.1": {
+      "Microsoft.NETCore.Platforms/2.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -4058,6 +4202,29 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Diagnostics.PerformanceCounter/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "Microsoft.Win32.Registry": "4.5.0",
+          "System.Configuration.ConfigurationManager": "4.5.0",
+          "System.Security.Principal.Windows": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Diagnostics.PerformanceCounter.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Diagnostics.PerformanceCounter.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Diagnostics.Tools/4.3.0": {
@@ -5140,6 +5307,27 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
+      "System.Threading.AccessControl/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.AccessControl": "4.4.0",
+          "System.Security.Principal.Windows": "4.4.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Threading.AccessControl.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Threading.AccessControl.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Threading.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Threading.Tasks/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5197,131 +5385,6 @@
           "runtimes/win/lib/net6.0/System.Windows.Extensions.dll": {
             "assetType": "runtime",
             "rid": "win"
-          }
-        }
-      },
-      "XtraReportsControls/17.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/net45/DevExpress.Charts.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.CodeParser.v17.2.dll": {},
-          "lib/net45/DevExpress.Data.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.DataAccess.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Images.v17.2.dll": {},
-          "lib/net45/DevExpress.Office.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Pdf.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.PivotGrid.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Printing.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.RichEdit.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.RichEdit.v17.2.Export.dll": {},
-          "lib/net45/DevExpress.Sparkline.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Xpo.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.XtraCharts.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.XtraGauges.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.XtraReports.v17.2.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/DevExpress.Charts.v17.2.Core.dll": {},
-          "lib/net45/DevExpress.CodeParser.v17.2.dll": {},
-          "lib/net45/DevExpress.Data.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.DataAccess.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Images.v17.2.dll": {},
-          "lib/net45/DevExpress.Office.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Pdf.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.PivotGrid.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Printing.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.RichEdit.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.RichEdit.v17.2.Export.dll": {},
-          "lib/net45/DevExpress.Sparkline.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.Xpo.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.XtraCharts.v17.2.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.XtraGauges.v17.2.Core.dll": {
-            "related": ".xml"
-          },
-          "lib/net45/DevExpress.XtraReports.v17.2.dll": {
-            "related": ".xml"
-          }
-        },
-        "resource": {
-          "lib/net45/es/DevExpress.Data.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.DataAccess.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Office.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Pdf.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.PivotGrid.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Printing.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.RichEdit.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Sparkline.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.Xpo.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.XtraCharts.v17.2.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.XtraGauges.v17.2.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net45/es/DevExpress.XtraReports.v17.2.resources.dll": {
-            "locale": "es"
           }
         }
       }
@@ -5448,6 +5511,57 @@
         "tools/netstandard1.3/BundlerMinifier.dll",
         "tools/netstandard1.3/NUglify.dll",
         "tools/netstandard1.3/Newtonsoft.Json.dll"
+      ]
+    },
+    "DevExpress.AspNetCore.Common/22.1.7": {
+      "sha512": "nZJC8CsDn9yqXi04kM44YI6ONMEFEvqJw2kHiLIievsQ1LtVAX5ximYafGl0GTKFKIBc2O7rP35Raq1KTbHa6w==",
+      "type": "package",
+      "path": "devexpress.aspnetcore.common/22.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.aspnetcore.common.22.1.7.nupkg.sha512",
+        "devexpress.aspnetcore.common.nuspec",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Common.v22.1.dll",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Common.v22.1.xml"
+      ]
+    },
+    "DevExpress.AspNetCore.Core/22.1.7": {
+      "sha512": "ZhStYI2cNJEMnSzw7rGoRP1RCmGq3aYTA3+2KMNlEwDa6CWbQcChFyku0XZmS0bv1cBlAMPbQ/2u7wqDH/JI2Q==",
+      "type": "package",
+      "path": "devexpress.aspnetcore.core/22.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.aspnetcore.core.22.1.7.nupkg.sha512",
+        "devexpress.aspnetcore.core.nuspec",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Core.v22.1.dll",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Core.v22.1.xml"
+      ]
+    },
+    "DevExpress.AspNetCore.Reporting/22.1.7": {
+      "sha512": "iprElz/Euz5Yq186WUmLyG1YJeEow00VZuCzLwNV2zUU3nshYoI5kCgJ6Rd92tgDe89oXrTLAwfkW/brXpOqfg==",
+      "type": "package",
+      "path": "devexpress.aspnetcore.reporting/22.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.aspnetcore.reporting.22.1.7.nupkg.sha512",
+        "devexpress.aspnetcore.reporting.nuspec",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Reporting.v22.1.dll",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Reporting.v22.1.xml"
+      ]
+    },
+    "DevExpress.AspNetCore.Resources/22.1.7": {
+      "sha512": "xP/b3+87qfTM2178W0pfddzHHcFYibaNgzP74shJ0BPI5saGFOSIh4UpFigcqadyjpxavxSvg6zG/0t3+GA5iw==",
+      "type": "package",
+      "path": "devexpress.aspnetcore.resources/22.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.aspnetcore.resources.22.1.7.nupkg.sha512",
+        "devexpress.aspnetcore.resources.nuspec",
+        "lib/netstandard2.0/DevExpress.AspNetCore.Resources.v22.1.dll"
       ]
     },
     "DevExpress.Blazor/22.1.7": {
@@ -5885,6 +5999,21 @@
         "lib/net452/DevExpress.Sparkline.v22.1.Core.xml",
         "lib/netstandard2.0/DevExpress.Sparkline.v22.1.Core.dll",
         "lib/netstandard2.0/DevExpress.Sparkline.v22.1.Core.xml"
+      ]
+    },
+    "DevExpress.Web.Reporting.Common/22.1.7": {
+      "sha512": "2zioQFIpLvJ7kF39t2sTnt6njGpzPXvvvAJ4LRtMP2O0PdxblhlEB8tXNvAlE0gs0asiAXGSJ2ycSYk5w2i9tw==",
+      "type": "package",
+      "path": "devexpress.web.reporting.common/22.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "devexpress.web.reporting.common.22.1.7.nupkg.sha512",
+        "devexpress.web.reporting.common.nuspec",
+        "lib/net452/DevExpress.XtraReports.v22.1.Web.dll",
+        "lib/net452/DevExpress.XtraReports.v22.1.Web.xml",
+        "lib/netstandard2.0/DevExpress.XtraReports.v22.1.Web.dll",
+        "lib/netstandard2.0/DevExpress.XtraReports.v22.1.Web.xml"
       ]
     },
     "DevExpress.Xpo/22.1.7": {
@@ -7782,6 +7911,19 @@
         "microsoft.extensions.configuration.fileextensions.nuspec"
       ]
     },
+    "Microsoft.Extensions.Configuration.Json/2.0.0": {
+      "sha512": "thPz4SckRGNqeLbdvJ619YxRFSkWuL1K5QqTMb3TVdEwjQj4O39yfUtjtI/XlWJiY7JKK4MUKAiQZVYc8ohKKg==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.json/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.xml",
+        "microsoft.extensions.configuration.json.2.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.json.nuspec"
+      ]
+    },
     "Microsoft.Extensions.DependencyInjection/6.0.1": {
       "sha512": "vWXPg3HJQIpZkENn1KWq8SfbqVujVD7S7vIAyFXXqK5xkf1Vho+vG0bLBCHxU36lD1cLLtmGpfYf0B3MYFi9tQ==",
       "type": "package",
@@ -8279,19 +8421,21 @@
         "ref/netstandard2.0/Microsoft.NET.StringTools.xml"
       ]
     },
-    "Microsoft.NETCore.Platforms/1.1.1": {
-      "sha512": "TMBuzAHpTenGbGgk0SMTwyEkyijY/Eae4ZGsFNYJvAr/LDn1ku3Etp3FPxChmDp5HHF3kzJuoaa08N0xjqAJfQ==",
+    "Microsoft.NETCore.Platforms/2.0.0": {
+      "sha512": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/1.1.1",
+      "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.1.1.1.nupkg.sha512",
+        "microsoft.netcore.platforms.2.0.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
-        "runtime.json"
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "Microsoft.NETCore.Targets/1.1.3": {
@@ -10156,6 +10300,40 @@
         "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Diagnostics.PerformanceCounter/4.5.0": {
+      "sha512": "JUO5/moXgchWZBMBElgmPebZPKCgwW8kY3dFwVJavaNR2ftcc/YjXXGjOaCjly2KBXT7Ld5l/GTkMVzNv41yZA==",
+      "type": "package",
+      "path": "system.diagnostics.performancecounter/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Diagnostics.PerformanceCounter.dll",
+        "lib/netstandard2.0/System.Diagnostics.PerformanceCounter.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.Diagnostics.PerformanceCounter.dll",
+        "ref/net461/System.Diagnostics.PerformanceCounter.xml",
+        "ref/netstandard2.0/System.Diagnostics.PerformanceCounter.dll",
+        "ref/netstandard2.0/System.Diagnostics.PerformanceCounter.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll",
+        "system.diagnostics.performancecounter.4.5.0.nupkg.sha512",
+        "system.diagnostics.performancecounter.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Diagnostics.Tools/4.3.0": {
@@ -13001,6 +13179,45 @@
         "system.threading.nuspec"
       ]
     },
+    "System.Threading.AccessControl/4.4.0": {
+      "sha512": "CbywegComLpet8Q/Cfre7qmu5NybfN8d6iyTuZRC/xqOILs1Jz2ao8erOyC1XjuIG/TDQEZATwkD0/4DWeikGw==",
+      "type": "package",
+      "path": "system.threading.accesscontrol/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Threading.AccessControl.dll",
+        "lib/net461/System.Threading.AccessControl.dll",
+        "lib/netstandard1.3/System.Threading.AccessControl.dll",
+        "lib/netstandard2.0/System.Threading.AccessControl.dll",
+        "ref/net46/System.Threading.AccessControl.dll",
+        "ref/net461/System.Threading.AccessControl.dll",
+        "ref/net461/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/System.Threading.AccessControl.dll",
+        "ref/netstandard1.3/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/de/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/es/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/fr/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/it/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/ja/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/ko/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/ru/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/zh-hans/System.Threading.AccessControl.xml",
+        "ref/netstandard1.3/zh-hant/System.Threading.AccessControl.xml",
+        "ref/netstandard2.0/System.Threading.AccessControl.dll",
+        "ref/netstandard2.0/System.Threading.AccessControl.xml",
+        "runtimes/win/lib/net46/System.Threading.AccessControl.dll",
+        "runtimes/win/lib/net461/System.Threading.AccessControl.dll",
+        "runtimes/win/lib/netstandard1.3/System.Threading.AccessControl.dll",
+        "runtimes/win/lib/netstandard2.0/System.Threading.AccessControl.dll",
+        "system.threading.accesscontrol.4.4.0.nupkg.sha512",
+        "system.threading.accesscontrol.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Threading.Tasks/4.3.0": {
       "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "type": "package",
@@ -13153,62 +13370,12 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "XtraReportsControls/17.2.5": {
-      "sha512": "zIh9K31AAvkxtx8BS3/FCq/Pccw6t8TprjKSFXfo5H3KThiYXlRZJsn5q/ge4p+WOHhiaeA2vLrPyHiy9SICEQ==",
-      "type": "package",
-      "path": "xtrareportscontrols/17.2.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/DevExpress.Charts.v17.2.Core.dll",
-        "lib/net45/DevExpress.CodeParser.v17.2.dll",
-        "lib/net45/DevExpress.Data.v17.2.dll",
-        "lib/net45/DevExpress.Data.v17.2.xml",
-        "lib/net45/DevExpress.DataAccess.v17.2.dll",
-        "lib/net45/DevExpress.DataAccess.v17.2.xml",
-        "lib/net45/DevExpress.Images.v17.2.dll",
-        "lib/net45/DevExpress.Office.v17.2.Core.dll",
-        "lib/net45/DevExpress.Office.v17.2.Core.xml",
-        "lib/net45/DevExpress.Pdf.v17.2.Core.dll",
-        "lib/net45/DevExpress.Pdf.v17.2.Core.xml",
-        "lib/net45/DevExpress.PivotGrid.v17.2.Core.dll",
-        "lib/net45/DevExpress.PivotGrid.v17.2.Core.xml",
-        "lib/net45/DevExpress.Printing.v17.2.Core.dll",
-        "lib/net45/DevExpress.Printing.v17.2.Core.xml",
-        "lib/net45/DevExpress.RichEdit.v17.2.Core.dll",
-        "lib/net45/DevExpress.RichEdit.v17.2.Core.xml",
-        "lib/net45/DevExpress.RichEdit.v17.2.Export.dll",
-        "lib/net45/DevExpress.Sparkline.v17.2.Core.dll",
-        "lib/net45/DevExpress.Sparkline.v17.2.Core.xml",
-        "lib/net45/DevExpress.Xpo.v17.2.dll",
-        "lib/net45/DevExpress.Xpo.v17.2.xml",
-        "lib/net45/DevExpress.XtraCharts.v17.2.dll",
-        "lib/net45/DevExpress.XtraCharts.v17.2.xml",
-        "lib/net45/DevExpress.XtraGauges.v17.2.Core.dll",
-        "lib/net45/DevExpress.XtraGauges.v17.2.Core.xml",
-        "lib/net45/DevExpress.XtraReports.v17.2.dll",
-        "lib/net45/DevExpress.XtraReports.v17.2.xml",
-        "lib/net45/es/DevExpress.Data.v17.2.resources.dll",
-        "lib/net45/es/DevExpress.DataAccess.v17.2.resources.dll",
-        "lib/net45/es/DevExpress.Office.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.Pdf.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.PivotGrid.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.Printing.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.RichEdit.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.Sparkline.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.Xpo.v17.2.resources.dll",
-        "lib/net45/es/DevExpress.XtraCharts.v17.2.resources.dll",
-        "lib/net45/es/DevExpress.XtraGauges.v17.2.Core.resources.dll",
-        "lib/net45/es/DevExpress.XtraReports.v17.2.resources.dll",
-        "xtrareportscontrols.17.2.5.nupkg.sha512",
-        "xtrareportscontrols.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "BuildBundlerMinifier >= 2.9.406",
+      "DevExpress.AspNetCore.Reporting >= 22.1.7",
       "DevExpress.Reporting.Core >= 22.1.3",
       "DevExpress.XtraReports.RazorDefinitions >= 1.0.1",
       "DevExtreme.AspNet.Core >= 22.1.7",
@@ -13218,7 +13385,6 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.11",
       "System.Data.SqlClient >= 4.8.3",
-      "XtraReportsControls >= 17.2.5",
       "bootstrap >= 5.3.0-alpha1"
     ]
   },
@@ -13277,6 +13443,10 @@
             "target": "Package",
             "version": "[2.9.406, )"
           },
+          "DevExpress.AspNetCore.Reporting": {
+            "target": "Package",
+            "version": "[22.1.7, )"
+          },
           "DevExpress.Reporting.Core": {
             "target": "Package",
             "version": "[22.1.3, )"
@@ -13314,10 +13484,6 @@
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.3, )"
-          },
-          "XtraReportsControls": {
-            "target": "Package",
-            "version": "[17.2.5, )"
           },
           "bootstrap": {
             "target": "Package",
@@ -13364,16 +13530,6 @@
       "warningLevel": 1,
       "message": "TSK depende de DevExpress.Reporting.Core (>= 22.1.3), pero no se encontró DevExpress.Reporting.Core 22.1.3. Se resolvió una mejor coincidencia aproximada de DevExpress.Reporting.Core 22.1.7.",
       "libraryId": "DevExpress.Reporting.Core",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "El paquete \"XtraReportsControls 17.2.5\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "XtraReportsControls",
       "targetGraphs": [
         "net6.0"
       ]
