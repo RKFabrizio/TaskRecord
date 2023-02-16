@@ -33,7 +33,6 @@
         .Key("IdCom")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdCom).Caption("ID").Width(50);
         columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Componente").LoadAction("SistemasLookup").Key("Value"))
             .ValueExpr("Value")
@@ -61,8 +60,8 @@
             .Popup(p => p
                 .Title("Componente")
                 .ShowTitle(true)
-                .Width("70%")
-                .Height(300)
+                .Width("40%")
+                .Height(225)
             )
             
             .Form(f => f.Items(items => {
@@ -70,8 +69,8 @@
                     .ColCount(2)
                     .ColSpan(2)
                     .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.IdSis);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.IdSis).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
             

@@ -62,15 +62,6 @@
                     </div>
                     <div class="form-group mb-1">
                         <div class="row">
-                        
-                            <div class="col-lg-4">
-                                <label class="form-label">Lider</label>
-                                <label class="form-control" style="background-color: ghostwhite;">@Model.texto3</label>
-                            </div>
-                            <div class="col-lg-4">
-                                <label class="form-label">Técnico</label>
-                                <label class="form-control"style="background-color: ghostwhite;">@Model.texto4</label>
-                            </div>
                             <div class="col-lg-2">
                                 <label class="form-label">Fecha</label>
                                 <label class="form-control" style="background-color: ghostwhite;">@Model.fecha1.Value.ToString("dd-MM-yyyy")</label>
@@ -107,15 +98,18 @@
                                             
                                 .Items(items => {
                                     items.Add()
-                                        .Title("EQUIPO EN MARCHA")
-                                        .Template(new TemplateName("TAB1"));
+                                    .Title("EQUIPO HUMANO")
+                                    .Template(new TemplateName("TAB0"));
                                     items.Add()
-                                        .Title("EQUIPO DETENIDO")
-                                        .Template(new TemplateName("TAB2"));
-        
+                                    .Title("EQUIPO EN MARCHA")
+                                    .Template(new TemplateName("TAB1"));
                                     items.Add()
-                                        .Title("REPORTE DE ENTREGA")
-                                        .Template(new TemplateName("TAB3"));
+                                    .Title("EQUIPO DETENIDO")
+                                    .Template(new TemplateName("TAB2"));
+
+                                    items.Add()
+                                    .Title("REPORTE DE ENTREGA")
+                                    .Template(new TemplateName("TAB3"));
 
                                 })
                                 .SelectedIndex(0)
@@ -175,6 +169,39 @@
         </div>
     </div>
 
+@using (Html.DevExtreme().NamedTemplate("TAB0"))
+{
+    <!-- Data de cada grupo Lider-Tecnico -->
+    @(
+        Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+                           .DataSource(ds => ds.Mvc()
+                                           .Controller("GrupoUsuarios")
+                                           .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
+                                           .InsertAction("Post")
+                                           .UpdateAction("Put")
+                                           .DeleteAction("Delete")
+                                           .Key("IdGrus"))
+                       .Columns(columns =>
+                       {
+                           columns.AddFor(m => m.IdUsr)
+                           .Lookup(lookup => lookup
+                           .DataSource(ds => ds
+                           .WebApi().Controller("GrupoUsuarios")
+                           .LoadAction("UsuariosLookup").Key("Value"))
+                           .ValueExpr("Value")
+                           .DisplayExpr("Text")).Caption("Trabajador").AllowEditing(false);
+                               columns.AddFor(m => m.Grupo).Caption("Grupo").GroupIndex(0);
+                           columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(false);
+                       })
+                       .FilterRow(f => f.Visible(true))
+                       .HeaderFilter(f => f.Visible(true))
+                       .ShowBorders(true)
+                       .ShowColumnLines(true)
+                       .ShowRowLines(true)
+                       .GroupPanel(g => g.Visible(true))
+                       .Grouping(g => g.AutoExpandAll(false))
+                        )
+}
 
     @using (Html.DevExtreme().NamedTemplate("TAB1"))
     {

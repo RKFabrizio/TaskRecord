@@ -32,7 +32,6 @@
         .Key("IdUni")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdUni).Caption("ID").Width(50);
         columns.AddFor(m => m.Unidad1).Caption("Unidad");
         columns.AddFor(m => m.IdFlt).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Unidad").LoadAction("FlotaLookup").Key("Value"))
@@ -42,24 +41,22 @@
         
         columns.AddFor(m => m.Habilitado).Width(120);
     })
-    .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(50))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .Pager(pager =>{
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] {50, 100, 150});
-        pager.ShowInfo(true);
-    })
     .RemoteOperations(true)
-    .Grouping(grouping => grouping.AutoExpandAll(true))
-    .GroupPanel(groupPanel => groupPanel
-        .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
-        .Visible(true))
+    .AllowColumnReordering(true)
+    .RowAlternationEnabled(true)
+    .ShowBorders(true)
+    .OnContentReady("contentReady")
+    .Paging(p => p.PageSize(10))
+    .Pager(p => p
+        .ShowPageSizeSelector(true)
+        .AllowedPageSizes(new[] { 10, 25, 50, 100 })
+    )
+    .SearchPanel(s => s
+        .Visible(true)
+        .HighlightCaseSensitive(true)
+    )
+    .GroupPanel(g => g.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
     .Editing(e => e.Mode(GridEditMode.Popup)
             .AllowUpdating(true)
             .AllowAdding(true)
@@ -75,11 +72,20 @@
                     .ColCount(2)
                     .ColSpan(2)
                     .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.Unidad1).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Unidad1).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )
 )
 
+<script>
+    var collapsed = false;
+    function contentReady(e) {
+        if (!collapsed) {
+            collapsed = true;
+            e.component.expandRow(["EnviroCare"]);
+        }
+    }
+</script>

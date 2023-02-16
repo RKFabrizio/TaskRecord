@@ -92,11 +92,11 @@ namespace TSK.Controllers
             string EXTRACOLUMN3 = nameof(ClaseMantencion.Extracolumn3);
 
             if(values.Contains(ID_CLM)) {
-                model.IdClm = Convert.ToString(values[ID_CLM]);
+                model.IdClm = Convert.ToString(values[ID_CLM]).ToUpper();
             }
 
             if(values.Contains(NOMBRE)) {
-                model.Nombre = Convert.ToString(values[NOMBRE]).ToUpper();
+                model.Nombre = Convert.ToString(values[NOMBRE]);
             }
 
             if(values.Contains(HABILITADO)) {

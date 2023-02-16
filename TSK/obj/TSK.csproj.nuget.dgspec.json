@@ -54,9 +54,17 @@
               "target": "Package",
               "version": "[2.9.406, )"
             },
+            "DevExpress.AspNetCore.Reporting": {
+              "target": "Package",
+              "version": "[22.1.7, )"
+            },
             "DevExpress.Reporting.Core": {
               "target": "Package",
               "version": "[22.1.3, )"
+            },
+            "DevExpress.XtraReports.RazorDefinitions": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             },
             "DevExtreme.AspNet.Core": {
               "target": "Package",

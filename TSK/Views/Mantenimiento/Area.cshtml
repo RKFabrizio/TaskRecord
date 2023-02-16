@@ -33,7 +33,6 @@ Html.DevExtreme().DataGrid<TSK.Models.Entity.Area>()
     )
       .Columns(columns =>
       {
-          columns.AddFor(m => m.IdArea).Caption("ID").Width(70);
           columns.AddFor(m => m.Nombre);
           columns.AddFor(m => m.Habilitado).Width(120);
       })
@@ -58,8 +57,8 @@ Html.DevExtreme().DataGrid<TSK.Models.Entity.Area>()
             .Popup(p => p
                 .Title("Area")
                 .ShowTitle(true)
-                .Width("70%")
-                .Height(200)
+                .Width("40%")
+                .Height(240)
             )
             .Form(f => f.Items(items =>
             {
@@ -68,8 +67,8 @@ Html.DevExtreme().DataGrid<TSK.Models.Entity.Area>()
                     .ColSpan(2)
                     .Items(groupItems =>
                     {
-                        groupItems.AddSimpleFor(m => m.Nombre);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )

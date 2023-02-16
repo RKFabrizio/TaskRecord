@@ -116,12 +116,15 @@ namespace TSK.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> SistemasLookup(DataSourceLoadOptions loadOptions) {
-            var lookup = from i in _context.Sistemas
-                         orderby i.Nombre
-                         select new {
-                             Value = i.IdSis,
-                             Text = i.Nombre
+        public async Task<IActionResult> SistemasLookup(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from sis in _context.Sistemas
+                         join con in _context.Condicions on sis.IdCod equals con.IdCod
+                         orderby con.Nombre + " - " + sis.Nombre
+                         select new
+                         {
+                             Value = sis.IdSis,
+                             Text = con.Nombre + " - " + sis.Nombre
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }

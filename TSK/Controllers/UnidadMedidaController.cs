@@ -96,7 +96,7 @@ namespace TSK.Controllers
             }
 
             if(values.Contains(NOMBRE)) {
-                model.Nombre = Convert.ToString(values[NOMBRE]).ToUpper();
+                model.Nombre = Convert.ToString(values[NOMBRE]);
             }
 
             if(values.Contains(HABILITADO)) {

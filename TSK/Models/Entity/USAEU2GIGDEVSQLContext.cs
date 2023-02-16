@@ -1527,8 +1527,8 @@ namespace TSK.Models.Entity
                     .HasColumnName("GRUPO");
 
                 entity.Property(e => e.Lider)
-                   .HasColumnName("LIDER")
-                   .HasDefaultValueSql("((1))");
+                   .HasColumnName("LIDER");
+                   
 
                 entity.HasOne(d => d.IdRepNavigation)
                     .WithMany(p => p.GrupoUsuarios)

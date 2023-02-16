@@ -32,7 +32,6 @@
         .Key("IdSec")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdSec).Caption("ID").Width(50);
         columns.AddFor(m => m.Nombre);
         columns.AddFor(m => m.Habilitado).Width(120);
     })
@@ -57,7 +56,7 @@
                 .Title("Sector")
                 .ShowTitle(true)
                 .Width("50%")
-                .Height(200)
+                .Height(220)
             )
             .Form(f => f.Items(items => {
                 items.AddGroup()
@@ -65,7 +64,7 @@
                     .ColSpan(2)
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )

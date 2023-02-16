@@ -34,10 +34,9 @@
         .Key("IdRep")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdRep).Caption("ID").Width(50);
         columns.AddFor(m => m.Extracolumn1).Caption("Código").Width(100);
         columns.AddFor(m => m.Nombre).HidingPriority(2);
-        columns.AddFor(m => m.Nroparte).HidingPriority(1);
+        columns.AddFor(m => m.Nroparte).HidingPriority(1).Caption("Nro. Parte");
         columns.AddFor(m => m.Habilitado).Width(120).HidingPriority(0);   
     })
     .ShowBorders(true)
@@ -61,8 +60,8 @@
             .Popup(p => p
                 .Title("Repuesto")
                 .ShowTitle(true)
-                .Width("50%")
-                .Height(300)
+                .Width("55%")
+                .Height(370)
             )
             .Form(f => f.Items(items => {
                 items.AddGroup()
@@ -74,7 +73,7 @@
                         groupItems.AddSimpleFor(m => m.Nroparte).ColSpan(2);
                        
                         
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )

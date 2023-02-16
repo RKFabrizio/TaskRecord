@@ -32,7 +32,7 @@
         .Key("IdUm")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdUm).Caption("ID").Width(50);
+        columns.AddFor(m => m.IdUm).Caption("ID").Width(100);
         columns.AddFor(m => m.Nombre);
         columns.AddFor(m => m.Habilitado).Width(120);
     })
@@ -67,7 +67,7 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.IdUm).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )

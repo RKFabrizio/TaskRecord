@@ -36,7 +36,6 @@
         .Key("IdSis")
     )
     .Columns(columns => {
-        columns.AddFor(m => m.IdSis).Caption("ID").Width(50);
         columns.AddFor(m => m.Nombre);
         columns.AddFor(m => m.IdSec).Lookup(lookup => lookup
             .DataSource(ds => ds.WebApi().Controller("Sistema").LoadAction("SectorsLookup").Key("Value"))
@@ -61,12 +60,11 @@
         pager.ShowInfo(true);
     })
     .AllowColumnReordering(true)
-    .Grouping(grouping => grouping.AutoExpandAll(true))
     .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .GroupPanel(groupPanel => groupPanel
-        .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
-        .Visible(true))
+    .GroupPanel(g => g.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
     .RemoteOperations(true)
+
     .Editing(e => e.Mode(GridEditMode.Popup)
             .AllowUpdating(true)
             .AllowAdding(true)
@@ -86,7 +84,7 @@
                         groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdSec).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdCod).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                         
                     });
             }))

@@ -47,7 +47,6 @@
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.IdRan).AllowEditing(false).Caption("ID").Width("100");
         columns.AddFor(m => m.Nombre);
         columns.AddFor(m => m.Habilitado).Width("120");
     })
