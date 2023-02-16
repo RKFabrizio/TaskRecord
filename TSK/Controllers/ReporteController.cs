@@ -100,6 +100,7 @@ namespace TSK.Controllers
             var lookup = from pm in _context.Pms
                          join flo in _context.Flota on pm.IdFlt equals flo.IdFlt
                          orderby pm.IdPm
+                         where pm.Habilitado == true
                          select new
                          {
                              Value = pm.IdPm,

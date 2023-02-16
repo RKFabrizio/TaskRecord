@@ -467,7 +467,7 @@
             .Columns(columns => {
                 columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
                 columns.AddFor(m => m.Especificacion).AllowEditing(false);
-                columns.AddFor(m => m.Valor).Width(50);                    
+                columns.AddFor(m => m.Valor).Width(70);                    
                 columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
                 .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
                 .ValueExpr("Value")
@@ -475,13 +475,13 @@
             );
                 columns.Add().DataField("Referencia").AllowEditing(false)
                     .Alignment(HorizontalAlignment.Center)
-                    .Width(100)
+                    .Width(180)
                     .CellTemplate(@<text>
                                 <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
                                    <%- value %>
                                 </a>
     </text>);
-                columns.AddFor(m => m.Observacion).Caption("Observaciones");
+                columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
 
             })
             .Editing(e => e.Mode(GridEditMode.Cell)
@@ -500,34 +500,39 @@
 }
 
 @using (Html.DevExtreme().NamedTemplate("gridContainer-details2")) {
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
-            .DataSource(d => d.Mvc()
-                .Controller("RepDetalle")
-                .LoadAction("GetDetails")
-                .LoadParams(new { id = new JS("data.IdRepsis") })
-                .UpdateAction("Put")
-                .Key("IdAct", "IdRepsis")
-            )
-            .ColumnAutoWidth(true)
-            .AllowColumnResizing(true)
-            .ShowColumnLines(true)
-            .ShowRowLines(true)
-            .ShowBorders(true)
-            .Paging(paging => paging.PageSize(50))
-            .Columns(columns => {
-                columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
-                columns.AddFor(m => m.Especificacion).AllowEditing(false);
-                columns.AddFor(m => m.Valor).Width(50);                    
-                columns.AddFor(m => m.IdEst).Width(70);
-                columns.Add().DataField("Referencia").AllowEditing(false)
+    @(
+    Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
+                .DataSource(d => d.Mvc()
+                    .Controller("RepDetalle")
+                    .LoadAction("GetDetails")
+                    .LoadParams(new { id = new JS("data.IdRepsis") })
+                    .UpdateAction("Put")
+                    .Key("IdAct", "IdRepsis")
+                )
+                .ColumnAutoWidth(true)
+                .AllowColumnResizing(true)
+                .ShowColumnLines(true)
+                .ShowRowLines(true)
+                .ShowBorders(true)
+                .Paging(paging => paging.PageSize(50))
+                .Columns(columns => {
+                    columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
+                    columns.AddFor(m => m.Especificacion).AllowEditing(false);
+                    columns.AddFor(m => m.Valor).Width(70);
+                    columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text"));
+                    columns.Add().DataField("Referencia").AllowEditing(false)
                     .Alignment(HorizontalAlignment.Center)
-                    .Width(100)
-                    .CellTemplate(@<text>
+                    .Width(180)
+                    .CellTemplate(
+@<text>
                                 <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
                                    <%- value %>
                                 </a>
     </text>);
-                columns.AddFor(m => m.Observacion).Caption("Observaciones");
+                    columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
 
             })
             .Editing(e => e.Mode(GridEditMode.Cell)

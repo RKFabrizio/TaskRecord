@@ -36,7 +36,6 @@
     )
     .Columns(columns =>
     {
-        columns.AddFor(m => m.IdPm).Width(50).Caption("ID");
         columns.AddFor(m => m.Nombre).Caption("Nombre");
         columns.AddFor(m => m.Descripcion).Caption("Descripción");
         columns.AddFor(m => m.IdFlt).Caption("Flota").Lookup(lookup => lookup
@@ -74,7 +73,7 @@
                 .Title("PM")
                 .ShowTitle(true)
                 .Width("50%")
-                .Height(400)
+                .Height(500)
             )
             .Form(f => f.Items(items =>
             {
@@ -86,9 +85,7 @@
                         groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
-
-
-                        groupItems.AddSimpleFor(m => m.Habilitado);
+                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
 
                     });
                 items.AddGroup()

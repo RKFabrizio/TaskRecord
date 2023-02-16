@@ -74,9 +74,6 @@
         .RemoteOperations(true)
         .Columns(columns =>
         {
-
-            columns.AddFor(m => m.IdPms).Caption("ID").Width(50);
-
             columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
                 .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemasLookup").Key("Value"))
                 .ValueExpr("Value")
@@ -92,16 +89,17 @@
             columns.AddFor(m => m.Habilitado);
         })
        .AllowColumnReordering(true)
-        .Grouping(grouping => grouping.AutoExpandAll(true))
         .GroupPanel(groupPanel => groupPanel
             .EmptyPanelText("Arrastre un encabezado de columna aquí para agrupar por esa columna")
             .Visible(true))
         .ShowBorders(true)
         .RowAlternationEnabled(false)
         .ShowColumnLines(true)
+        .GroupPanel(g => g.Visible(true))
+        .Grouping(g => g.AutoExpandAll(false))
         .ShowRowLines(true)
         .Paging(paging => paging.PageSize(50))
-        .FilterRow(f => f.Visible(true))
+        .FilterRow(f => f.Visible(false))
         .HeaderFilter(f => f.Visible(true))
         .SearchPanel(searchPanel => searchPanel.Visible(true))
         .Pager(pager =>
@@ -179,12 +177,11 @@
                 .RemoteOperations(true)
                 .Columns(columns => {
 
-                    columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
+                columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
                         .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemasLookup").Key("Value"))
                         .ValueExpr("Value")
-                        .DisplayExpr("Text")
-                       
-                ).Caption("Sistema");
+                        .DisplayExpr("Text")).Caption("Sistema");
+
 
             })
 
@@ -200,7 +197,6 @@
             .Paging(paging => paging.PageSize(50))
             .FilterRow(f => f.Visible(true))
             .HeaderFilter(f => f.Visible(true))
-            .SearchPanel(searchPanel => searchPanel.Visible(true))
             .Pager(pager =>
             {
                 pager.ShowPageSizeSelector(true);
