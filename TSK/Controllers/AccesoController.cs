@@ -22,17 +22,17 @@ namespace TSK.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario _usuario)
         {
-
             var usuario = _UsuarioDatos.ValidarUsuario(_usuario.UserName, ConvertirSha256(_usuario.Clave));
-            
 
-            if (usuario != null)
+            if (usuario != null && usuario.Habilitado)
             {
                 var claims = new List<Claim>
-                {   new Claim(ClaimTypes.Name, usuario.Nombre),
-                    new Claim("Usuario", usuario.UserName),
-                    new Claim("NOMBRE_POS", usuario.Posiciones[0])
-                };
+        {   new Claim(ClaimTypes.Name, usuario.Nombre),
+            new Claim("Usuario", usuario.UserName),
+            new Claim("NOMBRE_POS", usuario.Posiciones[0])
+
+
+        };
 
                 foreach (string pos in usuario.Posiciones)
                 {
@@ -47,7 +47,14 @@ namespace TSK.Controllers
             }
             else
             {
-                @ViewBag.msg = "Error de usuario o clave";
+                if (usuario == null)
+                {
+                    @ViewBag.msg = "Error de usuario o clave";
+                }
+                else
+                {
+                    @ViewBag.msg = "El usuario no está habilitado para iniciar sesión";
+                }
                 return View();
             }
         }

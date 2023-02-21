@@ -46,7 +46,6 @@ namespace TSK.Models.Entity
         public virtual DbSet<Reporte> Reportes { get; set; }
         public virtual DbSet<Repuesto> Repuestos { get; set; }
         public virtual DbSet<Posicion> Posicions { get; set; }
-        public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<Sistema> Sistemas { get; set; }
         public virtual DbSet<Tabla> Tablas { get; set; }
         public virtual DbSet<TipoEquipo> TipoEquipos { get; set; }
@@ -615,10 +614,10 @@ namespace TSK.Models.Entity
                     .HasColumnName("HABILITADO")
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.Nombre)
+                entity.Property(e => e.Valor)
                     .HasMaxLength(250)
                     .IsUnicode(false)
-                    .HasColumnName("NOMBRE")
+                    .HasColumnName("VALOR")
                     .IsFixedLength();
             });
 
@@ -1224,36 +1223,7 @@ namespace TSK.Models.Entity
                     .HasColumnName("EXTRACOLUMN3");
             });
 
-            modelBuilder.Entity<Sector>(entity =>
-            {
-                entity.HasKey(e => e.IdSec)
-                    .HasName("XPKSECTOR");
-
-                entity.ToTable("SECTOR");
-
-                entity.Property(e => e.IdSec).HasColumnName("ID_SEC");
-
-                entity.Property(e => e.Extracolumn1)
-                    .IsUnicode(false)
-                    .HasColumnName("EXTRACOLUMN1");
-
-                entity.Property(e => e.Extracolumn2)
-                    .IsUnicode(false)
-                    .HasColumnName("EXTRACOLUMN2");
-
-                entity.Property(e => e.Extracolumn3)
-                    .IsUnicode(false)
-                    .HasColumnName("EXTRACOLUMN3");
-
-                entity.Property(e => e.Habilitado)
-                    .HasColumnName("HABILITADO")
-                    .HasDefaultValueSql("((1))");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("NOMBRE");
-            });
+           
 
             modelBuilder.Entity<Sistema>(entity =>
             {
@@ -1286,8 +1256,6 @@ namespace TSK.Models.Entity
                     .HasColumnName("ID_COD")
                     .IsFixedLength();
 
-                entity.Property(e => e.IdSec).HasColumnName("ID_SEC");
-
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(250)
                     .IsUnicode(false)
@@ -1298,10 +1266,6 @@ namespace TSK.Models.Entity
                     .HasForeignKey(d => d.IdCod)
                     .HasConstraintName("FK_SISTEMA_CONDICION");
 
-                entity.HasOne(d => d.IdSecNavigation)
-                    .WithMany(p => p.Sistemas)
-                    .HasForeignKey(d => d.IdSec)
-                    .HasConstraintName("FK_SISTEMA_SECTOR");
             });
 
             modelBuilder.Entity<Tabla>(entity =>
@@ -1483,8 +1447,7 @@ namespace TSK.Models.Entity
                     .HasColumnName("EXTRACOLUMN3");
 
                 entity.Property(e => e.Habilitado)
-                    .HasColumnName("HABILITADO")
-                    .HasDefaultValueSql("((1))");
+                    .HasColumnName("HABILITADO");
 
                 entity.Property(e => e.IdPos).HasColumnName("ID_POS");
 

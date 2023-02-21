@@ -20,6 +20,7 @@ namespace TSK.Models
 
         public string[] Posiciones { get; set; }
 
+        public bool Habilitado { get; set; }
 
     }
 }

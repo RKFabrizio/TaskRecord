@@ -86,7 +86,6 @@
                 .DisplayExpr("Text")
                 ).GroupIndex(0).Caption("PM");
 
-            columns.AddFor(m => m.Habilitado);
         })
        .AllowColumnReordering(true)
         .GroupPanel(groupPanel => groupPanel
@@ -114,10 +113,10 @@
                 .AllowAdding(true)
                 .UseIcons(true)
                 .Popup(p => p
-                    .Title("PM Sistema")
+                    .Title("Pauta de Mantenimiento - Sistema")
                     .ShowTitle(true)
-                    .Width("70%")
-                    .Height(400)
+                    .Width("50%")
+                    .Height(320)
                 )
                 .Form(f => f.Items(items =>
                 {
@@ -128,7 +127,6 @@
                         {
                             groupItems.AddSimpleFor(m => m.IdPm).ColSpan(2);
                             groupItems.AddSimpleFor(m => m.IdSis).ColSpan(2);
-                            groupItems.AddSimpleFor(m => m.Habilitado);
                         });
                 }))
 

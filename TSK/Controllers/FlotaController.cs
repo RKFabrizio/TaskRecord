@@ -88,6 +88,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> TipoEquiposLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.TipoEquipos
                          orderby i.TEquipo
+                         where i.Habilitado == true
                          select new {
                              Value = i.IdTeq,
                              Text = i.TEquipo

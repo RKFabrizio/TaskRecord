@@ -27,7 +27,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions) {
             var frecuencia = _context.Frecuencia.Select(i => new {
                 i.IdFrc,
-                i.Nombre,
+                i.Valor,
                 i.Habilitado,
                 i.Extracolumn1,
                 i.Extracolumn2,
@@ -85,7 +85,7 @@ namespace TSK.Controllers
 
         private void PopulateModel(Frecuencium model, IDictionary values) {
             string ID_FRC = nameof(Frecuencium.IdFrc);
-            string NOMBRE = nameof(Frecuencium.Nombre);
+            string VALOR = nameof(Frecuencium.Valor);
             string HABILITADO = nameof(Frecuencium.Habilitado);
             string EXTRACOLUMN1 = nameof(Frecuencium.Extracolumn1);
             string EXTRACOLUMN2 = nameof(Frecuencium.Extracolumn2);
@@ -95,8 +95,8 @@ namespace TSK.Controllers
                 model.IdFrc = Convert.ToInt32(values[ID_FRC]);
             }
 
-            if(values.Contains(NOMBRE)) {
-                model.Nombre = Convert.ToString(values[NOMBRE]).ToUpper();
+            if(values.Contains(VALOR)) {
+                model.Valor = Convert.ToInt32(values[VALOR]);
             }
 
             if(values.Contains(HABILITADO)) {

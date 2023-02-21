@@ -24,58 +24,168 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Disciplina>()
-    .DataSource(ds => ds.Mvc()
-        .Controller("Disciplina")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .Key("IdDis")
-    )
-    .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(50))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .Pager(pager =>{
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] {50, 100, 150});
-        pager.ShowInfo(true);
-    })
-    .RemoteOperations(true)
-    .Columns(columns => {
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="form-group mb-3">
+                <div class='form-control'>
+                    <div class="col-md-12">
 
-        columns.AddFor(m => m.Nombre);
-        columns.AddFor(m => m.IdNiv).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Disciplina").LoadAction("NivelsLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Caption("Nivel");
-        columns.AddFor(m => m.Habilitado).Width(120);
-    })
-    .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("Disciplina")
-                .ShowTitle(true)
-                .Width("50%")
-                .Height(200)
-            )
-            
-            .Form(f => f.Items(items => {
-                items.AddGroup()
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.IdNiv).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
-                    });
-            }))
-            
+                        @(Html.DevExtreme().TabPanel()
+
+                            .Items(items =>
+                            {
+
+                                items.Add()
+                                .Title("LISTA DE DISCIPLINAS HABILITADAS")
+                                .Template(new TemplateName("TAB1"));
+                                items.Add()
+                                .Title("LISTA DE DISCIPLINAS DESHABILITADAS")
+                                .Template(new TemplateName("TAB2"));
+
+                            })
+                            .SelectedIndex(0)
+                            .Loop(false)
+                            .AnimationEnabled(true)
+                            .SwipeEnabled(true)
+                            .OnItemClick("refreshGrid")
+                            )
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Disciplina>()
+        .ID("grid1")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Disciplina")
+            .LoadAction("Get").OnLoaded("filterTrue")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .Key("IdDis")
         )
-)
+        .ShowBorders(true)
+        .RowAlternationEnabled(false)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .Paging(paging => paging.PageSize(50))
+        .FilterRow(f => f.Visible(true))
+        .HeaderFilter(f => f.Visible(true))
+        .Pager(pager =>
+        {
+            pager.ShowPageSizeSelector(true);
+            pager.AllowedPageSizes(new[] { 50, 100, 150 });
+            pager.ShowInfo(true);
+        })
+        .RemoteOperations(true)
+        .Columns(columns =>
+        {
+
+            columns.AddFor(m => m.Nombre);
+            columns.AddFor(m => m.IdNiv).Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("Disciplina").LoadAction("NivelsLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).Caption("Nivel");
+            columns.AddFor(m => m.Habilitado).Width(120);
+        })
+        .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowUpdating(true)
+                .AllowAdding(true)
+                .UseIcons(true)
+                .Popup(p => p
+                    .Title("Disciplina")
+                    .ShowTitle(true)
+                    .Width("50%")
+                    .Height(320)
+                )
+
+                .Form(f => f.Items(items =>
+                {
+                    items.AddGroup()
+                        .ColCount(2)
+                        .ColSpan(2)
+                        .Items(groupItems =>
+                        {
+                            groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.IdNiv).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
+                        });
+                }))
+
+            )
+    )
+}
+
+@using (Html.DevExtreme().NamedTemplate("TAB2"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Disciplina>()
+        .ID("grid2")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Disciplina")
+            .LoadAction("Get").OnLoaded("filterFalse")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .Key("IdDis")
+        )
+        .ShowBorders(true)
+        .RowAlternationEnabled(false)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .Paging(paging => paging.PageSize(50))
+        .FilterRow(f => f.Visible(true))
+        .HeaderFilter(f => f.Visible(true))
+        .Pager(pager =>
+        {
+            pager.ShowPageSizeSelector(true);
+            pager.AllowedPageSizes(new[] { 50, 100, 150 });
+            pager.ShowInfo(true);
+        })
+        .RemoteOperations(true)
+        .Columns(columns =>
+        {
+
+            columns.AddFor(m => m.Nombre).AllowEditing(false);
+            columns.AddFor(m => m.IdNiv).Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("Disciplina").LoadAction("NivelsLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).Caption("Nivel").AllowEditing(false);
+            columns.AddFor(m => m.Habilitado).Width(120);
+        })
+          .Editing(editing =>
+                                        {
+                                            editing.AllowUpdating(true);
+                                        })
+    )
+}
+
+<script>
+    function filterTrue() {
+        var grid = $("#grid1").dxDataGrid("instance");
+        grid.filter([
+            ["Habilitado", "=", true]
+        ]);
+    }
+
+    function filterFalse() {
+        var grid = $("#grid2").dxDataGrid("instance");
+        grid.filter([
+            ["Habilitado", "=", false]
+        ]);
+    }
+
+    function refreshGrid() {
+        $("#grid1").dxDataGrid("instance").refresh();
+        $("#grid2").dxDataGrid("instance").refresh();
+    }
+
+</script>

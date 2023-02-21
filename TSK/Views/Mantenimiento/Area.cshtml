@@ -22,55 +22,61 @@
 
 
 }
-@(
-Html.DevExtreme().DataGrid<TSK.Models.Entity.Area>()
-    .DataSource(ds => ds.Mvc()
-        .Controller("AreasNew")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put") 
-        .Key("IdArea")
-    )
-      .Columns(columns =>
-      {
-          columns.AddFor(m => m.Nombre);
-          columns.AddFor(m => m.Habilitado).Width(120);
-      })
-    .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(20))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 20, 50, 100 });
-        pager.ShowInfo(true);
-    })
-    .RemoteOperations(true)
-      .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("Area")
-                .ShowTitle(true)
-                .Width("40%")
-                .Height(240)
+
+
+    @(
+        Html.DevExtreme().DataGrid<TSK.Models.Entity.Area>()
+            .ID("grid2")
+            .DataSource(ds => ds.Mvc()
+                .Controller("AreasNew")
+                .LoadAction("Get")
+                .InsertAction("Post")
+                .UpdateAction("Put")
+                .Key("IdArea")
             )
-            .Form(f => f.Items(items =>
+              .Columns(columns =>
+              {
+                  columns.AddFor(m => m.Nombre);
+              })
+            .ShowBorders(true)
+            .RowAlternationEnabled(false)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .Paging(paging => paging.PageSize(20))
+            .FilterRow(f => f.Visible(true))
+            .HeaderFilter(f => f.Visible(true))
+            .Pager(pager =>
             {
-                items.AddGroup()
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems =>
-                    {
-                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
-                    });
-            }))
+                pager.ShowPageSizeSelector(true);
+                pager.AllowedPageSizes(new[] { 20, 50, 100 });
+                pager.ShowInfo(true);
+            })
+            .RemoteOperations(true)
+              .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowUpdating(true)
+                .AllowAdding(true)
+                .UseIcons(true)
+                .Popup(p => p
+                    .Title("Area")
+                    .ShowTitle(true)
+                    .Width("40%")
+                    .Height(220)
+                    
+                )
+                
+                .Form(f => f.Items(items =>
+                {
+                    items.AddGroup()
+                        .ColCount(2)
+                        .ColSpan(2)
+                        .Items(groupItems =>
+                        {
+                            groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                        });
+                }))
+                
         )
-    
-)
+
+
+        )
+

@@ -33,7 +33,6 @@ namespace TSK.Models.Entity
         public string Extracolumn3 { get; set; }
 
         public virtual Posicion IdPosNavigation { get; set; }
-        public virtual GrupoUsuario IdGrusNavigation { get; set; }
         public virtual ICollection<Auditorium> Auditoria { get; set; }
         public virtual ICollection<GrupoUsuario> GrupoUsuarios { get; set; }
     }

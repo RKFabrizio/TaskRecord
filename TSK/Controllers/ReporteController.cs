@@ -115,6 +115,7 @@ namespace TSK.Controllers
         {
             var lookup = from uni in _context.Unidads
                          orderby uni.Unidad1
+                         where uni.Habilitado==true
                          select new
                          {
                              Value = uni.IdUni,
@@ -129,6 +130,7 @@ namespace TSK.Controllers
             var lookup = from uni in _context.Unidads
                          join flo in _context.Flota on uni.IdFlt equals flo.IdFlt
                          orderby flo.Flota + " - " + uni.Unidad1
+                         where uni.Habilitado == true
                          select new
                          {
                              Value = uni.IdUni,
