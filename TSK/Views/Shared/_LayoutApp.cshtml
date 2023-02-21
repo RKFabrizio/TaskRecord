@@ -211,29 +211,16 @@
                                                 <a asp-controller="Mantenimiento" asp-action="Area" class="dropdown-item @ViewBag.area">
                                                     Areas
                                                 </a>
-                                                <a asp-controller="Mantenimiento" asp-action="ClaseMantencion" class="dropdown-item @ViewBag.clasemantencion">
-                                                    Clase mantenci&oacute;n
-                                                </a>
-                                                <a asp-controller="Mantenimiento" asp-action="Complemento" class="dropdown-item @ViewBag.complemento">
-                                                    Complemento
-                                                </a>
-                                                <a asp-controller="Mantenimiento" asp-action="Componente" class="dropdown-item @ViewBag.componente">
-                                                    Componente
-                                                </a>
-                                                <a asp-controller="Mantenimiento" asp-action="Condicion" class="dropdown-item @ViewBag.condicion">
-                                                    Condici&oacute;n
-                                                </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Consecuencia" class="dropdown-item @ViewBag.consecuencia">
                                                     Consecuencia
+                                                </a>
+                                                <a asp-controller="Mantenimiento" asp-action="ClaseMantencion" class="dropdown-item @ViewBag.clasemantencion">
+                                                    Clase mantenci&oacute;n
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Disciplina" class="dropdown-item @ViewBag.disciplina">
                                                     Disciplinas
                                                 </a>
-                                                <a asp-controller="Mantenimiento" asp-action="Equipo" class="dropdown-item @ViewBag.equipo">
-                                                    Equipos
-                                                </a>
-
-                                                <a asp-controller="Mantenimiento" asp-action="Entrega" class="dropdown-item @ViewBag.entrega">
+                                              <a asp-controller="Mantenimiento" asp-action="Entrega" class="dropdown-item @ViewBag.entrega">
                                                     Entregas
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Flota" class="dropdown-item @ViewBag.flota">
@@ -242,9 +229,7 @@
                                                 <a asp-controller="Mantenimiento" asp-action="Frecuencia" class="dropdown-item @ViewBag.frecuencia">
                                                     Frecuencia
                                                 </a>
-                                                <a asp-controller="Mantenimiento" asp-action="Herramienta" class="dropdown-item @ViewBag.herramienta">
-                                                    Herramientas
-                                                </a>
+
                                             </div>
                                             @if (User.IsInRole("Lider"))
                                             {
@@ -253,19 +238,6 @@
                                                     <a asp-controller="Mantenimiento" asp-action="Nivel" class="dropdown-item @ViewBag.nivel">
                                                         Niveles
                                                     </a>
-                                                    <a asp-controller="Mantenimiento" asp-action="Rango" class="dropdown-item @ViewBag.rango">
-                                                        Rango
-                                                    </a>
-                                                    <a asp-controller="Mantenimiento" asp-action="Repuesto" class="dropdown-item @ViewBag.repuesto">
-                                                        Repuestos
-                                                    </a>
-                                                    <a asp-controller="Mantenimiento" asp-action="Posicion" class="dropdown-item @ViewBag.posicion">
-                                                        Posiciones
-                                                    </a>
-                                                    <a asp-controller="Mantenimiento" asp-action="Sector" class="dropdown-item @ViewBag.sector">
-                                                        Sector
-                                                    </a>
-
                                                     <a asp-controller="Mantenimiento" asp-action="TipoEquipo" class="dropdown-item @ViewBag.tipoeequipo">
                                                         Tipo Equipos
                                                     </a>

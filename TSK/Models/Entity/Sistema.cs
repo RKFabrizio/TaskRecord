@@ -14,9 +14,6 @@ namespace TSK.Models.Entity
 
         public int IdSis { get; set; }
 
-        [Required(ErrorMessage = "El sector es obligatoria")]
-        public int? IdSec { get; set; }
-
         [Required(ErrorMessage = "La condición es obligatoria")]
         public string IdCod { get; set; }
 
@@ -28,7 +25,6 @@ namespace TSK.Models.Entity
         public string Extracolumn3 { get; set; }
 
         public virtual Condicion IdCodNavigation { get; set; }
-        public virtual Sector IdSecNavigation { get; set; }
         public virtual ICollection<Componente> Componentes { get; set; }
         public virtual ICollection<PmSistema> PmSistemas { get; set; }
 

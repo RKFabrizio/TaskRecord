@@ -27,7 +27,8 @@ namespace TSK.Data
                             Nombre = dr["NOMBRE"].ToString(),
                             UserName = dr["USUARIO"].ToString(),
                             Clave = dr["CONTRASENA"].ToString(),
-                            Posiciones = new string[] { dr["NOMBRE_POS"].ToString() }
+                            Posiciones = new string[] { dr["NOMBRE_POS"].ToString()},
+                            Habilitado = Convert.ToBoolean(dr["HABILITADO"])
                         });
                     }
                 }

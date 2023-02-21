@@ -98,6 +98,7 @@ namespace TSK.Controllers
         {
             var lookup = from i in _context.Actividads
                          orderby i.Titulo
+                         where i.Habilitado == true
                          select new
                          {
                              Value = i.IdAct,
@@ -110,6 +111,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> DisciplinasLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Disciplinas
                          orderby i.Nombre
+                         where i.Habilitado == true
                          select new {
                              Value = i.IdDis,
                              Text = i.Nombre
@@ -122,7 +124,7 @@ namespace TSK.Controllers
         {
             var lookup = from i in _context.Actividads
                          from d in _context.Disciplinas
-                         where i.IdDis == d.IdDis && i.IdAct == IdAct
+                         where i.IdDis == d.IdDis && i.IdAct == IdAct && i.Habilitado == true
                          
                          select new
                          {
@@ -136,6 +138,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> ClaseMantencionsLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.ClaseMantencions
                          orderby i.Nombre
+                         where i.Habilitado == true
                          select new {
                              Value = i.IdClm,
                              Text = i.Nombre
@@ -147,6 +150,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> ConsecuenciaLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Consecuencia
                          orderby i.Nombre
+                         where i.Habilitado == true
                          select new {
                              Value = i.IdCon,
                              Text = i.Nombre
@@ -157,10 +161,11 @@ namespace TSK.Controllers
         [HttpGet]
         public async Task<IActionResult> FrecuenciaLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Frecuencia
-                         orderby i.IdFrc 
+                         orderby i.IdFrc
+                         where i.Habilitado == true
                          select new {
                              Value = i.IdFrc,
-                             Text = i.Nombre
+                             Text = i.Valor
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup.OrderBy(x => x.Value), loadOptions));
         }
@@ -180,6 +185,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> UnidadMedidaLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.UnidadMedida
                          orderby i.Nombre
+                         where i.Habilitado == true
                          select new {
                              Value = i.IdUm,
                              Text = i.Nombre

@@ -23,69 +23,165 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Unidad>()
-    .DataSource(ds => ds.Mvc()
-        .Controller("Unidad")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .Key("IdUni")
-    )
-    .Columns(columns => {
-        columns.AddFor(m => m.Unidad1).Caption("Unidad");
-        columns.AddFor(m => m.IdFlt).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Unidad").LoadAction("FlotaLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).GroupIndex(0).Caption("Flota");
-        
-        columns.AddFor(m => m.Habilitado).Width(120);
-    })
-    .RemoteOperations(true)
-    .AllowColumnReordering(true)
-    .RowAlternationEnabled(true)
-    .ShowBorders(true)
-    .OnContentReady("contentReady")
-    .Paging(p => p.PageSize(10))
-    .Pager(p => p
-        .ShowPageSizeSelector(true)
-        .AllowedPageSizes(new[] { 10, 25, 50, 100 })
-    )
-    .SearchPanel(s => s
-        .Visible(true)
-        .HighlightCaseSensitive(true)
-    )
-    .GroupPanel(g => g.Visible(true))
-    .Grouping(g => g.AutoExpandAll(false))
-    .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("Unidad")
-                .ShowTitle(true)
-                .Width("50%")
-                .Height(300)
-            )
-            .Form(f => f.Items(items => {
-                items.AddGroup()
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems => {
-                        groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Unidad1).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
-                    });
-            }))
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="form-group mb-3">
+                <div class='form-control'>
+                    <div class="col-md-12">
+
+                        @(Html.DevExtreme().TabPanel()
+
+                            .Items(items =>
+                            {
+
+                                items.Add()
+                                .Title("LISTA DE UNIDADES HABILITADAS")
+                                .Template(new TemplateName("TAB1"));
+
+                                items.Add()
+                                .Title("LISTA DE UNIDADES DESHABILITADAS")
+                                .Template(new TemplateName("TAB2"));
+
+                            })
+                            .SelectedIndex(0)
+                            .Loop(false)
+                            .AnimationEnabled(true)
+                            .SwipeEnabled(true)
+                            .OnItemClick("refreshGrid")
+                            )
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Unidad>()
+        .ID("grid1")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Unidad")
+            .LoadAction("Get").OnLoaded("filterTrue")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .Key("IdUni")
         )
-)
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.Unidad1).Caption("Unidad");
+            columns.AddFor(m => m.IdFlt).Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("Unidad").LoadAction("FlotaLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).GroupIndex(0).Caption("Flota");
+
+            columns.AddFor(m => m.Habilitado).Width(120);
+        })
+        .RemoteOperations(true)
+        .AllowColumnReordering(true)
+        .RowAlternationEnabled(true)
+        .ShowBorders(true)
+        .Paging(p => p.PageSize(10))
+        .Pager(p => p
+            .ShowPageSizeSelector(true)
+            .AllowedPageSizes(new[] { 10, 25, 50, 100 })
+        )
+        .SearchPanel(s => s
+            .Visible(true)
+            .HighlightCaseSensitive(true)
+        )
+        .GroupPanel(g => g.Visible(true))
+        .Grouping(g => g.AutoExpandAll(false))
+        .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowUpdating(true)
+                .AllowAdding(true)
+                .UseIcons(true)
+                .Popup(p => p
+                    .Title("Unidad")
+                    .ShowTitle(true)
+                    .Width("50%")
+                    .Height(300)
+                )
+                .Form(f => f.Items(items =>
+                {
+                    items.AddGroup()
+                        .ColCount(2)
+                        .ColSpan(2)
+                        .Items(groupItems =>
+                        {
+                            groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.Unidad1).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
+                        });
+                }))
+            )
+    )
+
+}
+
+@using (Html.DevExtreme().NamedTemplate("TAB2"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Unidad>()
+          .ID("grid2")
+          .DataSource(ds => ds.Mvc()
+              .Controller("Unidad")
+              .LoadAction("Get").OnLoaded("filterFalse")
+              .InsertAction("Post")
+              .UpdateAction("Put")
+              .Key("IdUni")
+          )
+          .Columns(columns =>
+          {
+              columns.AddFor(m => m.Unidad1).Caption("Unidad").AllowEditing(false);
+              columns.AddFor(m => m.IdFlt).Lookup(lookup => lookup
+                  .DataSource(ds => ds.WebApi().Controller("Unidad").LoadAction("FlotaLookup").Key("Value"))
+                  .ValueExpr("Value")
+                  .DisplayExpr("Text")
+              ).GroupIndex(0).Caption("Flota");
+
+              columns.AddFor(m => m.Habilitado).Width(120);
+          })
+          .RemoteOperations(true)
+          .AllowColumnReordering(true)
+          .RowAlternationEnabled(true)
+          .ShowBorders(true)
+          .Paging(p => p.PageSize(10))
+          .Pager(p => p
+              .ShowPageSizeSelector(true)
+              .AllowedPageSizes(new[] { 10, 25, 50, 100 })
+          )
+          .GroupPanel(g => g.Visible(true))
+          .Grouping(g => g.AutoExpandAll(false))
+          .Editing(editing =>
+                                {
+                                    editing.AllowUpdating(true);
+                                })
+      )
+}
+
 
 <script>
-    var collapsed = false;
-    function contentReady(e) {
-        if (!collapsed) {
-            collapsed = true;
-            e.component.expandRow(["EnviroCare"]);
-        }
+    function filterTrue() {
+        var grid = $("#grid1").dxDataGrid("instance");
+        grid.filter([
+            ["Habilitado", "=", true]
+        ]);
     }
+
+    function filterFalse() {
+        var grid = $("#grid2").dxDataGrid("instance");
+        grid.filter([
+            ["Habilitado", "=", false]
+        ]);
+    }
+
+    function refreshGrid() {
+        $("#grid1").dxDataGrid("instance").refresh();
+        $("#grid2").dxDataGrid("instance").refresh();
+    }
+
 </script>

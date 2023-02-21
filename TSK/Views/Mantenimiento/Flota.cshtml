@@ -38,7 +38,6 @@
             .DisplayExpr("Text")
         ).GroupIndex(0).Caption("Tipo Equipo");
         columns.AddFor(m => m.Flota);
-        columns.AddFor(m => m.Habilitado).Width(120);
     })
      .RemoteOperations(false)
     .AllowColumnReordering(true)
@@ -74,7 +73,6 @@
                         groupItems.AddSimpleFor(m => m.Flota).ColSpan(2);
                         groupItems.AddSimpleFor(m => m.IdTeq).ColSpan(2);
                         
-                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                     });
             }))
         )

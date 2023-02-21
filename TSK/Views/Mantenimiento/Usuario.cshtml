@@ -23,80 +23,183 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Usuario>()
-    .DataSource(ds => ds.Mvc()
-        .Controller("UsuariosNew")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .Key("IdUsr")
-    )
-    .Columns(columns => {
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="form-group mb-3">
+                <div class='form-control'>
+                    <div class="col-md-12">
 
-        columns.AddFor(m => m.IdPos).Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("UsuariosNew").LoadAction("PosicionsLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).GroupIndex(0).Caption("Posicion");
+                        @(Html.DevExtreme().TabPanel()
 
-        columns.AddFor(m => m.Nombre).Width(500);
-        columns.AddFor(m => m.Usuario1).Caption("Usuario").Width(200);
-        columns.AddFor(m => m.Contrasena).Caption("Clave");
-        columns.AddFor(m => m.Habilitado).Width(100);
-    })
-    .ShowBorders(true)
-    .AllowColumnReordering(true)
-    .OnContentReady("contentReady")
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(20))
-    .FilterRow(f => f.Visible(true))
-    .Pager(pager =>{
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] {20, 50, 100});
-        pager.ShowInfo(true);
-    })
-    .SearchPanel(s => s
-        .Visible(true)
-        .HighlightCaseSensitive(true)
-    )
-    .GroupPanel(g => g.Visible(true))
-    .Grouping(g => g.AutoExpandAll(false))
-    .RemoteOperations(true)
-    .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("Usuario")
-                .ShowTitle(true)
-                .Width("70%")
-                .Height(300)
+                            .Items(items =>
+                            {
+
+                                items.Add()
+                                .Title("LISTA DE USUARIOS HABILITADOS")
+                                .Template(new TemplateName("TAB1"));
+                                items.Add()
+                                .Title("LISTA DE USUARIOS DESHABILITADOS")
+                                .Template(new TemplateName("TAB2"));
+
+                            })
+                            .SelectedIndex(0)
+                            .Loop(false)
+                            .AnimationEnabled(true)
+                            .SwipeEnabled(true)
+                            )
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Usuario>()
+            .ID("grid1")
+            .DataSource(ds => ds.Mvc()
+                .Controller("UsuariosNew")
+                .LoadAction("Get").OnLoaded("filterTrue")
+                .InsertAction("Post")
+                .UpdateAction("Put")
+                .Key("IdUsr")
+                .Key("IdUsr")
             )
-
-            .Form(f => f.Items(items =>
+            .Columns(columns =>
             {
-                items.AddGroup()
-                    .ColCount(2)
-                    .ColSpan(2)
-                    .Items(groupItems =>
+                columns.AddFor(m => m.IdPos).Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("UsuariosNew").LoadAction("PosicionsLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text")
+                ).GroupIndex(0).Caption("Posicion");
+
+                columns.AddFor(m => m.Nombre).Width(500);
+                columns.AddFor(m => m.Usuario1).Caption("Usuario").Width(200);
+                columns.AddFor(m => m.Contrasena).Caption("Clave");
+                columns.AddFor(m => m.Habilitado).Width(100);
+            })
+            .ShowBorders(true)
+            .AllowColumnReordering(true)
+            .OnContentReady("contentReady")
+            .RowAlternationEnabled(false)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .Paging(paging => paging.PageSize(20))
+            .FilterRow(f => f.Visible(true))
+            .Pager(pager =>
+            {
+                pager.ShowPageSizeSelector(true);
+                pager.AllowedPageSizes(new[] { 20, 50, 100 });
+                pager.ShowInfo(true);
+            })
+            .SearchPanel(s => s
+                .Visible(true)
+                .HighlightCaseSensitive(true)
+            )
+            .GroupPanel(g => g.Visible(true))
+            .Grouping(g => g.AutoExpandAll(false))
+            .RemoteOperations(true)
+            .Editing(e => e.Mode(GridEditMode.Popup)
+                    .AllowUpdating(true)
+                    .AllowAdding(true)
+                    .UseIcons(true)
+                    .Popup(p => p
+                        .Title("Usuario")
+                        .ShowTitle(true)
+                        .Width("70%")
+                        .Height(300)
+                    )
+
+                    .Form(f => f.Items(items =>
                     {
-                        groupItems.AddSimpleFor(m => m.Nombre).CssClass("myFormMargin");
-                        groupItems.AddSimpleFor(m => m.IdPos).CssClass("myFormMargin");
-                        groupItems.AddSimpleFor(m => m.Usuario1).CssClass("myFormMargin");
-                        groupItems.AddSimpleFor(m => m.Contrasena)
-                            .Editor(e => e.TextBox().Mode(TextBoxMode.Password)).CssClass("myFormMargin");
+                        items.AddGroup()
+                            .ColCount(2)
+                            .ColSpan(2)
+                            .Items(groupItems =>
+                            {
+                                groupItems.AddSimpleFor(m => m.Nombre).CssClass("myFormMargin");
+                                groupItems.AddSimpleFor(m => m.IdPos).CssClass("myFormMargin");
+                                groupItems.AddSimpleFor(m => m.Usuario1).CssClass("myFormMargin");
+                                groupItems.AddSimpleFor(m => m.Contrasena)
+                                    .Editor(e => e.TextBox().Mode(TextBoxMode.Password)).CssClass("myFormMargin");
 
-                        groupItems.AddSimpleFor(m => m.Habilitado).CssClass("myFormMargin").Label(label => label.Location(FormLabelLocation.Left));
-                    });
-            }))
+                                groupItems.AddSimpleFor(m => m.Habilitado).CssClass("myFormMargin").Label(label => label.Location(FormLabelLocation.Left));
+                            });
+                    }))
 
+                )
         )
-)
+}
 
+@using (Html.DevExtreme().NamedTemplate("TAB2"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Usuario>()
+              .ID("grid2")
+              .DataSource(ds => ds.Mvc()
+                  .Controller("UsuariosNew")
+                  .LoadAction("Get").OnLoaded("filterFalse")
+                  .InsertAction("Post")
+                  .UpdateAction("Put")
+                  .Key("IdUsr")
+              )
+              .Columns(columns =>
+              {
+                  columns.AddFor(m => m.IdPos).Lookup(lookup => lookup
+                      .DataSource(ds => ds.WebApi().Controller("UsuariosNew").LoadAction("PosicionsLookup").Key("Value"))
+                      .ValueExpr("Value")
+                      .DisplayExpr("Text")
+                  ).GroupIndex(0).Caption("Posicion");
 
+                      columns.AddFor(m => m.Nombre).Width(500).AllowEditing(false);
+                      columns.AddFor(m => m.Usuario1).Caption("Usuario").Width(200).AllowEditing(false);
+                  columns.AddFor(m => m.Contrasena).Caption("Clave").AllowEditing(false);
+                  columns.AddFor(m => m.Habilitado).Width(100);
+              })
+              .ShowBorders(true)
+              .AllowColumnReordering(true)
+              .OnContentReady("contentReady")
+              .RemoteOperations(true)
+              .RowAlternationEnabled(false)
+              .ShowColumnLines(true)
+              .ShowRowLines(true)
+              .Paging(paging => paging.PageSize(20))
+              .FilterRow(f => f.Visible(true))
+              .Pager(pager =>
+              {
+                  pager.ShowPageSizeSelector(true);
+                  pager.AllowedPageSizes(new[] { 20, 50, 100 });
+                  pager.ShowInfo(true);
+              })
+              .GroupPanel(g => g.Visible(true))
+              .Grouping(g => g.AutoExpandAll(false))
+              .RemoteOperations(true)
+              
+                  .Editing(editing =>
+                                {
+                                    editing.AllowUpdating(true);
+                                })
+             
+          )
+}
 <script>
+    function filterTrue(){
+             var grid = $("#grid1").dxDataGrid("instance");
+            grid.filter([
+            ["Habilitado", "=", true]
+            ]);
+    }
+
+     function filterFalse(){
+             var grid = $("#grid2").dxDataGrid("instance");
+            grid.filter([
+            ["Habilitado", "=", false]
+            ]);
+    }
+   
     var collapsed = false;
     function contentReady(e) {
         if(!collapsed) {
@@ -104,6 +207,15 @@
             e.component.expandRow(["EnviroCare"]);
         }
     }
+
+     function refreshData() {
+        var grid = $("#grid1").dxDataGrid("instance");
+        grid.refresh();
+    }
+
+
+
+
 
 </script>
 

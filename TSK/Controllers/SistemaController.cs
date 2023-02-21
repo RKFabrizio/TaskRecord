@@ -27,7 +27,6 @@ namespace TSK.Controllers
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions) {
             var sistemas = _context.Sistemas.Select(i => new {
                 i.IdSis,
-                i.IdSec,
                 i.IdCod,
                 i.Nombre,
                 i.Habilitado,
@@ -96,20 +95,8 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
 
-        [HttpGet]
-        public async Task<IActionResult> SectorsLookup(DataSourceLoadOptions loadOptions) {
-            var lookup = from i in _context.Sectors
-                         orderby i.Nombre
-                         select new {
-                             Value = i.IdSec,
-                             Text = i.Nombre
-                         };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        }
-
         private void PopulateModel(Sistema model, IDictionary values) {
             string ID_SIS = nameof(Sistema.IdSis);
-            string ID_SEC = nameof(Sistema.IdSec);
             string ID_COD = nameof(Sistema.IdCod);
             string NOMBRE = nameof(Sistema.Nombre);
             string HABILITADO = nameof(Sistema.Habilitado);
@@ -121,16 +108,12 @@ namespace TSK.Controllers
                 model.IdSis = Convert.ToInt32(values[ID_SIS]);
             }
 
-            if(values.Contains(ID_SEC)) {
-                model.IdSec = values[ID_SEC] != null ? Convert.ToInt32(values[ID_SEC]) : (int?)null;
-            }
-
             if(values.Contains(ID_COD)) {
                 model.IdCod = Convert.ToString(values[ID_COD]);
             }
 
             if(values.Contains(NOMBRE)) {
-                model.Nombre = Convert.ToString(values[NOMBRE]).ToUpper();
+                model.Nombre = Convert.ToString(values[NOMBRE]);
             }
 
             if(values.Contains(HABILITADO)) {

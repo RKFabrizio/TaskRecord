@@ -92,6 +92,7 @@ namespace TSK.Controllers
         [HttpGet]
         public async Task<IActionResult> PosicionsLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Posicions
+                         from u in _context.Usuarios
                          orderby i.Cargo
                          select new {
                              Value = i.IdPos,

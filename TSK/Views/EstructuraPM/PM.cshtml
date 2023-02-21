@@ -26,79 +26,186 @@
 
 }
 
-@(Html.DevExtreme().DataGrid<TSK.Models.Entity.Pm>()
-    .DataSource(ds => ds.Mvc()
-        .Controller("Pm")
-        .LoadAction("Get")
-        .InsertAction("Post")
-        .UpdateAction("Put")
-        .Key("IdPm")
-    )
-    .Columns(columns =>
-    {
-        columns.AddFor(m => m.Nombre).Caption("Nombre");
-        columns.AddFor(m => m.Descripcion).Caption("Descripción");
-        columns.AddFor(m => m.IdFlt).Caption("Flota").Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("FlotaLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        );
-        columns.AddFor(m => m.Habilitado).Width(100);
-        columns.AddFor(m => m.IdPmCopy).Caption("Copiar de").Lookup(lookup => lookup
-            .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("PMLookup").Key("Value"))
-            .ValueExpr("Value")
-            .DisplayExpr("Text")
-        ).Visible(false);
-    })
-    .ShowBorders(true)
-    .RowAlternationEnabled(false)
-    .ShowColumnLines(true)
-    .ShowRowLines(true)
-    .Paging(paging => paging.PageSize(20))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .SearchPanel(searchPanel => searchPanel.Visible(true))
-    .Pager(pager =>
-    {
-        pager.ShowPageSizeSelector(true);
-        pager.AllowedPageSizes(new[] { 20, 50, 100 });
-        pager.ShowInfo(true);
-    })
-    .RemoteOperations(true)
-    .Editing(e => e.Mode(GridEditMode.Popup)
-            .AllowUpdating(true)
-            .AllowAdding(true)
-            .UseIcons(true)
-            .Popup(p => p
-                .Title("PM")
-                .ShowTitle(true)
-                .Width("50%")
-                .Height(500)
-            )
-            .Form(f => f.Items(items =>
-            {
-                items.AddGroup()
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="form-group mb-3">
+                <div class='form-control'>
+                    <div class="col-md-12">
+
+                        @(Html.DevExtreme().TabPanel()
+
+                            .Items(items =>
+                            {
+
+                                items.Add()
+                                .Title("LISTA DE PAUTAS HABILITADOS")
+                                .Template(new TemplateName("TAB1"));
+                                
+                                items.Add()
+                                .Title("LISTA DE PAUTAS DESHABILITADOS")
+                                .Template(new TemplateName("TAB2"));
+
+                            })
+                            .SelectedIndex(0)
+                            .Loop(false)
+                            .AnimationEnabled(true)
+                            .SwipeEnabled(true)
+                            .OnItemClick("refreshGrid")
+                            )
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Pm>()
+        .ID("grid1")
+        .DataSource(ds => ds.Mvc()
+            .Controller("Pm")
+            .LoadAction("Get").OnLoaded("filterTrue")
+            .InsertAction("Post")
+            .UpdateAction("Put")
+            .Key("IdPm")
+        )
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.Nombre).Caption("Nombre");
+            columns.AddFor(m => m.Descripcion).Caption("Descripción");
+            columns.AddFor(m => m.IdFlt).Caption("Flota").Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("FlotaLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            );
+            columns.AddFor(m => m.Habilitado).Width(140);
+            columns.AddFor(m => m.IdPmCopy).Caption("Copiar de").Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("PMLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).Visible(false);
+        })
+        .ShowBorders(true)
+        .RowAlternationEnabled(false)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .Paging(paging => paging.PageSize(20))
+        .FilterRow(f => f.Visible(true))
+        .HeaderFilter(f => f.Visible(true))
+        .SearchPanel(searchPanel => searchPanel.Visible(true))
+        .Pager(pager =>
+        {
+            pager.ShowPageSizeSelector(true);
+            pager.AllowedPageSizes(new[] { 20, 50, 100 });
+            pager.ShowInfo(true);
+        })
+        .RemoteOperations(true)
+        .Editing(e => e.Mode(GridEditMode.Popup)
+                .AllowUpdating(true)
+                .AllowAdding(true)
+                .UseIcons(true)
+                .Popup(p => p
+                    .Title("PM")
+                    .ShowTitle(true)
+                    .Width("50%")
+                    .Height(500)
+                )
+                .Form(f => f.Items(items =>
+                {
+                    items.AddGroup()
+                        .ColCount(2)
+                        .ColSpan(2)
+                        .Items(groupItems =>
+                        {
+                            groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
+                            groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
+
+                        });
+                    items.AddGroup()
+                    .Caption("Crear el PM con la estructura de:")
                     .ColCount(2)
                     .ColSpan(2)
                     .Items(groupItems =>
                     {
-                        groupItems.AddSimpleFor(m => m.Nombre).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.IdFlt).ColSpan(2);
-                        groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
+                        groupItems.AddSimpleFor(m => m.IdPmCopy).ColSpan(2);
 
                     });
-                items.AddGroup()
-                .Caption("Crear el PM con la estructura de:")
-                .ColCount(2)
-                .ColSpan(2)
-                .Items(groupItems =>
-                {
-                    groupItems.AddSimpleFor(m => m.IdPmCopy).ColSpan(2);
 
-                });
 
-            }))
+
+                }))
+
+
+        )
 
     )
-)
+}
+
+
+@using (Html.DevExtreme().NamedTemplate("TAB2"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Pm>()
+            .ID("grid2")
+            .DataSource(ds => ds.Mvc()
+                .Controller("Pm")
+                    .LoadAction("Get").OnLoaded("filterFalse")
+                .InsertAction("Post")
+                .UpdateAction("Put")
+                .Key("IdPm")
+            )
+            .Columns(columns =>
+            {
+                columns.AddFor(m => m.Nombre).Caption("Nombre").AllowEditing(false);
+                    columns.AddFor(m => m.Descripcion).Caption("Descripción").AllowEditing(false);
+                columns.AddFor(m => m.IdFlt).Caption("Flota").AllowEditing(false);
+                columns.AddFor(m => m.Habilitado).Width(140);
+               
+            })
+            .ShowBorders(true)
+            .RowAlternationEnabled(false)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .Paging(paging => paging.PageSize(20))
+            .FilterRow(f => f.Visible(true))
+            .HeaderFilter(f => f.Visible(true))
+            .Pager(pager =>
+            {
+                pager.ShowPageSizeSelector(true);
+                pager.AllowedPageSizes(new[] { 20, 50, 100 });
+                pager.ShowInfo(true);
+            })
+           .RemoteOperations(true)
+           .Editing(editing =>
+                                {
+                                    editing.AllowUpdating(true);
+                                })
+        )
+}
+
+<script>
+        function filterTrue(){
+             var grid = $("#grid1").dxDataGrid("instance");
+            grid.filter([
+            ["Habilitado", "=", true]
+            ]);
+    }
+
+     function filterFalse(){
+             var grid = $("#grid2").dxDataGrid("instance");
+            grid.filter([
+            ["Habilitado", "=", false]
+            ]);
+    }
+
+    function refreshGrid() {
+        $("#grid1").dxDataGrid("instance").refresh();
+        $("#grid2").dxDataGrid("instance").refresh();
+    }
+
+</script>

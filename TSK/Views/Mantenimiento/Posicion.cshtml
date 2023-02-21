@@ -32,7 +32,7 @@
         .Key("IdPos")
     )
     .ShowBorders(true)
-    .RowAlternationEnabled(false)
+    .RowAlternationEnabled(true)
     .ShowColumnLines(true)
     .ShowRowLines(true)
     .Paging(paging => paging.PageSize(50))
@@ -47,9 +47,7 @@
     .RemoteOperations(true)
     .Columns(columns => {
 
-        columns.AddFor(m => m.Cargo);
-
-        columns.AddFor(m => m.Habilitado);
+        columns.AddFor(m => m.Cargo).Caption("Cargo de los Trabajadores");
     })
     .Editing(e => e.Mode(GridEditMode.Popup)
             .AllowUpdating(true)
@@ -70,7 +68,6 @@
            {
                groupItems.AddSimpleFor(m => m.IdPos);
                groupItems.AddSimpleFor(m => m.Cargo);
-               groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
            });
         }))
     )
