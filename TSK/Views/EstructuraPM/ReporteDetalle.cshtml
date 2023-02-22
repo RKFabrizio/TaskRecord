@@ -7,6 +7,7 @@
 }
 
 
+
 @section PagePreTitle{
 
     <div class="col">
@@ -154,6 +155,7 @@
                                                         .Type(ButtonType.Default)
                                                         .UseSubmitBehavior(true)
                                                         .Width(150)
+                                                        
                                                 .ElementAttr(new { style = "width: 150px; background-color:#454545; color: white;" })
                                                 );
 
@@ -177,84 +179,46 @@
 
 
 
-    @using (Html.DevExtreme().NamedTemplate("TAB0"))
-    {
-    <!-- Data de cada grupo Lider-Tecnico -->
+@using (Html.DevExtreme().NamedTemplate("TAB0"))
+{
     @(
-    Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
-                       .DataSource(ds => ds.Mvc()
-                                           .Controller("GrupoUsuarios")
-                                               .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
-                                           .InsertAction("Post").OnInserting("Change")
-                                       .UpdateAction("Put")
-                                       .DeleteAction("Delete")
-                                       .Key("IdGrus"))
-                   .Columns(columns =>
-                   {
-                       columns.AddFor(m => m.IdUsr)
-                                  .Lookup(lookup => lookup
-                                  .DataSource(ds => ds
-                                                      .WebApi().Controller("GrupoUsuarios")
-                                                      .LoadAction("UsuariosLookup").Key("Value"))
-                                                      .ValueExpr("Value")
-                                                      .DisplayExpr("Text")).Caption("Trabajador");
-                       columns.AddFor(m => m.Grupo).Caption("Grupo");
-                       columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(true);
-                   })
-                   .FilterRow(f => f.Visible(true))
-                   .HeaderFilter(f => f.Visible(true))
-                   .ShowBorders(true)
-                   .ShowColumnLines(true)
-                   .ShowRowLines(true)
-                   .Editing(editing =>
-                   {
-                       editing.AllowAdding(true);
-                       editing.AllowDeleting(true);
-                       editing.AllowUpdating(true);
-                   })
-                )
-        }
-    
-
-    @using (Html.DevExtreme().NamedTemplate("TABO"))
-    {
-           <!-- Data de cada grupo Lider-Tecnico -->
-    @(
-        Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
-               .DataSource(ds => ds.Mvc()
-                                   .Controller("GrupoUsuarios")
-                                   .LoadAction("Get")
-                                   .InsertAction("Post").OnInserting("Change")
-                                   .UpdateAction("Put")
-                                   .DeleteAction("Delete")
-                                   .Key("IdGrus"))
-               .Columns(columns =>
-               {
-                   columns.AddFor(m => m.IdUsr)
-                              .Lookup(lookup => lookup
-                              .DataSource(ds => ds
-                                                  .WebApi().Controller("GrupoUsuarios")
-                                                  .LoadAction("UsuariosLookup").Key("Value"))
-                                                  .ValueExpr("Value")
-                                                  .DisplayExpr("Text")).Caption("Trabajador");
-                   columns.AddFor(m => m.Grupo).Caption("Grupo");
-                   columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(true);
-               })
-               .FilterRow(f => f.Visible(true))
-               .HeaderFilter(f => f.Visible(true))
-               .ShowBorders(true)
-               .ShowColumnLines(true)
-               .ShowRowLines(true)
-               .Editing(editing =>
-               {
-                   editing.AllowAdding(true);
-                   editing.AllowDeleting(true);
-                   editing.AllowUpdating(true);
-               })
-            )
-
+          Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+                             .DataSource(ds => ds.Mvc()
+                             .Controller("GrupoUsuarios")
+                             .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
+                             .InsertAction("Post").OnInserting("Change")
+                             .UpdateAction("Put")
+                             .DeleteAction("Delete")
+                             .Key("IdGrus"))
+                            .OnExporting("exportHeadToPDF")
+                         .Columns(columns =>
+                         {
+                             columns.AddFor(m => m.IdUsr)
+                                        .Lookup(lookup => lookup
+                                        .DataSource(ds => ds
+                                                            .WebApi().Controller("GrupoUsuarios")
+                                                            .LoadAction("UsuariosLookup").Key("Value"))
+                                                            .ValueExpr("Value")
+                                                            .DisplayExpr("Text")).Caption("Trabajador");
+                             columns.AddFor(m => m.Grupo).Caption("Grupo");
+                             columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(true);
+                         })
+                         .FilterRow(f => f.Visible(true))
+                         .HeaderFilter(f => f.Visible(true))
+                         .ShowBorders(true)
+                         .ShowColumnLines(true)
+                         .ShowRowLines(true)
+                         .Editing(editing =>
+                         {
+                             editing.AllowAdding(true);
+                             editing.AllowDeleting(true);
+                             editing.AllowUpdating(true);
+                         })
+                      )
     
 }
+
+    
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
 {
@@ -279,8 +243,8 @@
         .Columns(columns =>
         {
             columns.AddFor(m => m.NomSistema).Caption("Sistema");
-            columns.AddFor(m => m.Avance)
-                .Caption("% Avance")
+            columns.AddFor(m => m.Avance).Width(200)
+                .Caption("Avance %")
                 .DataType(GridColumnDataType.Number)
                 .Alignment(HorizontalAlignment.Left)
                 .Format(Format.Percent)
@@ -525,7 +489,7 @@
                     .DisplayExpr("Text"));
                     columns.Add().DataField("Referencia").AllowEditing(false)
                     .Alignment(HorizontalAlignment.Center)
-                    .Width(180)
+                    .Width(100)
                     .CellTemplate(
 @<text>
                                 <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
@@ -575,13 +539,29 @@
         DevExpress.pdfExporter.exportDataGrid({
             jsPDFDocument: doc,
             component: e.component,
-            indent: 5,
+            topLeft: { x: 1, y: 15 },
+            columnWidths: [150, 30],
         }).then(function () {
-           
-            doc.save("Sistema.pdf");
+            const header = 'Reporte de Sistema en Marcha';
+            const headerWidth = doc.getTextDimensions(header).w;
+            doc.setFontSize(18);
+            doc.setTextColor('#0664c2');
+            doc.setFont('Helvetica', 'bold'); // Establecer fuente y estilo
+            const pageWidth = doc.internal.pageSize.getWidth();
+            doc.text(header, (pageWidth - headerWidth) / 2, 18);
 
+            const footer = 'Copyright © 2022 Gointegreat. Todos los derechos reservados.';
+            doc.setTextColor('#208cf9');
+            doc.setFontSize(9);
+            doc.setFont('Helvetica', 'bold'); // Establecer fuente y estilo
+            const footerWidth = doc.getTextDimensions(footer).w;
+            const pageHeight = doc.internal.pageSize.getHeight();
+            doc.text(footer, doc.internal.pageSize.getWidth() - footerWidth - 10, pageHeight - 10);
+
+            doc.save("EquipoEnMarcha.pdf");
         });
     }
+
 
     function exportDetailToPDF(e) {
         var doc = new jsPDF();

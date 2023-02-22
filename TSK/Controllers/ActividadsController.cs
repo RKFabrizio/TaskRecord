@@ -55,19 +55,27 @@ namespace TSK.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string values) {
+        public async Task<IActionResult> Post(string values)
+        {
             var model = new Actividad();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
+
+            var actividadExistente = await _context.Actividads.FirstOrDefaultAsync(a => a.Titulo == model.Titulo);
+            if (actividadExistente != null)
+            {
+                return BadRequest("La actividad ya ha sido asignada");
+            }
 
             var result = _context.Actividads.Add(model);
             await _context.SaveChangesAsync();
 
             return Json(new { result.Entity.IdAct });
         }
+
 
         [HttpPut]
         public async Task<IActionResult> Put(int key, string values) {
