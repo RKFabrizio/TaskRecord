@@ -63,6 +63,16 @@ namespace TSK.Controllers
                 return BadRequest("El valor de Grupo debe estar entre 1 y 4.");
             }
 
+            var usuarioId = model.IdUsr;
+            var esLider = _context.Usuarios.Any(u => u.IdUsr == usuarioId && u.IdPos == 1);
+            model.Lider = esLider ? true : false;
+
+            if (model.Lider && _context.GrupoUsuarios.Any(gu => gu.Grupo == model.Grupo && gu.Lider))
+            {
+                return BadRequest("Ya existe un líder para este grupo.");
+            }
+
+
             var result = _context.GrupoUsuarios.Add(model);
             await _context.SaveChangesAsync();
 
@@ -80,6 +90,15 @@ namespace TSK.Controllers
 
             if(!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
+
+            var usuarioId = model.IdUsr;
+            var esLider = _context.Usuarios.Any(u => u.IdUsr == usuarioId && u.IdPos == 1);
+            model.Lider = esLider ? true : false;
+
+            if (model.Lider && _context.GrupoUsuarios.Any(gu => gu.Grupo == model.Grupo && gu.Lider))
+            {
+                return BadRequest("Ya existe un líder para este grupo.");
+            }
 
             await _context.SaveChangesAsync();
             return Ok();
