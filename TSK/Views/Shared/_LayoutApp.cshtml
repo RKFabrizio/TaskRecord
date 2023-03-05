@@ -104,8 +104,13 @@
 
 
                             <a asp-controller="Acceso" asp-action="Logout" class="dropdown-item">
-                                <span class="nav-link-title text-info text-gradient">
-                                    Logout
+                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout text-info" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                        <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+                                        </svg>
+                                <span style="padding: 5px;">
+                                        Log Out 
                                 </span>
 
                             </a>
@@ -165,13 +170,40 @@
                                             <div class="dropdown-menu-column">
 
                                                 <a asp-controller="EstructuraPM" asp-action="PM" class="dropdown-item @ViewBag.pm">
-                                                    Pauta de Mantenimiento (PM)
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-bar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                        <path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                        <path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                        <path d="M4 20l14 0"></path>
+                                                    </svg> 
+
+                                                     <span style="padding: 5px;">
+                                                        Pauta de Mantenimiento (PM)  
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="EstructuraPM" asp-action="Sistema" class="dropdown-item @ViewBag.sistema">
-                                                    Sistema
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+                                                        <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                        <path d="M14 4l0 4l-6 0l0 -4"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Sistema
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="EstructuraPM" asp-action="Actividad" class="dropdown-item @ViewBag.actividad">
-                                                    Actividad
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-chart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                                        <path d="M12 10v4h4"></path>
+                                                        <path d="M12 14m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                                    </svg>
+                                                      <span style="padding: 5px;">
+                                                        Actividad
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="EstructuraPM" asp-action="PMSistema" class="dropdown-item @ViewBag.pmsistema">
                                                     Sistema >> Pauta
@@ -209,25 +241,85 @@
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
                                                 <a asp-controller="Mantenimiento" asp-action="Area" class="dropdown-item @ViewBag.area">
-                                                    Areas
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-community" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8"></path>
+                                                        <path d="M13 7l0 .01"></path>
+                                                        <path d="M17 7l0 .01"></path>
+                                                        <path d="M17 11l0 .01"></path>
+                                                        <path d="M17 15l0 .01"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Area
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Consecuencia" class="dropdown-item @ViewBag.consecuencia">
-                                                    Consecuencia
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bandage" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M14 12l0 .01"></path>
+                                                        <path d="M10 12l0 .01"></path>
+                                                        <path d="M12 10l0 .01"></path>
+                                                        <path d="M12 14l0 .01"></path>
+                                                        <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Consecuencia
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="ClaseMantencion" class="dropdown-item @ViewBag.clasemantencion">
-                                                    Clase mantenci&oacute;n
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chalkboard" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1"></path>
+                                                        <path d="M11 16m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Clase mantenci&oacute;n
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Disciplina" class="dropdown-item @ViewBag.disciplina">
-                                                    Disciplinas
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-school" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
+                                                        <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Disciplina
+                                                    </span>
                                                 </a>
                                               <a asp-controller="Mantenimiento" asp-action="Entrega" class="dropdown-item @ViewBag.entrega">
-                                                    Entregas
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-forward" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"></path>
+                                                        <path d="M3 6l9 6l9 -6"></path>
+                                                        <path d="M15 18h6"></path>
+                                                        <path d="M18 15l3 3l-3 3"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Entrega
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Flota" class="dropdown-item @ViewBag.flota">
-                                                    Flotas
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tractor" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M7 15m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                                        <path d="M7 15l0 .01"></path>
+                                                        <path d="M19 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                                                        <path d="M10.5 17l6.5 0"></path>
+                                                        <path d="M20 15.2v-4.2a1 1 0 0 0 -1 -1h-6l-2 -5h-6v6.5"></path>
+                                                        <path d="M18 5h-1a1 1 0 0 0 -1 1v4"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Flota
+                                                    </span>
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Frecuencia" class="dropdown-item @ViewBag.frecuencia">
-                                                    Frecuencia
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wave-saw-tool" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M3 12h5l4 8v-16l4 8h5"></path>
+                                                    </svg>
+                                                    <span style="padding: 5px;">
+                                                        Frecuencia
+                                                    </span>
                                                 </a>
 
                                             </div>
@@ -236,19 +328,59 @@
                                                 <div class="dropdown-menu-column">
 
                                                     <a asp-controller="Mantenimiento" asp-action="Nivel" class="dropdown-item @ViewBag.nivel">
-                                                        Niveles
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M7 9.5l-3 1.5l8 4l8 -4l-3 -1.5"></path>
+                                                            <path d="M4 15l8 4l8 -4"></path>
+                                                            <path d="M12 11v-7"></path>
+                                                            <path d="M9 7l3 -3l3 3"></path>
+                                                        </svg>
+                                                         <span style="padding: 5px;">
+                                                            Nivel
+                                                        </span>
                                                     </a>
                                                     <a asp-controller="Mantenimiento" asp-action="TipoEquipo" class="dropdown-item @ViewBag.tipoeequipo">
-                                                        Tipo Equipos
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-asana" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M12 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                                            <path d="M17 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                                            <path d="M7 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                                        </svg>
+                                                         <span style="padding: 5px;">
+                                                            Tipo Equipo
+                                                        </span>
                                                     </a>
                                                     <a asp-controller="Mantenimiento" asp-action="Unidad" class="dropdown-item @ViewBag.unidad">
-                                                        Unidad
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-triangle-inverted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M10.24 20.043l-8.422 -14.06a1.989 1.989 0 0 1 1.7 -2.983h16.845a1.989 1.989 0 0 1 1.7 2.983l-8.422 14.06a1.989 1.989 0 0 1 -3.4 0z"></path>
+                                                        </svg>
+                                                        <span style="padding: 5px;">
+                                                            Unidad
+                                                        </span>
                                                     </a>
                                                     <a asp-controller="Mantenimiento" asp-action="UnidadMedida" class="dropdown-item @ViewBag.unidadmedida">
-                                                        Unidad de Medida
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M6.5 7h11"></path>
+                                                            <path d="M6.5 17h11"></path>
+                                                            <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+                                                            <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+                                                        </svg>
+                                                         <span style="padding: 5px;">
+                                                            Unidad de Medida
+                                                        </span>
                                                     </a>
                                                     <a asp-controller="Mantenimiento" asp-action="Usuario" class="dropdown-item @ViewBag.usuario">
-                                                        Usuarios
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                                            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                                            <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                                                        </svg>
+                                                        <span style="padding: 5px;">
+                                                           Usuario
+                                                        </span>
                                                     </a>
                                                 </div>
                                             }
@@ -305,12 +437,10 @@
                                 <li class="list-inline-item">
                                     <a asp-controller="Acceso" asp-action="Logout">
                                         <!-- Download SVG icon from -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 19v2h16v-14l-8 -4l-8 4v2"></path>
-                                            <path d="M4 19v2h16v-14l-8 -4l-8 4v2"></path>
-                                            <path d="M13 14h-9"></path>
-                                            <path d="M7 11l-3 3l3 3"></path>
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout text-info" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                        <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
                                         </svg>
                                         <span class="text-info">
                                             Logout

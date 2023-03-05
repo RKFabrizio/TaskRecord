@@ -61,6 +61,7 @@ namespace TSK.Controllers
             if (model.Grupo < 1 || model.Grupo > 4)
             {
                 return BadRequest("El valor de Grupo debe estar entre 1 y 4.");
+
             }
 
             var usuarioId = model.IdUsr;
