@@ -239,7 +239,7 @@
                 .Export(e => e.Enabled(true)
                     .Formats(new[] { "pdf" })
                 )
-        .OnExporting("exportHeadToPDF")
+        .OnExporting("exportTable")
         .Columns(columns =>
         {
             columns.AddFor(m => m.NomSistema).Caption("Sistema");
@@ -298,7 +298,11 @@
         })
             )
         )
+
+
 }
+
+
 
 @using (Html.DevExtreme().NamedTemplate("TAB2"))
 {
@@ -515,9 +519,24 @@
 }
 
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
+
+    function generateReport() {
+        var report = new DevExpress.XtraReports.UI.XtraReport();
+        report.dpi = 96;
+        report.name = "ReporteSistema";
+        report.paperKind = DevExpress.XtraPrinting.PaperKind.Letter;
+        report.pageWidth = 850;
+        report.pageHeight = 1100;
+
+        // Configura el reporte con los datos que necesites
+
+        DevExpress.XtraReports.Web.ReportViewer.OpenReport(report);
+    }
+
 
     function Change(e) {
         e["IdRep"] = @Model.id;
@@ -598,6 +617,27 @@
         setTimeout(function () {
             var dataGrid = $('#gridContainer2').dxDataGrid('instance');
             dataGrid.refresh();
+        });
+    }
+    function exportTable() {
+        // Crea una instancia de JSZip
+        var zip = new JSZip();
+        // Obtiene los datos de la tabla principal
+        var data = $('#gridContainer').dxDataGrid('instance').getDataSource().items();
+        // Obtiene los datos de la tabla de detalle
+        var detailData = $('#gridContainer-details1').dxDataGrid('instance').getDataSource().items();
+        // Une los datos de ambas tablas en un solo array
+        for (var i = 0; i < data.length; i++) {
+            var currentRow = data[i];
+            currentRow.Details = detailData[i].Details;
+        }
+        // Convierte el array de datos en formato CSV
+        var csv = DevExpress.utils.toCsv(data, { separator: ';' });
+        // Agrega el archivo CSV al archivo ZIP
+        zip.file("Tabla.csv", csv);
+        // Crea el archivo ZIP y lo descarga
+        zip.generateAsync({ type: "blob" }).then(function (content) {
+            saveAs(content, "export.zip");
         });
     }
 </script>

@@ -11,6 +11,10 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using TSK.Models.Entity;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.Expressions;
+
 
 namespace TSK.Controllers
 {
@@ -23,32 +27,7 @@ namespace TSK.Controllers
             _context = context;
         }
 
-        public ActionResult openPopup()
-        {
-            ViewData["popupVisible"] = true;
-            return View();
-        }
-
-        public ActionResult openPopup2()
-        {
-            ViewData["popupVisible"] = true;
-            return View();
-        }
-
-        public ActionResult openPopup3()
-        {
-            ViewData["popupVisible"] = true;
-            return View();
-        }
-
-        public ActionResult openPopup4()
-        {
-            ViewData["popupVisible"] = true;
-            return View();
-        }
-
-   
-
+      
 
         [HttpGet]
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions) {
