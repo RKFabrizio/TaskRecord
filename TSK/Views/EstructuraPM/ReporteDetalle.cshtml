@@ -44,6 +44,10 @@
 <div class="row row-cards">
     <div class="col-md-12">
         <div class="card">
+
+            <form action="@Url.Action("ExportarPDF")" method="post">
+                <button type="submit" class="btn btn-primary" style="margin: 3px; position: absolute; right: 0;">Actualizar y Exportar a PDF</button>
+            </form>
             <div class="card-header">
                 <h3 class="card-title">Reporte Nro. @Model.id</h3>
             </div>
@@ -149,14 +153,15 @@
 
                                         
                                                     }); 
+
                                                 items.AddButton()
-                                                    .HorizontalAlignment(HorizontalAlignment.Center)
-                                                    .ButtonOptions(b => b.Text("Actualizar")
-                                                        .Type(ButtonType.Default)
-                                                        .UseSubmitBehavior(true)
-                                                        .Width(150)
-                                                        
-                                                .ElementAttr(new { style = "width: 150px; background-color:#454545; color: white;" })
+                                                .HorizontalAlignment(HorizontalAlignment.Center)
+                                                .ButtonOptions(b => b.Text("Actualizar")
+                                                .Type(ButtonType.Default)
+                                                .UseSubmitBehavior(true)
+                                                .Width(170)
+
+                                                .ElementAttr(new { style = "width: 170px; background-color:#0a70b2; color: white;" })
                                                 );
 
                                             })
@@ -235,11 +240,6 @@
         .ShowColumnLines(true)
         .ShowRowLines(true)
         .AllowColumnResizing(true)
-        .Selection(s => s.Mode(SelectionMode.Single))
-                .Export(e => e.Enabled(true)
-                    .Formats(new[] { "pdf" })
-                )
-        .OnExporting("exportTable")
         .Columns(columns =>
         {
             columns.AddFor(m => m.NomSistema).Caption("Sistema");
@@ -320,11 +320,6 @@
     .ShowColumnLines(true)
     .ShowRowLines(true)
     .AllowColumnResizing(true)
-    .Selection(s => s.Mode(SelectionMode.Single))
-            .Export(e => e.Enabled(true)
-                .Formats(new[] { "pdf" })
-            )
-    .OnExporting("exportHeadToPDF")
     .Columns(columns => {
         columns.AddFor(m => m.NomSistema).Caption("Sistema");
         columns.AddFor(m => m.Avance)
@@ -409,11 +404,7 @@
             .AllowUpdating(true)
             .UseIcons(true)
         )
-        .Selection(s => s.Mode(SelectionMode.Single))
-            .Export(e => e.Enabled(true)
-                .Formats(new[] { "pdf" })
-            )
-        .OnExporting("exportEntregaToPDF")
+       
     )
 }
 

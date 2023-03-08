@@ -86,6 +86,22 @@ namespace TSK.Controllers
         }
 
         [HttpPost]
+        public ActionResult ExportarPDF()
+        {
+            // Generar el reporte usando XtraReports
+            var reporte = new XtraReport();
+            // Aquí añadimos la lógica para llenar el reporte con los datos que necesitamos
+
+            // Exportar el reporte en formato PDF
+            var stream = new MemoryStream();
+            var exportarPDF = new PdfExportOptions();
+            reporte.ExportToPdf(stream, exportarPDF);
+
+            // Devolver el archivo PDF al usuario
+            return File(stream.ToArray(), "application/Reports", "Reporte.pdf");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> Post(string values) {
             var model = new RepDetalle();
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
