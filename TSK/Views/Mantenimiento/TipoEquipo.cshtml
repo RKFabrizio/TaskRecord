@@ -23,48 +23,12 @@
 
 }
 
-<div class="row row-cards">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="form-group mb-3">
-                <div class='form-control'>
-                    <div class="col-md-12">
 
-                        @(Html.DevExtreme().TabPanel()
-
-                            .Items(items =>
-                            {
-
-                                items.Add()
-                                .Title("LISTA DE ENTREGAS HABILITADAS")
-                                .Template(new TemplateName("TAB1"));
-                                items.Add()
-                                .Title("LISTA DE ENTREGAS DESHABILITADAS")
-                                .Template(new TemplateName("TAB2"));
-
-                            })
-                            .SelectedIndex(0)
-                            .Loop(false)
-                            .AnimationEnabled(true)
-                            .SwipeEnabled(true)
-                            .OnItemClick("refreshGrid")
-                            )
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div>
-
-@using (Html.DevExtreme().NamedTemplate("TAB1"))
-{
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.TipoEquipo>()
         .ID("grid1")
         .DataSource(ds => ds.Mvc()
             .Controller("TipoEquipos")
-            .LoadAction("Get").OnLoaded("filterTrue")
+            .LoadAction("Get")
             .InsertAction("Post")
             .UpdateAction("Put")
             .Key("IdTeq")
@@ -80,7 +44,6 @@
             ).Caption("Tipo de Area").Width(150).GroupIndex(0);
 
             columns.AddFor(m => m.TEquipo).Caption("Tipo de Equipo");
-            columns.AddFor(m => m.Habilitado).Width(100);
 
 
         })
@@ -117,80 +80,10 @@
                         {
                             groupItems.AddSimpleFor(m => m.IdArea);
                             groupItems.AddSimpleFor(m => m.TEquipo);
-                                groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
                         });
                 }))
            )
     )
-}
 
 
-@using (Html.DevExtreme().NamedTemplate("TAB2"))
-{
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.TipoEquipo>()
-        .ID("grid2")
-            .DataSource(ds => ds.Mvc()
-                .Controller("TipoEquipos")
-                .LoadAction("Get").OnLoaded("filterFalse")
-                .InsertAction("Post")
-                .UpdateAction("Put")
-                .Key("IdTeq")
-            )
-            .RemoteOperations(true)
-            .Columns(columns =>
-            {
 
-                columns.AddFor(m => m.IdArea).Lookup(lookup => lookup
-                    .DataSource(ds => ds.WebApi().Controller("TipoEquipos").LoadAction("AreasLookup").Key("Value"))
-                    .ValueExpr("Value")
-                    .DisplayExpr("Text")
-                ).Caption("Tipo de Area").Width(150).GroupIndex(0);
-
-                columns.AddFor(m => m.TEquipo).Caption("Tipo de Equipo").AllowEditing(false);
-                columns.AddFor(m => m.Habilitado).Width(70);
-
-
-            })
-           .RemoteOperations(false)
-            .AllowColumnReordering(true)
-            .ShowBorders(true)
-            .Paging(p => p.PageSize(10))
-            .Pager(p => p
-                .ShowPageSizeSelector(true)
-                .AllowedPageSizes(new[] { 10, 25, 50, 100 })
-            )
-            .SearchPanel(s => s
-                .Visible(true)
-                .HighlightCaseSensitive(true)
-            )
-            .GroupPanel(g => g.Visible(true))
-            .Grouping(g => g.AutoExpandAll(false))
-            .Editing(editing =>
-                                        {
-                                            editing.AllowUpdating(true);
-                                        })
-        )
-}
-
-
-<script>
-    function filterTrue() {
-        var grid = $("#grid1").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", true]
-        ]);
-    }
-
-    function filterFalse() {
-        var grid = $("#grid2").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", false]
-        ]);
-    }
-
-    function refreshGrid() {
-        $("#grid1").dxDataGrid("instance").refresh();
-        $("#grid2").dxDataGrid("instance").refresh();
-    }
-
-</script>

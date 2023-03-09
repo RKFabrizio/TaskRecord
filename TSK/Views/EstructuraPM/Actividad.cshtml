@@ -178,7 +178,7 @@
                                     groupItems.AddSimpleFor(m => m.IdFrc);
                                     groupItems.AddSimpleFor(m => m.Descripcion).ColSpan(2).Editor(e => e
                                     .TextArea().Height(100));
-                                    groupItems.AddSimpleFor(m => m.Habilitado);
+                                    groupItems.AddSimpleFor(m => m.Habilitado).Label(label => label.Location(FormLabelLocation.Left));
 
                                 });
                             items.AddGroup()

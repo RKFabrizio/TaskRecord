@@ -31,5 +31,14 @@
     <Compile Update="Reports\Report2.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="Reports\Report3.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\Report4.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\Report5.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
