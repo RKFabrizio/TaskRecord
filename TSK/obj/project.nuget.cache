@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qT7TZOkMFXr8IQ1vEfosVaM0BTwk31vn4YKa5y+HZT8jLZrKL9ZUaiIOh8C2qE5H0N9lsfzLhav30ui0Ec1aMA==",
+  "dgSpecHash": "HPQUvRiwA18O8u9f2+MvjRhl7995IWBe0Q//V8Scet1yqnQ4FvJMQVo5KkUcTAOr7AbuADomoU7+8MOnhLiCMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fabri\\OneDrive\\Escritorio\\TaskRecord 2\\TSK\\TSK.csproj",
+  "projectFilePath": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\TSK.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fabri\\.nuget\\packages\\bootstrap\\5.3.0-alpha1\\bootstrap.5.3.0-alpha1.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\buildbundlerminifier\\2.9.406\\buildbundlerminifier.2.9.406.nupkg.sha512",

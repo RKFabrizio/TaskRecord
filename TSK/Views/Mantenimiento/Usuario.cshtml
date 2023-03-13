@@ -127,7 +127,7 @@
                                 groupItems.AddSimpleFor(m => m.Contrasena)
                                     .Editor(e => e.TextBox().Mode(TextBoxMode.Password)).CssClass("myFormMargin");
 
-                                groupItems.AddSimpleFor(m => m.Habilitado).CssClass("myFormMargin").Label(label => label.Location(FormLabelLocation.Left));
+                               @* groupItems.AddSimpleFor(m => m.Habilitado).CssClass("myFormMargin").Label(label => label.Location(FormLabelLocation.Left));*@
                             });
                     }))
 
@@ -135,7 +135,7 @@
         )
 }
 
-@using (Html.DevExtreme().NamedTemplate("TAB2"))
+@*@using (Html.DevExtreme().NamedTemplate("TAB2"))
 {
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Usuario>()
               .ID("grid2")
@@ -184,7 +184,7 @@
                                 })
              
           )
-}
+}*@
 <script>
     function filterTrue(){
              var grid = $("#grid1").dxDataGrid("instance");

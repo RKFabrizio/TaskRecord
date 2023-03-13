@@ -100,6 +100,20 @@ namespace TSK.Controllers
             var lookup = from pm in _context.Pms
                          join flo in _context.Flota on pm.IdFlt equals flo.IdFlt
                          orderby pm.IdPm
+                         select new
+                         {
+                             Value = pm.IdPm,
+                             Text = pm.Nombre + " - " + flo.Flota + " - " + pm.Descripcion
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PmsLookup1(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from pm in _context.Pms
+                         join flo in _context.Flota on pm.IdFlt equals flo.IdFlt
+                         orderby pm.IdPm
                          where pm.Habilitado == true
                          select new
                          {

@@ -46,6 +46,61 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
         }
 
+        public async Task<IActionResult> GetLider(int idRep, DataSourceLoadOptions loadOptions)
+        {
+            var grupousuarios = _context.GrupoUsuarios
+                .Where(x => x.IdRep == idRep)
+                .Select(i => new {
+                    i.IdGrus,
+                    i.IdRep,
+                    i.IdUsr,
+                    i.Grupo,
+                    i.Lider
+                })
+                .Join(
+                    _context.Usuarios.Where(u => u.IdPos == 1 ),
+                    gu => gu.IdUsr,
+                    u => u.IdUsr,
+                    (gu, u) => new {
+                        gu.IdGrus,
+                        gu.IdRep,
+                        gu.IdUsr,
+                        gu.Grupo,
+                        gu.Lider
+                    }
+                );
+
+            return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetTecnico(int idRep, DataSourceLoadOptions loadOptions)
+        {
+            var grupousuarios = _context.GrupoUsuarios
+                .Where(x => x.IdRep == idRep)
+                .Select(i => new {
+                    i.IdGrus,
+                    i.IdRep,
+                    i.IdUsr,
+                    i.Grupo,
+                    i.Lider
+                })
+                .Join(
+                    _context.Usuarios.Where(u => u.IdPos == 2 ),
+                    gu => gu.IdUsr,
+                    u => u.IdUsr,
+                    (gu, u) => new {
+                        gu.IdGrus,
+                        gu.IdRep,
+                        gu.IdUsr,
+                        gu.Grupo,
+                        gu.Lider
+                    }
+                );
+
+            return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
+        }
         [HttpPost]
         public async Task<IActionResult> Post(string values)
         {
@@ -65,12 +120,18 @@ namespace TSK.Controllers
             }
 
             var usuarioId = model.IdUsr;
-            var esLider = _context.Usuarios.Any(u => u.IdUsr == usuarioId && u.IdPos == 1);
+            var esLider = _context.Usuarios.Any(u => (u.IdUsr == usuarioId && u.IdPos == 1));
             model.Lider = esLider ? true : false;
 
-            if (model.Lider && _context.GrupoUsuarios.Any(gu => gu.Grupo == model.Grupo && gu.Lider))
+
+            if (model.Lider && _context.GrupoUsuarios.Any(gu => (gu.Grupo == model.Grupo && gu.Lider && gu.IdRep == model.IdRep)))
             {
                 return BadRequest("Ya existe un líder para este grupo.");
+            }
+
+            if ((model.Lider == false) && _context.GrupoUsuarios.Any(gu => (gu.Grupo == model.Grupo && (gu.Lider == false) && gu.IdRep == model.IdRep && gu.IdUsr == model.IdUsr)))
+            {
+                return BadRequest("Ya existe un usuario para este grupo.");
             }
 
 
@@ -80,25 +141,38 @@ namespace TSK.Controllers
             return Json(new { result.Entity.IdGrus });
         }
 
+
         [HttpPut]
-        public async Task<IActionResult> Put(int key, string values) {
+        public async Task<IActionResult> Put(int key, string values)
+        {
             var model = await _context.GrupoUsuarios.FirstOrDefaultAsync(item => item.IdGrus == key);
-            if(model == null)
+            if (model == null)
                 return StatusCode(409, "Object not found");
 
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             PopulateModel(model, valuesDict);
 
-            if(!TryValidateModel(model))
+            if (!TryValidateModel(model))
                 return BadRequest(GetFullErrorMessage(ModelState));
+
+            if (model.Grupo < 1 || model.Grupo > 4)
+            {
+                return BadRequest("El valor de Grupo debe estar entre 1 y 4.");
+
+            }
 
             var usuarioId = model.IdUsr;
             var esLider = _context.Usuarios.Any(u => u.IdUsr == usuarioId && u.IdPos == 1);
             model.Lider = esLider ? true : false;
 
-            if (model.Lider && _context.GrupoUsuarios.Any(gu => gu.Grupo == model.Grupo && gu.Lider))
+            if (model.Lider && _context.GrupoUsuarios.Any(gu => gu.Grupo == model.Grupo && gu.Lider && gu.IdRep == model.IdRep))
             {
                 return BadRequest("Ya existe un líder para este grupo.");
+            }
+
+            if ((model.Lider == false) && _context.GrupoUsuarios.Any(gu => (gu.Grupo == model.Grupo && (gu.Lider == false) && gu.IdRep == model.IdRep && gu.IdUsr == model.IdUsr)))
+            {
+                return BadRequest("Ya existe un usuario para este grupo.");
             }
 
             await _context.SaveChangesAsync();
@@ -124,6 +198,36 @@ namespace TSK.Controllers
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> UsuariosLiderLookup(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from i in _context.Usuarios
+                         where i.IdPos == 1 && i.Habilitado == true
+                         orderby i.Nombre
+                         select new
+                         {
+                             Value = i.IdUsr,
+                             Text = i.Nombre
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UsuariosTecnicoLookup(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from i in _context.Usuarios
+                         orderby i.Nombre
+                         where i.IdPos == 2 && i.Habilitado == true
+                         select new
+                         {
+                             Value = i.IdUsr,
+                             Text = i.Nombre
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+
 
         [HttpGet]
         public async Task<IActionResult> ReportesLookup(DataSourceLoadOptions loadOptions) {

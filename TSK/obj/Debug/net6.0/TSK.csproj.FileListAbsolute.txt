@@ -4631,3 +4631,6 @@ C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\refint\TSK.
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.pdb
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.genruntimeconfig.cache
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\ref\TSK.dll
+C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report3.resources
+C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report4.resources
+C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report5.resources

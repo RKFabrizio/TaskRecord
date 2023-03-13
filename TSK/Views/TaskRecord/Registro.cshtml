@@ -89,12 +89,14 @@
                 <div class="row align-items-center">
                     <div class="col-12">
                     <div class="markdown">
- @if (User.IsInRole("LECTOR") )
+
+ @if (User.IsInRole("AUDITOR") )
   {
                               @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Reporte>()
+                                  .ID("gridA")
                             .DataSource(ds => ds.Mvc()
                                 .Controller("Reporte")
-                                .LoadAction("Get")
+                                        .LoadAction("Get").OnLoaded("filterTrueA")
                                 .Key("IdRep")
                             )
                             .Columns(columns => {
@@ -156,9 +158,10 @@
 
   
         @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Reporte>()
+            .ID("grid1")
             .DataSource(ds => ds.Mvc()
             .Controller("Reporte")
-            .LoadAction("Get")
+            .LoadAction("Get").OnLoaded("filterTrue")
             .Key("IdRep")
         )
             .Columns(columns => {
@@ -178,11 +181,12 @@
                 columns.AddFor(m => m.Fecha);
                 columns.AddFor(m => m.Comentario);
                 columns.AddFor(m => m.Avance)
+               
                 .Caption("% Avance")
                 .DataType(GridColumnDataType.Number)
                 .Alignment(HorizontalAlignment.Center)
                 .Format(Format.Percent)
-                .Width(110);
+                .Width(130);
                  columns.Add().AllowEditing(false)
                                     .Alignment(HorizontalAlignment.Center)
                                     .Width(100)
@@ -230,3 +234,18 @@
     </div>
  </div>
 
+<script>
+    function filterTrue() {
+        var grid = $("#grid1").dxDataGrid("instance");
+        grid.filter([
+            ["Habilitado", "=", true]
+        ]);
+    }
+
+    function filterTrueA() {
+        var grid = $("#gridA").dxDataGrid("instance");
+        grid.filter([
+            ["Habilitado", "=", true]
+        ]);
+    }
+</script>
