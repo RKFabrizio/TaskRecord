@@ -12,5 +12,9 @@ namespace TSK.Reports
         {
             InitializeComponent();
         }
+
+        private void xrLabel3_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+                    }
     }
 }
