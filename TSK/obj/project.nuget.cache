@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "M1nqPr7Xowf9YUnQR3rHBaSBXabGyFAyYLxLuN2Yz70tb7TiU45p3LzeK+8DymlslGH6CLoYwk8Er1GEIanROA==",
+  "dgSpecHash": "Z7OJ4MenHnFoyt6Jx+LifbbGBYYLg/0Wg1QkYubhYTwZsi8WqovM/O+ehJxBpkyo6mumpqsUZ1zxak25Llwp6w==",
   "success": true,
   "projectFilePath": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\TSK.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\fabri\\.nuget\\packages\\aspnetcore.reporting\\2.1.0\\aspnetcore.reporting.2.1.0.nupkg.sha512",
+    "C:\\Users\\fabri\\.nuget\\packages\\aspnetcore.reportingservices\\2.1.0\\aspnetcore.reportingservices.2.1.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\bootstrap\\5.3.0-alpha1\\bootstrap.5.3.0-alpha1.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\buildbundlerminifier\\2.9.406\\buildbundlerminifier.2.9.406.nupkg.sha512",
     "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages\\devexpress.aspnetcore.common\\22.1.7\\devexpress.aspnetcore.common.22.1.7.nupkg.sha512",
@@ -149,8 +151,6 @@
     "C:\\Users\\fabri\\.nuget\\packages\\microsoft.net.stringtools\\17.3.2\\microsoft.net.stringtools.17.3.2.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\microsoft.reportingservices.reportviewercontrol.webforms\\150.1537.0\\microsoft.reportingservices.reportviewercontrol.webforms.150.1537.0.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\microsoft.sqlserver.types\\14.0.314.76\\microsoft.sqlserver.types.14.0.314.76.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.11\\microsoft.visualstudio.web.codegeneration.6.0.11.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.11\\microsoft.visualstudio.web.codegeneration.core.6.0.11.nupkg.sha512",
@@ -179,6 +179,7 @@
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\fabri\\.nuget\\packages\\runtime.native.system.io.compression\\4.3.0\\runtime.native.system.io.compression.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.native.system.net.http\\4.3.0\\runtime.native.system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.native.system.security.cryptography.apple\\4.3.0\\runtime.native.system.security.cryptography.apple.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -194,7 +195,7 @@
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
-    "C:\\Users\\fabri\\.nuget\\packages\\system.codedom\\5.0.0\\system.codedom.5.0.0.nupkg.sha512",
+    "C:\\Users\\fabri\\.nuget\\packages\\system.codedom\\8.0.0-preview.2.23128.3\\system.codedom.8.0.0-preview.2.23128.3.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
@@ -218,6 +219,7 @@
     "C:\\Users\\fabri\\.nuget\\packages\\system.globalization.calendars\\4.3.0\\system.globalization.calendars.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.8.0\\system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\fabri\\.nuget\\packages\\system.io.compression\\4.3.0\\system.io.compression.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\fabri\\.nuget\\packages\\system.io.pipelines\\6.0.0\\system.io.pipelines.6.0.0.nupkg.sha512",
@@ -293,36 +295,6 @@
       "warningLevel": 1,
       "message": "TSK depende de DevExpress.Reporting.Core (>= 22.1.3), pero no se encontró DevExpress.Reporting.Core 22.1.3. Se resolvió una mejor coincidencia aproximada de DevExpress.Reporting.Core 22.1.7.",
       "libraryId": "DevExpress.Reporting.Core",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Microsoft.ReportingServices.ReportViewerControl.WebForms 150.1537.0 depende de Microsoft.SqlServer.Types (>= 14.0.0), pero no se encontró Microsoft.SqlServer.Types 14.0.0. Se resolvió una mejor coincidencia aproximada de Microsoft.SqlServer.Types 14.0.314.76.",
-      "libraryId": "Microsoft.SqlServer.Types",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "El paquete \"Microsoft.ReportingServices.ReportViewerControl.WebForms 150.1537.0\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "Microsoft.ReportingServices.ReportViewerControl.WebForms",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "El paquete \"Microsoft.SqlServer.Types 14.0.314.76\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net6.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "Microsoft.SqlServer.Types",
       "targetGraphs": [
         "net6.0"
       ]
