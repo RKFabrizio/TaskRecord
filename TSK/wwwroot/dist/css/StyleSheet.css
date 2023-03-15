@@ -44,6 +44,8 @@
     border-bottom: 1px dashed;
     display: inline-block;
     line-height: normal;
+    margin-left: 80px;
+    margin-top: 10px
 }
 
 @-webkit-keyframes dx-valid-badge-frames {
@@ -111,7 +113,7 @@
         font-size: 18px;
     }
 
-    .dx-theme-generic-typography .dx-font-s,
+    .dx-theme-generic-typography .dx-font-v,
     .dx-theme-generic-typography h4 {
         font-weight: 500;
         font-size: 16px;

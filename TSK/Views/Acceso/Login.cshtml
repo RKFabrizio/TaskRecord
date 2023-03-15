@@ -4,65 +4,113 @@
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-    <div class="page page-center">
-      <div class="container-tight py-4">
+<style>
+    .block-1 {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    }
+
+    .block-2 {
+        position: absolute;
+        width: 30%;
+        height: 100%;
+        top: 0px;
+        right: 0;
+
+        /* otros estilos */
+    }
+
+    .img{
+        position: absolute;
+        height: 100%;
+        width: 70%;
+        left: 0;
+        top: 0px;
+    }
+    
+    .log{
+        width: 100%;
+        margin-top: -50px; /* ajusta según la altura de la imagen */
+        margin-left: -500px;
+        z-index: 1;
+    }
+
+    .id{
+        width: 150%;
+        position: absolute;
+        height: 11%;
+        margin-top:60%;
+        margin-left:30%;
+
+    }
+</style>
+<div class="page page-center">
+    <div class="container-tight py-4">
         <div class="text-center mb-4">
             <a href="." class="navbar-brand navbar-brand-autodark">
             </a>
         </div>
-        <div class="card card-md">
-            <a href="." class="navbar-brand navbar-brand-autodark">
-                <img class="logo" src="~/img/Logo.png" alt="Pautas">
-            </a>
-          <div class="card-body">
-            <div class="mb-2">
-                 @using(Html.BeginForm()) {
-                    using(Html.DevExtreme().ValidationGroup()) {
-                        @Html.AntiForgeryToken()
-                        @(Html.DevExtreme().Form<TSK.Models.Usuario>()
-                            .LabelLocation(FormLabelLocation.Top)
-                            .ShowValidationSummary(true)
-                            .Items(items => {
-                                items.AddGroup()
-                                    
-                                    .Items(groupItems => {
-                                        groupItems.AddSimpleFor(m => m.UserName)
-                                            .Label(l => l.Visible(false))
-                                            .Editor(e => e.TextBox()
-                                            .Placeholder("Usuario")
-                                    );
 
-                                        groupItems.AddSimpleFor(m => m.Clave)
-                                            .Label(l => l.Visible(false))
-                                            .Editor(e => e.TextBox()
-                                            .Placeholder("Contraseña")
-                                            .Mode(TextBoxMode.Password)
-                                                
-                                            );
-                                    }); 
-                                items.AddButton()
-                                    .HorizontalAlignment(HorizontalAlignment.Center)
-                                    .ButtonOptions(b => b.Text("Acceder")
-                                        .Type(ButtonType.Default)
-                                        .UseSubmitBehavior(true)
-                                    .ElementAttr(new { style = "background-color:#337199; color: white;" })
-                                );
-
-                            })
-                            .FormData(Model)
-                        )
-                    }
-                }
-            </div>
-            <div class="dx-form-validation-summary dx-validationsummary dx-widget dx-collection">
-                <div class="dx-item dx-validationsummary-item">
-                    <div class="dx-item-content dx-validationsummary-item-content">@ViewBag.msg</div>
-                 </div>
-            </div>
-   
-          </div>
+        <div class="block-1">
+            <img class="log" src="~/img/Logov3.png" alt="Pautas">
+            <img class="img" src="~/img/veladero_black.png" alt="Veladero">
         </div>
-      </div>
+        <div class="block-2">
+            <h1 class="page-title id">
+                ACCESO AL SISTEMA 
+            </h1>
+            @using (Html.BeginForm())
+            {
+                using (Html.DevExtreme().ValidationGroup())
+                {
+                    @Html.AntiForgeryToken()
+                    @(Html.DevExtreme().Form<TSK.Models.Usuario>()
+                        .LabelLocation(FormLabelLocation.Top)
+                        .ShowValidationSummary(true)
+                        .Items(items =>
+                        {
+                            items.AddGroup()
+
+                            .Items(groupItems =>
+                            {
+                                groupItems.AddSimpleFor(m => m.UserName)
+                            .Label(l => l.Visible(false))
+                            .Editor(e => e.TextBox()
+                            .Placeholder("Usuario")
+                            .ElementAttr(new { style = "margin-top:77%; width:70%; margin-left:15%; height:40px; font-size:16px;" })
+                            );
+
+                                groupItems.AddSimpleFor(m => m.Clave)
+                            .Label(l => l.Visible(false))
+                            .Editor(e => e.TextBox()
+                            .Placeholder("Contraseña")
+                            .Mode(TextBoxMode.Password)
+                            .ElementAttr(new { style = "margin-top:2%; width:70%; margin-left:15%; height:40px; font-size:16px;" })
+                            );
+                            });
+                            items.AddButton()
+                            
+                            .ButtonOptions(b => b.Text("Acceder")
+                            .Type(ButtonType.Default)
+                            .UseSubmitBehavior(true)
+                            .ElementAttr(new { style = "margin-top:2%; background-color:#337199; color: white; font-size:16px; border-radius:10px; margin-right:30%;" })
+                            );
+
+                        })
+                        .FormData(Model)
+                        )
+                }
+            }
+
+        </div>
+        <div class="dx-form-validation-summary dx-validationsummary dx-widget dx-collection">
+            <div class="dx-item dx-validationsummary-item">
+                <div class="dx-item-content dx-validationsummary-item-content">@ViewBag.msg</div>
+            </div>
+        </div>
     </div>
+</div>
 
 

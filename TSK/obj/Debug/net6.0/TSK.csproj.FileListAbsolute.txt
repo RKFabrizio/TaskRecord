@@ -3234,9 +3234,6 @@ C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\System.
 C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Threading.AccessControl.dll
 C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\Rotativa.AspNetCore.dll
-C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report1.resources
-C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.csproj.GenerateResource.cache
-C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report2.resources
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\appsettings.Development.json
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\appsettings.json
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\bundleconfig.json
@@ -4631,6 +4628,5 @@ C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\refint\TSK.
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.pdb
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.genruntimeconfig.cache
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\ref\TSK.dll
-C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report3.resources
-C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report4.resources
-C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\obj\Debug\net6.0\TSK.Reports.Report5.resources
+C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\AspNetCore.Reporting.dll
+C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\AspNetCore.ReportingServices.dll

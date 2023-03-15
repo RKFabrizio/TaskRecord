@@ -27,10 +27,23 @@
 
 }
 
+<style>
+    .black {
+        background-color: white;
+    }
+
+    .pauta {
+        margin-left: 10px;
+    }
+
+    .text {
+        margin-left: 10px;
+    }
+
+</style>
 
 <div class="row row-cards">
     <div class="col-md-12">
-        <div class="card">
             <div class="form-group mb-3">
                 <div class='form-control'>
                     <div class="col-md-12">
@@ -57,9 +70,6 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
     </div>
 </div>
 
@@ -125,56 +135,57 @@
 
 @using (Html.DevExtreme().NamedTemplate("TAB2"))
 {
-    <br />
-    <div>
-        <h4>
-            Selecciona tu Pauta de Mantenimiento - Sistema:
-        </h4>
-    </div>
-
-    @(Html.DevExtreme().Form<TSK.Models.Entity.PmsisActividad>()
-            .ID("form")
-            .Items(items =>
-            {
-                items.AddSimpleFor(m => m.IdPms)
-                .Editor(e => e
+    <div class="black">
+        <br />
+        <div>
+            <h4 class="pauta">
+                Selecciona tu Pauta de Mantenimiento - Sistema:
+            </h4>
+        </div>
+        <div class="text">
+            @(Html.DevExtreme().Form<TSK.Models.Entity.PmsisActividad>()
+                .ID("form")
+                .Items(items =>
+                {
+                    items.AddSimpleFor(m => m.IdPms)
+                    .Editor(e => e
                     .Lookup()
                     .DataSource(ds => ds.Mvc().Controller("PmsisActividad").LoadAction("PmSistemasLookup").Key("IdPms"))
                     .ValueExpr("Value")
                     .DisplayExpr("Text")
                     .OnValueChanged("refreshData")
                     .SearchEnabled(true)
-                    
-                        ).Label(label => label
+
+                    ).Label(label => label
                     .Text("Pauta de Mantenimiento - Sistema")
                     .Visible(false)
-                );
-            })
-        )
+                    );
+                })
+                )
 
-    @(
-    Html.DevExtreme().DataGrid<TSK.Models.Entity.PmsisActividad>()
-    .ID("grid")
-    .DataSource(ds => ds.Mvc().Controller("PmsisActividad").LoadAction("PmsisActividadesLookup").InsertAction("Post").OnInserting("change")
-    .UpdateAction("Put").DeleteAction("Delete").Key("IdPms", "IdAct")
-    .LoadParams(new { IdPms = new JS("getIdPms") }))
-    .RemoteOperations(true)
-    .Columns(columns =>
-    {
-        columns.AddFor(m => m.IdPms).Caption("PM - Sistema").Width(200).AllowEditing(false);
+            @(
+                Html.DevExtreme().DataGrid<TSK.Models.Entity.PmsisActividad>()
+                .ID("grid")
+                .DataSource(ds => ds.Mvc().Controller("PmsisActividad").LoadAction("PmsisActividadesLookup").InsertAction("Post").OnInserting("change")
+                .UpdateAction("Put").DeleteAction("Delete").Key("IdPms", "IdAct")
+                .LoadParams(new { IdPms = new JS("getIdPms") }))
+                .RemoteOperations(true)
+                .Columns(columns =>
+                {
+                    columns.AddFor(m => m.IdPms).Caption("PM - Sistema").Width(200).AllowEditing(false);
 
-        columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
-        .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("ActividadsLookup").Key("Value"))
-        .ValueExpr("Value")
-        .DisplayExpr("Text")
-        ).Caption("Actividad");
-        columns.AddFor(m => m.Orden).Caption("Orden");
-    })
-         
-         .Grouping(grouping => grouping.AutoExpandAll(true))
+                    columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("ActividadsLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text")
+                    ).Caption("Actividad");
+                    columns.AddFor(m => m.Orden).Caption("Orden");
+                })
+
+                .Grouping(grouping => grouping.AutoExpandAll(true))
                 .GroupPanel(groupPanel => groupPanel
-                    .EmptyPanelText("")
-                    .Visible(true))
+                .EmptyPanelText("")
+                .Visible(true))
                 .ShowBorders(true)
                 .RowAlternationEnabled(false)
                 .ShowColumnLines(true)
@@ -190,20 +201,22 @@
                     pager.AllowedPageSizes(new[] { 50, 100, 200 });
                     pager.ShowInfo(true);
                 })
-    .Editing(editing =>
-    {
-        editing.Mode(GridEditMode.Batch);
-        editing.AllowAdding(true);
-        editing.AllowUpdating(true);
-        editing.AllowDeleting(true);
-        editing.SelectTextOnEditStart(true);
-        editing.StartEditAction(GridStartEditAction.Click);
-    })
+                .Editing(editing =>
+                {
+                    editing.Mode(GridEditMode.Batch);
+                    editing.AllowAdding(true);
+                    editing.AllowUpdating(true);
+                    editing.AllowDeleting(true);
+                    editing.SelectTextOnEditStart(true);
+                    editing.StartEditAction(GridStartEditAction.Click);
+                })
 
-  
-                            
-        )
 
+
+                )
+        </div>
+
+    </div>
 
 }
 

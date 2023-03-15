@@ -48,6 +48,7 @@
             <form action="@Url.Action("ExportarPDF")" method="post">
                 <button type="submit" class="btn btn-primary" style="margin: 3px; position: absolute; right: 0;">Actualizar y Exportar a PDF</button>
             </form>
+
             <div class="card-header">
                 <h3 class="card-title">Reporte Nro. @Model.id</h3>
             </div>
@@ -160,9 +161,11 @@
                                                 .Type(ButtonType.Default)
                                                 .UseSubmitBehavior(true)
                                                 .Width(170)
-
+                                                
                                                 .ElementAttr(new { style = "width: 170px; background-color:#0a70b2; color: white;" })
                                                 );
+
+                                                
 
                                             })
                                             .FormData(Model)
@@ -171,7 +174,9 @@
                                 }
                             </div>
 
-
+                            <button>
+                                <a asp-controller="Home" asp-action="Print">Imprimir Reporte</a>
+                            </button>
  
                         </div>
                     </div>
@@ -182,7 +187,17 @@
     </div>
 </div>
 
+<style>
+    .1{
+        width:50%;
+        
+    }
 
+    .2{
+        width:50%;
+        right:0; 
+    }
+</style>
 
 @using (Html.DevExtreme().NamedTemplate("TAB0"))
 {
@@ -216,83 +231,79 @@
                         .Grouping(g => g.AutoExpandAll(false))
                          )
 
-   <table>
-    <tr>
-        <td>
-            @(
+    <div class="1">
+        @(
             Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
-                               .DataSource(ds => ds.Mvc()
-                               .Controller("GrupoUsuarios")
-                               .LoadAction("GetLider").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
-                               .InsertAction("Post").OnInserting("Change")
-                               .UpdateAction("Put")
-                               .DeleteAction("Delete")
-                               .Key("IdGrus"))
-                           .Columns(columns =>
-                           {
-                               columns.AddFor(m => m.IdUsr)
-                                          .Lookup(lookup => lookup
-                                          .DataSource(ds => ds
-                                                              .WebApi().Controller("GrupoUsuarios")
-                        .LoadAction("UsuariosLiderLookup").Key("Value"))
-                                                              .ValueExpr("Value")
-                                                              .DisplayExpr("Text")).Caption("Lider");
-                               columns.AddFor(m => m.Grupo).Caption("Grupo");
-                           })
-                           .FilterRow(f => f.Visible(true))
-                           .HeaderFilter(f => f.Visible(true))
-                           .ShowBorders(true)
-                           .ShowColumnLines(true)
-                           .ShowRowLines(true)
-                           .Editing(editing =>
-                           {
-                               editing.AllowAdding(true);
-                               editing.AllowDeleting(true);
-                               editing.AllowUpdating(true);
-                           })
-                        )
-        </td>
-        <td>
-            @(
+            .DataSource(ds => ds.Mvc()
+            .Controller("GrupoUsuarios")
+            .LoadAction("GetLider").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
+            .InsertAction("Post").OnInserting("Change")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
+            .Key("IdGrus"))
+            .Columns(columns =>
+            {
+                columns.AddFor(m => m.IdUsr)
+                .Lookup(lookup => lookup
+                .DataSource(ds => ds
+                .WebApi().Controller("GrupoUsuarios")
+                .LoadAction("UsuariosLiderLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")).Caption("Lider");
+                columns.AddFor(m => m.Grupo).Caption("Grupo");
+            })
+            .FilterRow(f => f.Visible(true))
+            .HeaderFilter(f => f.Visible(true))
+            .ShowBorders(true)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .Editing(editing =>
+            {
+                editing.AllowAdding(true);
+                editing.AllowDeleting(true);
+                editing.AllowUpdating(true);
+            })
+            )
+    </div>
+    <div class="2">
+        @(
             Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
-                               .DataSource(ds => ds.Mvc()
-                               .Controller("GrupoUsuarios")
-                               .LoadAction("GetTecnico").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
-                               .InsertAction("Post").OnInserting("Change")
-                               .UpdateAction("Put")
-                               .DeleteAction("Delete")
-                               .Key("IdGrus"))
-                           .Columns(columns =>
-                           {
-                               columns.AddFor(m => m.IdUsr)
-                                          .Lookup(lookup => lookup
-                                          .DataSource(ds => ds
-                                                              .WebApi().Controller("GrupoUsuarios")
-                        .LoadAction("UsuariosTecnicoLookup").Key("Value"))
-                                                              .ValueExpr("Value")
-                                                              .DisplayExpr("Text")).Caption("Tecnico");
-                               columns.AddFor(m => m.Grupo).Caption("Grupo");
-                           })
-                           .FilterRow(f => f.Visible(true))
-                           .HeaderFilter(f => f.Visible(true))
-                           .ShowBorders(true)
-                           .ShowColumnLines(true)
-                           .ShowRowLines(true)
-                           .Editing(editing =>
-                           {
-                               editing.AllowAdding(true);
-                               editing.AllowDeleting(true);
-                               editing.AllowUpdating(true);
-                           })
-                        )
-        </td>
-    </tr>
-</table>
+            .DataSource(ds => ds.Mvc()
+            .Controller("GrupoUsuarios")
+            .LoadAction("GetTecnico").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
+            .InsertAction("Post").OnInserting("Change")
+            .UpdateAction("Put")
+            .DeleteAction("Delete")
+            .Key("IdGrus"))
+            .Columns(columns =>
+            {
+                columns.AddFor(m => m.IdUsr)
+                .Lookup(lookup => lookup
+                .DataSource(ds => ds
+                .WebApi().Controller("GrupoUsuarios")
+                .LoadAction("UsuariosTecnicoLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")).Caption("Tecnico");
+                columns.AddFor(m => m.Grupo).Caption("Grupo");
+            })
+            .FilterRow(f => f.Visible(true))
+            .HeaderFilter(f => f.Visible(true))
+            .ShowBorders(true)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .Editing(editing =>
+            {
+                editing.AllowAdding(true);
+                editing.AllowDeleting(true);
+                editing.AllowUpdating(true);
+            })
+            )
+    </div>
 
     
 }
 
-    
+
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
 {

@@ -181,6 +181,14 @@
       "PackagePath": "staticwebassets\\TSK.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\Report1.rdl",
+      "PackagePath": "staticwebassets\\Reports\\Report1.rdl"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteSistema.rdl",
+      "PackagePath": "staticwebassets\\Reports\\ReporteSistema.rdl"
+    },
+    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\Site.css",
       "PackagePath": "staticwebassets\\css\\Site.css"
     },
@@ -3637,20 +3645,8 @@
       "PackagePath": "staticwebassets\\img\\Actividad.svg"
     },
     {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOINTEGREAT.png",
-      "PackagePath": "staticwebassets\\img\\GOINTEGREAT.png"
-    },
-    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOINTEGREAT_V1.png",
       "PackagePath": "staticwebassets\\img\\GOINTEGREAT_V1.png"
-    },
-    {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOPAUTAS.png",
-      "PackagePath": "staticwebassets\\img\\GOPAUTAS.png"
-    },
-    {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOPAUTAS2.png",
-      "PackagePath": "staticwebassets\\img\\GOPAUTAS2.png"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOPAUTASv3.png",
@@ -3661,8 +3657,20 @@
       "PackagePath": "staticwebassets\\img\\Logo Veladero.png"
     },
     {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\Logo.png",
-      "PackagePath": "staticwebassets\\img\\Logo.png"
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\LogoAppv2.png",
+      "PackagePath": "staticwebassets\\img\\LogoAppv2.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\LogoAppv3.png",
+      "PackagePath": "staticwebassets\\img\\LogoAppv3.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\Logov2.png",
+      "PackagePath": "staticwebassets\\img\\Logov2.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\Logov3.png",
+      "PackagePath": "staticwebassets\\img\\Logov3.png"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\Pauta.svg",
@@ -3679,6 +3687,10 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\acceso.png",
       "PackagePath": "staticwebassets\\img\\acceso.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\accesosistema.png",
+      "PackagePath": "staticwebassets\\img\\accesosistema.png"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\admin.svg",
@@ -3707,6 +3719,14 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\user.svg",
       "PackagePath": "staticwebassets\\img\\user.svg"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\veladero_black.png",
+      "PackagePath": "staticwebassets\\img\\veladero_black.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\wallpaper_70.svg",
+      "PackagePath": "staticwebassets\\img\\wallpaper_70.svg"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\js\\GrupoLider.js",

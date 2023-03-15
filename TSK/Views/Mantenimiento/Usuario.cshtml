@@ -23,42 +23,8 @@
 
 }
 
-<div class="row row-cards">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="form-group mb-3">
-                <div class='form-control'>
-                    <div class="col-md-12">
-
-                        @(Html.DevExtreme().TabPanel()
-
-                            .Items(items =>
-                            {
-
-                                items.Add()
-                                .Title("LISTA DE USUARIOS HABILITADOS")
-                                .Template(new TemplateName("TAB1"));
-                                items.Add()
-                                .Title("LISTA DE USUARIOS DESHABILITADOS")
-                                .Template(new TemplateName("TAB2"));
-
-                            })
-                            .SelectedIndex(0)
-                            .Loop(false)
-                            .AnimationEnabled(true)
-                            .SwipeEnabled(true)
-                            )
-                    </div>
-                </div>
-            </div>
 
 
-        </div>
-    </div>
-</div>
-
-@using (Html.DevExtreme().NamedTemplate("TAB1"))
-{
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Usuario>()
             .ID("grid1")
             .DataSource(ds => ds.Mvc()
@@ -133,7 +99,7 @@
 
                 )
         )
-}
+
 
 @*@using (Html.DevExtreme().NamedTemplate("TAB2"))
 {
