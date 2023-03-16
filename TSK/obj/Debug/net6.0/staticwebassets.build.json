@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GE5iHxe7SgV6HqhHobiwQJLdOxCHDPGHCJXhgUpISDc=",
+  "Hash": "R8OAarYVuWT8UgT1jcT/LJok8Vgn3VjCX/rkuzL+dqw=",
   "Source": "TSK",
   "BasePath": "_content/TSK",
   "Mode": "Default",
@@ -20689,12 +20689,12 @@
       "OriginalItemSpec": "wwwroot\\pdf\\Manual TaskRecords.pdf"
     },
     {
-      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\Report1.rdl",
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteEntrega.rdl",
       "SourceId": "TSK",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
       "BasePath": "_content/TSK",
-      "RelativePath": "Reports/Report1.rdl",
+      "RelativePath": "Reports/ReporteEntrega.rdl",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -20703,7 +20703,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Reports\\Report1.rdl"
+      "OriginalItemSpec": "wwwroot\\Reports\\ReporteEntrega.rdl"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteSistema.rdl",

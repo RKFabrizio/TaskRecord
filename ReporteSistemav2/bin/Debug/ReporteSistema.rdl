@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.4.33213.308</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2023-03-15T14:46:21.8703344Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2023-03-15T19:41:14.2276102Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -211,7 +211,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                     <Value>REPORTE SISTEMA</Value>
                     <Style>
                       <FontFamily>Poppins</FontFamily>
-                      <FontSize>24pt</FontSize>
+                      <FontSize>14pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -222,8 +222,8 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
-            <Top>1.21045cm</Top>
-            <Left>7.43479cm</Left>
+            <Top>0.42728cm</Top>
+            <Left>7.39866cm</Left>
             <Height>0.53789in</Height>
             <Width>3.29135in</Width>
             <Style>
@@ -262,7 +262,6 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value>CARGO</Value>
                                   <Style>
                                     <FontFamily>Poppins</FontFamily>
-                                    <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
@@ -301,7 +300,6 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value>NOMBRE</Value>
                                   <Style>
                                     <FontFamily>Poppins</FontFamily>
-                                    <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>White</Color>
                                   </Style>
@@ -420,6 +418,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -455,6 +454,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -495,6 +495,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value>=Fields!CARGO.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -530,11 +531,12 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value>=Fields!NOMBRE.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -617,7 +619,6 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                     <Value>GRUPO</Value>
                                     <Style>
                                       <FontFamily>Poppins</FontFamily>
-                                      <FontSize>11pt</FontSize>
                                       <FontWeight>Bold</FontWeight>
                                       <Color>White</Color>
                                     </Style>
@@ -762,6 +763,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                     <Value>=Fields!GRUPO.Value</Value>
                                     <Style>
                                       <FontFamily>Poppins</FontFamily>
+                                      <FontSize>9pt</FontSize>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
@@ -799,7 +801,8 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet2</DataSetName>
-            <Top>1.14667in</Top>
+            <Top>0.59667in</Top>
+            <Left>1.37919cm</Left>
             <Height>0.625in</Height>
             <Width>8.47289in</Width>
             <ZIndex>1</ZIndex>
@@ -813,19 +816,19 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.34659in</Width>
+                  <Width>2.35182in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.33823in</Width>
+                  <Width>1.63133in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.24656in</Width>
+                  <Width>0.5926in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.30279in</Width>
+                  <Width>0.82474in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.38175in</Width>
+                  <Width>1.02384in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.17154in</Width>
@@ -1084,7 +1087,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1120,7 +1123,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1187,7 +1190,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                   <Value>=Fields!Estado.Value</Value>
                                   <Style>
                                     <FontFamily>Poppins</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1264,7 +1267,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1339,7 +1342,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1.28506in</Size>
+                        <Size>0.88991in</Size>
                         <CellContents>
                           <Textbox Name="Textbox84">
                             <CanGrow>true</CanGrow>
@@ -1444,7 +1447,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>1.28506in</Size>
+                        <Size>0.88991in</Size>
                         <CellContents>
                           <Textbox Name="NOM_SISTEMA2">
                             <CanGrow>true</CanGrow>
@@ -1493,10 +1496,10 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>3.86333in</Top>
-            <Left>0.14555in</Left>
+            <Top>2.97166in</Top>
+            <Left>0.42858in</Left>
             <Height>0.825in</Height>
-            <Width>9.20818in</Width>
+            <Width>8.62143in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1599,7 +1602,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.325in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1617,7 +1620,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1628,10 +1631,10 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>3pt</PaddingLeft>
-                            <PaddingRight>3pt</PaddingRight>
-                            <PaddingTop>23pt</PaddingTop>
-                            <PaddingBottom>15pt</PaddingBottom>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1879,9 +1882,9 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet3</DataSetName>
-            <Top>2.79667in</Top>
-            <Left>0.03958in</Left>
-            <Height>0.5in</Height>
+            <Top>2.205in</Top>
+            <Left>0.55957in</Left>
+            <Height>0.575in</Height>
             <Width>8.43331in</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -2315,8 +2318,8 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet4</DataSetName>
-            <Top>2.06333in</Top>
-            <Left>0.03958in</Left>
+            <Top>1.41333in</Top>
+            <Left>0.55957in</Left>
             <Height>0.5in</Height>
             <Width>8.45631in</Width>
             <ZIndex>4</ZIndex>
@@ -2327,7 +2330,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>5.38in</Height>
+        <Height>4.52167in</Height>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2338,7 +2341,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
       <Width>9.59791in</Width>
       <Page>
         <PageHeader>
-          <Height>1.625in</Height>
+          <Height>0.84167in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2346,10 +2349,10 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
               <Source>Embedded</Source>
               <Value>LogoVeladero</Value>
               <Sizing>Fit</Sizing>
-              <Top>0.53in</Top>
-              <Left>0.73333in</Left>
-              <Height>0.98333in</Height>
-              <Width>1.73333in</Width>
+              <Top>0.11333in</Top>
+              <Left>0.14555in</Left>
+              <Height>0.625in</Height>
+              <Width>1.075in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2365,7 +2368,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.84167in</Height>
+          <Height>0.525in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2379,24 +2382,26 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                       <Value>Pag:</Value>
                       <Style>
                         <FontFamily>Poppins</FontFamily>
-                        <FontSize>14pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
+                        <FontWeight>Bold</FontWeight>
                         <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>0.52166in</Top>
-              <Left>7.87847in</Left>
+              <Top>0.05556in</Top>
+              <Left>8.1368in</Left>
               <Height>0.35833in</Height>
               <Width>0.49167in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -2413,17 +2418,19 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                       <Value>=Globals!PageNumber</Value>
                       <Style>
                         <FontFamily>Poppins</FontFamily>
-                        <FontSize>14pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                         <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.52166in</Top>
-              <Left>8.43958in</Left>
+              <Top>0.05556in</Top>
+              <Left>8.70834in</Left>
               <Height>0.33333in</Height>
               <Width>0.6in</Width>
               <ZIndex>1</ZIndex>
@@ -2431,6 +2438,7 @@ WHERE  (REPORTE.ID_REP = @NRO_REPORTE_FLOTA)</CommandText>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>

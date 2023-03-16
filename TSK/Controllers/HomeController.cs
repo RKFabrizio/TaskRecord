@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using AspNetCore.Reporting;
+using DevExtreme.AspNet.Mvc;
 
 
 namespace TSK.Controllers
@@ -17,26 +18,28 @@ namespace TSK.Controllers
 
         public HomeController(IWebHostEnvironment iwebHostEnvironment)
         {
-            string mimtype = "";
-            int extension = 1;
             this._iwebHostEnvironment = iwebHostEnvironment;
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            var path = $"{this._iwebHostEnvironment.WebRootPath}\\Reports\\Report1.rdl";
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("NRO_REPORTE", "2030");
-            parameters.Add("NRO_REPORTE_USUARIOS", "2030");
-            LocalReport localReport = new LocalReport(path);
-            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
-            a = File(result.MainStream, "app/pdf");
         }
 
         public IActionResult Index()
         {
+
             return a;
         }
 
-        public IActionResult Print()
+        public IActionResult Print(int model)
         {
+            string mimtype = "";
+            int extension = 1;
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            var path = $"{this._iwebHostEnvironment.WebRootPath}\\Reports\\ReporteEntrega.rdl";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("NRO_REPORTE", model.ToString());
+            parameters.Add("NRO_REPORTE_USUARIOS", model.ToString());
+            parameters.Add("NRO_REPORTE_FLOTA", model.ToString());
+            LocalReport localReport = new LocalReport(path);
+            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
+            a = File(result.MainStream, "app/pdf", "reporte_entrega.pdf");
             return a;
         }
     }
