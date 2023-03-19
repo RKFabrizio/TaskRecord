@@ -1,0 +1,772 @@
+﻿@model Query
+
+
+@{
+    ViewData["Title"] = "ReporteDetail";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@using DevExtreme.AspNet.Mvc;
+
+@section PagePreTitle{
+
+    <div class="col">
+     <!-- Page pre-title -->
+        <div class="page-pretitle">
+            Mantenimiento
+        </div>
+        <h2 class="page-title">
+            Gestion de Pautas
+        </h2>
+    </div>
+
+}
+
+@section PageActions{
+        <a href="/TaskRecord/Reporte" class="btn btn-white d-none d-sm-inline-block">
+        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1"></path>
+        </svg>
+        Regresar
+        </a>
+    <a href="/TaskRecord/Reporte" class="btn btn-white d-sm-none btn-icon">
+        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1"></path>
+        </svg>
+        </a>
+
+}
+
+<div class="row row-cards">
+    <div class="col-md-12">
+        <div class="card">
+
+            <div style="text-align: right;">
+                <div class="card-header">
+                    <h3 class="card-title">Reporte Nro. @Model.id</h3>
+                </div>
+                <form style="display: inline-block;">
+                    <button type="submit" class="btn btn-primary" style="margin: 3px;">
+                        <a asp-controller="Home" asp-action="Print" asp-route-model="@Model.id" style="color: white;">Reporte Entrega</a>
+                    </button>
+                </form>
+                <form style="display: inline-block;">
+                    <button type="submit" class="btn btn-primary" style="margin: 3px; margin-right: 10px;">
+                        <a asp-controller="ReportSistema" asp-action="Print" asp-route-model="@Model.id" style="color: white;">Reporte Sistema</a>
+                    </button>
+                </form>
+
+             
+            </div>
+
+        
+            <div class="card-body">
+                <div class="form-group mb-1 ">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <label class="form-label">PM</label>
+                            <label class="form-control"style="background-color: ghostwhite;">@Model.texto1</label>
+                        </div>
+                        <div class="col-lg-5">
+                                <label class="form-label">Unidad</label>
+                                <label class="form-control"style="background-color: ghostwhite;">@Model.texto2</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">Horómetro</label>
+                            <label class="form-control" style="background-color: ghostwhite;">@Model.valor1</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-1">
+                    <div class="row">
+                        
+                        <div class="col-lg-10">
+                            <label class="form-label">Fecha</label>
+                            <label class="form-control" style="background-color: ghostwhite;">@Model.fecha1.Value.ToString("dd-MM-yyyy")</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="form-label">Habilitado</label>
+                                @{
+                                if (@Model.habilitado == true)
+                                {
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                           <polyline points="9 11 12 14 20 6"></polyline>
+                                                           <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path>
+                                                        </svg>
+                                }
+                                else
+                                {
+                                    
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                 <div class="form-group mb-3">
+                    <div class="row">
+                            <div class="col-md-11">
+                            <label class="form-label">Reporte Sistema</label> 
+                        </div>
+                    </div>
+                    <div class='form-control'>
+                        <div class="col-md-12">
+
+                            @(Html.DevExtreme().TabPanel()
+                                            
+                                .Items(items => {
+                                    items.Add()
+                                        .Title("EQUIPO HUMANO")
+                                        .Template(new TemplateName("TAB0"));
+                                    items.Add()
+                                        .Title("EQUIPO EN MARCHA")
+                                        .Template(new TemplateName("TAB1"));
+                                    items.Add()
+                                        .Title("EQUIPO DETENIDO")
+                                        .Template(new TemplateName("TAB2"));
+        
+                                    items.Add()
+                                        .Title("REPORTE DE ENTREGA")
+                                        .Template(new TemplateName("TAB3"));
+
+                                })
+                                .SelectedIndex(0)
+                                .Loop(false)
+                                .AnimationEnabled(true)
+                                .SwipeEnabled(true)
+                                
+                            )
+                        </div>                 
+                     </div>
+                </div>
+                <div class="form-group mb-1">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-2">
+                                    @using(Html.BeginForm()) {
+                                    using(Html.DevExtreme().ValidationGroup()) {
+                                        @Html.AntiForgeryToken()
+                                        @(Html.DevExtreme().Form<TSK.Models.Query>()
+                                            .ShowValidationSummary(true)
+                                            .LabelLocation(FormLabelLocation.Top)
+                                            .Items(items => {
+                                                items.AddGroup()
+                                    
+                                                    .Items(groupItems => {
+                                                        groupItems.AddSimpleFor(m => m.texto5)
+                                                            .ColSpan(2)
+                                                            .Editor(e => e
+                                                                .TextArea()
+                                                                .Height(90)
+                                                            )
+                                                            .Label(l => l.Text("Descripción"));
+
+                                        
+                                                    }); 
+
+                                                items.AddButton()
+                                                .HorizontalAlignment(HorizontalAlignment.Center)
+                                                .ButtonOptions(b => b.Text("Actualizar")
+                                                .Type(ButtonType.Default)
+                                                .UseSubmitBehavior(true)
+                                                .Width(170)
+                                                
+                                                .ElementAttr(new { style = "width: 170px; background-color:#0a70b2; color: white;" })
+                                                );
+
+                                                
+
+                                            })
+                                            .FormData(Model)
+                                        )
+                                    }
+                                }
+                            </div>
+
+                        
+ 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .1{
+        width:50%;
+        
+    }
+
+    .2{
+        width:50%;
+        right:0; 
+    }
+</style>
+
+@using (Html.DevExtreme().NamedTemplate("TAB0"))
+{
+    <div style="display: flex; width: 100%;">
+        @(
+            Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+                                .ID("grid2")
+                                .OnInitialized("attachClickHandler")
+                                .DataSource(ds => ds.Mvc()
+                                .Controller("GrupoUsuarios")
+                                .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) }).OnLoaded("sortLiderDescending")
+                                .InsertAction("Post")
+                                .UpdateAction("Put")
+                                .DeleteAction("Delete")
+                                .Key("IdGrus")
+                                
+                                
+                                )
+                                
+
+                            .Columns(columns =>
+                                {
+                                    columns.AddFor(m => m.IdUsr)
+                                    .Lookup(lookup => lookup
+                                    .DataSource(ds => ds
+                                    .WebApi().Controller("GrupoUsuarios")
+                                    .LoadAction("UsuariosLookup").Key("Value"))
+                                    .ValueExpr("Value")
+                                    .DisplayExpr("Text")).Caption("Trabajador").AllowEditing(false);
+                                    columns.AddFor(m => m.Grupo).Caption("Grupo").GroupIndex(0);
+                columns.AddFor(m => m.Lider).Caption("Lider").AllowEditing(false).Width(600);
+                                })
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+                            .ShowBorders(true)
+                            .ShowColumnLines(true)
+                            .ShowRowLines(true)
+                            .GroupPanel(g => g.Visible(true))
+                            .Grouping(g => g.AutoExpandAll(false))
+
+    )
+  
+    </div>
+
+    <div style="display: flex; width: 100%;">
+        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("GrupoUsuarios")
+        .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
+            .InsertAction("Post").OnInserting("Change")
+        .UpdateAction("Put")
+        .Key("IdGrus")
+    )
+    .RemoteOperations(true)
+            .Columns(columns =>
+            {
+                columns.AddFor(m => m.IdUsr)
+                .Lookup(lookup => lookup
+                .DataSource(ds => ds
+                .WebApi().Controller("GrupoUsuarios")
+                .LoadAction("UsuariosLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")).Caption("Trabajador");
+                columns.AddFor(m => m.Grupo).Caption("Grupo");
+                columns.AddFor(m => m.Lider).Caption("Lider");
+            })
+    .FilterRow(f => f.Visible(true))
+            .HeaderFilter(f => f.Visible(true))
+            .ShowBorders(true)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .Editing(editing =>
+            {
+                editing.AllowAdding(true);
+                editing.AllowDeleting(true);
+                editing.AllowUpdating(true);
+            })
+            )
+    </div>
+
+
+    
+}
+
+
+
+@using (Html.DevExtreme().NamedTemplate("TAB1"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepSistema>()
+        .ID("gridContainer1")
+        .DataSource(ds => ds.Mvc()
+            .Controller("ReporteSistema")
+            .LoadAction("GetCondicion")
+            .LoadParams(new { idRep = new JS(@Model.id.ToString()), idCod = "PC" })
+            .Key("IdRepsis")
+        )
+        .ShowBorders(true)
+        .RemoteOperations(true)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .AllowColumnResizing(true)
+        .Columns(columns =>
+        {
+                columns.AddFor(m => m.NomSistema).Caption("Sistema");
+                columns.AddFor(m => m.Avance).Width(50)
+                .Caption("")
+                .DataType(GridColumnDataType.Number)
+                .Alignment(HorizontalAlignment.Left)
+                .Format(Format.Percent)
+                .AllowGrouping(false);
+
+                columns.AddFor(m => m.Avance).Width(200)
+                .Caption("Avance %")
+                .DataType(GridColumnDataType.Number)
+                .Alignment(HorizontalAlignment.Left)
+                .Format(Format.Percent)
+                .AllowGrouping(false)
+                .CssClass("bullet")
+                .CellTemplate(@<text>
+                    @(Html.DevExtreme().Bullet()
+            .Value(new JS("value * 100"))
+            .Size(s => s
+            .Height(18)
+            .Width(100)
+            )
+            .Color("#1f6b9d")
+            .Margin(m => m
+            .Top(5)
+            .Bottom(0)
+            .Left(5)
+            )
+            .ShowTarget(false)
+            .ShowZeroLevel(true)
+            .StartScaleValue(0)
+            .EndScaleValue(100)
+            .Tooltip(t => t
+            .Enabled(false)
+            .Font(f => f.Size(15))
+            .PaddingTopBottom(2)
+            .CustomizeTooltip("customizeTooltip")
+            )
+            )
+                    </text>).Width(110);
+
+
+
+
+        })
+        .MasterDetail(m => m
+            .Enabled(true)
+            .Template(new TemplateName("gridContainer-details1"))
+            )
+        .Summary(s => s.TotalItems(items =>
+        {
+            items.AddFor(m => m.NomDisciplina)
+               .DisplayFormat("Porcentaje Total de Avance:")
+               .Alignment(HorizontalAlignment.Right)
+               .ValueFormat(Format.Percent);
+            items.AddFor(m => m.Avance)
+               .SummaryType(SummaryType.Avg)
+               .DisplayFormat("{0}")
+               .Alignment(HorizontalAlignment.Center)
+               .ValueFormat(Format.Percent);
+        })
+            )
+        )
+
+
+}
+
+
+
+@using (Html.DevExtreme().NamedTemplate("TAB2"))
+{
+    
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepSistema>()
+    .ID("gridContainer2")
+    .DataSource(ds => ds.Mvc()
+        .Controller("ReporteSistema")
+        .LoadAction("GetCondicion")
+        .LoadParams(new { idRep = new JS(@Model.id.ToString()), idCod = "SB" })
+        .Key("IdRepsis")
+    )
+    .ShowBorders(true)
+    .RemoteOperations(true)
+    .ShowColumnLines(true)
+    .ShowRowLines(true)
+    .AllowColumnResizing(true)
+    .Columns(columns => {
+        columns.AddFor(m => m.NomSistema).Caption("Sistema");
+        columns.AddFor(m => m.Avance)
+            .Caption("% Avance")
+            .DataType(GridColumnDataType.Number)
+            .Alignment(HorizontalAlignment.Left)
+            .Format(Format.Percent)
+            .AllowGrouping(false)
+            .CssClass("bullet")
+            .CellTemplate(@<text>
+                            @(Html.DevExtreme().Bullet()
+                    .Value(new JS("value * 100"))
+                    .Size(s => s
+                        .Height(18)
+                        .Width(100)
+                    )
+                    .Color("green")
+                    .Margin(m => m
+                        .Top(5)
+                        .Bottom(0)
+                        .Left(5)
+                    )
+                    .ShowTarget(false)
+                    .ShowZeroLevel(true)
+                    .StartScaleValue(0)
+                    .EndScaleValue(100)
+                    .Tooltip(t => t
+                        .Enabled(true)
+                        .Font(f => f.Size(15))
+                        .PaddingTopBottom(2)
+                        .CustomizeTooltip("customizeTooltip")
+                    )
+                            )
+    </text>).Width(110);
+    })
+    .MasterDetail(m => m
+        .Enabled(true)
+        .Template(new TemplateName("gridContainer-details2"))
+        )
+    .Summary(s => s.TotalItems(items => {
+         items.AddFor(m => m.NomDisciplina)
+            .DisplayFormat("Porcentaje Total de Avance:")
+            .Alignment(HorizontalAlignment.Right)
+            .ValueFormat(Format.Percent);
+         items.AddFor(m => m.Avance)
+            .SummaryType(SummaryType.Avg)
+            .DisplayFormat("{0}")
+            .Alignment(HorizontalAlignment.Center)
+            .ValueFormat(Format.Percent);
+            
+            })
+        )
+    )
+    
+}
+
+@using (Html.DevExtreme().NamedTemplate("TAB3"))
+{
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepEntrega>()
+        .DataSource(ds => ds.Mvc()
+            .Controller("RepEntrega")
+            .LoadAction("GetId")
+            .UpdateAction("Put")
+            .LoadParams(new { id = new JS(@Model.id.ToString()) })
+            .Key("IdRent")
+        )
+        .ShowBorders(true)
+        .Paging(paging => paging.PageSize(50))
+        .RemoteOperations(true)
+        .ShowColumnLines(true)
+        .ShowRowLines(true)
+        .AllowColumnResizing(true)
+        .Columns(columns => {
+            columns.AddFor(m => m.IdEnt).Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("RepEntrega").LoadAction("EntregasLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            ).Caption("Control de componentes y sistemas").AllowEditing(false);
+            columns.AddFor(m => m.Resultado).Caption("Resultados").Width(150);
+        })
+        .Editing(e => e.Mode(GridEditMode.Cell)
+            .AllowUpdating(true)
+            .UseIcons(true)
+        )
+       
+    )
+}
+
+@using (Html.DevExtreme().NamedTemplate("gridContainer-details1")) {
+    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
+            .DataSource(d => d.Mvc()
+                .Controller("RepDetalle")
+                .LoadAction("GetDetails")
+                .LoadParams(new { id = new JS("data.IdRepsis") })
+                .UpdateAction("Put")
+                .Key("IdAct", "IdRepsis")
+            )
+            .ColumnAutoWidth(true)
+            .AllowColumnResizing(true)
+            .ShowColumnLines(true)
+            .ShowRowLines(true)
+            .ShowBorders(true)
+            .Paging(paging => paging.PageSize(50))
+            .Columns(columns => {
+                columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
+                columns.AddFor(m => m.Especificacion).AllowEditing(false);
+                columns.AddFor(m => m.Valor).Width(70);                    
+                columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
+                .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
+                .ValueExpr("Value")
+                .DisplayExpr("Text")
+            );
+                columns.Add().DataField("Referencia").AllowEditing(false)
+                    .Alignment(HorizontalAlignment.Center)
+                    .Width(180)
+                    .CellTemplate(@<text>
+                                <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
+                                   <%- value %>
+                                </a>
+    </text>);
+                columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Cell)
+                .AllowUpdating(true)
+                .UseIcons(true)                              
+            )
+            .Selection(s => s.Mode(SelectionMode.Single))
+            .Export(e => e.Enabled(true)
+                .AllowExportSelectedData(false)
+                .Formats(new[] { "pdf" })
+            )
+            
+            .OnRowUpdated("gridChild_OnRowUpdated1")
+    )
+}
+
+@using (Html.DevExtreme().NamedTemplate("gridContainer-details2")) {
+    @(
+    Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
+                .DataSource(d => d.Mvc()
+                    .Controller("RepDetalle")
+                    .LoadAction("GetDetails")
+                    .LoadParams(new { id = new JS("data.IdRepsis") })
+                    .UpdateAction("Put")
+                    .Key("IdAct", "IdRepsis")
+                )
+                .ColumnAutoWidth(true)
+                .AllowColumnResizing(true)
+                .ShowColumnLines(true)
+                .ShowRowLines(true)
+                .ShowBorders(true)
+                .Paging(paging => paging.PageSize(50))
+                .Columns(columns => {
+                    columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
+                    columns.AddFor(m => m.Especificacion).AllowEditing(false);
+                    columns.AddFor(m => m.Valor).Width(70);
+                    columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text"));
+                    columns.Add().DataField("Referencia").AllowEditing(false)
+                    .Alignment(HorizontalAlignment.Center)
+                    .Width(100)
+                    .CellTemplate(
+@<text>
+                                <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
+                                   <%- value %>
+                                </a>
+    </text>);
+                    columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
+
+            })
+            .Editing(e => e.Mode(GridEditMode.Cell)
+                .AllowUpdating(true)
+                .UseIcons(true)                              
+            )
+            .Selection(s => s.Mode(SelectionMode.Single))
+            .Export(e => e.Enabled(true)
+                .AllowExportSelectedData(false)
+                .Formats(new[] { "pdf" })
+            )
+
+            
+            .OnRowUpdated("gridChild_OnRowUpdated2")
+    )
+}
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+    function generateReport() {
+        var report = new DevExpress.XtraReports.UI.XtraReport();
+        report.dpi = 96;
+        report.name = "ReporteSistema";
+        report.paperKind = DevExpress.XtraPrinting.PaperKind.Letter;
+        report.pageWidth = 850;
+        report.pageHeight = 1100;
+
+        // Configura el reporte con los datos que necesites
+
+        DevExpress.XtraReports.Web.ReportViewer.OpenReport(report);
+    }
+
+
+    function Change(e) {
+        e["IdRep"] = @Model.id;
+        // Dependiendo si el usuario su Rol sera 1 o 2
+        console.log(e);
+    }
+
+    window.jsPDF = window.jspdf.jsPDF;
+
+
+    function customizeTooltip(pointsInfo) {
+        return { text: parseInt(pointsInfo.originalValue) + "%" };
+    }
+
+    // Crear Pdf
+    function exportHeadToPDF(e) {
+        var doc = new jsPDF();
+
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: e.component,
+            topLeft: { x: 1, y: 15 },
+            columnWidths: [150, 30],
+        }).then(function () {
+            const header = 'Reporte de Sistema en Marcha';
+            const headerWidth = doc.getTextDimensions(header).w;
+            doc.setFontSize(18);
+            doc.setTextColor('#0664c2');
+            doc.setFont('Helvetica', 'bold'); // Establecer fuente y estilo
+            const pageWidth = doc.internal.pageSize.getWidth();
+            doc.text(header, (pageWidth - headerWidth) / 2, 18);
+
+            const footer = 'Copyright © 2022 Gointegreat. Todos los derechos reservados.';
+            doc.setTextColor('#208cf9');
+            doc.setFontSize(9);
+            doc.setFont('Helvetica', 'bold'); // Establecer fuente y estilo
+            const footerWidth = doc.getTextDimensions(footer).w;
+            const pageHeight = doc.internal.pageSize.getHeight();
+            doc.text(footer, doc.internal.pageSize.getWidth() - footerWidth - 10, pageHeight - 10);
+
+            doc.save("EquipoEnMarcha.pdf");
+        });
+    }
+
+
+    function exportDetailToPDF(e) {
+        var doc = new jsPDF();
+
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: e.component,
+            indent: 5,
+        }).then(function () {
+            doc.save("Detalle.pdf");
+        });
+    }
+
+    function exportEntregaToPDF(e) {
+        var doc = new jsPDF();
+
+        DevExpress.pdfExporter.exportDataGrid({
+            jsPDFDocument: doc,
+            component: e.component,
+            indent: 5,
+        }).then(function () {
+            doc.save("Entrega.pdf");
+        });
+    }
+
+    function gridChild_OnRowUpdated1(e) {
+        setTimeout(function () {
+            var dataGrid = $('#gridContainer1').dxDataGrid('instance');
+            dataGrid.refresh();
+        });
+    }
+
+    function gridChild_OnRowUpdated2(e) {
+        setTimeout(function () {
+            var dataGrid = $('#gridContainer2').dxDataGrid('instance');
+            dataGrid.refresh();
+        });
+    }
+    function exportTable() {
+        // Crea una instancia de JSZip
+        var zip = new JSZip();
+        // Obtiene los datos de la tabla principal
+        var data = $('#gridContainer').dxDataGrid('instance').getDataSource().items();
+        // Obtiene los datos de la tabla de detalle
+        var detailData = $('#gridContainer-details1').dxDataGrid('instance').getDataSource().items();
+        // Une los datos de ambas tablas en un solo array
+        for (var i = 0; i < data.length; i++) {
+            var currentRow = data[i];
+            currentRow.Details = detailData[i].Details;
+        }
+        // Convierte el array de datos en formato CSV
+        var csv = DevExpress.utils.toCsv(data, { separator: ';' });
+        // Agrega el archivo CSV al archivo ZIP
+        zip.file("Tabla.csv", csv);
+        // Crea el archivo ZIP y lo descarga
+        zip.generateAsync({ type: "blob" }).then(function (content) {
+            saveAs(content, "export.zip");
+        });
+    }
+
+    function attachClickHandler(e) {
+        var grid = e.component;
+        grid.element().on('click', function () {
+            refreshed(grid);
+        });
+    }
+
+    function refreshed(grid) {
+        grid.refresh();
+    }
+
+      function onAvanceCellPrepared(e) {
+        if (e.rowType === "data" && e.column.dataField === "Avance") {
+            var percentageValue = (e.value * 100).toFixed(2) + '%';
+
+            var percentageDiv = document.createElement('div');
+            percentageDiv.style.marginRight = '5px';
+            percentageDiv.innerText = percentageValue;
+            e.cellElement.appendChild(percentageDiv);
+
+            var bulletDiv = document.createElement('div');
+            e.cellElement.appendChild(bulletDiv);
+
+            $(bulletDiv).dxBullet({
+                value: e.value * 100,
+                size: {
+                    height: 18,
+                    width: 100
+                },
+                color: "green",
+                margin: {
+                    top: 5,
+                    bottom: 0,
+                    left: 5
+                },
+                showTarget: false,
+                showZeroLevel: true,
+                startScaleValue: 0,
+                endScaleValue: 100,
+                tooltip: {
+                    enabled: true,
+                    font: {
+                        size: 15
+                    },
+                    paddingTopBottom: 2,
+                    customizeTooltip: function() {
+                        return {
+                            text: percentageValue
+                        };
+                    }
+                }
+            });
+        }
+    }
+
+   function sortLiderDescending() {
+    var grid = $("#grid2").dxDataGrid("instance");
+    grid.columnOption("Lider", "sortOrder", "desc");
+}
+
+
+</script>

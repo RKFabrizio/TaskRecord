@@ -71,14 +71,14 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0 text-info text-gradient" data-bs-toggle="dropdown" aria-label="Open user menu">
 
-                            @if (User.IsInRole("Lider"))
+                            @if (User.IsInRole("Administrador"))
                             {
                                 <span class="avatar text-info">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon avatar-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
                                 </span>
                             }
-                            @if (User.IsInRole("Tecnico"))
+                            @if (User.IsInRole("Trabajador"))
                             {
                                 <span class="avatar text-info">
                                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -96,7 +96,9 @@
                             }
                             <div class="d-none d-xl-block ps-2">
                                 <div>@User.Identity.Name</div>
-                                <div class="mt-1 small text-muted">@User.FindFirst("NOMBRE_POS").Value</div>
+                                @*<div class="mt-1 small text-muted">@User.FindFirst("ID_POS").Value</div>*@
+                                
+
                             </div>
                         </a>
 
@@ -137,19 +139,19 @@
                                     </span>
                                 </a>
                             </li>
+
                             <li class="nav-item @ViewBag.taskrecord">
-                                <a asp-controller="TaskRecord" asp-action="Registro" class="nav-link">
-                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <a asp-controller="TaskRecord" asp-action="Reporte" class="nav-link">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block" style="margin-left: 4px;">
                                         <!-- Download SVG icon from -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-pulse text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><polyline points="9 11 12 14 20 6" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
                                     </span>
                                     <span class="nav-link-title">
-                                        Registro de Pautas
+                                        Gestion de Pautas
                                     </span>
                                 </a>
                             </li>
-
-                            @if (User.IsInRole("Lider"))
+                            @if (User.IsInRole("Administrador"))
                             {
                                 <li class="nav-item dropdown @ViewBag.epm">
                                     <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
@@ -211,10 +213,7 @@
                                                 <a asp-controller="EstructuraPM" asp-action="PMSistemaActividad" class="dropdown-item @ViewBag.pmsistemaactividad">
                                                     Actividad >> Sistema >> Pauta
                                                 </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a asp-controller="EstructuraPM" asp-action="Reporte" class="dropdown-item @ViewBag.reporte">
-                                                    Gestion de Pautas
-                                                </a>
+                                           
                    
                                             </div>
                                         </div>
@@ -322,7 +321,7 @@
                                                 </a>
 
                                             </div>
-                                            @if (User.IsInRole("Lider"))
+                                            @if (User.IsInRole("Administrador"))
                                             {
                                                 <div class="dropdown-menu-column">
 

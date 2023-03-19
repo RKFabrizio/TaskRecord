@@ -53,7 +53,9 @@ namespace TSK.Controllers
         public async Task<IActionResult> Post(string values)
         {
             var model = new Reporte();
+            Console.WriteLine("HOLA" +values);
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
+            
             PopulateModel(model, valuesDict);
 
             if (!TryValidateModel(model))
@@ -100,6 +102,7 @@ namespace TSK.Controllers
             var lookup = from pm in _context.Pms
                          join flo in _context.Flota on pm.IdFlt equals flo.IdFlt
                          orderby pm.IdPm
+                         where pm.Habilitado == true
                          select new
                          {
                              Value = pm.IdPm,

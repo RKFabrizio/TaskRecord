@@ -163,7 +163,11 @@
             {
                 columns.AddFor(m => m.Nombre).Caption("Nombre").AllowEditing(false);
                     columns.AddFor(m => m.Descripcion).Caption("Descripción").AllowEditing(false);
-                columns.AddFor(m => m.IdFlt).Caption("Flota").AllowEditing(false);
+                    columns.AddFor(m => m.IdFlt).Caption("Flota").Lookup(lookup => lookup
+                    .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("FlotaLookup").Key("Value"))
+                    .ValueExpr("Value")
+                    .DisplayExpr("Text")
+                ).AllowEditing(false);
                 columns.AddFor(m => m.Habilitado).Width(140);
                
             })
