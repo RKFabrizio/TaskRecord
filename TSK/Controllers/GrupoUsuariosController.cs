@@ -46,61 +46,7 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
         }
 
-        public async Task<IActionResult> GetLider(int idRep, DataSourceLoadOptions loadOptions)
-        {
-            var grupousuarios = _context.GrupoUsuarios
-                .Where(x => x.IdRep == idRep)
-                .Select(i => new {
-                    i.IdGrus,
-                    i.IdRep,
-                    i.IdUsr,
-                    i.Grupo,
-                    i.Lider
-                })
-                .Join(
-                    _context.Usuarios.Where(u => u.IdPos == 1 ),
-                    gu => gu.IdUsr,
-                    u => u.IdUsr,
-                    (gu, u) => new {
-                        gu.IdGrus,
-                        gu.IdRep,
-                        gu.IdUsr,
-                        gu.Grupo,
-                        gu.Lider
-                    }
-                );
-
-            return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
-        }
-
-
-        [HttpGet]
-        public async Task<IActionResult> GetTecnico(int idRep, DataSourceLoadOptions loadOptions)
-        {
-            var grupousuarios = _context.GrupoUsuarios
-                .Where(x => x.IdRep == idRep)
-                .Select(i => new {
-                    i.IdGrus,
-                    i.IdRep,
-                    i.IdUsr,
-                    i.Grupo,
-                    i.Lider
-                })
-                .Join(
-                    _context.Usuarios.Where(u => u.IdPos == 2 ),
-                    gu => gu.IdUsr,
-                    u => u.IdUsr,
-                    (gu, u) => new {
-                        gu.IdGrus,
-                        gu.IdRep,
-                        gu.IdUsr,
-                        gu.Grupo,
-                        gu.Lider
-                    }
-                );
-
-            return Json(await DataSourceLoader.LoadAsync(grupousuarios, loadOptions));
-        }
+       
         [HttpPost]
         public async Task<IActionResult> Post(string values)
         {
@@ -200,33 +146,7 @@ namespace TSK.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UsuariosLiderLookup(DataSourceLoadOptions loadOptions)
-        {
-            var lookup = from i in _context.Usuarios
-                         where i.IdPos == 1 && i.Habilitado == true
-                         orderby i.Nombre
-                         select new
-                         {
-                             Value = i.IdUsr,
-                             Text = i.Nombre
-                         };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> UsuariosTecnicoLookup(DataSourceLoadOptions loadOptions)
-        {
-            var lookup = from i in _context.Usuarios
-                         orderby i.Nombre
-                         where i.IdPos == 2 && i.Habilitado == true
-                         select new
-                         {
-                             Value = i.IdUsr,
-                             Text = i.Nombre
-                         };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        }
-
+       
 
 
         [HttpGet]

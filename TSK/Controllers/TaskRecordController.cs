@@ -47,7 +47,23 @@ namespace TSK.Controllers
 
         }
 
-        public Query ReporteData(int id)
+        public IActionResult Reporte()
+        {
+            @ViewBag.taskrecord = "active";
+            @ViewBag.reporte = "active";
+            return View();
+        }
+
+        public IActionResult ReporteDetalle(int id)
+        {
+            var data = ReporteData(id);
+            @ViewBag.taskrecord = "active";
+            @ViewBag.reporte = "active";
+
+            return View(data);
+        }
+
+            public Query ReporteData(int id)
         {
             var _queryreporte = new Query();
 

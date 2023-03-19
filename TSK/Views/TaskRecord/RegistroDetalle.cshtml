@@ -226,7 +226,7 @@
         .Columns(columns => {
             columns.AddFor(m => m.NomSistema).Caption("Sistema");
             columns.AddFor(m => m.Avance)
-                .Caption("% Avance")
+                .Caption("Avance %")
                 .DataType(GridColumnDataType.Number)
                 .Alignment(HorizontalAlignment.Left)
                 .Format(Format.Percent)
@@ -435,7 +435,6 @@
                 .AllowExportSelectedData(false)
                 .Formats(new[] { "pdf" })
             )
-            .OnExporting("exportDetailToPDF")
             
             .OnRowUpdated("gridChild_OnRowUpdated1")
     )
@@ -481,7 +480,7 @@
                 .AllowExportSelectedData(false)
                 .Formats(new[] { "pdf" })
             )
-            .OnExporting("exportDetailToPDF")
+
             
             .OnRowUpdated("gridChild_OnRowUpdated2")
     )

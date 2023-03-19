@@ -49,23 +49,6 @@ namespace TSK.Controllers
             return View();
         }
 
-        public IActionResult Reporte()
-        {
-            @ViewBag.epm = "active";
-            @ViewBag.reporte = "active";
-            return View();
-        }
-
-
-        public IActionResult ReporteDetalle(int id)
-        {
-            var data = ReporteData(id);
-            @ViewBag.epm = "active";
-            @ViewBag.reporte = "active";
-
-            return View(data);
-
-        }
 
         //public IActionResult ActividadesAdd(int id)
         //{
