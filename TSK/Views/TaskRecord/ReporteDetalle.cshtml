@@ -49,19 +49,8 @@
                 <div class="card-header">
                     <h3 class="card-title">Reporte Nro. @Model.id</h3>
                 </div>
-                <form style="display: inline-block;">
-                    <button type="submit" class="btn btn-primary" style="margin: 3px;">
-                        <a asp-controller="Home" asp-action="Print" asp-route-model="@Model.id" style="color: white;">Reporte Entrega</a>
-                    </button>
-                </form>
-                <form style="display: inline-block;">
-                    <button type="submit" class="btn btn-primary" style="margin: 3px; margin-right: 10px;">
-                        <a asp-controller="ReportSistema" asp-action="Print" asp-route-model="@Model.id" style="color: white;">Reporte Sistema</a>
-                    </button>
-                </form>
-
-             
-            </div>
+                <a class="btn btn-primary" style="margin: 3px; margin-right: 10px;" asp-controller="ReportSistema" asp-action="Print2" asp-route-model="@Model.id">Generar Reporte</a>
+                </div>
 
         
             <div class="card-body">
@@ -212,6 +201,7 @@
 
 @using (Html.DevExtreme().NamedTemplate("TAB0"))
 {
+
     <div style="display: flex; width: 100%;">
         @(
             Html.DevExtreme().DataGrid<TSK.Models.Entity.GrupoUsuario>()
@@ -224,8 +214,6 @@
                                 .UpdateAction("Put")
                                 .DeleteAction("Delete")
                                 .Key("IdGrus")
-                                
-                                
                                 )
                                 
 
@@ -260,6 +248,7 @@
         .LoadAction("Get").LoadParams(new { idRep = new JS(@Model.id.ToString()) })
             .InsertAction("Post").OnInserting("Change")
         .UpdateAction("Put")
+            .DeleteAction("Delete")
         .Key("IdGrus")
     )
     .RemoteOperations(true)
@@ -297,6 +286,7 @@
 
 @using (Html.DevExtreme().NamedTemplate("TAB1"))
 {
+   
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepSistema>()
         .ID("gridContainer1")
         .DataSource(ds => ds.Mvc()
