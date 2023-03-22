@@ -65,10 +65,6 @@ namespace TSK.Controllers
 
             }
 
-            var usuarioId = model.IdUsr;
-            var esLider = _context.Usuarios.Any(u => (u.IdUsr == usuarioId && u.IdPos == 1));
-            model.Lider = esLider ? true : false;
-
 
             if (model.Lider && _context.GrupoUsuarios.Any(gu => (gu.Grupo == model.Grupo && gu.Lider && gu.IdRep == model.IdRep)))
             {
@@ -107,10 +103,6 @@ namespace TSK.Controllers
 
             }
 
-            var usuarioId = model.IdUsr;
-            var esLider = _context.Usuarios.Any(u => u.IdUsr == usuarioId && u.IdPos == 1);
-            model.Lider = esLider ? true : false;
-
             if (model.Lider && _context.GrupoUsuarios.Any(gu => gu.Grupo == model.Grupo && gu.Lider && gu.IdRep == model.IdRep))
             {
                 return BadRequest("Ya existe un líder para este grupo.");
@@ -128,8 +120,9 @@ namespace TSK.Controllers
         [HttpDelete]
         public async Task Delete(int key) {
             var model = await _context.GrupoUsuarios.FirstOrDefaultAsync(item => item.IdGrus == key);
-
+            Console.WriteLine(model.ToString());
             _context.GrupoUsuarios.Remove(model);
+           
             await _context.SaveChangesAsync();
         }
 
@@ -138,6 +131,7 @@ namespace TSK.Controllers
         public async Task<IActionResult> UsuariosLookup(DataSourceLoadOptions loadOptions) {
             var lookup = from i in _context.Usuarios
                          orderby i.Nombre
+                         where i.IdPos == 2
                          select new {
                              Value = i.IdUsr,
                              Text = i.Nombre

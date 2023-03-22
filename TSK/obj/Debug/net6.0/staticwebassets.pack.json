@@ -181,12 +181,8 @@
       "PackagePath": "staticwebassets\\TSK.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteEntrega.rdl",
-      "PackagePath": "staticwebassets\\Reports\\ReporteEntrega.rdl"
-    },
-    {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteSistema.rdl",
-      "PackagePath": "staticwebassets\\Reports\\ReporteSistema.rdl"
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\ReportSistema\\SistemaReporte.rdl",
+      "PackagePath": "staticwebassets\\ReportSistema\\SistemaReporte.rdl"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\Site.css",
@@ -707,6 +703,14 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\StyleSheet.css",
       "PackagePath": "staticwebassets\\dist\\css\\StyleSheet.css"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\TablerDesing.css",
+      "PackagePath": "staticwebassets\\dist\\css\\TablerDesing.css"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\acceso.css",
+      "PackagePath": "staticwebassets\\dist\\css\\acceso.css"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\demo.css",
@@ -3699,6 +3703,18 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\eye.png",
       "PackagePath": "staticwebassets\\img\\eye.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\fondo_inicio.svg",
+      "PackagePath": "staticwebassets\\img\\fondo_inicio.svg"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\fondo_iniciov2.jpg",
+      "PackagePath": "staticwebassets\\img\\fondo_iniciov2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\gopautas_v5.png",
+      "PackagePath": "staticwebassets\\img\\gopautas_v5.png"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\pautas.png",

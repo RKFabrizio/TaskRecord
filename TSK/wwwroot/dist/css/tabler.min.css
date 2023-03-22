@@ -5049,7 +5049,7 @@ textarea.form-control-lg {
     font-size: var(--tblr-navbar-toggler-font-size);
     line-height: 1;
     color: var(--tblr-navbar-color);
-    background-color: transparent;
+    background-color: #0E3D50;
     border: var(--tblr-border-width) solid var(--tblr-navbar-toggler-border-color);
     border-radius: var(--tblr-navbar-toggler-border-radius);
     transition: var(--tblr-navbar-toggler-transition)

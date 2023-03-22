@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "R8OAarYVuWT8UgT1jcT/LJok8Vgn3VjCX/rkuzL+dqw=",
+  "Hash": "AgvsxVs3x1GLb71LqMswVb0U31Ti2orxwlZLNrEdaoQ=",
   "Source": "TSK",
   "BasePath": "_content/TSK",
   "Mode": "Default",
@@ -5236,6 +5236,23 @@
       "OriginalItemSpec": "wwwroot\\css\\vendor.css"
     },
     {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\acceso.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "dist/css/acceso.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\css\\acceso.css"
+    },
+    {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\demo.css",
       "SourceId": "TSK",
       "SourceType": "Discovered",
@@ -5387,6 +5404,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\css\\tabler.rtl.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\TablerDesing.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "dist/css/TablerDesing.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\css\\TablerDesing.css"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\dist\\css\\tabler-flags.css",
@@ -17799,6 +17833,40 @@
       "OriginalItemSpec": "wwwroot\\img\\eye.png"
     },
     {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\fondo_inicio.svg",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/fondo_inicio.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\fondo_inicio.svg"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\fondo_iniciov2.jpg",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/fondo_iniciov2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\fondo_iniciov2.jpg"
+    },
+    {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOINTEGREAT_V1.png",
       "SourceId": "TSK",
       "SourceType": "Discovered",
@@ -17814,6 +17882,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\GOINTEGREAT_V1.png"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\gopautas_v5.png",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/gopautas_v5.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\gopautas_v5.png"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\GOPAUTASv3.png",
@@ -20689,12 +20774,12 @@
       "OriginalItemSpec": "wwwroot\\pdf\\Manual TaskRecords.pdf"
     },
     {
-      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteEntrega.rdl",
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\ReportSistema\\SistemaReporte.rdl",
       "SourceId": "TSK",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
       "BasePath": "_content/TSK",
-      "RelativePath": "Reports/ReporteEntrega.rdl",
+      "RelativePath": "ReportSistema/SistemaReporte.rdl",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -20703,24 +20788,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Reports\\ReporteEntrega.rdl"
-    },
-    {
-      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\Reports\\ReporteSistema.rdl",
-      "SourceId": "TSK",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
-      "BasePath": "_content/TSK",
-      "RelativePath": "Reports/ReporteSistema.rdl",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Reports\\ReporteSistema.rdl"
+      "OriginalItemSpec": "wwwroot\\ReportSistema\\SistemaReporte.rdl"
     }
   ]
 }
