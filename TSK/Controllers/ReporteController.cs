@@ -53,7 +53,9 @@ namespace TSK.Controllers
         public async Task<IActionResult> Post(string values)
         {
             var model = new Reporte();
-            Console.WriteLine("HOLA" +values);
+
+            model.Habilitado = false;
+
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             
             PopulateModel(model, valuesDict);
