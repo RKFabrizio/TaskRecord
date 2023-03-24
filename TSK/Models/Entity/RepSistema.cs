@@ -14,7 +14,6 @@ namespace TSK.Models.Entity
         public int IdRepsis { get; set; }
         public int IdRep { get; set; }
         public string NomSistema { get; set; }
-        public string NomSector { get; set; }
         public string NomDisciplina { get; set; }
         public double Avance { get; set; }
         public bool? Habilitado { get; set; }

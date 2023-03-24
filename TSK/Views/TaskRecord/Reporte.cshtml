@@ -128,12 +128,21 @@
                         {
                             groupItems.AddSimpleFor(m => m.IdPm).ColSpan(2)
                             .Editor(editor => editor
-                            .Lookup()
-                            .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup1").Key("Value"))
-                            .ValueExpr("Value")
-                            .DisplayExpr("Text")
+                             .Lookup()
+                             .ID("pmsLookup") // Asignamos un ID al Lookup de Pms
+                             .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("PmsLookup1").Key("Value"))
+                             .ValueExpr("Value")
+                             .DisplayExpr("Text")
                         );
-                            groupItems.AddSimpleFor(m => m.IdUni).ColSpan(2);
+
+                            groupItems.AddSimpleFor(m => m.IdUni).ColSpan(2)
+                            .Editor(editor => editor
+                                .Lookup()
+                                .DataSource(ds => ds.WebApi().Controller("Reporte").LoadAction("UnidadsFlotaLookup").Key("Value"))
+                                .ValueExpr("Value")
+                                .DisplayExpr("Text")
+                            );
+
                             groupItems.AddSimpleFor(m => m.Fecha)
                             .Editor(e => e
                             .DateBox()
@@ -191,6 +200,14 @@
                 ["Habilitado", "=", false]
             ]);
         }
+    }
+
+    function onPmsLookupValueChanged(e) {
+        var flotaId = e.selectedItem ? e.selectedItem.IdFlt : null; // Recuperamos el ID de Flota asociado con el PM seleccionado
+        var unidadLookup = $("#grid1").find("#unidadLookup").dxLookup("instance"); // Obtenemos la instancia del Lookup de Unidades utilizando el ID correcto
+
+        unidadLookup.getDataSource().filter(flotaId ? ["IdFlt", "=", flotaId] : null); // Establecemos el filtro en el Lookup de Unidades
+        unidadLookup.getDataSource().load(); // Recargamos el Lookup de Unidades
     }
 </script>
 

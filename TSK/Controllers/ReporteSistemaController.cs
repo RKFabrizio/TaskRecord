@@ -29,7 +29,6 @@ namespace TSK.Controllers
                 i.IdRepsis,
                 i.IdRep,
                 i.NomSistema,
-                i.NomSector,
                 i.NomDisciplina,
                 i.IdCod,
                 i.Avance,
@@ -55,8 +54,6 @@ namespace TSK.Controllers
                 i.IdRepsis,
                 i.IdRep,
                 i.NomSistema,
-                i.NomSector,
-                i.NomDisciplina,
                 i.IdCod,
                 i.Avance,
                 i.Habilitado,
@@ -126,12 +123,12 @@ namespace TSK.Controllers
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
 
+
+
         private void PopulateModel(RepSistema model, IDictionary values) {
             string ID_REPSIS = nameof(RepSistema.IdRepsis);
             string ID_REP = nameof(RepSistema.IdRep);
             string NOM_SISTEMA = nameof(RepSistema.NomSistema);
-            string NOM_SECTOR = nameof(RepSistema.NomSector);
-            string NOM_DISCIPLINA = nameof(RepSistema.NomDisciplina);
             string ID_COD = nameof(RepSistema.IdCod);
             string AVANCE = nameof(RepSistema.Avance);
             string HABILITADO = nameof(RepSistema.Habilitado);
@@ -149,14 +146,6 @@ namespace TSK.Controllers
 
             if(values.Contains(NOM_SISTEMA)) {
                 model.NomSistema = Convert.ToString(values[NOM_SISTEMA]).ToUpper();
-            }
-
-            if(values.Contains(NOM_SECTOR)) {
-                model.NomSector = Convert.ToString(values[NOM_SECTOR]).ToUpper();
-            }
-
-            if(values.Contains(NOM_DISCIPLINA)) {
-                model.NomDisciplina = Convert.ToString(values[NOM_DISCIPLINA]).ToUpper();
             }
 
             if (values.Contains(ID_COD))

@@ -50,7 +50,7 @@
                             {
 
                                 items.Add()
-                                .Title("LISTA DE PAUTA - SISTEMA - ")
+                                .Title("LISTA DE PAUTA - SISTEMA")
                                 .Template(new TemplateName("TAB1"));
                                 items.Add()
                                 .Title("AÑADIR ACTIVIDADES")
@@ -92,7 +92,7 @@
                     .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("PmSistemasLookup").Key("Value"))
                     .ValueExpr("Value")
                     .DisplayExpr("Text")
-                ).GroupIndex(0).Caption("PM - Sistema").Width(100);
+                ).GroupIndex(0).Caption("PAUTA-SISTEMA").Width(100);
 
                 columns.AddFor(m => m.Orden).Width(100);
                 columns.AddFor(m => m.IdAct).Lookup(lookup => lookup

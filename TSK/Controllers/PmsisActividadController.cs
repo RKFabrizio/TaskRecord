@@ -178,7 +178,7 @@ namespace TSK.Controllers
                          orderby pm.Descripcion + " " + pm.IdPm + " - " + flo.Flota + " - " + sis.Nombre + " - " + con.Nombre
                          select new {
                              Value = pmsis.IdPms,
-                             Text = pm.Descripcion + " " + pm.IdPm + " - " + flo.Flota + " - " +  sis.Nombre + " - " + con.Nombre
+                             Text = pm.Nombre + " - " + flo.Flota + " - " + sis.Nombre + " - " + con.Nombre
                          };
 
 

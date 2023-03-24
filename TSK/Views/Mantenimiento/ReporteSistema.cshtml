@@ -39,8 +39,6 @@
             .DisplayExpr("Text")
         ).Caption("Reporte");
         columns.AddFor(m => m.NomSistema).Caption("Nombre Sistema");
-        columns.AddFor(m => m.NomSector).Caption("Nombre Sector");
-        columns.AddFor(m => m.NomDisciplina).Caption("Nombre Disciplina");
         columns.AddFor(m => m.Habilitado);
     })
         .ShowBorders(true)
@@ -74,8 +72,6 @@
                     .Items(groupItems => {
                         groupItems.AddSimpleFor(m => m.IdRep);
                         groupItems.AddSimpleFor(m => m.NomSistema);
-                        groupItems.AddSimpleFor(m => m.NomSector);
-                        groupItems.AddSimpleFor(m => m.NomDisciplina);
                         groupItems.AddSimpleFor(m => m.Habilitado);
                     });
             }))

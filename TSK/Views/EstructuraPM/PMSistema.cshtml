@@ -91,7 +91,7 @@
                 .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("PmsLookup").Key("Value"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-                ).GroupIndex(0).Caption("PM");
+                ).GroupIndex(0).Caption("PAUTA");
 
         })
        .AllowColumnReordering(true)
@@ -159,7 +159,7 @@
                 items.AddSimpleFor(m => m.IdPm)
                 .Editor(e => e
                 .Lookup()
-                .DataSource(ds => ds.Mvc().Controller("PmSistemas").LoadAction("PmsLookup").Key("idPm"))
+                .DataSource(ds => ds.Mvc().Controller("PmSistemas").LoadAction("PmsLookup1").Key("idPm"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
                 .OnValueChanged("refreshData")

@@ -150,18 +150,6 @@ namespace TSK.Controllers
             await _context.SaveChangesAsync();
         }
 
-
-        [HttpGet]
-        public async Task<IActionResult> RepSistemasLookup(DataSourceLoadOptions loadOptions) {
-            var lookup = from i in _context.RepSistemas
-                         orderby i.NomSistema
-                         select new {
-                             Value = i.IdRepsis,
-                             Text = i.NomSistema
-                         };
-            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
-        }
-
         [HttpGet]
         public async Task<IActionResult> EstadoLookup(DataSourceLoadOptions loadOptions)
         {
