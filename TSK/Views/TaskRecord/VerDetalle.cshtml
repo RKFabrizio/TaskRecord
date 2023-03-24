@@ -160,7 +160,6 @@
         .OnExporting("exportHeadToPDF")
         .Columns(columns => {
             columns.AddFor(m => m.NomSistema).Caption("Sistema");
-            columns.AddFor(m => m.NomSector).Caption("Sector");
             columns.AddFor(m => m.NomDisciplina).Caption("Disciplina");  
             columns.AddFor(m => m.Avance)
                 .Caption("% Avance")
@@ -241,8 +240,6 @@
         .OnExporting("exportHeadToPDF")
         .Columns(columns => {
             columns.AddFor(m => m.NomSistema).Caption("Sistema");
-            columns.AddFor(m => m.NomSector).Caption("Sector");
-            columns.AddFor(m => m.NomDisciplina).Caption("Disciplina");
             columns.AddFor(m => m.Avance)
                 .Caption("% Avance")
                 .DataType(GridColumnDataType.Number)

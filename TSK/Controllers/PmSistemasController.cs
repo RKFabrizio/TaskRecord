@@ -110,7 +110,22 @@ namespace TSK.Controllers
                          orderby i.Nombre
                          select new {
                              Value = i.IdPm,
-                             Text = i.Descripcion + " " + i.IdPm + " - " + flo.Flota + " - " + i.Nombre
+                             Text = i.Nombre + " - " + flo.Flota + " - " + i.Descripcion
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PmsLookup1(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from i in _context.Pms
+                         join flo in _context.Flota on i.IdFlt equals flo.IdFlt
+                         orderby i.Nombre
+                         where i.Habilitado == true
+                         select new
+                         {
+                             Value = i.IdPm,
+                             Text = i.Nombre + " - " + flo.Flota + " - " + i.Descripcion
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }

@@ -53,7 +53,9 @@ namespace TSK.Controllers
         public async Task<IActionResult> Post(string values)
         {
             var model = new Reporte();
-            Console.WriteLine("HOLA" +values);
+
+            model.Habilitado = false;
+
             var valuesDict = JsonConvert.DeserializeObject<IDictionary>(values);
             
             PopulateModel(model, valuesDict);
@@ -120,7 +122,7 @@ namespace TSK.Controllers
                          select new
                          {
                              Value = pm.IdPm,
-                             Text = pm.Nombre + " - " + flo.Flota + " - " + pm.Descripcion
+                             Text = pm.Nombre + " - " + flo.Flota + " - " + pm.Descripcion,
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
@@ -131,7 +133,7 @@ namespace TSK.Controllers
         {
             var lookup = from uni in _context.Unidads
                          orderby uni.Unidad1
-                         where uni.Habilitado==true
+
                          select new
                          {
                              Value = uni.IdUni,
@@ -150,10 +152,11 @@ namespace TSK.Controllers
                          select new
                          {
                              Value = uni.IdUni,
-                             Text = flo.Flota + " - " + uni.Unidad1
+                             Text = flo.Flota + " - " + uni.Unidad1,
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> UsuariosLookup(DataSourceLoadOptions loadOptions)

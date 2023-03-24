@@ -28,7 +28,7 @@ namespace TSK.Controllers
             string mimtype = "";
             int extension = 1;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            var path = $"{this._iwebHostEnvironment1.WebRootPath}\\Reporte\\SistemaReporte.rdl";
+            var path = $"{this._iwebHostEnvironment1.WebRootPath}\\ReportSistema\\SistemaReporte.rdl";
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("NRO_REPORTE", model.ToString());
             parameters.Add("NRO_SISTEMA_DE_REPORTE", model.ToString());

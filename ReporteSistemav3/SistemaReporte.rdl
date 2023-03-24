@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.4.33213.308</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2023-03-22T19:18:56.9365632Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2023-03-23T05:20:54.9983400Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -231,27 +231,27 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.51235in</Width>
+                  <Width>2.64968in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.55597in</Width>
+                  <Width>1.6933in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.67067in</Width>
+                  <Width>0.808in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.91922in</Width>
+                  <Width>1.05655in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.17901in</Width>
+                  <Width>1.31634in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.35401in</Width>
+                  <Width>1.62548in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.36667in</Height>
+                  <Height>0.2625in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -282,6 +282,10 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
+                            <LeftBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
                             <VerticalAlign>Middle</VerticalAlign>
@@ -487,7 +491,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.34333in</Height>
+                  <Height>0.23916in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -729,7 +733,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.03125in</Size>
+                    <Size>0.04637in</Size>
                     <CellContents>
                       <Textbox Name="Textbox12">
                         <CanGrow>true</CanGrow>
@@ -771,7 +775,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1in</Size>
+                        <Size>1.13733in</Size>
                         <CellContents>
                           <Textbox Name="Textbox2">
                             <CanGrow>true</CanGrow>
@@ -830,7 +834,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>0.03125in</Size>
+                    <Size>0.04637in</Size>
                     <CellContents>
                       <Textbox Name="ID_REP1">
                         <CanGrow>true</CanGrow>
@@ -878,7 +882,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>1in</Size>
+                        <Size>1.13733in</Size>
                         <CellContents>
                           <Textbox Name="NOM_SISTEMA1">
                             <CanGrow>true</CanGrow>
@@ -933,19 +937,20 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>2.82in</Top>
-            <Height>0.71in</Height>
-            <Width>9.22248in</Width>
+            <Top>1.95333in</Top>
+            <Left>0.07938cm</Left>
+            <Height>0.50166in</Height>
+            <Width>10.33305in</Width>
             <Style />
           </Tablix>
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>5.35946in</Width>
+                  <Width>7.01211in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.98542in</Width>
+                  <Width>1.53641in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1114,7 +1119,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.04375in</Size>
+                    <Size>0.07711in</Size>
                     <CellContents>
                       <Textbox Name="Textbox24">
                         <CanGrow>true</CanGrow>
@@ -1152,7 +1157,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1.91042in</Size>
+                        <Size>1.73865in</Size>
                         <CellContents>
                           <Textbox Name="Textbox26">
                             <CanGrow>true</CanGrow>
@@ -1208,7 +1213,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>0.04375in</Size>
+                    <Size>0.07711in</Size>
                     <CellContents>
                       <Textbox Name="ID_REP11">
                         <CanGrow>true</CanGrow>
@@ -1256,7 +1261,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>1.91042in</Size>
+                        <Size>1.73865in</Size>
                         <CellContents>
                           <Textbox Name="CONDICION1">
                             <CanGrow>true</CanGrow>
@@ -1302,10 +1307,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet2</DataSetName>
-            <Top>1.93833in</Top>
-            <Left>0.45832in</Left>
+            <Top>1.28833in</Top>
             <Height>0.5in</Height>
-            <Width>8.29905in</Width>
+            <Width>10.3643in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1317,16 +1321,16 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.10833in</Width>
+                  <Width>0.08541in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.97708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.13333in</Width>
+                  <Width>1.11041in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.97708in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1638,10 +1642,10 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet3</DataSetName>
-            <Top>0.26333in</Top>
-            <Left>5.45737in</Left>
+            <Top>0.05556in</Top>
+            <Left>7.21431in</Left>
             <Height>0.5in</Height>
-            <Width>3.24166in</Width>
+            <Width>3.14999in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1661,7 +1665,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20417in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1740,7 +1744,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.20417in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2024,9 +2028,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet4</DataSetName>
-            <Top>1.155in</Top>
-            <Left>1.91024in</Left>
-            <Height>0.5in</Height>
+            <Top>0.70777in</Top>
+            <Left>1.79916in</Left>
+            <Height>0.40834in</Height>
             <Width>5.47569in</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -2039,13 +2043,13 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.05624in</Width>
+                  <Width>0.06115in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>7.31928in</Width>
+                  <Width>8.01833in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.84696in</Width>
+                  <Width>2.25356in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -2289,9 +2293,10 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet5</DataSetName>
-            <Top>3.88833in</Top>
+            <Top>2.64666in</Top>
+            <Left>0.07938cm</Left>
             <Height>0.5in</Height>
-            <Width>9.22248in</Width>
+            <Width>10.33305in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -2303,10 +2308,10 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
         <Height>4.77333in</Height>
         <Style />
       </Body>
-      <Width>9.22248in</Width>
+      <Width>10.37635in</Width>
       <Page>
         <PageHeader>
-          <Height>2.54cm</Height>
+          <Height>2.05317cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2314,8 +2319,8 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               <Source>Embedded</Source>
               <Value>veladero1</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.2275in</Top>
-              <Left>0.45832in</Left>
+              <Top>0.15277in</Top>
+              <Left>0.38124in</Left>
               <Height>0.57001in</Height>
               <Width>1.1713in</Width>
               <Style>
@@ -2327,7 +2332,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <Rectangle Name="Rectangle1">
               <KeepTogether>true</KeepTogether>
               <Height>0.08333in</Height>
-              <Width>4.5269in</Width>
+              <Width>5.0638in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2338,9 +2343,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </Rectangle>
             <Rectangle Name="Rectangle2">
               <KeepTogether>true</KeepTogether>
-              <Left>11.49833cm</Left>
+              <Left>12.9326cm</Left>
               <Height>0.08333in</Height>
-              <Width>4.57977in</Width>
+              <Width>5.28477in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2359,14 +2364,14 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                       <Value>Reporte - Pautas 1.0 </Value>
                       <Style>
                         <FontFamily>Poppins</FontFamily>
-                        <FontSize>16pt</FontSize>
+                        <FontSize>18pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <Color>#0e3d50</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Left</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                 </Paragraph>
                 <Paragraph>
@@ -2375,7 +2380,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                       <Value />
                       <Style>
                         <FontFamily>Poppins</FontFamily>
-                        <FontSize>14pt</FontSize>
+                        <FontSize>18pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <Color>#0e3d50</Color>
                       </Style>
@@ -2387,10 +2392,10 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.77738cm</Top>
-              <Left>8.36233cm</Left>
-              <Height>0.38789in</Height>
-              <Width>2.49011in</Width>
+              <Top>0.38805cm</Top>
+              <Left>8.44171cm</Left>
+              <Height>0.54117in</Height>
+              <Width>2.94844in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -2417,8 +2422,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <Rectangle Name="Rectangle3">
               <KeepTogether>true</KeepTogether>
               <Top>0.03528cm</Top>
+              <Left>0.07938cm</Left>
               <Height>0.08333in</Height>
-              <Width>9.22248in</Width>
+              <Width>10.33305in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2446,7 +2452,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </Paragraphs>
               <rd:DefaultName>OverallTotalPages</rd:DefaultName>
               <Top>0.21667in</Top>
-              <Left>8.22058in</Left>
+              <Left>8.25183in</Left>
               <Height>0.33333in</Height>
               <Width>0.47845in</Width>
               <ZIndex>1</ZIndex>
@@ -2482,7 +2488,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
               <Top>0.21667in</Top>
-              <Left>7.96569in</Left>
+              <Left>7.99694in</Left>
               <Height>0.33333in</Height>
               <Width>0.18409in</Width>
               <ZIndex>2</ZIndex>
@@ -2518,7 +2524,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
               <Top>0.21667in</Top>
-              <Left>7.26847in</Left>
+              <Left>7.29972in</Left>
               <Height>0.33333in</Height>
               <Width>0.6in</Width>
               <ZIndex>3</ZIndex>
@@ -2542,8 +2548,8 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
         </PageFooter>
         <PageHeight>16.54in</PageHeight>
         <PageWidth>11.69in</PageWidth>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
         <Style />
       </Page>
     </ReportSection>

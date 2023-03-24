@@ -1049,11 +1049,6 @@ namespace TSK.Models.Entity
                     .IsUnicode(false)
                     .HasColumnName("NOM_DISCIPLINA");
 
-                entity.Property(e => e.NomSector)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("NOM_SECTOR");
-
                 entity.Property(e => e.NomSistema)
                     .HasMaxLength(250)
                     .IsUnicode(false)

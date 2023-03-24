@@ -3902,9 +3902,6 @@ C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\de\Dev
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\es\DevExpress.Web.ASPxTreeList.v22.1.resources.dll
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\ja\DevExpress.Web.ASPxTreeList.v22.1.resources.dll
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.csproj.AssemblyReference.cache
-C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.Reports.Report1.resources
-C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.Reports.Report2.resources
-C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.csproj.GenerateResource.cache
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.GeneratedMSBuildEditorConfig.editorconfig
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.AssemblyInfoInputs.cache
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.AssemblyInfo.cs
@@ -3929,8 +3926,6 @@ C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\refint
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.pdb
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.genruntimeconfig.cache
 C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\ref\TSK.dll
-C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.Reports.Report3.resources
-C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.Reports.Report4.resources
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\bin\Debug\net6.0\appsettings.json
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\bin\Debug\net6.0\bundleconfig.json
@@ -4630,3 +4625,5 @@ C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\TSK.genrunt
 C:\Users\fabri\OneDrive\Escritorio\TaskRecord 2\TSK\obj\Debug\net6.0\ref\TSK.dll
 C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\AspNetCore.Reporting.dll
 C:\Users\fabri\OneDrive\Escritorio\GointeGreat\CODE\TSK\bin\Debug\net6.0\AspNetCore.ReportingServices.dll
+C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\AspNetCore.Reporting.dll
+C:\MEDIA\Trabajo\GoIntegreat\TaskRecord\TaskRecord 2\TSK\bin\Debug\net6.0\AspNetCore.ReportingServices.dll
