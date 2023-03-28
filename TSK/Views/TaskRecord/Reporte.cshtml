@@ -19,6 +19,10 @@
             margin-left: -4px;
         }
 
+    .page-title {
+        color: #a79a66;
+    }
+
 </style>
 
 @section PagePreTitle{
@@ -35,7 +39,7 @@
                 <path d="M15 17v-3" />
             </svg>
             <h2 class="page-title">
-                Gestion de Pautas
+                Gestión de Pautas de Mantenimiento
             </h2>
         </div>
     </div>
@@ -114,7 +118,7 @@
                 .AllowUpdating(true)
                 .UseIcons(true)
                 .Popup(p => p
-                    .Title("Reporte")
+                    .Title("Gestión de Pautas de Mantenimiento")
                     .ShowTitle(true)
                     .Width("70%")
                     .Height(500)
@@ -146,7 +150,7 @@
                             groupItems.AddSimpleFor(m => m.Fecha)
                             .Editor(e => e
                             .DateBox()
-                            .Value(new JS("null"))
+ 
                             .Width("100%")
                             .ShowDropDownButton(true)
                             )
@@ -154,7 +158,8 @@
 
                             groupItems.AddSimpleFor(m => m.Horometro);
                             groupItems.AddSimpleFor(m => m.Comentario).ColSpan(2)
-                            .Editor(editor => editor.TextArea().Height(100));
+    .Label(label => label.Location(FormLabelLocation.Top).Text("Comentario de la pauta"))
+    .Editor(editor => editor.TextArea().Height(100));
                             groupItems.AddSimpleFor(m => m.Habilitado)
                             .Label(label => label.Location(FormLabelLocation.Left))
                             .Editor(e => e

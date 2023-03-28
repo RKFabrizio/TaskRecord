@@ -20,6 +20,10 @@
             margin-left: -4px;
         }
 
+        .page-title {
+        color: #a79a66;
+    }
+
 </style>
 
 @section PagePreTitle{
@@ -33,7 +37,7 @@
                 <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3" />
             </svg>
             <h2 class="page-title">
-                Pauta de Mantenimiento (PM)
+                Plantilla de Pauta de Mantenimiento (PM)
             </h2>
         </div>
     </div>
@@ -46,56 +50,27 @@
 
 }
 
-<div class="row row-cards">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="form-group mb-3">
-                <div class='form-control'>
-                    <div class="col-md-12">
-
-                        @(Html.DevExtreme().TabPanel()
-
-                            .Items(items =>
-                            {
-
-                                items.Add()
-                                .Title("LISTA DE PAUTAS HABILITADOS")
-                                .Template(new TemplateName("TAB1"));
-
-                                items.Add()
-                                .Title("LISTA DE PAUTAS DESHABILITADOS")
-                                .Template(new TemplateName("TAB2"));
-
-                            })
-                            .SelectedIndex(0)
-                            .Loop(false)
-                            .AnimationEnabled(true)
-                            .SwipeEnabled(true)
-                            .OnItemClick("refreshGrid")
-                            )
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+<div style="text-align: right;">
+    @(Html.DevExtreme().CheckBox()
+        .Text("Mostrar todas las Plantillas")
+        .ElementAttr(new { style = "margin-right: 15px; font-size: 15px; margin-bottom: 10px; margin-top:10px; font-weight:bold;" })
+        .OnValueChanged("toggleFilter")
+        )
 </div>
 
-@using (Html.DevExtreme().NamedTemplate("TAB1"))
-{
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Pm>()
             .ID("grid1")
             .DataSource(ds => ds.Mvc()
                 .Controller("Pm")
-                .LoadAction("Get").OnLoaded("filterTrue")
+                .LoadAction("Get")
                 .InsertAction("Post")
                 .UpdateAction("Put")
                 .Key("IdPm")
             )
+            .OnContentReady("applyDefaultFilter")
             .Columns(columns =>
             {
-                columns.AddFor(m => m.Nombre).Caption("Nombre");
+                columns.AddFor(m => m.Nombre).Caption("Nombre").Caption("Plantilla");
                 columns.AddFor(m => m.Descripcion).Caption("Descripción");
                 columns.AddFor(m => m.IdFlt).Caption("Flota").Lookup(lookup => lookup
                     .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("FlotaLookup").Key("Value"))
@@ -165,71 +140,31 @@
             )
 
         )
-}
 
-
-@using (Html.DevExtreme().NamedTemplate("TAB2"))
-{
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Pm>()
-                .ID("grid2")
-                .DataSource(ds => ds.Mvc()
-                    .Controller("Pm")
-                        .LoadAction("Get").OnLoaded("filterFalse")
-                    .InsertAction("Post")
-                    .UpdateAction("Put")
-                    .Key("IdPm")
-                )
-                .Columns(columns =>
-                {
-                    columns.AddFor(m => m.Nombre).Caption("Nombre").AllowEditing(false);
-                    columns.AddFor(m => m.Descripcion).Caption("Descripción").AllowEditing(false);
-                    columns.AddFor(m => m.IdFlt).Caption("Flota").Lookup(lookup => lookup
-                    .DataSource(ds => ds.WebApi().Controller("Pm").LoadAction("FlotaLookup").Key("Value"))
-                    .ValueExpr("Value")
-                    .DisplayExpr("Text")
-                ).AllowEditing(false);
-                    columns.AddFor(m => m.Habilitado).Width(140);
-
-                })
-                .ShowBorders(true)
-                .RowAlternationEnabled(false)
-                .ShowColumnLines(true)
-                .ShowRowLines(true)
-                .Paging(paging => paging.PageSize(20))
-                .FilterRow(f => f.Visible(true))
-                .HeaderFilter(f => f.Visible(true))
-                .Pager(pager =>
-                {
-                    pager.ShowPageSizeSelector(true);
-                    pager.AllowedPageSizes(new[] { 20, 50, 100 });
-                    pager.ShowInfo(true);
-                })
-               .RemoteOperations(true)
-               .Editing(editing =>
-                                    {
-                                        editing.AllowUpdating(true);
-                                    })
-            )
-}
 
 <script>
-    function filterTrue() {
+    var defaultFilterApplied = false;
+
+    function applyDefaultFilter() {
+        if (!defaultFilterApplied) {
+            var grid = $("#grid1").dxDataGrid("instance");
+            grid.filter([
+                ["Habilitado", "=", true]
+            ]);
+            defaultFilterApplied = true;
+        }
+    }
+
+    function toggleFilter(e) {
         var grid = $("#grid1").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", true]
-        ]);
-    }
 
-    function filterFalse() {
-        var grid = $("#grid2").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", false]
-        ]);
-    }
-
-    function refreshGrid() {
-        $("#grid1").dxDataGrid("instance").refresh();
-        $("#grid2").dxDataGrid("instance").refresh();
+        if (e.value) {
+            grid.clearFilter();
+        } else {
+            grid.filter([
+                ["Habilitado", "=", true]
+            ]);
+        }
     }
 
 </script>

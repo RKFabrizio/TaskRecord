@@ -2,6 +2,7 @@
 @using DevExtreme.AspNet.Mvc.Builders;
 
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,18 +58,20 @@
 
                             @if (User.IsInRole("Administrador"))
                             {
-                                <span class="avatar">
-                                    <!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="36" height="36" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <circle cx="12" cy="7" r="4" />
-                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                    </svg>
-                                </span>
-
-                                <div class="d-none d-xl-block ps-2">
-                                    <div class="role">@User.Identity.Name</div>
-                                    <h5 class="role r">Administrador</h5>
+                                <div style="display: flex; align-items: center;">
+ 
+                                    <span class="avatar">
+        <!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="36" height="36" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <circle cx="12" cy="7" r="4" />
+                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                        </svg>
+                                        </span>
+                                     <div class="extra-info d-xl-block ps-2">
+                                        <div class="role">@User.Identity.Name</div>
+                                        <h5 class="role r">Administrador</h5>
+                                    </div>
                                 </div>
 
                             }
@@ -163,7 +166,7 @@
                                             <path d="M15 17v-3" />
                                             </svg>
                                     <span class="nav-link-titlee">
-                                        Gestion de Pautas
+                                        Gesti&oacute;n de Pautas de Mantenimiento
                                     </span>
                                 </a>
                             </li>
@@ -180,7 +183,7 @@
 </svg>
                                         </span>
                                         <span class="nav-link-title">
-                                            Administraci&oacute;n de Pautas
+                                            Administraci&oacute;n de Plantillas
                                         </span>
                                     </a>
                                     <div class="dropdown-menu">
@@ -195,46 +198,49 @@
                                                     </svg>
 
                                                      <span class="nav-link-title">
-                                                        Pauta de Mantenimiento (PM)  
+                                                        Plantilla de Pauta de Mantenimiento (PM)  
                                                     </span>
                                                 </a>
-                                                <a asp-controller="EstructuraPM" asp-action="Sistema" class="dropdown-item @ViewBag.sistema">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car-crane" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <circle cx="5" cy="17" r="2" />
-                                                        <circle cx="17" cy="17" r="2" />
-                                                        <path d="M7 18h8m4 0h2v-6a5 5 0 0 0 -5 -5h-1l1.5 5h4.5" />
-                                                        <path d="M12 18v-11h3" />
-                                                        <path d="M3 17v-5h9" />
-                                                        <path d="M4 12v-6l18 -3v2" />
-                                                        <path d="M8 12v-4l-4 -2" />
-                                                    </svg>
-                                                    <span class="nav-link-title">
-                                                        Sistema
-                                                    </span>
-                                                </a>
-                                                <a asp-controller="EstructuraPM" asp-action="Actividad" class="dropdown-item @ViewBag.actividad">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-report" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <circle cx="17" cy="17" r="4" />
-                                                        <path d="M17 13v4h4" />
-                                                        <path d="M12 3v4a1 1 0 0 0 1 1h4" />
-                                                        <path d="M11.5 21h-6.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v2m0 3v4" />
-                                                    </svg>
-                                                    <span class="nav-link-title">
-                                                        Actividad
-                                                    </span>
-                                                </a>
-                                                  <div class="nav-link-title">
-                                                    <a asp-controller="EstructuraPM" asp-action="PMSistema" class="dropdown-item @ViewBag.pmsistema">
-                                                        Sistema >> Pauta
-                                                    </a>
-                                                    </div>
-                                                <div class="nav-link-title">
+                                              
+                                        
+                                            
+                                                   <a asp-controller="EstructuraPM" asp-action="PMSistema" class="dropdown-item @ViewBag.pmsistema">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-manual-gearbox" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <circle cx="5" cy="6" r="2" />
+                                                            <circle cx="12" cy="6" r="2" />
+                                                            <circle cx="19" cy="6" r="2" />
+                                                            <circle cx="5" cy="18" r="2" />
+                                                            <circle cx="12" cy="18" r="2" />
+                                                            <line x1="5" y1="8" x2="5" y2="16" />
+                                                            <line x1="12" y1="8" x2="12" y2="16" />
+                                                            <path d="M19 8v2a2 2 0 0 1 -2 2h-12" />
+                                                        </svg>
+
+                                                        <span class="nav-link-title">
+                                                            Asignaci&oacute;n de Sistemas
+                                                       </span>
+                                                   
+                                                        </a>
+        
+                                                   
+                                                   
+                                                
                                                     <a asp-controller="EstructuraPM" asp-action="PMSistemaActividad" class="dropdown-item @ViewBag.pmsistemaactividad">
-                                                        Actividad >> Sistema >> Pauta
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-infographic" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="7" r="4" />
+  <path d="M7 3v4h4" />
+  <line x1="9" y1="17" x2="9" y2="21" />
+  <line x1="17" y1="14" x2="17" y2="21" />
+  <line x1="13" y1="13" x2="13" y2="21" />
+  <line x1="21" y1="12" x2="21" y2="21" />
+</svg>
+                                                        <span class="nav-link-title">
+                                                            Asignaci&oacute;n de Actividades
+                                                        </span>
                                                     </a>
-                                                </div>
+                                             
                
                                               
                                            
@@ -262,6 +268,18 @@
                                     <div class="dropdown-menu">
                                         <div class="dropdown-menu-columns">
                                             <div class="dropdown-menu-column">
+                                                <a asp-controller="EstructuraPM" asp-action="Actividad" class="dropdown-item @ViewBag.actividad">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-report" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <circle cx="17" cy="17" r="4" />
+                                                        <path d="M17 13v4h4" />
+                                                        <path d="M12 3v4a1 1 0 0 0 1 1h4" />
+                                                        <path d="M11.5 21h-6.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v2m0 3v4" />
+                                                    </svg>
+                                                    <span class="nav-link-title">
+                                                        Actividad
+                                                    </span>
+                                                </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Area" class="dropdown-item @ViewBag.area">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-community" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -272,7 +290,7 @@
                                                         <line x1="17" y1="15" x2="17" y2="15.01" />
                                                     </svg>
                                                     <span class="nav-link-title">
-                                                        Area
+                                                        &Aacute;rea
                                                     </span>
                                                 </a>
                                                 <a asp-controller="Mantenimiento" asp-action="Consecuencia" class="dropdown-item @ViewBag.consecuencia">
@@ -351,6 +369,19 @@
                                             @if (User.IsInRole("Administrador"))
                                             {
                                                 <div class="dropdown-menu-column">
+                                                    <a asp-controller="EstructuraPM" asp-action="Sistema" class="dropdown-item @ViewBag.sistema">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-engine" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M3 10v6" />
+                                                            <path d="M12 5v3" />
+                                                            <path d="M10 5h4" />
+                                                            <path d="M5 13h-2" />
+                                                            <path d="M6 10h2l2 -2h3.382a1 1 0 0 1 .894 .553l1.448 2.894a1 1 0 0 0 .894 .553h1.382v-2h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2v-2h-3v2a1 1 0 0 1 -1 1h-3.465a1 1 0 0 1 -.832 -.445l-1.703 -2.555h-2v-6z" />
+                                                        </svg>
+                                                        <span class="nav-link-title">
+                                                            Sistema
+                                                        </span>
+                                                    </a>
 
                                                     <a asp-controller="Mantenimiento" asp-action="Nivel" class="dropdown-item @ViewBag.nivel">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box-multiple" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -447,45 +478,50 @@
                 </div>
             </div>
             <footer class="footer footer-transparent d-print-none">
-                <div class="container-xl">
+                <div class="block1">
+                    <div class="container-xl">
                     <div class="row text-center align-items-center flex-row-reverse">
                         <div class="col-lg-auto ms-lg-auto">
                             <ul class="list-inline list-inline-dots mb-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-dots text-info text-gradient" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                                    <path d="M9 14v.01"></path>
-                                    <path d="M12 14v.01"></path>
-                                    <path d="M15 14v.01"></path>
-                                </svg>
-                                <li class="list-inline-item"><a href="~/pdf/Manual TaskRecords.pdf" class="text-info text-gradient">Ayuda</a></li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-help" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <circle cx="12" cy="12" r="9" />
+                                        <line x1="12" y1="17" x2="12" y2="17.01" />
+                                        <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
+                                    </svg>
+                                    <li class="list-inline-item"><a href="~/pdf/Manual TaskRecords.pdf" class="veladero text-gradient">Ayuda</a></li>
 
                                 <li class="list-inline-item">
                                     <a asp-controller="Acceso" asp-action="Logout">
                                         <!-- Download SVG icon from -->
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout text-info" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
-                                        <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
-                                        </svg>
-                                        <span class="text-info">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                                                <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                                            </svg>
+                                            <span class="veladero">
                                             Logout
                                         </span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                            <ul class="list-inline list-inline-dots mb-0">
-                                <li class="list-inline-item">
-                                    Copyright &copy; 2022
-                                    <a href="https://gointegreat.com" class="link-secondary text-info">Gointegreat</a>.
-                                    Todos los derechos reservados.
-                                </li>
+                </div>
 
-                            </ul>
-                        </div>
+                <div class="block2">
+                            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                                <ul class="list-inline list-inline-dots mb-0">
+                                    <li>
+                                        Copyright &copy; 2022
+                                        <a href="https://gointegreat.com" class="veladero">Gointegreat</a>.
+                                        Todos los derechos reservados.
+                                    </li>
+
+                                </ul>
+                            </div>
+                </div>
+                
+                        
                     </div>
                 </div>
             </footer>

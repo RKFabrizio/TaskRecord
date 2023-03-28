@@ -4,13 +4,79 @@
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
 }
 
+<style>
+    .user-icon-container {
+        display: flex;
+        align-items: center;
+    }
+
+        .user-icon-container .icon-tabler {
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .user-icon-container .page-title {
+            margin-left: -4px;
+        }
+
+    .page-title {
+        color: #a79a66;
+    }
+
+    .black {
+        background-color: white;
+    }
+
+    .pauta {
+        margin-left: 10px;
+        color: #a79a66;
+    }
+
+    .text {
+        margin-left: 10px;
+    }
+    
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .left-block {
+        float: left;
+        width: 50%; /* Opcional: si deseas que el bloque izquierdo ocupe la mitad del ancho del contenedor */
+        height: 100%;
+    }
+
+    .right-block {
+        float: right;
+        width: 50%; /* Opcional: si deseas que el bloque derecho ocupe la mitad del ancho del contenedor */
+        height: 100%;
+    }
+
+
+</style>
+
 @section PagePreTitle{
 
     <div class="col">
-     <!-- Page pre-title -->
-        <h2 class="page-title">
-            Sistema >> Pauta
-        </h2>
+        <!-- Page pre-title -->
+        <div class="user-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-manual-gearbox" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <circle cx="5" cy="6" r="2" />
+                <circle cx="12" cy="6" r="2" />
+                <circle cx="19" cy="6" r="2" />
+                <circle cx="5" cy="18" r="2" />
+                <circle cx="12" cy="18" r="2" />
+                <line x1="5" y1="8" x2="5" y2="16" />
+                <line x1="12" y1="8" x2="12" y2="16" />
+                <path d="M19 8v2a2 2 0 0 1 -2 2h-12" />
+            </svg>
+            <h2 class="page-title">
+                Asignación de Sistemas
+            </h2>
+        </div>
     </div>
 
 }
@@ -20,19 +86,6 @@
 
 }
 
-<style>
-    .black{
-        background-color: white;
-    }
-
-    .pauta{
-        margin-left:10px;
-    }
-
-    .text{
-        margin-left:10px;
-    }
-</style>
 
 <div class="row row-cards">
     <div class="col-md-12">
@@ -46,10 +99,10 @@
                             {
 
                                 items.Add()
-                                .Title("LISTA DE PAUTA - SISTEMA")
+                                .Title("Vista General")
                                 .Template(new TemplateName("TAB1"));
                                 items.Add()
-                                .Title("AÑADIR SISTEMAS")
+                                .Title("Asignar Sistemas")
                                 .Template(new TemplateName("TAB2"));
 
                             })
@@ -91,7 +144,7 @@
                 .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("PmsLookup").Key("Value"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-                ).GroupIndex(0).Caption("PAUTA");
+                ).GroupIndex(0).Caption("Plantilla");
 
         })
        .AllowColumnReordering(true)
@@ -147,7 +200,7 @@
         <br />
         <div>
             <h4 class="pauta">
-                Selecciona tu pauta de mantenimiento:
+                Selecciona tu plantilla de pauta de mantenimiento:
             </h4>
         </div>
 
@@ -162,7 +215,7 @@
                 .DataSource(ds => ds.Mvc().Controller("PmSistemas").LoadAction("PmsLookup1").Key("idPm"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-                .OnValueChanged("refreshData")
+                .OnValueChanged("refreshAllData")
                 .SearchEnabled(true)
 
                 ).Label(label => label
@@ -172,57 +225,113 @@
             })
             )
         </div>
-        
 
 
-        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmSistema>()
-            .ID("grid")
-            .DataSource(ds => ds.Mvc()
-            .Controller("PmSistemas").LoadAction("PmSistemasLookup")
-            .InsertAction("Post").OnInserting("change")
-            .UpdateAction("Put").DeleteAction("Delete").Key("IdPms")
-            .LoadParams(new { IdPm = new JS("getIdPm") })
-            )
-            .RemoteOperations(true)
-            .Columns(columns =>
-            {
 
-                columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
-                .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemasLookup").Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")).Caption("Sistema");
+        <div class="container">
+            <div class="left-block">
+                <h3>Pruebas en Caliente</h3>
+                @(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmSistema>()
+                    .ID("grid")
+                    .DataSource(ds => ds.Mvc()
+                    .Controller("PmSistemas").LoadAction("PmSistemasCalienteLookup")
+                    .InsertAction("Post").OnInserting("change")
+                    .UpdateAction("Put").DeleteAction("Delete").Key("IdPms")
+                    .LoadParams(new { IdPm = new JS("getIdPm") })
+                    )
+                    .RemoteOperations(true)
+                    .Columns(columns =>
+                    {
+
+                        columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemaCalienteLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")).Caption("Sistema");
 
 
-            })
+                    })
 
-            .Grouping(grouping => grouping.AutoExpandAll(true))
-            .GroupPanel(groupPanel => groupPanel
-            .EmptyPanelText("")
-            .Visible(true))
-            .ShowBorders(true)
-            .RowAlternationEnabled(false)
-            .ShowColumnLines(true)
-            .ShowRowLines(true)
+                    .Grouping(grouping => grouping.AutoExpandAll(true))
+                    .GroupPanel(groupPanel => groupPanel
+                    .EmptyPanelText("")
+                    .Visible(true))
+                    .ShowBorders(true)
+                    .RowAlternationEnabled(false)
+                    .ShowColumnLines(true)
+                    .ShowRowLines(true)
 
-            .Paging(paging => paging.PageSize(50))
-            .FilterRow(f => f.Visible(true))
-            .HeaderFilter(f => f.Visible(true))
-            .Pager(pager =>
-            {
-                pager.ShowPageSizeSelector(true);
-                pager.AllowedPageSizes(new[] { 50, 100, 200 });
-                pager.ShowInfo(true);
-            })
-            .Editing(editing =>
-            {
-                editing.Mode(GridEditMode.Batch);
-                editing.AllowAdding(true);
-                editing.AllowUpdating(true);
-                editing.AllowDeleting(true);
-                editing.SelectTextOnEditStart(true);
-                editing.StartEditAction(GridStartEditAction.Click);
-            })
-            )
+                    .Paging(paging => paging.PageSize(50))
+                    .FilterRow(f => f.Visible(true))
+                    .HeaderFilter(f => f.Visible(true))
+                    .Pager(pager =>
+                    {
+                        pager.ShowPageSizeSelector(true);
+                        pager.AllowedPageSizes(new[] { 50, 100, 200 });
+                        pager.ShowInfo(true);
+                    })
+                    .Editing(editing =>
+                    {
+                        editing.Mode(GridEditMode.Batch);
+                        editing.AllowAdding(true);
+                        editing.AllowUpdating(true);
+                        editing.AllowDeleting(true);
+                        editing.SelectTextOnEditStart(true);
+                        editing.StartEditAction(GridStartEditAction.Click);
+                    })
+                    )
+            </div>
+            <div class="right-block">
+                <h3>Servicios en Bahia</h3>
+                @(Html.DevExtreme().DataGrid<TSK.Models.Entity.PmSistema>()
+                    .ID("grid2")
+                    .DataSource(ds => ds.Mvc()
+                    .Controller("PmSistemas").LoadAction("PmSistemasBahiaLookup")
+                    .InsertAction("Post").OnInserting("change")
+                    .UpdateAction("Put").DeleteAction("Delete").Key("IdPms")
+                    .LoadParams(new { IdPm = new JS("getIdPm2") })
+                    )
+                    .RemoteOperations(true)
+                    .Columns(columns =>
+                    {
+
+                        columns.AddFor(m => m.IdSis).Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("PmSistemas").LoadAction("SistemaBahiaLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")).Caption("Sistema");
+
+
+                    })
+
+                    .Grouping(grouping => grouping.AutoExpandAll(true))
+                    .GroupPanel(groupPanel => groupPanel
+                    .EmptyPanelText("")
+                    .Visible(true))
+                    .ShowBorders(true)
+                    .RowAlternationEnabled(false)
+                    .ShowColumnLines(true)
+                    .ShowRowLines(true)
+
+                    .Paging(paging => paging.PageSize(50))
+                    .FilterRow(f => f.Visible(true))
+                    .HeaderFilter(f => f.Visible(true))
+                    .Pager(pager =>
+                    {
+                        pager.ShowPageSizeSelector(true);
+                        pager.AllowedPageSizes(new[] { 50, 100, 200 });
+                        pager.ShowInfo(true);
+                    })
+                    .Editing(editing =>
+                    {
+                        editing.Mode(GridEditMode.Batch);
+                        editing.AllowAdding(true);
+                        editing.AllowUpdating(true);
+                        editing.AllowDeleting(true);
+                        editing.SelectTextOnEditStart(true);
+                        editing.StartEditAction(GridStartEditAction.Click);
+                    })
+                    )
+            </div>
+        </div>
        
     </div>
    
@@ -235,7 +344,17 @@
 
     function refreshData() {
         var grid = $("#grid").dxDataGrid("instance");
-        grid.refresh();
+            grid.refresh();
+    }
+
+    function refreshData2() {
+        var grid2 = $("#grid2").dxDataGrid("instance");
+            grid2.refresh();
+    }
+
+    function refreshAllData() {
+        refreshData();
+        refreshData2();
     }
 
     function getFormInstance() {
@@ -243,6 +362,13 @@
     }
 
     function getIdPm() {
+        var form = $("#form").dxForm("instance");
+        var IdPm = form.getEditor("IdPm").option("value");
+        return IdPm;
+
+    }
+
+    function getIdPm2() {
         var form = $("#form").dxForm("instance");
         var IdPm = form.getEditor("IdPm").option("value");
         return IdPm;
@@ -269,5 +395,6 @@
         var grid = $("#tab1").dxDataGrid("instance");
         grid.refresh();
     }
+
 
 </script>

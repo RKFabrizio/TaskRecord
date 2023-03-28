@@ -20,6 +20,10 @@
             margin-left: -4px;
         }
 
+    .page-title {
+        color: #a79a66;
+    }
+
 </style>
 
 @section PagePreTitle{
@@ -36,7 +40,7 @@
   <line x1="17" y1="15" x2="17" y2="15.01" />
 </svg>
             <h2 class="page-title">
-                Area
+                Área
             </h2>
         </div>
     </div>
@@ -48,6 +52,8 @@
 
 
 }
+
+
 
 
     @(
@@ -62,7 +68,7 @@
             )
               .Columns(columns =>
               {
-                  columns.AddFor(m => m.Nombre);
+                  columns.AddFor(m => m.Nombre).Caption("Área");
               })
             .ShowBorders(true)
             .RowAlternationEnabled(false)

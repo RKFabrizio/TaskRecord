@@ -20,6 +20,9 @@
             margin-left: -4px;
         }
 
+    .page-title {
+        color: #a79a66;
+    }
 </style>
 
 @section PagePreTitle{
@@ -32,7 +35,7 @@
   <path d="M3 12h5l4 8v-16l4 8h5" />
 </svg>
             <h2 class="page-title">
-                Frecuencia
+                Frecuencias
             </h2>
         </div>
     </div>
@@ -45,53 +48,26 @@
 
 }
 
-<div class="row row-cards">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="form-group mb-3">
-                <div class='form-control'>
-                    <div class="col-md-12">
-
-                        @(Html.DevExtreme().TabPanel()
-
-                            .Items(items =>
-                            {
-
-                                items.Add()
-                                .Title("LISTA DE FRECUENCIAS HABILITADAS")
-                                .Template(new TemplateName("TAB1"));
-                                items.Add()
-                                .Title("LISTA DE FRECUENCIAS DESHABILITADAS")
-                                .Template(new TemplateName("TAB2"));
-
-                            })
-                            .SelectedIndex(0)
-                            .Loop(false)
-                            .AnimationEnabled(true)
-                            .SwipeEnabled(true)
-                            .OnItemClick("refreshGrid")
-                            )
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+<div style="text-align: right;">
+    @(Html.DevExtreme().CheckBox()
+        .Text("Mostrar todas las Frecuencias")
+        .ElementAttr(new { style = "margin-right: 15px; font-size: 15px; margin-bottom: 10px; margin-top:10px; font-weight:bold;" })
+        .OnValueChanged("toggleFilter")
+        )
 </div>
 
-@using (Html.DevExtreme().NamedTemplate("TAB1"))
-{
+
 @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Frecuencium>()
     .ID("grid1")
     .DataSource(ds => ds.Mvc()
         .Controller("Frecuencia")
-        .LoadAction("Get").OnLoaded("filterTrue")
+        .LoadAction("Get")
         .InsertAction("Post")
         .UpdateAction("Put")
         .Key("IdFrc")
     )
     .RemoteOperations(true)
+    .OnContentReady("applyDefaultFilter")
     .Columns(columns => {
 
         columns.AddFor(m => m.Valor).Caption("Valor Frecuencial").Alignment(HorizontalAlignment.Left);
@@ -136,67 +112,33 @@
             }))
         )
 )
-}
 
-@using (Html.DevExtreme().NamedTemplate("TAB2"))
-{
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Frecuencium>()
-        .ID("grid2")
-        .DataSource(ds => ds.Mvc()
-            .Controller("Frecuencia")
-            .LoadAction("Get").OnLoaded("filterFalse")
-            .InsertAction("Post")
-            .UpdateAction("Put")
-            .Key("IdFrc")
-        )
-        .RemoteOperations(true)
-        .Columns(columns =>
-        {
 
-            columns.AddFor(m => m.Valor).Caption("Valor Frecuencial").Alignment(HorizontalAlignment.Left).AllowEditing(false);
 
-            columns.AddFor(m => m.Habilitado).Width(120);
-        })
-        .ShowBorders(true)
-        .RowAlternationEnabled(true)
-        .ShowColumnLines(true)
-        .ShowRowLines(true)
-        .Paging(paging => paging.PageSize(50))
-        .FilterRow(f => f.Visible(true))
-        .HeaderFilter(f => f.Visible(true))
-        .SearchPanel(searchPanel => searchPanel.Visible(true))
-        .Pager(pager =>
-        {
-            pager.ShowPageSizeSelector(true);
-            pager.AllowedPageSizes(new[] { 50, 100, 150 });
-            pager.ShowInfo(true);
-        })
-        .RemoteOperations(true)
-         .Editing(editing =>
-                                        {
-                                            editing.AllowUpdating(true);
-                                        })
-    )
-}
 
 <script>
-    function filterTrue() {
+    var defaultFilterApplied = false;
+
+    function applyDefaultFilter() {
+        if (!defaultFilterApplied) {
+            var grid = $("#grid1").dxDataGrid("instance");
+            grid.filter([
+                ["Habilitado", "=", true]
+            ]);
+            defaultFilterApplied = true;
+        }
+    }
+
+    function toggleFilter(e) {
         var grid = $("#grid1").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", true]
-        ]);
-    }
 
-    function filterFalse() {
-        var grid = $("#grid2").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", false]
-        ]);
-    }
-
-    function refreshGrid() {
-        $("#grid1").dxDataGrid("instance").refresh();
-        $("#grid2").dxDataGrid("instance").refresh();
+        if (e.value) {
+            grid.clearFilter();
+        } else {
+            grid.filter([
+                ["Habilitado", "=", true]
+            ]);
+        }
     }
 
 </script>

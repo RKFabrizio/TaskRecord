@@ -20,6 +20,10 @@
             margin-left: -4px;
      }
 
+     .page-title{
+         color: #a79a66;
+     }
+
 </style>
 
 @section PagePreTitle{
@@ -65,9 +69,9 @@
                     .DataSource(ds => ds.WebApi().Controller("UsuariosNew").LoadAction("PosicionsLookup").Key("Value"))
                     .ValueExpr("Value")
                     .DisplayExpr("Text")
-                ).GroupIndex(0).Caption("Posicion");
+                ).GroupIndex(0).Caption("Posición");
 
-                columns.AddFor(m => m.Nombre).Width(500);
+                columns.AddFor(m => m.Nombre).Width(500).Caption("Nombre Completo");
                 columns.AddFor(m => m.Usuario1).Caption("Usuario").Width(200);
                 columns.AddFor(m => m.Contrasena).Caption("Clave");
                 columns.AddFor(m => m.Habilitado).Width(100);

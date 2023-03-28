@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AgvsxVs3x1GLb71LqMswVb0U31Ti2orxwlZLNrEdaoQ=",
+  "Hash": "IZBh3ZbpzVJ1laBbT+lVbsd1Sw0lX1erX0XZlHNmVs8=",
   "Source": "TSK",
   "BasePath": "_content/TSK",
   "Mode": "Default",
@@ -3553,40 +3553,6 @@
       "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.greenmist.css.bak"
     },
     {
-      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.compact.css",
-      "SourceId": "TSK",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
-      "BasePath": "_content/TSK",
-      "RelativePath": "css/devextreme/dx.light.compact.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.light.compact.css"
-    },
-    {
-      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.compact.css.bak",
-      "SourceId": "TSK",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
-      "BasePath": "_content/TSK",
-      "RelativePath": "css/devextreme/dx.light.compact.css.bak",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.light.compact.css.bak"
-    },
-    {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.css",
       "SourceId": "TSK",
       "SourceType": "Discovered",
@@ -3602,23 +3568,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.light.css"
-    },
-    {
-      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.css.bak",
-      "SourceId": "TSK",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
-      "BasePath": "_content/TSK",
-      "RelativePath": "css/devextreme/dx.light.css.bak",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.light.css.bak"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.blue.dark.compact.css",
@@ -3806,6 +3755,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.material.gointegreat-light.css"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-scheme.css",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "css/devextreme/dx.material.gointegreat-scheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\devextreme\\dx.material.gointegreat-scheme.css"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.lime.dark.compact.css",
@@ -17916,6 +17882,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\GOPAUTASv3.png"
+    },
+    {
+      "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\icono_minero.svg",
+      "SourceId": "TSK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\",
+      "BasePath": "_content/TSK",
+      "RelativePath": "img/icono_minero.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\icono_minero.svg"
     },
     {
       "Identity": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\Logo Veladero.png",
