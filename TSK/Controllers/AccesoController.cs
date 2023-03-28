@@ -27,12 +27,11 @@ namespace TSK.Controllers
             if (usuario != null && usuario.Habilitado)
             {
                 var claims = new List<Claim>
-        {   new Claim(ClaimTypes.Name, usuario.Nombre),
-            new Claim("Usuario", usuario.UserName),
-            new Claim("NOMBRE_POS", usuario.Posiciones[0])
-
-
-        };
+                {
+                    new Claim(ClaimTypes.Name, usuario.Nombre),
+                    new Claim("Usuario", usuario.UserName),
+                    new Claim("NOMBRE_POS", usuario.Posiciones[0])
+                };
 
                 foreach (string pos in usuario.Posiciones)
                 {
@@ -47,14 +46,7 @@ namespace TSK.Controllers
             }
             else
             {
-                if (usuario == null)
-                {
-                    @ViewBag.msg = "Error de usuario o clave";
-                }
-                else
-                {
-                    @ViewBag.msg = "El usuario no está habilitado para iniciar sesión";
-                }
+                TempData["Error"] = "Usuario o contraseña incorrectos";
                 return View();
             }
         }

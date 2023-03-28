@@ -20,7 +20,13 @@
             margin-left: -4px;
      }
 
+     .page-title{
+        color: #a79a66;
+     }
+
 </style>
+
+
 
 @section PagePreTitle{
 
@@ -33,7 +39,7 @@
                 <polyline points="12 7 12 12 15 15" />
             </svg>
             <h2 class="page-title">
-                Unidad de Medida
+                Unidades de Medida
             </h2>
         </div>
     </div>
@@ -47,56 +53,28 @@
 
 }
 
-<div class="row row-cards">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="form-group mb-3">
-                <div class='form-control'>
-                    <div class="col-md-12">
-
-                        @(Html.DevExtreme().TabPanel()
-
-                            .Items(items =>
-                            {
-
-                                items.Add()
-                                .Title("LISTA DE UNIDADES DE MEDIDA HABILITADAS")
-                                .Template(new TemplateName("TAB1"));
-                                items.Add()
-                                .Title("LISTA DE UNIDADES DE MEDIDA DESHABILITADAS")
-                                .Template(new TemplateName("TAB2"));
-
-                            })
-                            .SelectedIndex(0)
-                            .Loop(false)
-                            .AnimationEnabled(true)
-                            .SwipeEnabled(true)
-                            .OnItemClick("refreshGrid")
-                            )
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+<div style="text-align: right;" >
+    @(Html.DevExtreme().CheckBox()
+        .Text("Mostrar todas las Unidades de Medida")
+        .ElementAttr(new { style = "margin-right: 15px; font-size: 15px; margin-bottom: 10px; margin-top:10px; font-weight:bold;" })
+        .OnValueChanged("toggleFilter")
+        )
 </div>
 
-@using (Html.DevExtreme().NamedTemplate("TAB1"))
-{
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.UnidadMedidum>()
         .ID("grid1")
         .DataSource(ds => ds.Mvc()
             .Controller("UnidadMedida")
-            .LoadAction("Get").OnLoaded("filterTrue")
+            .LoadAction("Get")
             .InsertAction("Post")
             .UpdateAction("Put")
             .Key("IdUm")
         )
+        .OnContentReady("applyDefaultFilter")
         .Columns(columns =>
         {
             columns.AddFor(m => m.IdUm).Caption("ID").Width(100);
-            columns.AddFor(m => m.Nombre);
+            columns.AddFor(m => m.Nombre).Caption("Unidad de Medida");
             columns.AddFor(m => m.Habilitado).Width(140);
         })
         .ShowBorders(true)
@@ -138,64 +116,33 @@
                 }))
             )
     )
-}
 
-@using (Html.DevExtreme().NamedTemplate("TAB2"))
-{   
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.UnidadMedidum>()
-            .ID("grid2")
-            .DataSource(ds => ds.Mvc()
-                .Controller("UnidadMedida")
-                .LoadAction("Get").OnLoaded("filterFalse")
-                .InsertAction("Post")
-                .UpdateAction("Put")
-                .Key("IdUm")
-            )
-            .Columns(columns =>
-            {
-                columns.AddFor(m => m.IdUm).Caption("ID").Width(100).AllowEditing(false);
-                    columns.AddFor(m => m.Nombre).AllowEditing(false);
-                columns.AddFor(m => m.Habilitado).Width(140);
-            })
-            .ShowBorders(true)
-            .RowAlternationEnabled(false)
-            .ShowColumnLines(true)
-            .ShowRowLines(true)
-            .Paging(paging => paging.PageSize(20))
-            .FilterRow(f => f.Visible(true))
-            .HeaderFilter(f => f.Visible(true))
-            .Pager(pager =>
-            {
-                pager.ShowPageSizeSelector(true);
-                pager.AllowedPageSizes(new[] { 20, 50, 100 });
-                pager.ShowInfo(true);
-            })
-            .RemoteOperations(true)
-               .Editing(editing =>
-                                    {
-                                        editing.AllowUpdating(true);
-                                    })
-        )
-}
+
+
 
 <script>
-        function filterTrue(){
-             var grid = $("#grid1").dxDataGrid("instance");
+
+    var defaultFilterApplied = false;
+
+    function applyDefaultFilter() {
+        if (!defaultFilterApplied) {
+            var grid = $("#grid1").dxDataGrid("instance");
             grid.filter([
-            ["Habilitado", "=", true]
+                ["Habilitado", "=", true]
             ]);
+            defaultFilterApplied = true;
+        }
     }
 
-     function filterFalse(){
-             var grid = $("#grid2").dxDataGrid("instance");
+    function toggleFilter(e) {
+        var grid = $("#grid1").dxDataGrid("instance");
+
+        if (e.value) {
+            grid.clearFilter();
+        } else {
             grid.filter([
-            ["Habilitado", "=", false]
+                ["Habilitado", "=", true]
             ]);
+        }
     }
-
-    function refreshGrid() {
-        $("#grid1").dxDataGrid("instance").refresh();
-        $("#grid2").dxDataGrid("instance").refresh();
-    }
-
 </script>

@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.4.33213.308</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2023-03-23T05:20:54.9983400Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2023-03-28T16:20:24.9726431Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -277,15 +277,8 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <rd:DefaultName>textbox6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
                             </Border>
-                            <BottomBorder>
-                              <Style>Solid</Style>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
                             <VerticalAlign>Middle</VerticalAlign>
@@ -306,7 +299,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ESPECIFICACION</Value>
+                                  <Value>ESPECIFICACIÓN</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <Color>White</Color>
@@ -322,7 +315,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
@@ -361,7 +353,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
@@ -399,7 +390,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
@@ -437,7 +427,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
@@ -459,7 +448,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>OBSERVACION</Value>
+                                  <Value>OBSERVACIÓN</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <Color>White</Color>
@@ -475,7 +464,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <FontFamily />
@@ -511,7 +499,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -800,7 +788,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <Style>
                               <Border>
                                 <Style>Solid</Style>
-                                <Width>2pt</Width>
                               </Border>
                               <BackgroundColor>#0e3d50</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
@@ -938,7 +925,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>1.95333in</Top>
-            <Left>0.07938cm</Left>
+            <Left>0.07932cm</Left>
             <Height>0.50166in</Height>
             <Width>10.33305in</Width>
             <Style />
@@ -982,7 +969,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1019,7 +1005,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1166,7 +1151,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>CONDICION</Value>
+                                    <Value>CONDICIÓN</Value>
                                     <Style>
                                       <FontFamily>Calibri</FontFamily>
                                       <Color>White</Color>
@@ -1182,7 +1167,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <Style>
                               <Border>
                                 <Style>Solid</Style>
-                                <Width>2pt</Width>
                               </Border>
                               <BackgroundColor>#0e3d50</BackgroundColor>
                               <VerticalAlign>Middle</VerticalAlign>
@@ -1309,7 +1293,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <DataSetName>DataSet2</DataSetName>
             <Top>1.28833in</Top>
             <Height>0.5in</Height>
-            <Width>10.3643in</Width>
+            <Width>10.36428in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1643,9 +1627,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </TablixRowHierarchy>
             <DataSetName>DataSet3</DataSetName>
             <Top>0.05556in</Top>
-            <Left>7.21431in</Left>
+            <Left>7.2143in</Left>
             <Height>0.5in</Height>
-            <Width>3.14999in</Width>
+            <Width>3.14998in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1692,7 +1676,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1729,7 +1712,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -1770,7 +1752,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>1.5pt</Width>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1805,7 +1786,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>1.5pt</Width>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1866,7 +1846,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>0.95in</Size>
+                        <Size>1.33227in</Size>
                         <CellContents>
                           <Textbox Name="Textbox3">
                             <CanGrow>true</CanGrow>
@@ -1877,7 +1857,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                                   <TextRun>
                                     <Value>GRUPO</Value>
                                     <Style>
-                                      <FontFamily>Poppins</FontFamily>
+                                      <FontFamily>Calibri</FontFamily>
                                       <Color>White</Color>
                                     </Style>
                                   </TextRun>
@@ -1968,7 +1948,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>0.95in</Size>
+                        <Size>1.33227in</Size>
                         <CellContents>
                           <Textbox Name="GRUPO">
                             <CanGrow>true</CanGrow>
@@ -1992,7 +1972,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <Style>
                               <Border>
                                 <Style>Solid</Style>
-                                <Width>1.5pt</Width>
                               </Border>
                               <VerticalAlign>Middle</VerticalAlign>
                               <PaddingLeft>2pt</PaddingLeft>
@@ -2029,9 +2008,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </TablixRowHierarchy>
             <DataSetName>DataSet4</DataSetName>
             <Top>0.70777in</Top>
-            <Left>1.79916in</Left>
+            <Left>2.23554in</Left>
             <Height>0.40834in</Height>
-            <Width>5.47569in</Width>
+            <Width>5.85796in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -2114,7 +2093,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -2151,7 +2129,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
-                              <Width>2pt</Width>
                             </Border>
                             <BackgroundColor>#0e3d50</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -2234,6 +2211,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2294,9 +2272,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </TablixRowHierarchy>
             <DataSetName>DataSet5</DataSetName>
             <Top>2.64666in</Top>
-            <Left>0.07938cm</Left>
+            <Left>0.07935cm</Left>
             <Height>0.5in</Height>
-            <Width>10.33305in</Width>
+            <Width>10.33304in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -2308,7 +2286,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
         <Height>4.77333in</Height>
         <Style />
       </Body>
-      <Width>10.37635in</Width>
+      <Width>10.41016in</Width>
       <Page>
         <PageHeader>
           <Height>2.05317cm</Height>
@@ -2320,7 +2298,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               <Value>veladero1</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.15277in</Top>
-              <Left>0.38124in</Left>
+              <Left>0.4271in</Left>
               <Height>0.57001in</Height>
               <Width>1.1713in</Width>
               <Style>
@@ -2331,8 +2309,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </Image>
             <Rectangle Name="Rectangle1">
               <KeepTogether>true</KeepTogether>
+              <Left>0.11648cm</Left>
               <Height>0.08333in</Height>
-              <Width>5.0638in</Width>
+              <Width>5.26912in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2343,9 +2322,9 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </Rectangle>
             <Rectangle Name="Rectangle2">
               <KeepTogether>true</KeepTogether>
-              <Left>12.9326cm</Left>
+              <Left>13.50004cm</Left>
               <Height>0.08333in</Height>
-              <Width>5.28477in</Width>
+              <Width>5.09518in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2364,7 +2343,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                       <Value>Reporte - Pautas 1.0 </Value>
                       <Style>
                         <FontFamily>Poppins</FontFamily>
-                        <FontSize>18pt</FontSize>
+                        <FontSize>20pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <Color>#0e3d50</Color>
                       </Style>
@@ -2392,8 +2371,8 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>textbox1</rd:DefaultName>
-              <Top>0.38805cm</Top>
-              <Left>8.44171cm</Left>
+              <Top>0.35277cm</Top>
+              <Left>9.42602cm</Left>
               <Height>0.54117in</Height>
               <Width>2.94844in</Width>
               <ZIndex>3</ZIndex>
@@ -2422,9 +2401,8 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             <Rectangle Name="Rectangle3">
               <KeepTogether>true</KeepTogether>
               <Top>0.03528cm</Top>
-              <Left>0.07938cm</Left>
               <Height>0.08333in</Height>
-              <Width>10.33305in</Width>
+              <Width>10.41014in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2452,7 +2430,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </Paragraphs>
               <rd:DefaultName>OverallTotalPages</rd:DefaultName>
               <Top>0.21667in</Top>
-              <Left>8.25183in</Left>
+              <Left>9.6965in</Left>
               <Height>0.33333in</Height>
               <Width>0.47845in</Width>
               <ZIndex>1</ZIndex>
@@ -2461,7 +2439,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   <Style>None</Style>
                 </Border>
                 <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
@@ -2482,13 +2459,13 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
               <Top>0.21667in</Top>
-              <Left>7.99694in</Left>
+              <Left>9.43307in</Left>
               <Height>0.33333in</Height>
               <Width>0.18409in</Width>
               <ZIndex>2</ZIndex>
@@ -2497,8 +2474,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                   <Style>None</Style>
                 </Border>
                 <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
@@ -2524,7 +2499,7 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
               <Top>0.21667in</Top>
-              <Left>7.29972in</Left>
+              <Left>8.73585in</Left>
               <Height>0.33333in</Height>
               <Width>0.6in</Width>
               <ZIndex>3</ZIndex>
@@ -2534,7 +2509,6 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
                 </Border>
                 <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>

@@ -63,7 +63,7 @@
 
 .logotipo {
     display: block;
-    height: 50px;
+    height: 48px;
     width: auto;
     margin-top: 10px;
 }
@@ -71,4 +71,29 @@
 .nav-item1 {
     display: flex;
     align-items: center;
+}
+
+.veladero {
+    color: #a79a66;
+    font-size:15px;
+}
+
+.veladero:hover {
+        color: #a79a66;
+    }
+
+.page-titlee {
+    color: #a79a66;
+}
+
+@media (min-width: 820px) and (max-width: 1180px) {
+    .extra-info {
+        display: block;
+       
+    }
+}
+
+.extra-info {
+    display: none;
+    margin-right: 10px;
 }

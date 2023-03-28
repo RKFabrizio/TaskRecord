@@ -20,6 +20,10 @@
             margin-left: -4px;
      }
 
+    .page-title {
+        color: #a79a66;
+    }
+
 </style>
 
 @section PagePreTitle{
@@ -36,7 +40,7 @@
   <path d="M13 6h5l3 5v6h-2" />
 </svg>
             <h2 class="page-title">
-                Tipo de Equipo
+                Tipos de Equipo
             </h2>
         </div>
     </div>
@@ -67,7 +71,7 @@
                 .DataSource(ds => ds.WebApi().Controller("TipoEquipos").LoadAction("AreasLookup").Key("Value"))
                 .ValueExpr("Value")
                 .DisplayExpr("Text")
-            ).Caption("Tipo de Area").Width(150).GroupIndex(0);
+            ).Caption("Área").Width(150).GroupIndex(0);
 
             columns.AddFor(m => m.TEquipo).Caption("Tipo de Equipo");
 

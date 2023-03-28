@@ -34,7 +34,7 @@
   <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
 </svg>
             <h2 class="page-title">
-                Disciplina
+                Disciplinas
             </h2>
         </div>
     </div>
@@ -47,50 +47,21 @@
 
 }
 
-<div class="row row-cards">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="form-group mb-3">
-                <div class='form-control'>
-                    <div class="col-md-12">
 
-                        @(Html.DevExtreme().TabPanel()
-
-                            .Items(items =>
-                            {
-
-                                items.Add()
-                                .Title("LISTA DE DISCIPLINAS HABILITADAS")
-                                .Template(new TemplateName("TAB1"));
-                                items.Add()
-                                .Title("LISTA DE DISCIPLINAS DESHABILITADAS")
-                                .Template(new TemplateName("TAB2"));
-
-                            })
-                            .SelectedIndex(0)
-                            .Loop(false)
-                            .AnimationEnabled(true)
-                            .SwipeEnabled(true)
-                            .OnItemClick("refreshGrid")
-                            )
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+<div style="text-align: right;">
+    @(Html.DevExtreme().CheckBox()
+        .Text("Mostrar todas las Disciplinas")
+        .ElementAttr(new { style = "margin-right: 15px; font-size: 15px; margin-bottom: 10px; margin-top:10px; font-weight:bold;" })
+        .OnValueChanged("toggleFilter")
+        )
 </div>
 
 
-
-@using (Html.DevExtreme().NamedTemplate("TAB1"))
-{
     @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Disciplina>()
         .ID("grid1")
         .DataSource(ds => ds.Mvc()
             .Controller("Disciplina")
-            .LoadAction("Get").OnLoaded("filterTrue")
+            .LoadAction("Get")
             .InsertAction("Post")
             .UpdateAction("Put")
             .Key("IdDis")
@@ -109,10 +80,11 @@
             pager.ShowInfo(true);
         })
         .RemoteOperations(true)
+        .OnContentReady("applyDefaultFilter")
         .Columns(columns =>
         {
 
-            columns.AddFor(m => m.Nombre);
+            columns.AddFor(m => m.Nombre).Caption("Disciplinas");
             columns.AddFor(m => m.IdNiv).Lookup(lookup => lookup
                 .DataSource(ds => ds.WebApi().Controller("Disciplina").LoadAction("NivelsLookup").Key("Value"))
                 .ValueExpr("Value")
@@ -146,69 +118,31 @@
 
             )
     )
-}
 
-@using (Html.DevExtreme().NamedTemplate("TAB2"))
-{
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.Disciplina>()
-        .ID("grid2")
-        .DataSource(ds => ds.Mvc()
-            .Controller("Disciplina")
-            .LoadAction("Get").OnLoaded("filterFalse")
-            .InsertAction("Post")
-            .UpdateAction("Put")
-            .Key("IdDis")
-        )
-        .ShowBorders(true)
-        .RowAlternationEnabled(false)
-        .ShowColumnLines(true)
-        .ShowRowLines(true)
-        .Paging(paging => paging.PageSize(50))
-        .FilterRow(f => f.Visible(true))
-        .HeaderFilter(f => f.Visible(true))
-        .Pager(pager =>
-        {
-            pager.ShowPageSizeSelector(true);
-            pager.AllowedPageSizes(new[] { 50, 100, 150 });
-            pager.ShowInfo(true);
-        })
-        .RemoteOperations(true)
-        .Columns(columns =>
-        {
-
-            columns.AddFor(m => m.Nombre).AllowEditing(false);
-            columns.AddFor(m => m.IdNiv).Lookup(lookup => lookup
-                .DataSource(ds => ds.WebApi().Controller("Disciplina").LoadAction("NivelsLookup").Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")
-            ).Caption("Nivel").AllowEditing(false);
-            columns.AddFor(m => m.Habilitado).Width(120);
-        })
-          .Editing(editing =>
-                                        {
-                                            editing.AllowUpdating(true);
-                                        })
-    )
-}
 
 <script>
-    function filterTrue() {
+
+    var defaultFilterApplied = false;
+
+    function applyDefaultFilter() {
+        if (!defaultFilterApplied) {
+            var grid = $("#grid1").dxDataGrid("instance");
+            grid.filter([
+                ["Habilitado", "=", true]
+            ]);
+            defaultFilterApplied = true;
+        }
+    }
+
+    function toggleFilter(e) {
         var grid = $("#grid1").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", true]
-        ]);
-    }
 
-    function filterFalse() {
-        var grid = $("#grid2").dxDataGrid("instance");
-        grid.filter([
-            ["Habilitado", "=", false]
-        ]);
+        if (e.value) {
+            grid.clearFilter();
+        } else {
+            grid.filter([
+                ["Habilitado", "=", true]
+            ]);
+        }
     }
-
-    function refreshGrid() {
-        $("#grid1").dxDataGrid("instance").refresh();
-        $("#grid2").dxDataGrid("instance").refresh();
-    }
-
 </script>

@@ -6,14 +6,62 @@
     Layout = "~/Views/Shared/_LayoutApp.cshtml";
 }
 
-@using DevExtreme.AspNet.Mvc.Builders;
+<style>
+    .user-icon-container {
+        display: flex;
+        align-items: center;
+    }
+
+        .user-icon-container .icon-tabler {
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .user-icon-container .page-title {
+            margin-left: -4px;
+  
+        }
+
+    .page-title {
+        color: #a79a66;
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+
+    .black {
+        background-color: white;
+    }
+
+    .pauta {
+        margin-left: 10px;
+        color: #a79a66;
+    }
+
+    .text {
+        margin-left: 10px;
+    }
+
+</style>
 
 @section PagePreTitle{
 
     <div class="col">
-        <h2 class="page-title">
-            Actividad >> Sistema >> Pauta
-        </h2>
+        <!-- Page pre-title -->
+        <div class="user-icon-container">
+         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-infographic" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <circle cx="7" cy="7" r="4" />
+  <path d="M7 3v4h4" />
+  <line x1="9" y1="17" x2="9" y2="21" />
+  <line x1="17" y1="14" x2="17" y2="21" />
+  <line x1="13" y1="13" x2="13" y2="21" />
+  <line x1="21" y1="12" x2="21" y2="21" />
+</svg>
+            <h2 class="page-title">
+                Asignación de Actividades
+            </h2>
+        </div>
     </div>
 
 }
@@ -22,21 +70,6 @@
 
 
 }
-
-<style>
-    .black {
-        background-color: white;
-    }
-
-    .pauta {
-        margin-left: 10px;
-    }
-
-    .text {
-        margin-left: 10px;
-    }
-
-</style>
 
 <div class="row row-cards">
     <div class="col-md-12">
@@ -50,10 +83,10 @@
                             {
 
                                 items.Add()
-                                .Title("LISTA DE PAUTA - SISTEMA")
+                                .Title("Vista General")
                                 .Template(new TemplateName("TAB1"));
                                 items.Add()
-                                .Title("AÑADIR ACTIVIDADES")
+                                .Title("Asignar Actividades")
                                 .Template(new TemplateName("TAB2"));
 
                             })
@@ -92,7 +125,7 @@
                     .DataSource(ds => ds.WebApi().Controller("PmsisActividad").LoadAction("PmSistemasLookup").Key("Value"))
                     .ValueExpr("Value")
                     .DisplayExpr("Text")
-                ).GroupIndex(0).Caption("PAUTA-SISTEMA").Width(100);
+                ).GroupIndex(0).Caption("Plantilla - Sistema").Width(100);
 
                 columns.AddFor(m => m.Orden).Width(100);
                 columns.AddFor(m => m.IdAct).Lookup(lookup => lookup
@@ -109,6 +142,7 @@
             .ShowBorders(true)
             .RowAlternationEnabled(false)
             .ShowColumnLines(true)
+            .Grouping(g => g.AutoExpandAll(false))
             .ShowRowLines(true)
             .Paging(paging => paging.PageSize(50))
             .FilterRow(f => f.Visible(true))

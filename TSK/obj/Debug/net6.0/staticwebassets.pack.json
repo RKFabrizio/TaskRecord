@@ -341,20 +341,8 @@
       "PackagePath": "staticwebassets\\css\\devextreme\\dx.greenmist.css.bak"
     },
     {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.compact.css",
-      "PackagePath": "staticwebassets\\css\\devextreme\\dx.light.compact.css"
-    },
-    {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.compact.css.bak",
-      "PackagePath": "staticwebassets\\css\\devextreme\\dx.light.compact.css.bak"
-    },
-    {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.css",
       "PackagePath": "staticwebassets\\css\\devextreme\\dx.light.css"
-    },
-    {
-      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.light.css.bak",
-      "PackagePath": "staticwebassets\\css\\devextreme\\dx.light.css.bak"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.blue.dark.compact.css",
@@ -399,6 +387,10 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-light.css",
       "PackagePath": "staticwebassets\\css\\devextreme\\dx.material.gointegreat-light.css"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.gointegreat-scheme.css",
+      "PackagePath": "staticwebassets\\css\\devextreme\\dx.material.gointegreat-scheme.css"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\css\\devextreme\\dx.material.lime.dark.compact.css",
@@ -3715,6 +3707,10 @@
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\gopautas_v5.png",
       "PackagePath": "staticwebassets\\img\\gopautas_v5.png"
+    },
+    {
+      "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\icono_minero.svg",
+      "PackagePath": "staticwebassets\\img\\icono_minero.svg"
     },
     {
       "Id": "C:\\Users\\fabri\\OneDrive\\Escritorio\\GointeGreat\\CODE\\TSK\\wwwroot\\img\\pautas.png",

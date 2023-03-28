@@ -46,12 +46,30 @@ namespace TSK.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> PmSistemasLookup(int IdPm, DataSourceLoadOptions loadOptions) // nos vota 0 como id
+        public async Task<IActionResult> PmSistemasCalienteLookup(int IdPm, DataSourceLoadOptions loadOptions) // nos vota 0 como id
         {
 
             var result = from pmsistemas in _context.PmSistemas
                          from sistema in _context.Sistemas
-                         where pmsistemas.IdSis == sistema.IdSis && pmsistemas.IdPm == IdPm
+                         where pmsistemas.IdSis == sistema.IdSis && pmsistemas.IdPm == IdPm && sistema.IdCod == "PC"
+                         select new
+                         {
+                             IdPms = pmsistemas.IdPms,
+                             IdPm = pmsistemas.IdPm,
+                             IdSis = pmsistemas.IdSis
+                         };
+
+
+            return Json(await DataSourceLoader.LoadAsync(result, loadOptions));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PmSistemasBahiaLookup(int IdPm, DataSourceLoadOptions loadOptions) // nos vota 0 como id
+        {
+
+            var result = from pmsistemas in _context.PmSistemas
+                         from sistema in _context.Sistemas
+                         where pmsistemas.IdSis == sistema.IdSis && pmsistemas.IdPm == IdPm && sistema.IdCod == "SB"
                          select new
                          {
                              IdPms = pmsistemas.IdPms,
@@ -135,6 +153,7 @@ namespace TSK.Controllers
         {
             var lookup = from sis in _context.Sistemas
                          join con in _context.Condicions on sis.IdCod equals con.IdCod
+
                          orderby con.Nombre + " - " + sis.Nombre
                          select new
                          {
@@ -143,6 +162,40 @@ namespace TSK.Controllers
                          };
             return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> SistemaCalienteLookup(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from sis in _context.Sistemas
+                         join con in _context.Condicions on sis.IdCod equals con.IdCod
+                         where sis.IdCod == "PC"
+
+                         orderby con.Nombre + " - " + sis.Nombre
+                         select new
+                         {
+                             Value = sis.IdSis,
+                             Text = con.Nombre + " - " + sis.Nombre
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SistemaBahiaLookup(DataSourceLoadOptions loadOptions)
+        {
+            var lookup = from sis in _context.Sistemas
+                         join con in _context.Condicions on sis.IdCod equals con.IdCod
+                         where sis.IdCod == "SB"
+
+                         orderby con.Nombre + " - " + sis.Nombre
+                         select new
+                         {
+                             Value = sis.IdSis,
+                             Text = con.Nombre + " - " + sis.Nombre
+                         };
+            return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
+        }
+
+
 
         private void PopulateModel(PmSistema model, IDictionary values) {
             string ID_PMS = nameof(PmSistema.IdPms);
