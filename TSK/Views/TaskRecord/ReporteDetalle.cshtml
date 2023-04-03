@@ -580,11 +580,10 @@
                 .UseIcons(true)                              
             )
             .Selection(s => s.Mode(SelectionMode.Single))
-            .Export(e => e.Enabled(true)
-                .AllowExportSelectedData(false)
-                .Formats(new[] { "pdf" })
-            )
-            
+                  @*    .Export(e => e.Enabled(true)
+                    .AllowExportSelectedData(false)
+                    .Formats(new[] { "pdf" })
+                )*@
             .OnRowUpdated("gridChild_OnRowUpdated1")
     )
 }
@@ -630,12 +629,10 @@
                 .UseIcons(true)                              
             )
             .Selection(s => s.Mode(SelectionMode.Single))
-            .Export(e => e.Enabled(true)
-                .AllowExportSelectedData(false)
-                .Formats(new[] { "pdf" })
-            )
-
-            
+                 @* .Export(e => e.Enabled(true)
+                    .AllowExportSelectedData(false)
+                    .Formats(new[] { "pdf" })
+                )*@
             .OnRowUpdated("gridChild_OnRowUpdated2")
     )
 }

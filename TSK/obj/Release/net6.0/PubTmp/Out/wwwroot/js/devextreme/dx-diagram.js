@@ -1,7 +1,7 @@
 /*!
  * DevExpress Diagram (dx-diagram)
- * Version: 2.1.63
- * Build date: Tue Jul 12 2022
+ * Version: 2.1.66
+ * Build date: Mon Dec 05 2022
  * 
  * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
  * Read about DevExpress licensing here: https://www.devexpress.com/Support/EULAs
@@ -29846,7 +29846,7 @@ var DiagramControl = (function () {
         this.routingModel = new ConnectorRoutingModel_1.ConnectorRoutingModel();
         this.modelManipulator = new ModelManipulator_1.ModelManipulator(this.model, this.routingModel, this.permissionsProvider);
         this.modelManipulator.onModelChanged.add(this.permissionsProvider);
-        this.history = new History_1.History(this.modelManipulator);
+        this.history = new History_1.History(this.modelManipulator, this);
         this.barManager = new BarManager_1.BarManager(this);
         this.view = new ViewController_1.ViewController(this.settings, this.barManager);
         this.commandManager = new CommandManager_1.CommandManager(this);
@@ -30091,10 +30091,6 @@ var DiagramControl = (function () {
         this.onImportData();
     };
     DiagramControl.prototype.importItemsData = function () {
-        this.model.iterateItems(function (item) {
-            if (item instanceof Connector_1.Connector)
-                item.invalidateRenderPoints();
-        });
         this.onImportData();
     };
     DiagramControl.prototype.onImportData = function () {
@@ -30430,10 +30426,21 @@ var ModelManipulator = (function () {
         this.updateModelSize();
     };
     ModelManipulator.prototype.initializeCore = function (model, routingModel) {
+        var _this = this;
         this.model = model;
         this.routingModel = routingModel;
-        if (this.routingModel)
+        if (this.routingModel) {
             this.routingModel.initialize(model);
+            model.iterateItems(function (item) {
+                if (item instanceof Connector_1.Connector) {
+                    var routingStrategy = _this.routingModel.createStrategy(item.properties.lineOption);
+                    if (routingStrategy)
+                        item.changeRoutingStrategy(routingStrategy);
+                    else
+                        item.invalidateRenderPoints();
+                }
+            });
+        }
     };
     ModelManipulator.prototype.commitPageChanges = function () {
         this.raisePageSizeChanged(this.model.pageSize.clone(), this.model.pageLandscape);
@@ -33985,7 +33992,9 @@ exports.History = void 0;
 var HistoryItem_1 = __webpack_require__(8);
 var Utils_1 = __webpack_require__(3);
 var History = (function () {
-    function History(modelManipulator) {
+    function History(modelManipulator, diagram) {
+        this.modelManipulator = modelManipulator;
+        this.diagram = diagram;
         this.historyItems = [];
         this.currentIndex = -1;
         this.incrementalId = -1;
@@ -33993,7 +34002,6 @@ var History = (function () {
         this.unmodifiedIndex = -1;
         this.currTransactionId = 0;
         this.onChanged = new Utils_1.EventDispatcher();
-        this.modelManipulator = modelManipulator;
     }
     History.prototype.isModified = function () {
         if (this.unmodifiedIndex === this.currentIndex)
@@ -34119,11 +34127,14 @@ var History = (function () {
         return currentItem.uniqueId;
     };
     History.prototype.undoTransaction = function () {
+        this.diagram.beginUpdateCanvas();
         var items = this.transaction.historyItems;
         while (items.length)
             items.pop().undo(this.modelManipulator);
+        this.diagram.endUpdateCanvas();
     };
     History.prototype.undoTransactionTo = function (item) {
+        this.diagram.beginUpdateCanvas();
         var items = this.transaction.historyItems;
         while (items.length) {
             var ti = items.pop();
@@ -34131,6 +34142,7 @@ var History = (function () {
             if (ti === item)
                 return;
         }
+        this.diagram.endUpdateCanvas();
     };
     History.prototype.raiseChanged = function () {
         if (this.transactionLevel === -1)
@@ -37381,7 +37393,7 @@ var DataSource = (function () {
                 var toShape = model.findShapeByDataKey(edge.to);
                 var connector = model.findConnectorByDataKey(dataKey);
                 if (connector) {
-                    _this.changeConnectorPointsByDataItem(history, connector, _this.getConnectorPointsByEdge(model, edge, fromShape, toShape));
+                    _this.changeConnectorPointsByDataItem(history, connector, _this.getConnectorPointsByEdge(model, edge, fromShape, toShape, false));
                     _this.changeConnectorByDataItem(history, model, connector, fromShape, toShape, edge);
                     _this.changeItemByDataItem(history, connector, edge);
                 }
@@ -37523,26 +37535,27 @@ var DataSource = (function () {
             else
                 ModelUtils_1.ModelUtils.removeFromContainer(history, model, shape);
     };
-    DataSource.prototype.getConnectorPointsByEdge = function (model, edge, fromShape, toShape) {
+    DataSource.prototype.getConnectorPointsByEdge = function (model, edge, fromShape, toShape, forceCreate) {
         var result = [];
         var modelPoints = this.createModelPointFromDataSourceEdgeItemPoints(model.units, edge);
-        if (!modelPoints || modelPoints.length <= 1) {
-            if (!fromShape || !toShape)
-                return undefined;
-            result.push(fromShape.position.clone());
-            result.push(toShape.position.clone());
-            return result;
+        if (modelPoints && modelPoints.length > 1) {
+            var lastIndex = modelPoints.length - 1;
+            for (var i = 0; i <= lastIndex; i++) {
+                var modelPoint = modelPoints[i];
+                if (modelPoint !== null)
+                    result.push(modelPoint);
+                else if (!fromShape && !toShape)
+                    return undefined;
+                else if (i === 0 && fromShape)
+                    result.push(fromShape.position.clone());
+                else if (i === lastIndex && toShape)
+                    result.push(toShape.position.clone());
+            }
         }
-        var lastIndex = modelPoints.length - 1;
-        for (var i = 0; i <= lastIndex; i++) {
-            var modelPoint = modelPoints[i];
-            if (modelPoint !== null)
-                result.push(modelPoint);
-            else if (!fromShape && !toShape)
-                return undefined;
-            else if (i === 0 && fromShape)
+        else if (forceCreate) {
+            if (fromShape)
                 result.push(fromShape.position.clone());
-            else if (i === lastIndex && toShape)
+            if (toShape)
                 result.push(toShape.position.clone());
         }
         return result;
@@ -37566,7 +37579,7 @@ var DataSource = (function () {
     DataSource.prototype.createConnectorByEdge = function (history, model, selection, edge, fromShape, toShape) {
         var connector;
         var dataKey = edge.key;
-        var points = this.getConnectorPointsByEdge(model, edge, fromShape, toShape);
+        var points = this.getConnectorPointsByEdge(model, edge, fromShape, toShape, true);
         if (points && points.length > 1) {
             var insert = new AddConnectorHistoryItem_1.AddConnectorHistoryItem(points, dataKey);
             history.addAndRedo(insert);

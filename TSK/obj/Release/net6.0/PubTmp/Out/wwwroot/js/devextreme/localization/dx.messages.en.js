@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.messages.en.js)
-* Version: 22.1.4
-* Build date: Fri Jul 22 2022
+* Version: 22.1.7
+* Build date: Thu Dec 08 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -24,6 +24,7 @@
             Yes: "Yes",
             No: "No",
             Cancel: "Cancel",
+            Close: "Close",
             Clear: "Clear",
             Done: "Done",
             Loading: "Loading...",
@@ -152,6 +153,8 @@
             "dxDataGrid-selectedRows": "Selected rows",
             "dxDataGrid-exportSelectedRows": "Export selected rows to {0}",
             "dxDataGrid-exportAll": "Export all data to {0}",
+            "dxDataGrid-headerFilterLabel": "Filter options",
+            "dxDataGrid-headerFilterIndicatorLabel": "Show filter options for column '{0}'",
             "dxDataGrid-headerFilterEmptyValue": "(Blanks)",
             "dxDataGrid-headerFilterOK": "OK",
             "dxDataGrid-headerFilterCancel": "Cancel",
@@ -177,7 +180,12 @@
             "dxTreeList-editingAddRowToNode": "Add",
             "dxPager-infoText": "Page {0} of {1} ({2} items)",
             "dxPager-pagesCountText": "of",
+            "dxPager-pageSize": "Items per page: {0}",
             "dxPager-pageSizesAllText": "All",
+            "dxPager-page": "Page {0}",
+            "dxPager-prevPage": "Previous Page",
+            "dxPager-nextPage": "Next Page",
+            "dxPager-ariaLabel": "Page Navigation",
             "dxPivotGrid-grandTotal": "Grand Total",
             "dxPivotGrid-total": "{0} Total",
             "dxPivotGrid-fieldChooserTitle": "Field Chooser",
