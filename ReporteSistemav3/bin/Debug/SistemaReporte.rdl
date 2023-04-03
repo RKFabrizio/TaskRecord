@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.4.33213.308</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2023-03-28T16:20:24.9726431Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2023-03-31T05:30:36.1463859Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -17,10 +17,9 @@
     <DataSource Name="DataSource1">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=LAPTOP-3SS5SQUF;Initial Catalog=USAEU2GIG-DEV-SQL</ConnectString>
-        <IntegratedSecurity>true</IntegratedSecurity>
+        <ConnectString>Data Source=usaeu2velman-dev-sql.database.windows.net;Initial Catalog=gigtaskrecord</ConnectString>
       </ConnectionProperties>
-      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>0e5a2847-90b3-4195-b5f0-839179bcb75d</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -2308,9 +2307,8 @@ WHERE ID_REP = @NRO_REPORTE_ENTREGA</CommandText>
             </Image>
             <Rectangle Name="Rectangle1">
               <KeepTogether>true</KeepTogether>
-              <Left>0.11648cm</Left>
               <Height>0.08333in</Height>
-              <Width>5.26912in</Width>
+              <Width>5.31498in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

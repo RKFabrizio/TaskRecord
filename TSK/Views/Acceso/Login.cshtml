@@ -1,8 +1,4 @@
 ﻿@model Usuario
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger">@TempData["Error"]</div>
-}
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
@@ -19,8 +15,8 @@
         </div>
 
         <div class="block-1">
-            <img class="log" src="~/img/Logov3.png" alt="Pautas">
-            <img class="img" src="~/img/fondo_iniciov2.jpg" alt="Veladero">
+            <img class="log" src="~/img/Logov3.webp" alt="Pautas">
+            <img class="img" src="~/img/fondo_iniciov2.webp" alt="Veladero">
         </div>
         <div class="block-2">
             <h1 class="page-title id">
@@ -72,7 +68,10 @@
                     }
                 }
             </div>
-
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger" style="width: 300px; height: 100px; margin: auto; margin-top: 20px;">@TempData["Error"]</div>
+            }
         </div>
         <div class="dx-form-validation-summary dx-validationsummary dx-widget dx-collection">
             <div class="dx-item dx-validationsummary-item">

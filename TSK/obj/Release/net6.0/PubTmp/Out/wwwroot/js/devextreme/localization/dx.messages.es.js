@@ -1,7 +1,7 @@
 /*!
 * DevExtreme (dx.messages.es.js)
-* Version: 22.1.4
-* Build date: Fri Jul 22 2022
+* Version: 22.1.7
+* Build date: Thu Dec 08 2022
 *
 * Copyright (c) 2012 - 2022 Developer Express Inc. ALL RIGHTS RESERVED
 * Read about DevExtreme licensing here: https://js.devexpress.com/Licensing/
@@ -24,6 +24,7 @@
             Yes: "S\xed",
             No: "No",
             Cancel: "Cancelar",
+            Close: "Cerca",
             Clear: "Limpiar",
             Done: "Hecho",
             Loading: "Cargando...",
@@ -150,8 +151,8 @@
             "dxDataGrid-exporting": "Exportar...",
             "dxDataGrid-excelFormat": "Archivo Excel",
             "dxDataGrid-selectedRows": "Filas seleccionadas",
-            "dxDataGrid-exportSelectedRows": "Exportar filas seleccionadas",
-            "dxDataGrid-exportAll": "Exportar todo",
+            "dxDataGrid-exportSelectedRows": "Exportar filas seleccionadas a {0}",
+            "dxDataGrid-exportAll": "Exportar todo a {0}",
             "dxDataGrid-headerFilterEmptyValue": "(Vacio)",
             "dxDataGrid-headerFilterOK": "Aceptar",
             "dxDataGrid-headerFilterCancel": "Cancelar",
