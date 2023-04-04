@@ -58,7 +58,7 @@
 
 <div style="text-align: right;">
     @(Html.DevExtreme().CheckBox()
-        .Text("Mostrar todos los Sistemas")
+        .Text("Mostrar todos los sistemas")
         .ElementAttr(new { style = "margin-right: 15px; font-size: 15px; margin-bottom: 10px; margin-top:10px; font-weight:bold;" })
         .OnValueChanged("toggleFilter")
         )
@@ -110,7 +110,7 @@
                     .Title("Sistema")
                     .ShowTitle(true)
                     .Width("50%")
-                    .Height(400)
+                    .Height(300)
                 )
 
                 .Form(f => f.Items(items =>

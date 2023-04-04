@@ -88,13 +88,13 @@ namespace TSK.Controllers
             await _context.SaveChangesAsync();
         }
 
-
         [HttpGet]
-        public async Task<IActionResult> PosicionsLookup(DataSourceLoadOptions loadOptions) {
+        public async Task<IActionResult> PosicionsLookup(DataSourceLoadOptions loadOptions)
+        {
             var lookup = from i in _context.Posicions
-                         from u in _context.Usuarios
                          orderby i.Cargo
-                         select new {
+                         select new
+                         {
                              Value = i.IdPos,
                              Text = i.Cargo
                          };
@@ -132,13 +132,19 @@ namespace TSK.Controllers
             {
                 model.Contrasena = ConvertirSha256((string)values[CONTRASENA]);
             }
-            
 
-            if (values.Contains(HABILITADO)) {
-                model.Habilitado = values[HABILITADO] != null ? Convert.ToBoolean(values[HABILITADO]) : (bool?)null;
+
+            if (values.Contains(HABILITADO))
+            {
+                model.Habilitado = values[HABILITADO] != null ? Convert.ToBoolean(values[HABILITADO]) : true;
+            }
+            else
+            {
+                model.Habilitado = true;
             }
 
-            if(values.Contains(EXTRACOLUMN1)) {
+
+            if (values.Contains(EXTRACOLUMN1)) {
                 model.Extracolumn1 = Convert.ToString(values[EXTRACOLUMN1]);
             }
 

@@ -540,55 +540,115 @@
     )
 }
 
-@using (Html.DevExtreme().NamedTemplate("gridContainer-details1")) {
-    @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
-            .DataSource(d => d.Mvc()
-                .Controller("RepDetalle")
-                .LoadAction("GetDetails")
-                .LoadParams(new { id = new JS("data.IdRepsis") })
-                .UpdateAction("Put")
-                .Key("IdAct", "IdRepsis")
-            )
-            .ColumnAutoWidth(true)
-            .AllowColumnResizing(true)
-            .ShowColumnLines(true)
-            .ShowRowLines(true)
-            .ShowBorders(true)
-            .Paging(paging => paging.PageSize(50))
-            .Columns(columns => {
-                columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
-                columns.AddFor(m => m.Especificacion).AllowEditing(false);
-                columns.AddFor(m => m.Valor).Width(70);                    
-                columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
-                .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
-                .ValueExpr("Value")
-                .DisplayExpr("Text")
-            );
-                columns.Add().DataField("Referencia").AllowEditing(false).Caption("Referencia SMCSS")
-                    .Alignment(HorizontalAlignment.Center)
-                    .Width(180)
-                    .CellTemplate(@<text>
+@if (User.IsInRole("Trabajador") || User.IsInRole("Administrador"))
+{
+    @using (Html.DevExtreme().NamedTemplate("gridContainer-details1"))
+    {
+        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
+                    .DataSource(d => d.Mvc()
+                        .Controller("RepDetalle")
+                        .LoadAction("GetDetails")
+                        .LoadParams(new { id = new JS("data.IdRepsis") })
+                        .UpdateAction("Put")
+                        .Key("IdAct", "IdRepsis")
+                    )
+                    .ColumnAutoWidth(true)
+                    .AllowColumnResizing(true)
+                    .ShowColumnLines(true)
+                    .ShowRowLines(true)
+                    .ShowBorders(true)
+                    .Paging(paging => paging.PageSize(50))
+                    .Columns(columns =>
+                    {
+                        columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
+                        columns.AddFor(m => m.Especificacion).AllowEditing(false);
+                        columns.AddFor(m => m.Valor).Width(70);
+                        columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    );
+                        columns.Add().DataField("Referencia").AllowEditing(false).Caption("Referencia SMCSS")
+                            .Alignment(HorizontalAlignment.Center)
+                            .Width(180)
+                            .CellTemplate(@<text>
                                 <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
-                                   <%- value %>
+                                    <%- value %>
                                 </a>
-    </text>);
-                columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
+                            </text>);
+                        columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
 
-            })
-            .Editing(e => e.Mode(GridEditMode.Cell)
-                .AllowUpdating(true)
-                .UseIcons(true)                              
-            )
-            .Selection(s => s.Mode(SelectionMode.Single))
-                  @*    .Export(e => e.Enabled(true)
+                    })
+                    .Editing(e => e.Mode(GridEditMode.Cell)
+                        .AllowUpdating(true)
+                        .UseIcons(true)
+                    )
+                    .Selection(s => s.Mode(SelectionMode.Single))
+                    @*    .Export(e => e.Enabled(true)
                     .AllowExportSelectedData(false)
                     .Formats(new[] { "pdf" })
                 )*@
-            .OnRowUpdated("gridChild_OnRowUpdated1")
-    )
+                    .OnRowUpdated("gridChild_OnRowUpdated1")
+            )
+    }
 }
 
-@using (Html.DevExtreme().NamedTemplate("gridContainer-details2")) {
+else
+{
+    @using (Html.DevExtreme().NamedTemplate("gridContainer-details1"))
+    {
+        @(Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
+                    .DataSource(d => d.Mvc()
+                        .Controller("RepDetalle")
+                        .LoadAction("GetDetails")
+                        .LoadParams(new { id = new JS("data.IdRepsis") })
+                        .UpdateAction("Put")
+                        .Key("IdAct", "IdRepsis")
+                    )
+                    .ColumnAutoWidth(true)
+                    .AllowColumnResizing(true)
+                    .ShowColumnLines(true)
+                    .ShowRowLines(true)
+                    .ShowBorders(true)
+                    .Paging(paging => paging.PageSize(50))
+                    .Columns(columns =>
+                    {
+                        columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
+                        columns.AddFor(m => m.Especificacion).AllowEditing(false);
+                        columns.AddFor(m => m.Valor).Width(70);
+                        columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
+                        .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
+                        .ValueExpr("Value")
+                        .DisplayExpr("Text")
+                    );
+                        columns.Add().DataField("Referencia").AllowEditing(false).Caption("Referencia SMCSS")
+                            .Alignment(HorizontalAlignment.Center)
+                            .Width(180)
+                            .CellTemplate(@<text>
+                                <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
+                                    <%- value %>
+                                </a>
+                            </text>);
+                        columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
+
+                    })
+                    .Editing(e => e.Mode(GridEditMode.Cell)
+                        .AllowUpdating(false)
+                        .UseIcons(true)
+                    )
+                    .Selection(s => s.Mode(SelectionMode.Single))
+                    @*    .Export(e => e.Enabled(true)
+                    .AllowExportSelectedData(false)
+                    .Formats(new[] { "pdf" })
+                )*@
+                    .OnRowUpdated("gridChild_OnRowUpdated1")
+            )
+    }
+}
+
+@if (User.IsInRole("Trabajador") || User.IsInRole("Administrador"))
+{
+    @using (Html.DevExtreme().NamedTemplate("gridContainer-details2")) {
     @(
     Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
                 .DataSource(d => d.Mvc()
@@ -635,6 +695,62 @@
                 )*@
             .OnRowUpdated("gridChild_OnRowUpdated2")
     )
+    }
+
+}
+else
+{
+    @using (Html.DevExtreme().NamedTemplate("gridContainer-details2"))
+    {
+        @(
+            Html.DevExtreme().DataGrid<TSK.Models.Entity.RepDetalle>()
+                        .DataSource(d => d.Mvc()
+                            .Controller("RepDetalle")
+                            .LoadAction("GetDetails")
+                            .LoadParams(new { id = new JS("data.IdRepsis") })
+                            .UpdateAction("Put")
+                            .Key("IdAct", "IdRepsis")
+                        )
+                        .ColumnAutoWidth(true)
+                        .AllowColumnResizing(true)
+                        .ShowColumnLines(true)
+                        .ShowRowLines(true)
+                        .ShowBorders(true)
+                        .Paging(paging => paging.PageSize(50))
+                        .Columns(columns =>
+                        {
+                            columns.AddFor(m => m.Titulo).Caption("Actividades").AllowEditing(false);
+                            columns.AddFor(m => m.Especificacion).AllowEditing(false);
+                            columns.AddFor(m => m.Valor).Width(70);
+                            columns.AddFor(m => m.IdEst).Caption("Estado").Lookup(lookup => lookup
+                            .DataSource(ds => ds.WebApi().Controller("RepDetalle").LoadAction("EstadoLookup").Key("Value"))
+                            .ValueExpr("Value")
+                            .DisplayExpr("Text"));
+                            columns.Add().DataField("Referencia").AllowEditing(false).Caption("Referencia SMCSS")
+                            .Alignment(HorizontalAlignment.Center)
+                            .Width(100)
+                            .CellTemplate(
+        @<text>
+            <a href="<%- data.ReferenciaURL %>" target="_blank" title="<%- value %>">
+                <%- value %>
+            </a>
+        </text>);
+                            columns.AddFor(m => m.Observacion).Caption("Observaciones").Width(160);
+
+                        })
+                    .Editing(e => e.Mode(GridEditMode.Cell)
+                        .AllowUpdating(false)
+                        .UseIcons(true)
+                    )
+                    .Selection(s => s.Mode(SelectionMode.Single))
+                    @* .Export(e => e.Enabled(true)
+                    .AllowExportSelectedData(false)
+                    .Formats(new[] { "pdf" })
+                )*@
+                    .OnRowUpdated("gridChild_OnRowUpdated2")
+            )
+    }
+
 }
 
 

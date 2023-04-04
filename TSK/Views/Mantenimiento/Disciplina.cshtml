@@ -71,6 +71,7 @@
         .ShowColumnLines(true)
         .ShowRowLines(true)
         .Paging(paging => paging.PageSize(50))
+        .SearchPanel(searchPanel => searchPanel.Visible(true))
         .FilterRow(f => f.Visible(true))
         .HeaderFilter(f => f.Visible(true))
         .Pager(pager =>

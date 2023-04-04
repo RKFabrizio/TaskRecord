@@ -352,21 +352,23 @@
                                                         Flota
                                                     </span>
                                                 </a>
-                                                <a asp-controller="Mantenimiento" asp-action="Frecuencia" class="dropdown-item @ViewBag.frecuencia">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wave-saw-tool" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M3 12h5l4 8v-16l4 8h5" />
-                                                    </svg>
-                                                    <span class="nav-link-title">
-
-                                                        Frecuencia
-                                                    </span>
-                                                </a>
+                                             
 
                                             </div>
                                             @if (User.IsInRole("Administrador"))
                                             {
+                                               
                                                 <div class="dropdown-menu-column">
+                                                    <a asp-controller="Mantenimiento" asp-action="Frecuencia" class="dropdown-item @ViewBag.frecuencia">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wave-saw-tool" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M3 12h5l4 8v-16l4 8h5" />
+                                                        </svg>
+                                                        <span class="nav-link-title">
+
+                                                            Frecuencia
+                                                        </span>
+                                                    </a>
                                                     <a asp-controller="EstructuraPM" asp-action="Sistema" class="dropdown-item @ViewBag.sistema">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-engine" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a79a66" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
