@@ -38,7 +38,7 @@
   <path d="M16 16v2a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h2" />
 </svg>
             <h2 class="page-title">
-                Niveles
+                Nivel
             </h2>
         </div>
     </div>
@@ -53,7 +53,7 @@
 
 <div style="text-align: right;">
     @(Html.DevExtreme().CheckBox()
-        .Text("Mostrar todos los Niveles")
+        .Text("Mostrar todos los niveles")
         .ElementAttr(new { style = "margin-right: 15px; font-size: 15px; margin-bottom: 10px; margin-top:10px; font-weight:bold;" })
         .OnValueChanged("toggleFilter")
         )
@@ -71,6 +71,7 @@
         .ShowBorders(true)
         .RowAlternationEnabled(false)
         .ShowColumnLines(true)
+        .SearchPanel(searchPanel => searchPanel.Visible(true))
         .ShowRowLines(true)
         .Paging(paging => paging.PageSize(50))
         .FilterRow(f => f.Visible(true))
